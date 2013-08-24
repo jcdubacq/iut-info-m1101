@@ -1,0 +1,122 @@
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%  LaTeX french specific class <http://www.freesoftware.fsf.org/latexfr>
+%  
+%  %NAME%    : Mathematiques
+%  %AUTHOR%  : Josselin Mouette
+%  %EMAIL%   : x
+%  %VERSION% : 0.1
+%
+%     Copyright 2001 Josselin Mouette
+%
+%     This program is free software; you can redistribute it and/or modify
+%     it under the terms of the GNU General Public License as published by
+%     the Free Software Foundation; either version 2 of the License, or
+%     (at your option) any later version.
+%
+%     This program is distributed in the hope that it will be useful,
+%     but WITHOUT ANY WARRANTY; without even the implied warranty of
+%     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%     GNU General Public License for more details.
+%
+%     You should have received a copy of the GNU General Public License
+%     along with this program; if not, write to the Free Software
+%     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+%
+%  $Id: frmath.sty,v 1.2 2002/04/28 19:21:36 yeupou Exp $
+%
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\ProvidesPackage{frmath}
+  [2001/07/08 v0.1 French style mathematics]
+
+\RequirePackage{pifont} % For the \dr command
+\RequirePackage{amsmath} % To draw vectors and tensors
+
+% Write vectors using AMS' \overrightarrow, the less ugly solution available
+\let\vect=\overrightarrow
+
+% Use amsmath to draw tensors
+\newcommand{\tens}{%
+  \mathpalette{\overarrow@\Rightarrowfill@}}
+
+
+% A hook to write your \int [...] \D x  (ugh, \d is already defined)
+\def\D{\mathrm{d}}
+
+% A more beautiful alternate to \partial
+\def\dr{\text{\Pisymbol{psy}{182}}}
+
+
+% Redefine the latin capital letters so that they don't appear slanted
+% (shouldn't be written this way, but this is shorter)
+\mathcode`A="7041 \mathcode`B="7042 \mathcode`C="7043 \mathcode`D="7044
+\mathcode`E="7045 \mathcode`F="7046 \mathcode`G="7047 \mathcode`H="7048
+\mathcode`I="7049 \mathcode`J="704A \mathcode`K="704B \mathcode`L="704C
+\mathcode`M="704D \mathcode`N="704E \mathcode`O="704F \mathcode`P="7050
+\mathcode`Q="7051 \mathcode`R="7052 \mathcode`S="7053 \mathcode`T="7054
+\mathcode`U="7055 \mathcode`V="7056 \mathcode`W="7057 \mathcode`X="7058
+\mathcode`Y="7059 \mathcode`Z="705A
+
+
+% Declare a new alphabet, using Type 1 Omega greek fonts
+\DeclareFontFamily{T1}{grec}{}
+\DeclareFontShape{T1}{grec}{m}{n}{  <-> omsegr}{}
+\DeclareSymbolFont{grec}{T1}{grec}{m}{n}
+\DeclareSymbolFontAlphabet{\grec}{grec}
+
+% Redefine the lowercase greek letters ; we don't define
+% any bold letters, as they shouldn't be used in French.
+% Adding support for bold greek letters could be achieved
+% by declaring a bold font corresponding with the normal
+% font (Omega provides one).
+\def\alpha{\grec a}
+\def\beta{\grec b}
+\def\varbeta{\grec 1}
+\def\gamma{\grec g}
+\def\delta{\grec d}
+\def\epsilon{\grec e}
+\def\varepsilon{\grec e} % Same as \epsilon, look like a classical \varepsilon.
+\def\zeta{\grec z}
+\def\eta{\grec h}
+\def\theta{\grec j}
+\def\vartheta{\grec 2}
+\def\iota{\grec i}
+\def\kappa{\grec k}
+\def\Varkappa{\grec 5} % New
+\def\lambda{\grec l}
+\def\mu{\grec m}
+\def\nu{\grec n}
+\def\xi{\grec x}
+\def\pi{\grec p}
+\def\varpi{\grec 7}
+\def\rho{\grec r}
+\def\varrho{\grec 4} % New
+\def\sigma{\grec s}
+\def\varsigma{\grec c}
+\def\tau{\grec t}
+\def\upsilon{\grec u}
+\def\phi{\grec f}
+\def\varphi{\grec 3}
+\def\chi{\grec q}
+\def\psi{\grec y}
+\def\omega{\grec w}
+
+
+% And the uppercase greek letters
+\def\Mu{\grec M}
+\def\Eta{\grec H}
+\def\Iota{\grec I}
+\def\Chi{\grec Q}
+\def\Delta{\grec D}
+\def\Gamma{\grec G}
+\def\Theta{\grec J}
+\def\Lambda{\grec L}
+\def\Xi{\grec X}
+\def\Pi{\grec P}
+\def\Sigma{\grec S}
+\def\Upsilon{\grec U}
+\def\varUpsilon{\grec 0} % New
+\def\Phi{\grec F}
+\def\Psi{\grec Y}
+\def\Omega{\grec W}

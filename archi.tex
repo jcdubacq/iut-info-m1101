@@ -1,0 +1,29 @@
+% compile-latex options: --jobname archi
+% compile-latex options: --jobname poly
+% compile-latex options: --jobname exo
+% compile-latex options: --jobname prof
+
+\documentclass{iutv2013}
+\subtitle{Cours complet}
+
+\begin{document}
+\beamertitle
+\input{content01}
+\input{content02}
+\input{content03}
+\begin{presentationonly}
+  \appendix
+  \input{annexe01}
+\end{presentationonly}
+\end{document}
+
+% Local Variables:
+% TeX-master: "archi"
+% TeX-PDF-mode: t
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: latex
+% mode: flyspell
+% ispell-local-dictionary: "francais"
+% End:

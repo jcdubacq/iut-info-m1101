@@ -1,0 +1,490 @@
+\section{Les opérations}
+\subsection{Les entiers}
+\begin{exercice}
+  \begin{exercicelet}{De la fonction à l'algorithme}
+    \objectif{Maîtriser la différence entre fonction et
+      algorithme. Concevoir un algorithme simple. Examiner l'influence de la
+      représentation sur l'algorithme utilisé pour une même fonction.}
+
+    La numération grecque (simple) est proche de la numération romaine que
+    vous connaissez : on note les nombres comme suit:
+    \[\begin{array}{c|c|c|c|c|c|c|c|c|c}
+      1&5&10&50&100&500&1\,000&5\,000&10\,000&50\,000\\\hline
+      \Iota&\Gamma&\Delta&\Gamma_\Delta&\Chi&\Gamma_\Chi&\Eta&\Gamma_\Eta&\Mu&\Gamma_\Mu
+    \end{array}
+    \] C'est à la différence près que l'on a pas de règle soustractive: le
+    nombre $4$ s'écrit $\Iota\Iota\Iota\Iota$, pas $\Iota\Gamma$. La
+    position des chiffres n'a théoriquement aucune importance, mais on les
+    classait dans l'ordre décroissant de valeur.
+    \begin{enumerate}
+    \item Ce système est-il un système de numération positionnelle ?
+      \begin{correction}Non\end{correction}
+    \item Écrivez votre âge et votre date de naissance en numération
+      grecque.
+      \begin{xcorrection}$\Eta\Gamma_\Chi\Chi\Chi\Chi\Chi\Gamma_\Delta\Delta\Delta\Iota\Iota\Iota$
+        et $\Delta\Delta\Delta\Gamma\Iota\Iota\Iota$ pour moi.\end{xcorrection}
+    \item Écrivez un algorithme d'addition des nombres représentés en
+      numération grecque. Est-ce que cet algorithme est le même qu'en décimal
+      ?
+      \begin{xcorrection}On prend les nombres à additionner, on les colle
+        les uns aux autres, on rassemble les chiffres identiques. Ensuite on
+        répète en partant de la droite : tant que l'on a cinq (ou deux) chiffres
+        identiques, on les enlève et on fabrique un chiffre suivant à leur
+        place.
+
+        C'est un exemple, il y en a plusieurs possibles.\end{xcorrection}
+    \item Faites l'addition de votre âge et de votre année de naissance
+      avec votre algorithme (vous devriez obtenir
+      $\Eta\Eta\Chi\Iota\Iota\Iota$ ou $\Eta\Eta\Chi\Iota\Iota$). De
+      quelle représentations partez-vous ?
+      \begin{correction}On part des représentations grecques, bien
+        sûr. Ou alors des représentations en décimal, que l'on
+        convertit, mais 1-- ça a déjà été fait et 2-- ça ne doit pas
+        faire partie de l'algorithme.\end{correction}
+    \item Faites la même chose en décimal. De quelles représentations
+      partez-vous ? Est-ce que l'algorithme est le même ? Est-ce que
+      la fonction calculée est la même ?
+      \begin{xcorrection} La représentation en décimal sert de départ,
+        l'algorithme est différent (même si un peu similaire), mais le résultat
+        (et donc la fonction calculée) est identique.
+      \end{xcorrection}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+\begin{frame}{Addition dans les systèmes positionnels}
+  \begin{columns}[c]
+    \begin{column}{0.45\linewidth}
+      \begin{methode}[Addition]
+        L'addition en base $B$ se fait de la droite vers la gauche, colonne
+        par colonne, en utilisant le fait que la somme de \emph{chiffres}
+        s'écrit sous la forme $s+Br$, où $s$ est la \emph{somme partielle}
+        (un chiffre unique) et $r$ est la \emph{retenue}. Le poids de $r$
+        est $B$ fois plus important, et $r$ est donc remise dans la colonne
+        d'à côté.
+      \end{methode}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{example}[Addition en base 2]
+        \begin{center}
+          \begin{tikzpicture}[scale=0.5]
+            \tikzstyle{hig}=[circle,fill=solarizedYellow]
+            \tikzstyle{higx}=[rounded corners,fill=solarizedRed]
+            \tikzstyle{higr}=[circle,fill=solarizedRebase0]
+            \only<12->{\node (pointj) at (0,0) {$1$} ;}
+            \only<10->{\node (pointk) at (1,0) {$0$} ;}
+            \only<8->{\node (pointl) at (2,0) {$1$} ;}
+            \only<6->{\node (pointm) at (3,0) {$0$} ;}
+            \only<4->{\node (pointn) at (4,0) {$0$} ;}
+            \only<2->{\node (pointo) at (5,0) {$1$} ;}
+
+            \only<beamer|beamer:2>{\node[hig] (higa) at (5,2.5) {} ;}
+            \only<beamer|beamer:2>{\node[hig] (higb) at (5,1.5) {} ;}
+            \only<beamer|beamer:2>{\node[hig] (higf) at (5,3.5) {} ;}
+            \only<beamer|beamer:2>{\node[higx] (higc) at (5,0) {$1$} ;}
+
+            \only<beamer|beamer:3-4>{\node[hig] (higa) at (4,2.5) {} ;}
+            \only<beamer|beamer:3-4>{\node[hig] (higb) at (4,1.5) {} ;}
+            \only<beamer|beamer:3-4>{\node[hig] (higf) at (4,3.5) {} ;}
+            \only<beamer|beamer:3>{\node[higx] (higc) at (4,0) {$10$} ;}
+            \only<beamer|beamer:4>{\node[higx] (higc) at (4,0) {$0$} ;}
+            \only<beamer|beamer:4>{\node[higr] (higd) at (3,4.5) {\small $1$} ;}
+
+            \only<beamer|beamer:5-6>{\node[hig] (higa) at (3,2.5) {} ;}
+            \only<beamer|beamer:5-6>{\node[hig] (higb) at (3,1.5) {} ;}
+            \only<beamer|beamer:5-6>{\node[hig] (hige) at (3,4.5) {} ;}
+            \only<beamer|beamer:5-6>{\node[hig] (higf) at (3,3.5) {} ;}
+            \only<beamer|beamer:5>{\node[higx] (higc) at (3,0) {$100$} ;}
+            \only<beamer|beamer:6>{\node[higx] (higc) at (3,0) {$0$} ;}
+            \only<beamer|beamer:6>{\node[higr] (higd) at (2,4.5) {\small $10$} ;}
+
+            \only<beamer|beamer:7-8>{\node[hig] (higa) at (2,2.5) {} ;}
+            \only<beamer|beamer:7-8>{\node[hig] (higb) at (2,1.5) {} ;}
+            \only<beamer|beamer:7-8>{\node[hig] (hige) at (2,4.5) {} ;}
+            \only<beamer|beamer:7>{\node[higx] (higc) at (2,0) {$11$} ;}
+            \only<beamer|beamer:8>{\node[higx] (higc) at (2,0) {$1$} ;}
+            \only<beamer|beamer:8>{\node[higr] (higd) at (1,4.5) {\small $1$} ;}
+
+            \only<beamer|beamer:9-10>{\node[hig] (higa) at (1,2.5) {} ;}
+            \only<beamer|beamer:9-10>{\node[hig] (hige) at (1,4.5) {} ;}
+            \only<beamer|beamer:9>{\node[higx] (higc) at (1,0) {$10$} ;}
+            \only<beamer|beamer:10>{\node[higx] (higc) at (1,0) {$0$} ;}
+            \only<beamer|beamer:10>{\node[higr] (higd) at (0,4.5) {\small $1$} ;}
+            
+            \only<beamer|beamer:11>{\node[hig] (hige) at (0,4.5) {} ;}
+            \only<beamer|beamer:11>{\node[higx] (higc) at (0,0) {$1$} ;}
+
+            \only<beamer|beamer:4,6,8,10>{\path[<-] (higd) edge[dashed] (higc);}
+            \only<beamer|beamer:2-10>{\path[<-] (higc) edge[bend right, bend angle=20] (higa);}
+            \only<beamer|beamer:2-10>{\path[<-] (higc) edge[bend right, bend angle=20] (higa);}
+            \only<beamer|beamer:2-6>{\path[<-] (higc) edge[bend left, bend angle=20] (higf);}
+            \only<beamer|beamer:2-8>{\path[<-] (higc) edge (higb);}
+            \only<beamer|beamer:5-11>{\path[->] (hige) edge[bend right, bend angle=20] (higc);}
+            \only<4->{\node[color=red] (pointp) at (3,4.5) {\small $1$} ;}
+            \only<6->{\node[color=red] (pointq) at (2,4.5) {\small $10$} ;}
+            \only<8->{\node[color=red] (pointr) at (1,4.5) {\small $1$} ;}
+            \only<10->{\node[color=red] (points) at (0,4.5) {\small $1$} ;}
+            \only<beamer|beamer:12>{\node (pointzzz) at (0,0) {} ;}
+            \foreach \poids/\etape in {1/2,2/3-4,4/5-6,8/7-8,16/9-10,32/11}
+            \only<beamer|beamer:\etape>{\node[starburst,starburst point height=0.2cm,inner sep=2pt,text=solarizedRebase03,fill=solarizedRebase3,draw=solarizedYellow,very thick] at (5,4.5) {\tiny poids $\poids$};}
+            \node (pointz) at (6.5,6) {} ;
+            \node (pointzz) at (0,-0.3) {} ;
+            \node (pointa) at (2,1.5) {$1$} ;
+            \node (pointb) at (3,1.5) {$1$} ;
+            \node (pointc) at (4,1.5) {$1$} ;
+            \node (pointd) at (5,1.5) {$1$} ;
+            \node (add1) at (0,2.5) {$+$} ;
+            \node (add2) at (0,1.5) {$+$} ;
+            \node (pointe) at (1,2.5) {$1$} ;
+            \node (pointf) at (2,2.5) {$0$} ;
+            \node (pointg) at (3,2.5) {$1$} ;
+            \node (pointh) at (4,2.5) {$1$} ;
+            \node (pointi) at (5,2.5) {$0$} ;
+            \node (pointp) at (3,3.5) {$1$} ;
+            \node (pointq) at (4,3.5) {$0$} ;
+            \node (pointr) at (5,3.5) {$0$} ;
+            \draw[very thick] (-1,1)--(6,1) ;
+          \end{tikzpicture}
+        \end{center}
+        \uncover<6-7>{On peut aussi marquer la retenue $10$ avec $0$ dans
+          la colonne suivante et $1$ dans la colonne d'ordre encore
+          supérieur.}
+      \end{example}
+    \end{column}
+  \end{columns}
+  \begin{itemize}
+  \item[\ddialoginformation] Truc: pour additionner une colonne, on peut
+    bien sûr le faire en décimal, à condition de repasser au binaire
+    pour le reste et les retenues.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Multiplication}
+  \begin{columns}[c]
+    \begin{column}{0.65\linewidth}
+      \begin{methode}[Multiplication]
+        À l'instar de l'addition, la multiplication se fait comme pour les
+        nombres décimaux. Les tables sont justes différentes (il faut les
+        écrire dans la bonne base !).
+
+        En binaire, c'est très facile: on multiplie par $0$ ou par $1$, donc
+        on se contente d'additionner des copies du multiplicande décalées là
+        où le multiplicateur a des $1$.
+
+        \textbf{Très important:} décaler à gauche de $n$ colonnes un nombre,
+        c'est le multiplier par $B^n$. Le décaler à droite, c'est le diviser
+        par $B^n$.
+      \end{methode}
+    \end{column}
+    \begin{column}{0.35\linewidth}
+      $$\begin{array}{cccccc}
+        &&&1&1&0\\
+        \times&&&1&0&1\\\hline
+        &&&1&1&0\\
+        (+&&&&0&)\\
+        +&1&1&0&&\\\hline
+        &1&1&1&1&0
+      \end{array}
+      $$
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Négatifs et réels}
+  Par analogie avec les techniques maîtrisées en base 10, il est
+  possible de faire également:
+  \begin{itemize}
+  \item Des soustractions: lorsque le chiffre duquel on soustrait n'est
+    pas suffisant, on ajoute 1 au chiffre à soustraire dans la colonne
+    d'ordre immédiatement supérieur, et en compensation, on ajoute la
+    base dans la colonne courante.
+  \item Des divisions: en fait, on fait plein de multiplications
+    enchaînées avec des soustractions.
+  \item Additionner un négatif, c'est soustraire un positif.
+  \item Des opérations en virgule fixe: les règles de placement de la
+    virgule sont les mêmes qu'en base 10.
+  \item Des décalages qui sont des multiplications ou divisions par une
+    puissance de la base.
+  \item Pour la virgule flottante, les multiplications sont simples ;
+    les additions nécessitent de recoder en virgule fixe.
+  \end{itemize}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Calcul en binaire et hexadécimal}
+    \objectif{Maîtriser les conversions et les additions en base 2 et 16,
+      maîtriser la multiplication en base 2, comprendre la notion de poids
+      des chiffres dans un système positionnel}
+    \begin{enumerate}
+    \item Faites les additions en binaire:
+      \texttt{0b1101\,0101}+\texttt{0b1110\,0101};
+      \texttt{0b1,1}+\texttt{0b110}+\texttt{0b100,1}+\texttt{0b111,1}+%
+      \texttt{0b1010,1}+\texttt{0b100,1}.
+      \begin{xcorrection}$1\,1011\,1010$ et $10\,0010,1$ (ils peuvent
+        vérifier en décimal).\end{xcorrection}
+    \item Faites les opérations suivantes en hexadécimal: $0x122+0x233$,
+      $0x87+0x54$, $0x18+0x9$, $2\times 0xED$, $0x100-0x3$.
+      \begin{xcorrection}355,DB,21,1DA,FD\end{xcorrection}
+    \item Faites la multiplication suivante: $17\times129$ à la fois en
+      décimal et en binaire.
+      \begin{xcorrection}2193 et 100010010001.\end{xcorrection}
+    \item Faites la multiplication suivante en binaire: $110110\times 1101$.
+      \begin{xcorrection}1010111110 (54*13=702)\end{xcorrection}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+\subsection{Addition et codage}
+\begin{frame}{Les algorithmes d'addition}
+  \begin{itemize}
+  \item L'addition de codage se fait par un algorithme
+    (représentation/information). Si l'algorithme fait ce qu'on attend
+    de lui (identique à la fonction), il est \emph{correct}.
+  \item Tous les nombres ne sont pas représentables. Si le résultat de
+    l'addition (fonction) donne un nombre non représentable,
+    l'algorithme ne peut pas être correct.
+  \item L'algorithme d'addition pour NAT et C2 est très similaire à la
+    méthode usuelle (décrite avant); on coupe juste le résultat à la
+    taille du codage.
+  \end{itemize}
+  \begin{theorem}
+    En C2 et NAT, si le résultat est représentable, l'addition
+    (classique) est correcte.
+  \end{theorem}
+\end{frame}
+\begin{frame}{Addition correcte ou pas ?}
+  \begin{example}[Addition en NAT]
+    \[\begin{array}{ccc}
+      131+85 & \stackrel{\text{code}}{\Longrightarrow} & 1000\,0011_{NAT}+0101\,0101_{NAT}\\
+      \multicolumn{2}{c}{\only<2->{\alert<beamer:2>{\text{Correct !}}}} & \stackrel{\text{algo}}{=}\\
+      216 & \stackrel{\text{decode}}{\Longleftarrow} & 1101\,1000_{NAT}\\
+      \uncover<3->{187+101} & \uncover<3->{\stackrel{\text{code}}{\Longrightarrow}} & \uncover<3->{1011\,1011_{NAT}+0110\,0101_{NAT}}\\
+      \multicolumn{2}{c}{\only<4->{\alert<beamer:4>{\text{Incorrect !}}}} & \uncover<3->{\stackrel{\text{algo}}{=}}\\
+      \uncover<3->{32(\neq288)} & \uncover<3->{\stackrel{\text{decode}}{\Longleftarrow}} & \uncover<3->{0010\,0000_{NAT}}\\
+    \end{array}\]
+  \end{example}
+  \begin{itemize}
+  \item En C1 et en VA+S, il suffit de mettre un négatif.
+  \item En plus, problème du double zéro pour C1 et VA+S.
+  \item C2: comme si le dernier bit était de poids $-2^{n-1}$ au lieu de
+    $2^{n-1}$, arithmétique modulo $2^n$.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Notes sur la multiplication et l'hexadécimal}
+  \begin{itemize}
+  \item La multiplication est extrêmement simple en binaire. Elle se comporte comme une série d'additions.
+  \item La multiplication est rarement correcte si on a autant de
+    chiffres en entrée qu'en sortie. La plupart des ordinateurs
+    multiplient en mettant le résultat dans deux mots de code distincts
+    (partie haute et partie basse).
+  \end{itemize}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Limites de la multiplication}
+    Expliquez pourquoi le résultat d'une multiplication de deux nombres
+    représentés dans l'un des 4 codes classiques est toujours
+    représentable à condition de doubler la taille du code.
+    \begin{xcorrection}
+      Il suffit de regarder la valeur maximale autorisée par un code et
+      de l'élever au carré (produit le plus grand possible).
+    \end{xcorrection}
+  \end{exercicelet}
+  \begin{exercicelet}{Addition en C2}
+    Faites les opérations suivantes en transformant les nombres au
+    préalable en codage C2 sur 8 bits (résultat aussi en C2 sur 8 bits):
+    \begin{itemize}
+    \item 45+17
+    \item 45-17 (soit 45+(-17))
+    \item -17-17
+    \item 17-45
+    \item 221+45
+    \end{itemize}
+    Dites aussi si le résultat obtenu est correct et s'il est représentable.
+    \begin{xcorrection}
+      00101101+00010001=...\\
+      00101101+11101111=...\\
+      11101111+11101111=11011110\\
+      ...+...=...\\ %TODO
+      11011101+00101101=00001010\\
+      Ils sont tous corrects s'ils sont représentables, donc tous sauf le dernier.
+    \end{xcorrection}
+  \end{exercicelet}
+\end{exercice}
+\subsection{Les champs de bits}
+\begin{frame}{La logique booléenne}
+  \begin{itemize}
+  \item Il est possible d'interpréter les deux valeurs binaires comme
+    représentant respectivement \emph{vrai} (1) ou \emph{faux} (0).
+  \item On peut définir des opérations correspondantes à la conjonction
+    (et), la disjonction (ou) et la négation (opposé de).
+  \item[\dialogerror] Ce ne sont pas des opérations arithmétiques
+    classiques.
+  \item[\dialogsystem] $c=ab$ ou $c=a\wedge b$ pour le \emph{et} (en C: $a=b\&c$)
+  \item[\dialogsystem] $c=a+b$ ou $c=a\wedge b$ pour le \emph{ou} (en C: $a=b|c$)
+  \item[\dialogsystem] $b=\overline{a}$ ou $b=\neg a$ pour le \emph{non} (en C: $a=\sim c$)
+  \end{itemize}
+  \begin{example}[chemin sous UNIX]
+    Soit $\mathcal A(p)$ la propriété « $p$ est un chemin existant » et
+    $\mathcal B(p)$ la propriété « $p$ est un chemin qui désigne un
+    répertoire ». Si on suppose qu'il n'y a que deux type d'objets
+    (répertoires et fichiers), la propriété $\mathcal C(p)$ « $p$ est un
+    chemin qui désigne un fichier » s'exprime par $\mathcal
+    A(p)\overline{\mathcal B(p)}$.
+  \end{example}
+\end{frame}
+\begin{frame}{Les opérateurs booléens}{AND et OR}
+  \begin{block}{AND}
+    L'opérateur binaire AND, noté $a\times b$, renvoie $1$ si et seulement si ses deux arguments sont égaux à $1$.
+
+    L'opérateur général AND renvoie $1$ si et seulement si tous ses arguments sont égaux à $1$.
+
+    Ils sont équivalents à la fonction \emph{minimum}.
+  \end{block}
+  \begin{block}{OR}
+    L'opérateur binaire OR, noté $a+b$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
+
+    L'opérateur général OR renvoie $0$ si et seulement si tous ses arguments sont égaux à $0$.
+
+    Ils sont équivalents à la fonction \emph{maximum}.
+  \end{block}
+\end{frame}
+\begin{frame}{Les opérateurs booléens}{XOR et NOT} 
+ \begin{block}{XOR}
+    L'opérateur binaire XOR, noté $a\oplus b$, renvoie $1$ si et seulement si ses deux arguments sont différents.
+
+    Ils sont équivalents à la fonction \emph{différent}.
+  \end{block}
+  \begin{block}{NOT}
+    L'opérateur binaire NOT, noté $\overline{a}$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
+
+    Il est équivalent à la fonction \emph{complémentation}.
+
+    Il y a aussi les opérateurs généraux NOR et NAND qui sont en fait
+    NOT(OR(...)) et NOT(AND(...)). Ils sont rarement implémentés dans
+    les langages de programmation.
+  \end{block}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Tables de vérité}
+    Faites une table qui montre toutes les paires d'arguments possibles
+    pour les opérateurs AND, OR, XOR et qui montre le résultat à côté.
+    \centerline{\LARGE
+      $\begin{tabular}{|cc|c|}\hline
+      A&B&A$\times$B\\\hline
+      0&0&\begin{correction}0\end{correction}\\
+      0&1&\begin{correction}0\end{correction}\\
+      1&0&\begin{correction}0\end{correction}\\
+      1&1&\begin{correction}1\end{correction}\\
+      \hline\end{tabular}$\hfill
+      $\begin{tabular}{|cc|c|}\hline
+      A&B&A$+$B\\\hline
+      0&0&\begin{correction}0\end{correction}\\
+      0&1&\begin{correction}0\end{correction}\\
+      1&0&\begin{correction}0\end{correction}\\
+      1&1&\begin{correction}1\end{correction}\\
+      \hline\end{tabular}$\hfill
+      $\begin{tabular}{|cc|c|}\hline
+      A&B&A$\oplus$B\\\hline
+      0&0&\begin{correction}0\end{correction}\\
+      0&1&\begin{correction}0\end{correction}\\
+      1&0&\begin{correction}0\end{correction}\\
+      1&1&\begin{correction}1\end{correction}\\
+      \hline\end{tabular}$
+  }
+  \end{exercicelet}
+\end{exercice}
+\begin{frame}{Les champs de bits}
+  \begin{itemize}
+  \item La notion de variable booléenne stockant une valeur vraie ou
+    faux est très souvent intégrée directement dans les langages
+  \item[\dialogerror] Ce n'est pas le cas dans le langage C
+  \item On appelle parfois ces variables des \emph{flags} (drapeaux).
+  \item Quand on réunit plusieurs de ces variables dans une même entité,
+    on appelle le résultat un champ de bits (anglais \emph{bit field}).
+  \item Ces champs de bits peuvent être stockés dans une seule variable
+    (selon leur nombre). On les considère comme un entier codé en NAT ou
+    C2.
+  \item On définit des opérations sur les champs de bits: le \emph{et
+      bit-à-bit}, le \emph{ou bit-à-bit}, le \emph{not bit-à-bit} et le
+    \emph{xor bit-à-bit}.
+  \item[\dialogsystem] Il s'agit de faire sur les bits de même position
+    dans deux champs de bits (un pour la négation) l'opération booléenne
+    correspondante.
+  \end{itemize}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Opérations booléennes}
+    \begin{itemize}
+    \item Que vaut 0b10000110 AND Ob11101001 ?
+    \item Que vaut Ob10000110  OR 0b11101001 ?
+    \item Que vaut Ob10000110 XOR 0b11101001 ?
+    \item Que se passe-t-il si on calcule ($a$ est une variable
+      booléenne): $a+0$ ? $a+1$ ? $a\times 0$ ? $a\times 1$ ? $a+a$ ? $a+a+a+a+a+a$ ?
+    \item Démontrez que $a+ab=a$;
+      \begin{correction}Vu en cours. $a+ab=a(1+b)=a$.\end{correction}
+    \item Démontrez que $a+bc=(a+b)(a+c)$;
+      \begin{correction}
+        $(a+b)(a+c)=a+ab+ac+bc=a+ac+bc=a+bc$
+      \end{correction}
+    \item Démontrez que $a+\overline{a}b=a+b$;
+      \begin{correction}Vu en
+        cours. $a+\overline{a}b=a(b+\overline{b})+\overline{a}b=ab+a\overline{b}+
+        \overline{a}b+ab=a(b+\overline{b})+b(a+\overline{a})=a+b$. NB:
+        $x=x+x$.\end{correction}
+    \end{itemize}
+  \end{exercicelet}
+\end{exercice}
+\begin{frame}{Masquage}
+  Lorsqu'un champ de bits est représenté par un entier, on peut accéder à un bit particulier en procédant à un ET:
+  $$b_x=(B\&(1<<x))>>x$$
+  On obtient 1 si le bit numéro $x$ est à 1, 0 sinon.
+  
+  On peut aussi mettre à 1 le bit numéro $x$:
+  $$B=B|(1<<x)$$
+  ou à zéro:
+  $$B=B\&(\sim(1<<x))$$
+
+  On peut aussi inverser le bit numéro $x$:
+  $$B=B\oplus(1<<x)$$
+
+  On peut tester si par exemple le bit 1 ou 3 sont à 1:
+  \texttt{if (a\&0b1010 != 0) ...}
+
+  L'ensemble de ces techniques pour manipuler un champ de bits sous la
+  forme d'un entier est appelé \emph{masquage}.
+  
+  Souvent, les valeurs $(1<<x)$ sont nommées pour qu'on puisse
+  simplement utiliser leur nom au lieu de se souvenir de leur position.
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Analyse d'un masquage}
+    Dans un champ de bits qui contient $a=0b11001001$, on veut faire les choses suivantes:
+    \begin{itemize}
+    \item On veut vérifier si le bit 0 est actif ou non. Décomposez
+      l'opération.
+    \item On veut changer le bit 1 en 1 et le bit 3 en 0. Décomposez les
+      opérations qui permettent de le faire.
+    \item Changez le bit 5, en expliquant les valeurs intermédiaires.
+    \end{itemize}
+  \end{exercicelet}
+  \begin{exercicelet}{Analyse de touches}
+    Dans un système, la fonction \texttt{keyEvent()} renvoie une valeur entière sur 16 bits (dont 5 ignorés):
+    \begin{itemize}
+    \item Les 8 premiers bits correspondent au numéro de la touche sur le clavier (pour les touches ordinaires)
+    \item Le 9\ieme{} bit correspond à la touche SHIFT (1: pressée, 0: pas pressée)
+    \item Le 10\ieme{} bit correspond à la touche CONTROL (1: pressée, 0: pas pressée)
+    \item Le 11\ieme{} bit correspond au fait d'appuyer sur une touche (1) ou de l'avoir juste relachée (0)
+    \end{itemize}
+    \begin{itemize}
+    \item[\ddialoghome] Faites un programme qui appelle cette fonction
+      (\texttt{a=keyEvent()}) puis qui en fonction de \texttt{a} affiche
+      un texte du genre: « Vous venez de lâcher la touche 27 en ayant
+      SHIFT appuyé et CONTROL lâché »
+    \end{itemize}
+  \end{exercicelet}
+\end{exercice}
+% Local Variables:
+% TeX-master: "archi03"
+% TeX-PDF-mode: t
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: latex
+% mode: flyspell
+% ispell-local-dictionary: "francais"
+% End:

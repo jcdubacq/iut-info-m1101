@@ -1,0 +1,520 @@
+\section{Représenter un nombre}
+\subsection{Les systèmes de numération}
+\begin{frame}{Représenter les nombres}
+  \begin{itemize}
+  \item Objet (abstrait) qui admet de nombreuses représentations.
+  \item L'idée de quantité et une représentation visuelle précèdent sans
+    doute l'écriture \emph{(unaire)}.
+  \item Un jeu de règles de représentation des nombres sous forme de
+    signes écrits est un système de numération.
+  \end{itemize}
+  \begin{example}[Plusieurs représentations]
+    On représente aussi les nombres sur d'autres \emph{supports} que
+    l'écrit: représentations par sons, par objets (nombre de bougies sur
+    un gâteau). Cela ne change pas le nombre (information), 27 bougies
+    représentent bien 27 éléments (années écoulées, ici) autant que
+    «~2~» collé à «~7~», ou que %
+    \begin{tikzpicture}[fill=solarizedRebase0,draw=solarizedRebase0,line width=.07,scale=.16]
+      \draw[fill] (1.322,0)--(.188,.850)--(1.322,1.700)--(.566,1.133)--(.566,.566)--cycle;
+      \draw[fill] (1.700,0)--(.566,.850)--(1.700,1.700)--(.944,1.133)--(.944,.566)--cycle;
+      \begin{scope}[rotate=180,shift={(-6,-2.6)}]
+        \draw[fill] (2.551,.944)--(2.834,1.228)--(3.118,.944)--cycle;
+        \draw[fill] (1.984,.944)--(2.267,1.228)--(2.551,.944)--cycle;
+        \draw[fill] (3.118,.944)--(3.401,1.228)--(3.685,.944)--cycle;
+        \draw[fill] (1.984,1.228)--(2.267,1.511)--(2.551,1.228)--cycle;
+        \draw[fill] (2.551,1.228)--(2.834,1.511)--(3.118,1.228)--cycle;
+        \draw[fill] (3.118,1.228)--(3.401,1.511)--(3.685,1.228)--cycle;
+        \draw[fill] (2.551,1.511)--(2.834,1.795)--(2.834,2.645)--(2.834,2.645)--(2.834,1.795)--(3.118,1.511)--cycle;
+      \end{scope}
+    \end{tikzpicture}
+    (numération babylonienne) ou XXVII (numération romaine).
+  \end{example}
+\end{frame}
+\begin{frame}{La numération positionnelle}
+  \begin{definition}[Système de numération positionelle]
+    Un ensemble fini de symboles $\mathcal{B}$ (appelés chiffres)
+    auxquels est associé une valeur entière de $0$ à $B-1$, où $B$ est
+    le nombre d'éléments de $\mathcal{B}$. $B$ est la \emph{base}.
+    
+    La valeur d'une suite finie de $k$ chiffres
+    $\alpha_{k-1}\alpha_{k-2}...\alpha_{0}$ est la somme:
+    $$\alpha_{k-1}B^{k-1}+\dots+\alpha_{1}B+\alpha_{0}=
+    \sum_{i=0}^{k-1}\alpha_{i}B^i.$$
+  \end{definition}
+
+  \begin{itemize}
+  \item Le mot chiffre vient de l'arabe \transtrue \<'a.s-.sifr> et
+    désignait le zéro.
+  \item Exemple en base 5: le nombre $132_5$ vaut $1\times
+    5^2+3\times5^1+2\times 5^0$, soit $25+15+2=42_{10}$.
+  \item $B^i$ est le \emph{poids} du $i$-ième\ chiffre (en comptant de 0
+    à droite).
+  \end{itemize}
+\end{frame}
+\begin{frame}{Les autres systèmes de numération}{un peu de culture générale...}
+  \begin{itemize}
+  \item Systèmes de numération additifs (chiffres grecs, égyptiens):
+    $\cap\cap|||||||$, par exemple. Chaque poids est représenté par un
+    symbole distinct, la position n'est pas importante. À un détail
+    près, les chiffres romains le sont aussi.
+  \item Systèmes hybrides (numérotation chinoise ou japonaise, français)
+    : on utilise des chiffres fixes, mais on intercale un symbole
+    (écrit) ou un mot (oral) différent pour chaque poids.
+  \item Des systèmes de numération exotiques: les poids ne sont pas $1$,
+    $B$, $B^2$, $B^3$, etc. mais les valeurs d'une suite (strictement
+    croissante): par exemple, numération de Fibonacci.
+  \end{itemize}
+  
+  {\small  Cette page est inspirée de Wikipedia \emph{Système de numération},
+    ainsi que les dessins de chiffres babyloniens.}
+\end{frame}
+\begin{frame}{La base 10}
+  \begin{itemize}
+  \item Système décimal, utilisé depuis le cinquième siècle en Inde, apporté par
+    les Arabes en Europe dans le X\ieme\ siècle.
+  \item $\mathcal{B}=\left\{0,1,2,3,4,5,6,7,8,9\right\}$, et $B=10$
+  \item Par exemple: mille cinq cent quatre-vingt-quatre se représente par
+    $1584_{10}$, qui s'interprète comme
+    $$1\times10^3+5\times10^2+8\times10+4$$
+  \end{itemize}
+  \begin{tikzpicture}[fill=solarizedRebase0,draw=solarizedRebase0,scale=.5]
+    \only<1|handout:0>{
+      \foreach \xx in {0,1,...,83} {
+        \foreach \yy in {0,1,2,3,4,5,6,7,8,9,11,12,...,20} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(.1,.1);
+        }
+      }
+    }
+    \only<2|handout:0>{
+      \foreach \xx in {0,1,...,83} {
+        \foreach \yy in {0,11} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(.1,1.9);
+        }
+      }
+    }
+    \only<3|handout:0>{
+      \foreach \xx in {0,10,...,70} {
+        \foreach \yy in {0,11} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(1.9,1.9);
+        }
+      }
+    }
+    \only<1-|handout:1>{
+      \foreach \xx in {84} {
+        \foreach \yy in {0,1,2,3} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(.1,.1);
+        }
+      }
+    }
+    \only<3-|handout:1>{
+      \foreach \xx in {80,81,82,83} {
+        \foreach \yy in {0,11} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(.1,1.9);
+        }
+      }
+    }
+    \only<4|handout:1>{
+      \foreach \xx in {0} {
+        \foreach \yy in {0} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(9.9,4.1);
+        }
+      }
+      \foreach \xx in {50,60,70} {
+        \foreach \yy in {0,11} {
+          \fill ({.2*\xx},{.2*\yy}) rectangle ++(1.9,1.9);
+        }
+      }
+    }
+  \end{tikzpicture}
+\end{frame}
+\begin{frame}{Représenter les nombres en informatique}
+  \begin{definition}[Les bases les plus utilisées sont 2, 8, 10 et 16]
+    \begin{tabular}{|c|>{$}c<{$}|>{\ttfamily}c|>{\ttfamily}c|>{\tiny}r|}
+      \hline
+      Base &\multicolumn{1}{c}{Chiffres}&& Exemple&Usage\\\hline
+      2 &\{0,1\}&0b&0b10110&\only<1->{Codages bas-niveau}\\\hline
+      8 &\{0,1,2,3,4,5,6,7\}&0&026&\only<2->{peu utilisé}\\\hline
+      16&\{0,1,2,3,4,5,6,7,8,9,&0x&0x16&\only<3->{Écriture compacte}\\
+      &A,B,C,D,E,F\}&&&\only<3->{d'octets}\\\hline
+      10&\{0,1,2,3,4,5,6,7,8,9\}&&22&\only<4->{Nombres courants}\\\hline
+    \end{tabular}
+  \end{definition}
+  \begin{itemize}
+  \item<1-> {$1\times2^4+1\times2^2+1\times2=22_{10}$\pause}
+  \item<2-> {$2\times8+6=22_{10}$\pause}%
+  \item<3-> {$1\times16+6=22_{10}$\pause}%
+  \item<4-> {$2\times10+2=22_{10}$}%
+  \item<5-> En binaire, un chiffre est désigné par le terme \emph{bit} (aussi).
+  \end{itemize}
+\end{frame}
+\begin{frame}{De la base x à la base 10}
+  On peut toujours convertir un nombre de la façon suivante.
+  \begin{methode}[recalcul]
+    Si en base $x$, il s'écrit $\alpha\beta\gamma\delta$, il vaut (par
+    définition):
+    $$\alpha\times x^3+\beta\times x^2+\gamma\times x+\delta$$
+  \end{methode}
+  \begin{example}[conversion de 0x4D7]
+    Le nombre 0x4D7 (hexadécimal) est égal à $4\times16^2+D\times16+7$, donc à 
+    $4\times256+13\times16+7=1239$ en base 10.
+  \end{example}
+  \begin{example}[puissance de la base]
+    $B^n$ s'écrit toujours $1$ suivi de $n$ zéros (par exemple, $2^6$
+    s'écrit \texttt{0b1\,000\,000})
+  \end{example}
+\end{frame}
+\def\mm#1{\mbox{\texttt{#1}}}
+\begin{frame}{De la base 10 à la base 2}
+  \begin{columns}[c]
+    \begin{column}{0.3\linewidth}
+      \begin{methode}[divisions successives]
+        On divise le nombre par la base (2). Le reste est le dernier chiffre du
+        nombre dans la base 2, on recommence avec le résultat de la division.
+
+        \bigskip
+
+        Ceci fonctionne avec toutes les bases, diviser par $B$ au lieu de 2.
+      \end{methode}\pause
+    \end{column}
+    \begin{column}{0.65\linewidth}
+      \begin{example}[divisions successives]
+        \uncover<3->{$13/2=6$, reste 1;}
+        \uncover<4->{$6/2=3$, reste 0;}
+        \uncover<5->{$3/2=1$, reste 1;}
+        \uncover<6->{$1/2=0$, reste 1;}
+        ~\\
+        $13=%
+        \uncover<3->{6\times2+\mbox{\texttt{0b1}}}
+        \uncover<4->{=3\times2\times2+\mbox{\texttt{0b01}}}
+        \uncover<5->{=1\times2\times2\times 2+\mbox{\texttt{0b101}}}
+        \uncover<6->{=\mbox{\texttt{0b1101}}}
+        $
+      \end{example}
+      \begin{methode}<7->[soustractions successives, rapide]
+
+        Puissances de 2: \alert<18>{1}, \alert<17>{2}, \alert<16>{4},
+        \alert<15>{8}, \alert<14>{16}, \alert<13>{32}, \alert<12>{64},
+        \alert<11>{128}, \alert<10>{256}, \alert<9>{512},
+        \alert<8>{1024}...
+
+        $216\only<11->{-128=88}\only<12->{-64=24}\only<14->{-16=8}\only<15->{-8=0}$\\
+        $216_{10}=\rule[-3.5ex]{0ex}{3.5ex}%
+        \only<beamer|beamer:1-10>{216_{10}}
+        \only<beamer|beamer:11>{\mm{0b}\underbrace{\mm1}_{128}\mm{0000000}+88_{10}}
+        \only<beamer|beamer:12>{\mm{0b1}\underbrace{\mm1}_{64}\mm{000000}+24_{10}}
+        \only<beamer|beamer:13>{\mm{0b11}\underbrace{\mm0}_{32}\mm{00000}+24_{10}}
+        \only<beamer|beamer:14>{\mm{0b110}\underbrace{\mm1}_{16}\mm{0000}+8_{10}}
+        \only<beamer|beamer:15>{\mm{0b1101}\underbrace{\mm1}_{8}\mm{000}}
+        \only<beamer|beamer:16>{\mm{0b11011}\underbrace{\mm0}_{4}\mm{00}}
+        \only<beamer|beamer:17>{\mm{0b110110}\underbrace{\mm0}_{2}\mm{0}}
+        \only<beamer|beamer:18>{\mm{0b1101100}\underbrace{\mm0}_{1}}
+        \only<beamer|beamer:15-18>{+0_{10}}%
+        \only<19->{\mm{0b11011000}}
+        $
+      \end{methode}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{De la base 2 à 8 et 16 (et inversement)}
+  \begin{itemize}
+  \item Base 2 vers 8 ou 16 ou inverse: substitution mécanique!
+  \item Compléter par des $0$ devant si nécessaire (octal: 3 chiffres, hexadécimal: 4); 
+  \item Connaître les correspondances pour chaque chiffre;\par
+    \centerline{\small\ttfamily\begin{tabular}{|l|cccccccc|}\hline
+        Hex./Octal & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\\hline
+        Binaire & 0 & 1 & 10 & 11 & 100 & 101 & 110 & 111 \\\hline\hline
+        Hex. & 8 & 9 & A & B & C & D & E & F\\\hline
+        Binaire & 1000 & 1001 & 1010 & 1011 & 1100 & 1101 & 1110 & 1111 \\\hline
+      \end{tabular}
+    }
+  \item Base $8=2^3$: $\mm{0b\only<beamer|beamer:2>{0}\only<beamer|beamer:1-2>{11101}}\only<3->{\underbrace{\mm{011}}_{3}\underbrace{\mm{101}}_5}\only<4->{=\mm{035}}\phantom{\underbrace{\mm{~}}_{D}}$
+  \item Base $16=2^4$: $\mm{0b\only<beamer|beamer:2>{000}\only<beamer|beamer:1-2>{11101}}\only<3->{\underbrace{\mm{0001}}_{1}\underbrace{\mm{1101}}_D}\only<4->{=\mm{0x1D}}\phantom{\underbrace{\mm{~}}_{D}}$
+  \item De 16 ou 8, vers 2, procédure inverse:
+    $\mm{0x\alert<beamer|beamer:5>{3}\alert<beamer|beamer:6>{A}}=\mm{0b\alert<beamer|beamer:5>{0011}\alert<beamer|beamer:6>{1010}}$
+  \item \textbf{\textsc{Apprenez ces tables par c\oe ur !}}
+  \end{itemize}
+\end{frame}
+
+\begin{exercice}
+  \begin{exercicelet}{Puissances de 2}
+    \begin{enumerate}
+    \item Écrivez la liste de toutes les puissances de 2, de $2^{-4}$ à
+      $2^{16}$.
+      \begin{xcorrection} 0,06125 -- 0,125 -- 0,25 -- 0,5 -- 1 -- 2 -- 4 -- 8
+        -- 16 -- 32 -- 64 -- 128 -- 256 -- 512 -- 1024 -- 2048 -- 4096 -- 8192
+        -- 16384 -- 32768 -- 65536
+
+        Et jusqu'à 1024, c'est à savoir par c\oe ur. Aucune discussion à
+        avoir.
+      \end{xcorrection}
+    \item Écrivez une table de conversion des chiffres hexadécimaux et
+      octaux vers le codage naturel écrit en binaire (4 bits ou 3 bits).
+      \begin{xcorrection} 0 -- 0000, 1 -- 0001, 2 -- 0010, 3 -- 0011, 4 --
+        0100, 5 -- 0101, 6 -- 0110, 7 -- 0111, 8 -- 1000, 9 -- 1001, A -- 1010,
+        B -- 1011, C -- 1100, D -- 1101, E -- 1110, F -- 1111. Et pour les
+        octaux, la même chose de 0 à 7 (on peut mettre seulement sur 3 bits pour
+        l'octal, en supprimant le 0 initial).
+
+        C'est à savoir par c\oe ur. Aucune discussion à avoir.
+      \end{xcorrection}
+    \end{enumerate}
+  \end{exercicelet}
+  \begin{exercicelet}{Conversions}
+    \begin{enumerate}
+    \item Écrivez en binaire et en hexadécimal les nombres décimaux
+      suivants: 28; 149; 1285.
+      \begin{xcorrection}
+        1 1100; 1001 0101; 101 0000 0101 1001.
+        0x1C; 0x95; 0x505.
+      \end{xcorrection}
+    \item Convertissez en décimal les nombres suivants: 0x48; 0xA1C; 0b1010010010011111.
+      \begin{xcorrection}
+        72; 2588; 42143.
+      \end{xcorrection}
+    \item Comment trouver midi à quatorze heures ?
+      \begin{xcorrection}En base 8. Ne pas insister sur cette
+        question.\end{xcorrection}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+\subsection{Des entiers naturels aux réels}
+\begin{frame}{Bases, entiers relatifs et réels}
+  \begin{itemize}
+  \item Pour les entiers relatifs, il faut une information
+    supplémentaire: le signe;
+  \item Représentation classique: un signe -- pour les négatifs.
+  \item Réels: la virgule (séparateur décimal) est à droite du chiffre
+    de poids 1 (exposant 0) \emph{(représentation en virgule fixe)}.
+  \end{itemize}
+  \begin{example}
+    $$\begin{array}{rl}
+      -10,11_{2}&=-\left(1\times2^1+1\times2^{-1}+1\times2^{-2}\right)\\
+      &=-2,75_{10}\\
+      -47,2_{8}&=-\left(4\times8^1+7\times8^{0}+2\times8^{-1}\right)\\
+      &=-39,25_{10}\end{array}$$
+  \end{example}
+\end{frame}
+\begin{frame}{Convertir un réel d'une base dans une autre}%
+  \begin{columns}[c]%
+    \begin{column}{0.2\linewidth}
+      \begin{theorem}
+        \sloppy On peut toujours convertir d'un côté la partie
+        fractionnaire d'un nombre, de l'autre sa partie entière.
+      \end{theorem}\pause
+    \end{column}
+    \begin{column}{0.75\linewidth}
+      \begin{methode}[multiplications successives]
+        On multiplie par $B$ la partie fractionnaire, la partie entière
+        du résultat donne le premier chiffre après la virgule.
+        \uncover<3->{$0,375\times 2=\alert<3>{0},75$;} \uncover<4->{$0,75\times2=\alert<4>{1},5$;}
+        \uncover<5->{$\alert<5>{0},5\times2=\alert<5>{1}$;}\uncover<6->{...développement fini ! Pas toujours !}
+        ~\\
+        $0,375=%
+        \only<3>{\mm{0b0,\alert{0}}}%
+        \only<4>{\mm{0b0,0\alert{1}}}%
+        \only<5>{\mm{0b0,01\alert{1}}}
+        \only<6->{\mm{0b0,011}}
+        $
+      \end{methode}
+      \begin{methode}<7->[soustractions successives, rapide]
+
+        Puissances de 2:
+        \alert<8>{0,5},~\alert<9>{0,25},~\alert<10>{0,125},~%
+        \alert<11>{0,0625},...
+
+        $0,8125\only<8->{-0,5=0,3125}\only<9->{-0,25=0,0625}\only<11->{-0,0625=0}$\\
+        $0,8125_{10}=\rule[-4ex]{0ex}{4ex}%
+        \only<beamer|beamer:8>{\mm{0b0,}\underbrace{\mm1}_{1/2}+0,3125_{10}}
+        \only<beamer|beamer:9>{\mm{0b0,1}\underbrace{\mm1}_{1/4}+0,0625_{10}}
+        \only<beamer|beamer:10>{\mm{0b0,11}\underbrace{\mm0}_{1/8}+0,0625_{10}}
+        \only<beamer|beamer:11>{\mm{0b0,110}\underbrace{\mm1}_{1/16}+0_{10}}
+        \only<12->{\mm{0b0,1101}}
+        $
+      \end{methode}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Changements de base}
+    \begin{enumerate}
+    \item Écrivez en binaire et en hexadécimal les nombres décimaux
+      suivants: 0,3125; 164,3125.
+      \begin{xcorrection}
+        0,0101; 1010 0100,0101.
+        0x0,5; 0xA4,5.
+      \end{xcorrection}
+    \item Convertissez en décimal le nombre suivant: 0b1010,0011.
+      \begin{xcorrection}
+        10,1875.
+      \end{xcorrection}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+
+\subsection{Codage des entiers}
+\begin{frame}{Le codage}
+  \begin{itemize}
+  \item Plutôt que d'écrire des nombres, on est souvent amené à les
+    \emph{coder}, c'est-à-dire à les écrire sur une taille fixe.
+  \item On écrit ces codes en binaire (ou en hexadécimal pour gagner de la
+    place) avec un nombre déterminé à l'avance de bits.
+  \item Avec un nombre fixé $k$ de bits, on peut écrire uniquement un nombre
+    fixé de nombres ($2^k$).
+  \end{itemize}
+  \begin{definition}[Codage naturel des entiers --- NAT]
+    Le codage naturel consiste à écrire l'entier en base $2$ et à
+    compléter l'écriture par des $0$ à gauche jusqu'à atteindre la taille
+    désirée. Exemple: $27_{10}$=\mm{0b11011} se code $0001\,1011$ en NAT 8 bits.
+
+    Avec $n$ bits, on code les entiers de $0$ à $2^n-1$. Usuellement, on
+    utilise des tailles multiples de 8.
+  \end{definition}
+\end{frame}
+\begin{frame}{Le codage des entiers relatifs (1)}
+  \framesubtitle{VA+S et C1, peu usités}
+  \begin{definition}[Codage valeur absolue+signe --- VA+S]
+    On écrit l'entier en base $2$ et on complète l'écriture par des $0$ à
+    gauche jusqu'à atteindre la taille désirée \emph{moins $1$}, et de coder le
+    signe devant par $0$ (positif) ou $1$ (négatif).
+
+    Exemple: $-12_{10}$=\mm{0b1100} se code $1000\,1100$ en VA+S 8 bits.
+  \end{definition}
+  \begin{definition}[Codage complément à 1 --- C1]
+    L'entier écrit en base $2$ est complété par des $0$
+    à gauche jusqu'à la taille désirée moins $1$. \emph{Si le nombre
+      est négatif,} on \textbf{complémente} alors chacun des chiffres
+    ($0\leftrightarrow1$). Puis signe devant ($+\rightarrow0$).
+
+    Exemple: $-12_{10}$=\mm{0b1100} se code $1111\,0011$ en C1 8 bits.
+  \end{definition}
+  Avec $n$ bits, on code les entiers de $-2^{n-1}+1$ à $2^{n-1}-1$ (pour VA+S et C1).
+\end{frame}
+\begin{frame}{Le codage des entiers relatifs (2)}
+  \framesubtitle{C2, le plus utilisé}
+  \begin{definition}[Codage complément à 2 --- C2]
+    Si le nombre est positif, on le complète par des $0$ à gauche jusqu'à
+    la taille désirée moins $1$. \emph{Si le nombre est négatif,} on lui
+    ajoute $1$, on l'écrit en base $2$ (après soustraction), on le
+    complète par des $0$ à gauche jusqu'à la taille désirée moins
+    $1$, et on \textbf{complémente} alors chacun des chiffres
+    ($0\leftrightarrow1$). Enfin (positif ou négatif), on met le signe
+    devant ($+\rightarrow0,-\rightarrow1$).
+
+    Exemple: $-12_{10}$=\mm{0b1100} se code $1111\,0100$ en C2 8 bits.
+  \end{definition}
+
+  Deuxième méthode: si négatif, on ajoute $1$ (donc on enlève $1$ à la
+  valeur absolue), on complète jusqu'à la taille désirée (et non pas
+  taille moins $1$), on complémente (si négatif), et c'est fini.
+
+  Troisième méthode: on complète jusqu'à la taille désirée, si négatif,
+  on complémente et on \emph{ajoute} $1$, et c'est fini.
+\end{frame}
+\begin{frame}{Le codage des entiers relatifs (3)}
+  \framesubtitle{C2 (deuxième étape)}
+  \begin{itemize}
+  \item Avec $n$ bits, on code les entiers de $-2^{n-1}$ à $2^{n-1}-1$.
+  \item Dans l'autre sens (de codage C2 vers valeur binaire), il faut faire les
+    opérations dans l'ordre inverse.
+  \item Pour les positifs, les quatre codages sont identiques.
+  \end{itemize}
+  \begin{example}[Codage C2 sur 8 bits]
+    $28=0b1\,1100$ donc codage $001\,1100\rightarrow0001\,1100$\\
+    $-28=0b1\,1100$ donc codage
+    $001\,1011\rightarrow110\,0100\rightarrow1110\,0100$\\
+    Codage C2: $10100111$, donc valeur négative:
+    $0100111\rightarrow1011000\rightarrow1011001$, soit 89 en décimal;
+    donc -89.\\
+    Codage C2: $00100111$, donc valeur positive: $0b100111$, soit 39 en
+    décimal; donc 39.
+  \end{example}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Codage d'entiers}
+    Ce tableau comporte des cases inutilisées. Complétez-le:
+    \begin{center}
+      \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|c|>{$}c<{$}|>{\tt}c|}\hline
+        \mbox{\textbf{Décimal}}&\mbox{\textbf{Écriture}}&\textbf{Type de}&\mbox{\textbf{Codage}}&\mbox{Codage}\\
+        \mbox{}&\mbox{\textbf{Binaire}}&\textbf{codage}&\mbox{(binaire)}&\mbox{(hexa)}\\\hline
+        -18&-1\,0010&VA+S (8 bits)& 1001\,0010&0x92\\\hline
+        424&\begin{correction}1 1010 1000\end{correction}&NAT (16 bits)&\begin{correction}0000 0001 1010 1000\end{correction}&\begin{correction}0x01A8\end{correction}\\\hline
+        -138&\begin{correction}-1000\,1010\end{correction}&C2 (16 bits)&\begin{correction}1111 1111 0111 0110\end{correction}&\begin{correction}0xFF76\end{correction}\\\hline
+        \begin{correction}-115\end{correction}&-111\,0011&C1 (8 bits)&\begin{correction}10001100\end{correction}&\begin{correction}0x8C\end{correction}\\\hline
+        -4197&\begin{correction}-1 0000\end{correction}&VA+S (24 bits)&\begin{correction}1000 0000 0001\end{correction}&\begin{correction}0x801065\end{correction}\\
+        {}&\begin{correction}0110 0101\end{correction}&&\begin{correction}0000 0110 0101\end{correction}&\\\hline
+        -84&\begin{correction}-101\,0100\end{correction}&\begin{correction}C1 (8 bits)\end{correction}&\begin{correction}1010\,1011\end{correction}&0xAB\\\hline
+        341&\begin{correction}101010101\end{correction}&NAT (8 bits)&\begin{correction}Impossible!\end{correction}&\begin{correction}XXX\end{correction}\\\hline
+      \end{tabular}
+    \end{center}
+  \end{exercicelet}
+  \begin{xcorrection}
+    Rappel: pour décoder un complément à 2, il faut: inverser les bits si
+    signe=1, ajouter 1 à la valeur obtenue, on a la valeur absolue. Pour
+    encoder un complément à 2, il faut soustraire 1 à la valeur à encoder,
+    inverser les bits (si le signe est égal à 1). Si le signe est positif,
+    rien à faire de différent de NAT.
+  \end{xcorrection}
+\end{exercice}
+\subsection{Codage des réels}
+\begin{frame}{Représentation en virgule flottante}
+  \begin{itemize}
+  \item Décomposition en quatre parties d'un réel: signe $s$, valeur
+    $v$, base $B$ et exposant $e$;
+  \item Ex: $-325=-3,25\times10^2$, $-0b101,1=-0b1,011\times2^2$;
+  \item Contrainte: valeur=réel $x$, tq $1\leq x<B$;
+  \item Un seul chiffre avant la virgule!
+  \item $e$ entier, signe usuel;
+  \item $x=(-1)^s\times v\times B^e$
+  \item Choix de $B$ donne une décomposition unique si $x\neq0$;
+  \item En binaire, le premier chiffre de $v$ est forcément $1$;
+  \item Exception pour $0$.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Normalisation IEEE 754}
+  \begin{itemize}
+  \item Réduire la quantité d'info redondante;
+  \item format 32 bits pour simple précision, 64 et 80 pour double et
+    étendue à partir de codages simples côte-à-côte;
+  \item Stockage de $s$, $E=e+127$, $M$ (partie fractionnaire de $v$);
+  \item Tout ceci en codage NAT car tout positif!
+  \item Format sur 32 bits: \begin{tabular}{|c|c|c|}%
+      \multicolumn{1}{c}{1}&\multicolumn{1}{c}{8}&\multicolumn{1}{c}{23}\\\hline%
+      $s$&\quad$E$\quad&\qquad$M$\qquad\\\hline%
+    \end{tabular};
+  \item Exception: pour $0$, $E=00000000$, pour $\infty$, $E=11111111$;
+  \item Intervalle de valeurs (32 bits): $2^{-126}$ à
+    $(2-2^{-23})\times2^{127}$, soit de $1,8\times 10^{-38}$ à
+    $3,4\times10^{38}$.
+  \end{itemize}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Codage IEEE754}
+    Ce tableau comporte des cases inutilisées. Complétez-le:
+    \begin{center}\renewcommand{\tabcolsep}{1mm}
+      \begin{tabular}{|c|c|c|c|c|c|>{$}c<{$}|>{\small}c|}\hline
+        \multicolumn{1}{|c|}{\textbf{Décimal}}&\multicolumn{1}{c|}{\textbf{Binaire}}&\multicolumn{1}{c|}{\textbf{Virgule flottante}}&\multicolumn{1}{c|}{\textbf{E}}&\multicolumn{3}{c|}{\textbf{Codage IEEE754}}&\textbf{Hexa}\\\cline{5-7}
+        &&&&S&E (8b)&\multicolumn{1}{c|}{\null\qquad M (23b)\qquad\null}&\\\hline
+        19,5&10011,1&1,00111$\times 2^4$&131&0&10000011&\mbox{00111}\underbrace{\mbox{0\ldots0}}_{\hbox to 0pt {18 fois}}&419C0000\\\hline
+        -7,5&\begin{correction}111,1\end{correction}&\begin{correction}1,111$\times 2^2$\end{correction}&\begin{correction}129\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000001\end{correction}&\begin{correction}\mbox{111}\underbrace{\mbox{0\ldots0}}_{\mbox{20 fois}}\end{correction}&\begin{correction}C0F00000\end{correction}\\\hline
+        -46,25&\begin{correction}101110,01\end{correction}&\begin{correction}1,0111001$\times 2^5$\end{correction}&\begin{correction}132\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000100\end{correction}&\begin{correction}\mbox{0111001}\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}\end{correction}&\begin{correction}C2390000\end{correction}\\\hline
+        0,3125&\begin{correction}0,0101\end{correction}&\begin{correction}1,01$\times 2^{-2}$\end{correction}&\begin{correction}125\end{correction}&\begin{correction}0\end{correction}&\begin{correction}01111101\end{correction}&\begin{correction}\mbox{01}\underbrace{\mbox{0\ldots0}}_{\mbox{21 fois}}\end{correction}&\begin{correction}3EA00000\end{correction}\\\hline
+        \begin{correction}-0,1875\end{correction}&\begin{correction}0,0011\end{correction}&\begin{correction}1,1$\times 2^{-3}$\end{correction}&\begin{correction}124\end{correction}&\begin{correction}1\end{correction}&\begin{correction}01111100\end{correction}&\begin{correction}\mbox{1}\underbrace{\mbox{0\ldots0}}_{\mbox{22 fois}}\end{correction}&BE400000\\\hline
+        \begin{correction}$+\infty$\end{correction}&\begin{correction}---\end{correction}&\begin{correction}---\end{correction}&\begin{correction}255\end{correction}&\begin{correction}0\end{correction}&\begin{correction}11111111\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&7F800000\\\hline
+        0&\begin{correction}0\end{correction}&\begin{correction}---\end{correction}&\begin{correction}0\end{correction}&\begin{correction}0\end{correction}&\begin{correction}00000000\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&\begin{correction}00000000\end{correction}\\\hline
+        -26,375&\begin{correction}-11010,011\end{correction}&\begin{correction}-1,1010011\end{correction}&\begin{correction}171\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10101011\end{correction}&\begin{correction}1010011\smash{\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}}\end{correction}&\begin{correction}D5D30000\end{correction}\\
+        $\times2^{40}$&\begin{correction}$\times 2^{40}$\end{correction}&\begin{correction}$\times 2^{44}$\end{correction}&&&&&\\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{exercicelet}
+\end{exercice}
+% Local Variables:
+% TeX-master: "archi02"
+% TeX-PDF-mode: t
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: latex
+% mode: flyspell
+% ispell-local-dictionary: "francais"
+% End:
