@@ -37,6 +37,7 @@
 \usepackage[T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
 \usepackage{arev}
+\usepackage{tgtermes,tgadventor}
 \usepackage[condensed]{tgheros}
 \usepackage{colortbl}%
 \usepackage{xcolor,textcomp}

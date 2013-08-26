@@ -1,0 +1,105 @@
+\section{Les textes}
+\subsection{De l'écrit au binaire}
+\begin{frame}{Du texte au(x) glyphe(s)}
+  \begin{itemize}
+  \item Les écrits sous forme d'images ne sont pas exploitables;
+  \item L'écriture est donc simplifiée pour ne retenir que les
+    \emph{caractères} les uns à la suite des autres ($\neq$
+    \emph{lettres});
+    \begin{center}
+      \begin{tikzpicture}
+        \tikzstyle{every node}=[fill=solarizedRebase02,rounded corners]
+        \tikzstyle{xlabel}=[fill=solarizedMagenta,fill opacity=30,text opacity=1]
+        \tikzstyle{normally}=[very thick]
+        \node (a) at (0,0) {Glyphe};
+        \node (b) at (4,1.5) {Nombres}
+        edge  [<->,normally] node[xlabel,above,sloped] {police} (a);
+        \node (c) at (4,0) {Caractère}
+        edge  [<->,normally] node[xlabel] {jeu de caractères} (b);
+        \node (d) at (4,-1.5) {Touches}
+        edge  [<->,normally] node[xlabel] {méthode de saisie} (c);
+        \node (d) at (8,0) {Octets}
+        edge  [<->,normally] node[xlabel,above,sloped] {encodage} (b);
+      \end{tikzpicture}
+    \end{center}
+  \item Les glyphes sont les dessins des lettres, différents selon les polices
+    % \item Différences régionales: ASCII (1968), puis ISO-8859-1 à
+    %   ISO-8859-16 (Europe, méditerranée), BIG5 (Chine), Shift-JIS (Japon),
+    %   Koi-8R (Russie)...
+    % \item Anciennement: encodage trivial sur 8 bits, jeux de caractères
+    %   max. 256 caractères;
+    % \item Maintenant, Unicode (jeu de caractère) et plusieurs encodages
+    %   (UTF8, UTF7, UCS16).
+  \end{itemize}
+\end{frame}
+\begin{frame}{Du caractère au glyphe: la police}
+  \begin{itemize}
+  \item Les polices supportent souvent plusieurs jeux de caractères. Le
+    dessin n'y est stocké qu'une fois.
+  \item[\dialogerror] Une même police peut comporter plusieurs glyphes pour le même caractère (formes décoratives)
+  \item Une police comporte une partie programme pour sélectionner le dessin le mieux adapté
+  \end{itemize}
+  \begin{block}{Différence de glyphes}
+    La lettre {\Large{$\mathcal{A}$}} et {\Large{A}} représentent le
+    même caractère mais pas le même que $\Alpha$.
+
+    De même le \emph{a} de \emph{Abba}, de {\fontfamily{qag}\selectfont
+      Abba} ou \textsc{Abba} ou \textrm{Abba} sont les mêmes caractères.
+  \end{block}
+
+  \begin{block}{Ligatures esthétiques ou linguistiques}
+    La lettre {\Large\OE{}} est différente de
+    {\Large{OE}}. La lettre {\textrm{\Large f{}i}} représente
+    deux caractères, avec affichage \textrm{\Large{fi}}.
+
+    En arabe ou sanskrit, la ligature est entre toutes les lettres:
+    % \<al-salAm `alaykum> contre \<a l s a l A m ` a l a y k u m>
+    \novocalize
+    \<tUnis> contre \<t |U n s>.
+  \end{block}
+\end{frame}
+\begin{frame}[fragile]{Qu'est-ce qu'un caractère?}
+  \begin{itemize}
+  \item Au début: lettres, chiffres, ponctuation simplifiée.
+  \item[\dialogsystem] Correspondait grossièrement à une touche de
+    machine à écrire (+Majuscule/Minuscule)
+  \item Au fur et à mesure, de très nombreux caractères ont été rajoutés.
+  \item Jeu de caractères universel: Unicode.
+  \end{itemize}
+  \begin{block}{Quelques caractères dont vous ne connaissez peut-être pas les noms}
+    \begin{tabular}{>{\ttfamily}ccll}
+      C & Usuel & Français & Anglais\\\hline
+      \# & dièse & croisillon, octothorpe & hash, number sign\\
+      \& & et & esperluette, et commercial & ampersand, and\\
+      | & ou, \emph{païpe} & barre verticale & pipe\\
+      / & slash & barre oblique & slash\\
+      @ & \emph{arobasse} & arobase & at, at sign\\
+      \textbackslash & backslash & contre-oblique & backslash\\
+      \_ & underscore & (blanc) souligné & underscore\\
+      \verb|[]| & crochets & crochets & (square) brackets\\
+      \verb|{}| & accolades & accolades & (curly) braces\\
+    \end{tabular}
+  \end{block}
+\end{frame}
+\begin{frame}[label=jeucaractere]{Jeux de caractères}
+  \begin{itemize}
+  \item Plusieurs jeux de caractères primitifs sur 7 ou 8 bits par caractère.
+  \item Un seul a vraiment survécu: ASCII    \begin{presentationonly}\hfill\hyperlink{ascii}{\beamergotobutton{Voir la table}}\end{presentationonly}
+%  \item[\dialogwarning] \emph{Byte} anciennement parfois 7 bits. Maintenant systématiquement 8 bits.
+  \item ... TODO! (En cours, 26/08/2013)
+
+  \end{itemize}
+\end{frame}
+\subsection{Jeux de caractères et codages}
+\subsection{L'échappement}
+
+% Local Variables:
+% TeX-master: "archi04"
+% TeX-PDF-mode: t
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: latex
+% mode: flyspell
+% ispell-local-dictionary: "francais"
+% End:

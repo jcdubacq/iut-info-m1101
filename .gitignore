@@ -150,3 +150,41 @@
 /prof03.log
 /prof03.pdf
 # stop automatic section for compile-latex:archi03.tex/prof03
+# start automatic section for compile-latex:archi04.tex
+/.compile-latex/archi04
+/archi04.aux
+/archi04.fls
+/archi04.log
+/archi04.nav
+/archi04.out
+/archi04.pdf
+/archi04.snm
+/archi04.toc
+/archi04.vrb
+# stop automatic section for compile-latex:archi04.tex
+# start automatic section for compile-latex:archi04.tex/exo04
+/.compile-latex/exo04
+/exo04.aux
+/exo04.fls
+/exo04.log
+/exo04.pdf
+# stop automatic section for compile-latex:archi04.tex/exo04
+# start automatic section for compile-latex:archi04.tex/poly04
+/.compile-latex/poly04
+/poly04.aux
+/poly04.fls
+/poly04.log
+/poly04.nav
+/poly04.out
+/poly04.pdf
+/poly04.snm
+/poly04.toc
+/poly04.vrb
+# stop automatic section for compile-latex:archi04.tex/poly04
+# start automatic section for compile-latex:archi04.tex/prof04
+/.compile-latex/prof04
+/prof04.aux
+/prof04.fls
+/prof04.log
+/prof04.pdf
+# stop automatic section for compile-latex:archi04.tex/prof04

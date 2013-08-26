@@ -1,3 +1,30 @@
+
+# Comment compiler
+
+## Partie archi
+
+Avec l'utilitaire joint:
+
+    ./cl2 archi # ou bien
+    ./cl2 archi01 # pour le cours 01 bien sûr ou bien
+    ./cl2 archi01 --filter # pour le cours 01
+
+Sinon:
+
+    pdflatex archi # répéter si nécessaire
+    pdflatex --jobname poly archi # répéter si nécessaire
+    pdflatex --jobname exo archi # répéter si nécessaire
+    pdflatex --jobname prof archi # répéter si nécessaire
+
+## Partie système
+
+Dans le répertoire IntroSysteme_S1D
+
+Il y a des fichiers pdf pour les exos. C'est Guillaume qui peut les éditer.
+Il y a un fichier pour le corrigé aussi.
+
+Les cours se compilent à la main (ou avec cl2):
+
 # Données du PPN
 ## Contenus
  * Codage de l'information : nombres et caractères. Arithmétique et
@@ -31,6 +58,8 @@ Architecture ; Système d'exploitation ; Microprocesseur ; Langage de
 commande ; Codage
 
 # Plan de la partie système
+
+Pas beaucoup d'idées :(
 
 ## Environnement informatique
 ### Les ordinateurs
