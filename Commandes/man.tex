@@ -1,0 +1,28 @@
+\synt{man}{}{nom\_de\_la\_commande}
+
+\desc{\begin{itemize}
+  \item permet d'accéder à la documentation d'utilisation d'une commande
+    (les pages de \lin{man}).
+  \item Les pages de \lin{man} décrivent les syntaxes, les options, les
+    arguments des commandes.
+  \item Elles décrivent les résultats des évaluations et le format de
+    ces résultats.
+  \end{itemize}
+}
+
+\expl{
+    \mprompt{
+      \prompt{man ls}{}
+    }\par
+  affiche:\\
+    \mprompt{
+      \texttt{%
+	LS(1)                     BSD General Commands Manual                    LS(1)\\
+	\\
+	NAME\\
+        ls -- list directory contents\\
+	\\
+	SYNOPSIS\\
+        ls [-ABCFGHLOPRSTUW@abcdefghiklmnopqrstuwx1] [file ...]}
+    }
+}

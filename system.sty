@@ -1,0 +1,41 @@
+\let\Return\relax
+\usepackage{keystroke}
+
+% Pour le caractère du curseur
+\usepackage{marvosym}
+\newcommand{\cursor}{\Rectsteel}
+
+% FORMATAGE LINUX IN-LINE
+\newcommand{\lin}[1]{\texttt{#1}}
+\newcommand{\linbox}[1]{\colorbox{solarizedRebase02}{\textbf{\texttt{#1}}}}
+
+% Formatage d'un terminal et de ses commandes et affichages
+\newcommand{\prompt}[3][\~{}]{%
+  \colorbox{solarizedRebase02}{%
+    \parbox{8.5cm}{%
+      \lin{%
+	[ {\color{solarizedRed} login}@{\color{solarizedGreen} localhost} {\color{solarizedBlue}#1 }] #2\ifx#3\relax\relax\else\\#3\fi}}}}
+\newcommand{\mprompt}[1]{\centerline{\fcolorbox{black}{solarizedRebase02}{\parbox{9cm}{#1}}}}
+
+% Man
+\newcommand{\manpage}[2][\relax]{%
+  \ifx#1\relax\mymanpage{#2}{#2}\else\mymanpage{#1}{#2}\fi
+}
+\newcommand{\mymanpage}[2]{%
+  \begin{frame}\frametitle{Manuel de #2}
+    \input{Commandes/#1.tex}%
+  \end{frame}
+}
+
+% Formatage des la description des commandes
+
+%SYNTAXE
+\newcommand{\synt}[3]{\begin{alertblock}{Syntaxe}
+\begin{center}\lin{#1 \textit{#2} #3}\end{center}
+\end{alertblock}}
+
+%DESCRIPTION
+\newcommand{\desc}[1]{\begin{block}{Description}#1\end{block}}
+
+%EXEMPLE
+\newcommand{\expl}[2][]{\begin{exampleblock}{Exemple d'utilisation: #1}\footnotesize{#2}\end{exampleblock}}
