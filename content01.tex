@@ -48,8 +48,8 @@
       \tikzstyle{snaky}=[decorate,normally,decoration={snake,pre length=5mm}]
       \tikzstyle{normally}=[very thick]
       \tikzstyle{cloudy}=[color=solarizedGreen,every node]
-      \node [cloudy] (a) at (0,2) {Information};
-      \node [cloudy] (b) at (6,2) {Information}
+      \node [cloudy] (a) at (0,2) {Concept};
+      \node [cloudy] (b) at (6,2) {Concept}
       edge [<-,snaky] node[xlabel,below] {fonction} (a);
       \node [data] (c) at (0,0) {Donnée}
       edge  [<-,normally] node[xlabel] {représentation} (a) (a);
@@ -194,20 +194,20 @@
       \end{correction}
     \end{itemize}
   \end{exercicelet}
-  \begin{exercicelet}{Programmation}
-    \begin{itemize}
-    \item[\ddialoghome] Écrivez un programme qui permet de transformer un nombre
-      d'octets en To/Go/Mo/Ko/o d'un côté et Tio/Gio/Mio/Kio/o d'un
-      autre. Vous pourrez utiliser l'opérateur \verb|>>| pour diviser par
-      1024 (\verb|x>>10|) au lieu de la classique division. Testez la
-      différence entre les deux échelles (binaire, décimal) pour le nombre
-      d'octets suivants: 900, 1000, 1024, 1000000, 20480000, 1000000000,
-      1073741824.
-      \begin{correction}
-        Exercice à rendre.
-      \end{correction}
-    \end{itemize}
-  \end{exercicelet}
+  % \begin{exercicelet}{Programmation}
+  %   \begin{itemize}
+  %   \item[\ddialoghome] Écrivez un programme qui permet de transformer un nombre
+  %     d'octets en To/Go/Mo/Ko/o d'un côté et Tio/Gio/Mio/Kio/o d'un
+  %     autre. Vous pourrez utiliser l'opérateur \verb|>>| pour diviser par
+  %     1024 (\verb|x>>10|) au lieu de la classique division. Testez la
+  %     différence entre les deux échelles (binaire, décimal) pour le nombre
+  %     d'octets suivants: 900, 1000, 1024, 1000000, 20480000, 1000000000,
+  %     1073741824.
+  %     \begin{correction}
+  %       Exercice à rendre.
+  %     \end{correction}
+  %   \end{itemize}
+  % \end{exercicelet}
 \end{exercice}
 \subsection{De l'analogique au digital}
 \begin{frame}{L'information quantifiée}
@@ -327,11 +327,11 @@
     }
   \end{tikzpicture}
   \begin{itemize}
-  \item[\ddialogsystem] Un signal périodique qui peut être décomposé avec une
-    fréquence maximale a une borne pour sa reconstruction mathématique exacte
-    \emph{(Théorème d'échantillonnage de Nyquist-Shannon)}:
+  \item[\ddialogsystem] Pour pouvoir reconstruire exactement un signal
+    périodique qui peut être décomposé avec une fréquence maximale, sa
+    fréquence d'échantillonnage $f_e$ doit vérifier \emph{(Théorème
+      d'échantillonnage de Nyquist-Shannon)}:
     $$f_e\geqslant 2 f_{\mathrm{Max}}$$
-  \item[\dialoginformation] Un peu plus sur ce sujet dans le chapitre sur les signaux
   \end{itemize}
 \end{frame}
 \begin{frame}{L'information quantifiée}
@@ -366,12 +366,13 @@
       maximales qui vont jusqu'à 10 kHz. Quelle est le débit d'information
       nécessaire pour reconstituer ce signal à l'identique ?
       \begin{xcorrection}
-        10 ko/s
+        Chaque échantillon prend un octet. $f_e$ doit être plus grand que
+        $2\times 10^3$ échantillons/s. Donc le débit 20 ko/s (binaires).
       \end{xcorrection}
     \item Quelle est la taille de l'information nécessaire pour enregistrer ce
       signal pendant une heure ?
       \begin{xcorrection}
-        3600 s*10 ko/s=36 Mo (binaires)
+        3600 s*20 ko/s=72 Mo (décimaux)
       \end{xcorrection}
     \end{enumerate}
   \end{exercicelet}
@@ -382,8 +383,8 @@
       environ 80 minutes. Calculez (de tête) l'ordre de grandeur de la
       quantité d'information écrite dans un CD audio.
       \begin{xcorrection}
-        Environ 800 Mo. En vrai: 807,5 Mio ou 846 Mo.
-        88200 octets par seconde par piste, soit 167400 octets/s, soit ~10 Mo/minute.
+        Environ 800 Mo. En vrai: 807,5 Mio ou 846 Mo.  88200 octets par
+        seconde par piste, soit 167400 octets/s, soit ~10 Mo/minute.
       \end{xcorrection}
     \end{enumerate}
   \end{exercicelet}

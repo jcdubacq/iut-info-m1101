@@ -188,3 +188,25 @@
 /prof04.log
 /prof04.pdf
 # stop automatic section for compile-latex:archi04.tex/prof04
+# start automatic section for compile-latex:sys01.tex
+/.compile-latex/sys01
+/sys01.aux
+/sys01.fls
+/sys01.log
+/sys01.nav
+/sys01.out
+/sys01.pdf
+/sys01.snm
+/sys01.toc
+# stop automatic section for compile-latex:sys01.tex
+# start automatic section for compile-latex:sys01.tex/spoly01
+/.compile-latex/spoly01
+/spoly01.aux
+/spoly01.fls
+/spoly01.log
+/spoly01.nav
+/spoly01.out
+/spoly01.pdf
+/spoly01.snm
+/spoly01.toc
+# stop automatic section for compile-latex:sys01.tex/spoly01

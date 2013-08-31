@@ -34,7 +34,7 @@
 \LoadClass[9pt,mathserif]{beamer}
 \fi
 \fi
-\usepackage[T1]{fontenc}%
+\usepackage[T2A,T1]{fontenc}%
 \usepackage[utf8]{inputenc}%
 \usepackage{arev}
 \usepackage{tgtermes,tgadventor}
