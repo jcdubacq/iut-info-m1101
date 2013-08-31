@@ -278,30 +278,32 @@
     \end{itemize}
   \end{alertblock}
 \end{frame}
-\endinput
 
 \section{Le système d'exploitation}
-\begin{frame}{Plan}
-  \tableofcontents[hideothersubsections,sections={1-4}]
-\end{frame}
-%%%%%%%%%%%%%% 
 \label{sec:OSGeneralites}
 \subsection{La fonction du système d'exploitation}
 \begin{frame}{Le système d'exploitation}
-  Le système d'exploitation permet de développer des programmes sans tenir compte de la complexité physique de la machine. Les programmes utilisent des fonctionnalités standardisées d'accès aux ressources matérielles.
+  Le système d'exploitation permet de développer des programmes sans
+  tenir compte de la complexité physique de la machine. Les programmes
+  utilisent des fonctionnalités standardisées d'accès aux ressources
+  matérielles.
   \begin{columns}
     \begin{column}{5.5cm}
       \begin{block}{Côté Système, l'O.S.}
         \begin{itemize}
-        \item coordonne l'utilisation des ressources (\ex temps CPU accordé à chaque processus, allocation mémoire, \dots),
-        \item assure la maintenance et la fiabilité du système (\ex gestion des fichiers, de la sécurité informatique, \dots)
+        \item coordonne l'utilisation des ressources (par exemple temps CPU
+          accordé à chaque processus, allocation mémoire, \dots),
+        \item assure la maintenance et la fiabilité du système (par exemple
+          gestion des fichiers, de la sécurité informatique, \dots)
         \item \dots
         \end{itemize}
       \end{block}
       \begin{block}{Côté utilisateur, l'O.S.}
         \begin{itemize}
-        \item facilite l'accès et l'utilisation des ressources matérielles,
-        \item propose une interface de programmation permettant d'utiliser ces matériels
+        \item facilite l'accès et l'utilisation des ressources
+          matérielles,
+        \item propose une interface de programmation permettant
+          d'utiliser ces matériels
         \item \dots
         \end{itemize}
       \end{block}
@@ -313,7 +315,7 @@
     \end{column}
   \end{columns}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \subsection{La multiplicité des systèmes existants}
 \begin{frame}{Les différents systèmes d'exploitation}
   \begin{columns}
@@ -341,66 +343,83 @@
     \end{column}
   \end{columns}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \subsection{Comparatif}
 \begin{frame}{Les différents systèmes d'exploitation}
   \begin{columns}
-    \begin{column}{5.5cm}
+    \begin{column}{58mm}
       \begin{block}{\center \includegraphics[height=1cm]{img/s01/Tux.png}\\Linux}
         \begin{itemize}
-        \item	Non propriétaire: Gratuit le plus souvent
+        \item Non propriétaire: Gratuit le plus souvent
         \item Ouvert: sources disponibles
         \item Flexible: sources modifiables
         \item Puissant: Programmable
         \item Communauté active: entraide des utilisateurs
-        \item Plus complexe: plutôt pour les informaticiens (interfaces de programmation optimisées)
+        \item Plus complexe: plutôt pour les informaticiens (interfaces
+          de programmation optimisées)
         \end{itemize}
       \end{block}
     \end{column}
-    \begin{column}{5.5cm}
-      \begin{block}{\center \includegraphics[height=1cm]{img/s01/Windows_logo.png}\\Windows$^©$}
+    \begin{column}{58mm}
+      \begin{block}{\center \includegraphics[height=1cm]{img/s01/Windows_logo.png}\\Windows}
         \begin{itemize}
-        \item	Propriétaire: Payant
+        \item Propriétaire: Payant
         \item Sources non disponibles
         \item Sources non modifiables
           % \item Plus difficilement programmable
         \item Communauté active: nombreux utilisateurs
-        \item Plus ergonomique: pour les utilisateurs (interfaces d'utilisation optimisées)
+        \item Plus ergonomique: pour les utilisateurs (interfaces
+          d'utilisation optimisées)
         \end{itemize}
         \vrule
       \end{block}
     \end{column}
   \end{columns}
   \begin{alertblock}{Linux un système puissant en constante évolution}
-    Depuis une dizaine d'année, Linux a beaucoup évolué. La plupart des distributions proposent des systèmes d'installation automatisés, des outils de bureautique ressemblant aux suites commerciales. Il bénéficie en outre d'une sécurité accrue à l'heure des virus et autres failles de sécurité.
+    Depuis une dizaine d'année, Linux a beaucoup évolué. La plupart des
+    distributions proposent des systèmes d'installation automatisés, des
+    outils de bureautique ressemblant aux suites commerciales. Il
+    bénéficie en outre d'une sécurité accrue à l'heure des virus et
+    autres failles de sécurité.
   \end{alertblock}
-\end{frame}		
-%%%%%%%%%%%%%% 
-\section{Le système Linux}
-\label{sec:OSLinux}
-\begin{frame}{Plan}
-  \tableofcontents[hideothersubsections,sections={1-4}]
 \end{frame}
-%%%%%%%%%%%%%% 
+
+\section{Le système Linux}
 \subsection{Un peu d'histoire}
 \begin{frame}{Un peu d'histoire}
   \begin{block}{GNU-Linux}
     \begin{itemize}
-    \item Le système GNU-Linux est la rencontre d'une technologie, le noyau Linux et d'une  philosophie de développement et de diffusion. C'est un système au développement collaboratif (par une communauté) qui est distribué librement et permet l'utilisation de tous les logiciels libres développés pour son architecture.
-    \item Le noyau Linux est historiquement une version libre du système UNIX développé initialement par le Finlandais Linus Torvalds à partir du début des années 1990.
-    \item Le projet GNU est celui du développement collaboratif et libre d'un système d'exploitation libre initié par Richard Stallman en 1983.
+    \item Le système GNU-Linux est la rencontre d'une technologie, le
+      noyau Linux et d'une philosophie de développement et de
+      diffusion. C'est un système au développement collaboratif (par une
+      communauté) qui est distribué librement et permet l'utilisation de
+      tous les logiciels libres développés pour son architecture.
+    \item Le noyau Linux est historiquement une version libre du système
+      UNIX développé initialement par le Finlandais Linus Torvalds à
+      partir du début des années 1990.
+    \item Le projet GNU est celui du développement collaboratif et libre
+      d'un système d'exploitation libre initié par Richard Stallman en
+      1983.
     \end{itemize}
   \end{block}
   \begin{block}{Ahjourd'hui}
     \begin{itemize}
-    \item C'es un système très largement diffusé et utilisé sur lequel ont été développées plusieurs distributions (qui sont des suites logicielles qui accompagnent le noyau).
-    \item Initialement confidentiel et réservé à des spécialistes avec des interfaces rudimentaires, il est aujourd'hui toujours plus ergonomique et automatisé pour les non spécialistes, mais laisse les outils et interfaces de bas niveau disponibles au plus grand nombre.
-    \item On notera par exemple l'existence de nombreuses interfaces graphiques \textit{Bureaux} (GNOME, KDE, \dots) de nombreux paquetages pré-compilées, de nombreux outils d'administration et de services (protocoles, \dots)
+    \item C'est un système très largement diffusé et utilisé sur lequel
+      ont été développées plusieurs distributions (qui sont des suites
+      logicielles qui accompagnent le noyau).
+    \item Initialement confidentiel et réservé à des spécialistes avec
+      des interfaces rudimentaires, il est aujourd'hui toujours plus
+      ergonomique et automatisé pour les non spécialistes, mais laisse
+      les outils et interfaces de bas niveau disponibles au plus grand
+      nombre.
+    \item On notera par exemple l'existence de nombreuses interfaces
+      graphiques \textit{Bureaux} (GNOME, KDE, \dots) de nombreux
+      paquetages pré-compilées, de nombreux outils d'administration et
+      de services (protocoles, \dots)
     \end{itemize}
   \end{block}
   
 \end{frame}
-%%%%%%%%%%%%%% 
 \subsection{Gentoo: La distribution utilisée à l'IUT}
 \begin{frame}{À l'IUT: Gentoo}
   \begin{block}{Une distribution téléchargeable}
@@ -431,25 +450,44 @@
     \end{itemize}
   \end{alertblock}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \subsection{Un système multi-utilisateurs}
 \begin{frame}{Un système Multi-Utilisateurs}
   \begin{block}{Des utilisateurs et des droits}
     \begin{itemize}
-    \item Chaque personne accédant au système est identifiée par un \textbf{nom d'utilisateur} (\ie \textit{login}) et un mot de passe (\ie \textit{password}).
-    \item Chaque utilisateur bénéficie de permissions: exécution de certains programmes, lecture de certaines données, écriture de fichiers dans une limite de taille et dans seulement certains répertoires.
-    \item Chaque utilisateur bénéficie d'un espace de travail réservé sur le disque. Cet espace de travail est un répertoire de l'arborescence dans lequel l'utilisateur à tous les droits: il peut y créer des sous-répertoires, y écrire des fichiers, y installer des programmes et applications. Toutes ses données et préférences personnelles y sont regroupées.
-    \item Ce répertoire est appelé "Répertoire Personnel" ou \textit{"Home Directory"}. Il est en général placé dans un répertoire qui s'appelle \lin{/home/} et porte le nom de l'utilisateur : \lin{/home/nom\_utilisateur/}.
+    \item Chaque personne accédant au système est identifiée par un
+      \textbf{nom d'utilisateur} (dit \textit{login}) et un mot de passe
+      (dit \textit{password}).
+    \item Chaque utilisateur bénéficie de permissions: exécution de
+      certains programmes, lecture de certaines données, écriture de
+      fichiers dans une limite de taille et dans seulement certains
+      répertoires.
+    \item Chaque utilisateur bénéficie d'un espace de travail réservé
+      sur le disque. Cet espace de travail est un répertoire de
+      l'arborescence dans lequel l'utilisateur à tous les droits: il
+      peut y créer des sous-répertoires, y écrire des fichiers, y
+      installer des programmes et applications. Toutes ses données et
+      préférences personnelles y sont regroupées.
+    \item Ce répertoire est appelé "Répertoire Personnel" ou
+      \textit{"Home Directory"}. Il est en général placé dans un
+      répertoire qui s'appelle \lin{/home/} et porte le nom de
+      l'utilisateur : \lin{/home/nom\_utilisateur/}.
     \end{itemize}
   \end{block}
   \begin{alertblock}{Superutilisateur - Root}
     \begin{itemize}
-    \item certains utilisateurs ont des permissions étendues pour administrer le système et effectuer des opérations interdites à l'utilisateur normal.
-    \item l'utilisateur \lin{root} a tous les droits dans le système (\ex il peut changer les permissions de n'importe quel fichier, il fixe les noms d'utilisateur et les mots de passe, il peut installer des programmes et librairies dans les répertoires système, \dots) 
+    \item certains utilisateurs ont des permissions étendues pour
+      administrer le système et effectuer des opérations interdites à
+      l'utilisateur normal.
+    \item l'utilisateur \lin{root} a tous les droits dans le système
+      (par exemple il peut changer les permissions de n'importe quel
+      fichier, il fixe les noms d'utilisateur et les mots de passe, il
+      peut installer des programmes et librairies dans les répertoires
+      système, \dots)
     \end{itemize}
   \end{alertblock}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \begin{frame}{Identification en 2 étapes}
   \begin{center}
     \includegraphics[width=8cm]{img/s01/linux_login.jpg}
@@ -458,7 +496,6 @@
     S'identifier en donnant au système son nom d'utilisateur
   \end{block}
 \end{frame}
-%%%%%%%%%%%%%% 
 \begin{frame}{Identification en 2 étapes}
   \begin{center}
     \includegraphics[width=8cm]{img/s01/linux_passwd.jpg}
@@ -467,22 +504,25 @@
     Valider son identité avec le mot de passe
   \end{block}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \subsection{Une interface graphique}
 \begin{frame}{Accès au système}
   \begin{center}
     \includegraphics[width=8cm]{img/s01/Gnome_desktop.jpg}
   \end{center}
   \begin{block}{Le bureau GNOME}
-    Parmi les différents environnements graphiques existants, vous utiliserez l'environnement GNOME (\url{http://www.gnomefr.org/}).
+    Parmi les différents environnements graphiques existants, vous
+    utiliserez l'environnement GNOME (\url{http://www.gnomefr.org/}).
   \end{block}
 \end{frame}
-%%%%%%%%%%%%%% 
+
 \subsection{Les logiciels disponibles}
 \begin{frame}{Les logiciels disponibles}
   \begin{block}{Les suites bureautiques}
     \begin{itemize}
-    \item Les suites bureautiques proposent les fonctionnalités grand public de traitement de texte, de tableur, de présentation, de dessin.
+    \item Les suites bureautiques proposent les fonctionnalités grand
+      public de traitement de texte, de tableur, de présentation, de
+      dessin.
     \item Plusieurs suites gratuites existent en libre accès sous linux
       \begin{itemize}
       \item CalligraSuite (\url{http://www.calligra-suite.org/})
@@ -493,7 +533,8 @@
   \end{block}
   \begin{block}{Les programes dédiés}
     \begin{itemize}
-    \item Navigateur Web, Client de messagerie, comme sous d'autres OS, de nombreuses solutions existent.
+    \item Navigateur Web, Client de messagerie, comme sous d'autres OS,
+      de nombreuses solutions existent.
       \begin{itemize}
       \item Firefox, Opera, Konqueror, \dots
       \item Thunderbird, KMail, \dots
@@ -503,17 +544,17 @@
       \item Manipulation et création d'images: GIMP, ImageMagick, \dots
       \item Modélisation 3D: Blender, \dots
       \end{itemize}
-      
     \end{itemize}
   \end{block}
   \begin{block}{De nombreuses micro-application ou programmes}
     \begin{itemize}
-    \item De nombreux programmes de conversion de format, de communication et de téléchargement existent en ligne de commande \dots
+    \item De nombreux programmes de conversion de format, de
+      communication et de téléchargement existent en ligne de commande
+      \dots
     \end{itemize}
   \end{block}
-  
-\end{frame}	
-%%%%%%%%%%%%%% 
+\end{frame}
+
 \subsection{Distribution et accès aux logiciels}
 \begin{frame}{Distribution et accès aux logiciels}
   \begin{columns}
@@ -536,20 +577,27 @@
       \end{block}
     \end{column}
   \end{columns}
-  \begin{block}{Copyright\copyright vs Copyleft\textcopyleft}
-    Elles permettent de :
-    Distribué en Copyleft\textcopyleft, les sources modifiées préservent les droits précédents.
-    $\Rightarrow$ Les logiciels qui dérivent des sources Copyleft ne peuvent être distribués avec un Copyright\copyright.
+  \begin{block}{Copyright\copyright{} vs Copyleft\textcopyleft}
+    Elles permettent de : Distribué en Copyleft\textcopyleft, les
+    sources modifiées préservent les droits précédents.  $\Rightarrow$
+    Les logiciels qui dérivent des sources Copyleft ne peuvent être
+    distribués avec un Copyright\copyright.
   \end{block}
   \begin{block}{Tout logiciel a un coût de développement}
     En général:
     \begin{itemize}
-    \item Propriétaire est payant: On paie un coût de développement, un service de support, un service de mise à jour, ... Les sources sont protégées et seuls les propriétaires y ont accès.
-    \item Libre est gratuit: Le coût est supporté par une communauté (utilisateurs, subventions publiques, subventions ou sociétés privées, \dots).
+    \item Propriétaire est payant: On paie un coût de développement, un
+      service de support, un service de mise à jour, ... Les sources
+      sont protégées et seuls les propriétaires y ont accès.
+    \item Libre est gratuit: Le coût est supporté par une communauté
+      (utilisateurs, subventions publiques, subventions ou sociétés
+      privées, \dots).
     \end{itemize}
   \end{block}
 \end{frame}
-%%%%%%%%%%%%%% 
+\endinput
+
+
 \subsection{La ligne de commande}
 \begin{frame}{La ligne de commande}
   \begin{block}{Interface de communication avec le système (IHM)}
