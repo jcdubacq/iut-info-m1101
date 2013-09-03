@@ -11,13 +11,10 @@
 }
 
 \expl{
-  \begin{center}
     \mprompt{
       \prompt{man ls}{}
-    }
-  \end{center}
+    }\par
   affiche:\\
-  \begin{center}
     \mprompt{
       \texttt{%
 	LS(1)                     BSD General Commands Manual                    LS(1)\\
@@ -28,5 +25,4 @@
 	SYNOPSIS\\
         ls [-ABCFGHLOPRSTUW@abcdefghiklmnopqrstuwx1] [file ...]}
     }
-  \end{center}
 }

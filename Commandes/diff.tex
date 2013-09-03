@@ -1,0 +1,33 @@
+			% Syntaxe d'utilisation
+			\synt{diff}{}{fichier\_1 fichier\_2}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Compare deux fichiers, localise et affiche les différences (très utile pour suivre l'évolution d'un code).
+					\item identifie les insertions, délétions et modifications.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{%
+				\begin{columns}
+					\begin{column}{6cm}
+						\includegraphics[width=6cm]{img/diff.png}
+					\end{column}
+					\begin{column}{6cm}
+						\mpromptS{
+							\promptS{diff planete.v1 planete.v2}{%
+							0a1\\
+							> Planetes\\
+							6c7\\
+							< Saturn\\
+							---\\
+							> Saturne\\
+							9d9\\
+							< Pluton
+							}
+							\promptS{\cursor}{}
+						}
+					\end{column}
+				\end{columns}
+			}

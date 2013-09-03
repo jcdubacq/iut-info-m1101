@@ -1,0 +1,47 @@
+			% Syntaxe d'utilisation
+			\synt{ls}{-a}{<source>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche le contenu d'un répertoire y compris les fichiers et répertoires cachés.
+					\item Les fichiers et répertoires cachés ont un nom dont le premier caractère est un point.
+					\item Les fichiers et répertoires cachés sont utilisés par le système ou certaines applications.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						\dirtree{%
+						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Rép. Courant}}.
+						.2 \DTd{./ssh}.
+						.3 id\_rsa.
+						.3 id\_rsa.pub.
+						.3 known\_hosts.
+						.2 .bashrc.
+						.2 astronomie.txt.
+						.2 \DTd{Etoiles}.
+						.3 soleil.jpg.
+						}
+					\end{column}
+					\begin{column}{4cm}
+						\begin{center}
+							Sans option \it{-a}\\
+							\mpromptT{
+								\promptT{ls}{astronomie.txt\\Etoiles/}
+								\promptT{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+					\begin{column}{4cm}
+						\begin{center}
+							Avec option \it{-a}\\
+							\mpromptT{
+								\promptT{ls -a}{.\\..\\.ssh/\\.bashrc\\astronomie.txt\\Etoiles/}
+								\promptT{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+				\end{columns}
+			}

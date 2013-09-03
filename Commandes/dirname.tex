@@ -1,0 +1,22 @@
+			% Syntaxe d'utilisation
+			\synt{dirname}{chemin}{}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Ne conserve que la partie répertoire d'un chemin d'accès.
+					\item Il n'est pas nécessaire que le chemin existe dans l'arborescence. Le chemin est traité comme une chaîne de caractères.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{center}
+					\mprompt{
+						\prompt{dirname Documents}{.}
+						\prompt{dirname Documents/cv.txt}{Documents}
+						\prompt{dirname Documents/Photos/}{Documents}
+						\prompt{dirname Documents/Photos/Soleil.jpg}{Documents/Photos}
+						\prompt{\cursor}{}
+					}
+				\end{center}
+			}

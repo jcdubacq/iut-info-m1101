@@ -1,0 +1,34 @@
+			% Syntaxe d'utilisation
+			\synt{echo}{}{expression}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche sur la sortie standard l'expression après interprétation.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						Affiche \lin{'Bonjour'}:\\\vspace{30pt}
+						\begin{center}
+							\mpromptS{
+								\promptS{echo Bonjour}{Bonjour}
+								\promptS{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+					\begin{column}{6cm}
+						Définie une variable puis affiche sa valeur:\\
+						\begin{center}
+							\mpromptS{
+								\promptS{Astre=Terre}{}
+								\promptS{echo \$Astre}{Terre}
+								\promptS{echo La planete \$Astre}{La planete Terre}
+								\promptS{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+				\end{columns}
+			}

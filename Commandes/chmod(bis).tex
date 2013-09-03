@@ -1,0 +1,62 @@
+			% Description de la commande
+			\desc{ Il existe plusieurs notations des droits.
+				\begin{itemize}
+					\item La notation alphanumérique:\lin{(ugoa) (+/-) (rwx)}
+					\item La notation octale
+					\begin{itemize}
+						\item Calcul des droits pour un utilisateur (u, g ou o):
+							\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+								\hline
+								Droit&\lin{---}&\lin{--x}&\lin{-w-}&\lin{-wx}&\lin{r--}&\lin{r-x}&\lin{rw-}&\lin{rwx}\\
+								\hline
+								Binaire&000&001&010&011&100&101&110&111\\
+								\hline
+								Octale&0&1&2&3&4&5&6&7\\
+								\hline
+							\end{tabular}
+						\item Exemple de notation octale des droits d'un fichier
+							\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+								\hline
+								&\multicolumn{3}{|c|}{\textbf{U}ser}&\multicolumn{3}{|c|}{\textbf{G}roup}&\multicolumn{3}{|c|}{\textbf{O}ther}\\
+								\hline
+								Alphabétique&\lin{r}&\lin{w}&\lin{x}&\lin{r}&\lin{-}&\lin{x}&\lin{-}&\lin{-}&\lin{x}\\
+								\hline
+								Binaire&1&1&1&1&0&1&0&0&1\\
+								\hline
+								Octale&\multicolumn{3}{c|}{7}&\multicolumn{3}{c|}{5}&\multicolumn{3}{c|}{1}\\
+								\hline
+							\end{tabular}\\\vspace{10pt}
+					\end{itemize}
+				\end{itemize}
+			}
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{3cm}
+						\begin{tabular}{ll}
+							Alph.&Oct.\\
+							\hline
+							\lin{--- --- ---}&000\\
+							\lin{rw- --- ---}&600\\
+							\lin{rw- r-- r--}&644\\
+							\lin{rw- rw- rw-}&666
+						\end{tabular}
+					\end{column}
+					\begin{column}{3cm}
+						\begin{tabular}{ll}
+							Alph.&Oct.\\
+							\hline
+							\lin{rwx --- ---}&700\\
+							\lin{rwx r-x r-x}&755\\
+							\lin{rwx rwx rwx}&777\\
+						\end{tabular}
+					\end{column}
+					\begin{column}{6cm}
+						\mpromptS{
+							\promptS{chmod 700 dir\_parano}{}
+							\promptS{chmod 644 fichier\_pub}{}
+						}	
+					\end{column}
+				\end{columns}
+			}
+

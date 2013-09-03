@@ -1,0 +1,33 @@
+			% Syntaxe d'utilisation
+			\synt{wc}{-l}{fichier <fichier\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item L'option \lin{-l} indique que l'on affiche que le nombre de lignes.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						Soit le fichier suivant:\\
+						\begin{center}
+							\fileform[4cm]{tellur.tsv}{1 Mercure Venus\\2 Terre Mars}
+						\end{center}
+					\end{column}
+					\begin{column}{6cm}
+						Commande \#1:\\
+						\begin{center}
+							\mpromptS{
+							\promptS{wc -l tellur.tsv}{\hspace{3em}2\hspace{3em}tellur.tsv}
+							\promptS{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+				\end{columns}
+				L'affichage produit indique que le fichier \lin{tellur.tsv} comporte:
+				\begin{itemize}
+					\item 2 lignes.
+				\end{itemize}
+			}

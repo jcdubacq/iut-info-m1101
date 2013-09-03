@@ -1,0 +1,26 @@
+			% Syntaxe d'utilisation
+			\synt{sed}{}{'s/motif/new/g' fichier}
+			
+			% Description de la commande
+			\desc{
+				La commande \lin{sed} est une commande qui permet de faire de nombreuses opérations. Nous ne verrons ici que la syntaxe permettant de substituer un motif dans un texte.
+				\begin{itemize}
+					\item Affiche le contenu du fichier après avoir remplacé les occurrences du \lin{motif} par \lin{new}.
+			\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						Soit le fichier:\\
+						\fileform[3cm]{dialogue.txt}{- C'est par ici!!!\\-Où ça, "ici" ?}
+					\end{column}
+					\begin{column}{7cm}
+						\mpromptM{
+							\promptM{sed 's/ici/là/' dialogue.txt}{- C'est par là!!!\\-Où ça, "là" ?}
+							\promptM{\cursor}{}
+						}
+					\end{column}
+				\end{columns}
+			}

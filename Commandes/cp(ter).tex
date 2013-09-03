@@ -1,0 +1,27 @@
+			% Syntaxe d'utilisation
+			\synt{cp}{-r}{source <source\_2 \dots> cible}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item L'option \lin{-r} (\textbf{R}écursif) permet de copier un répertoire et son contenu si il apparait dans le(s) source(s).
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\dirtree{%
+				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+				.2 astronomie.txt.
+				.2 \DTd{{\color{red}Galaxie}}\DTfcomment{{\color{red}Fichier Source Commande \#3}}.
+				.3 Andromede.pdf.
+				.2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire Cible \#3}}.
+				.3 soleil.jpg.
+				.3 \DTd{{\color{solarizedGreen}Galaxie}}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la Commande \#3}}.
+				.4 {\color{solarizedGreen}Andromede.pdf}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la Commande \#3}}.
+				.2 aldebaran.gif.
+				}
+				Commande \#3:
+				\mprompt{
+					\prompt{cp -r Galaxies Etoiles}{}
+				}
+			}

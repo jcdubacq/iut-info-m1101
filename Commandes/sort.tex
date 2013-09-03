@@ -1,0 +1,25 @@
+			% Syntaxe d'utilisation
+			\synt{sort}{<-r>}{fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche les lignes du fichier triées par ordre croissant.
+					\item L'option \lin{-r} inverse l'ordre de tri.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						Soit le fichier:\\
+						\fileform[3cm]{donnees.txt}{a\\A\\1\\7\\8\\71}
+					\end{column}
+					\begin{column}{7cm}
+						\mpromptM{
+							\promptM{sort donnees.txt}{1\\7\\71\\8\\A\\a}
+							\promptM{\cursor}
+						}
+					\end{column}
+				\end{columns}
+			}

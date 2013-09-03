@@ -1,0 +1,40 @@
+			% Syntaxe d'utilisation
+			\synt{mkdir}{}{chemin <chemin\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Création d'un ou de plusieurs répertoires aux endroits spécifiés par les chemins.
+					\item Si le chemin est occupé par un fichier ou un répertoire, il y a un message d'erreur.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\dirtree{%
+				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+				.2 astronomie.txt.
+				.2 \DTd{{\color{solarizedGreen}Systeme\_Solaire}}\DTfcomment{{\color{solarizedGreen}Création Commande \#1}}.
+				.2 \DTd{Etoiles}.
+				.3 \DTd{{\color{solarizedGreen}Rouges}}\DTfcomment{{\color{solarizedGreen}Création Commande \#2}}.
+				.3 \DTd{{\color{solarizedGreen}Bleues}}\DTfcomment{{\color{solarizedGreen}Création Commande \#3}}.
+				.2 \DTd{{\color{solarizedGreen}Galaxies}}\DTfcomment{{\color{solarizedGreen}Création Commande \#3}}.
+				}
+				\begin{columns}
+					\begin{column}{5cm}
+						Commande \#1:
+						\mpromptS{
+							\promptS{mkdir Systeme\_Solaire}{}
+						}
+					\end{column}
+					\begin{column}{5cm}
+						Commande \#2:
+						\mpromptS{
+							\promptS{mkdir Etoiles/Rouges}{}
+						}
+					\end{column}
+				\end{columns}
+						Commande \#3:
+						\mprompt{
+							\prompt{mkdir Galaxies Etoiles/Bleues}{}
+						}
+			}

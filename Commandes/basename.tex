@@ -1,0 +1,21 @@
+			% Syntaxe d'utilisation
+			\synt{basename}{chemin}{}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Élimine le chemin d'accès et le suffixe d'un nom de fichier.
+					\item Il n'est pas nécessaire que le chemin existe dans l'arborescence. Le chemin est traité comme une chaîne de caractères.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{center}
+					\mprompt{
+						\prompt{basename curriculum.pdf}{curriculum}
+						\prompt{basename Documents/cv.txt}{cv}
+						\prompt{basename Documents/Photos/Soleil.jpg}{Soleil}
+						\prompt{\cursor}{}
+					}
+				\end{center}
+			}

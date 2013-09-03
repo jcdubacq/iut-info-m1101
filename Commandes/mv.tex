@@ -1,0 +1,37 @@
+			% Syntaxe d'utilisation
+			\synt{mv}{}{source cible}
+			
+			% Description de la commande
+			\desc{Déplace/Renomme un fichier ou répertoire.
+			\begin{itemize}
+				\item modifie le chemin d'accès à la \lin{source} qui devient le chemin \lin{cible}.
+				\item Le chemin \lin{source} disparait et le chemin \lin{cible} est créé.
+				\item Le fichier ou répertoire pointé reste le même.
+				\item La cible doit être un chemin non occupé ou un répertoire.
+			\end{itemize}}
+			
+			
+			% Exemple d'uitlisation
+			\expl[Renommer un fichier]{
+				\begin{columns}
+					\begin{column}{6cm}
+						État Initial de l'arborescence:\\
+						\dirtree{%
+							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
+							.2 {\color{red} AstroNomIe.TXT}\DTfcomment{{\color{red}Fichier Source}}.
+						}
+					\end{column}
+					\begin{column}{6cm}
+						État Final de l'arborescence:\\
+						\dirtree{%
+							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
+							.2 {\color{solarizedGreen} astronomie.txt}\DTfcomment{{\color{solarizedGreen}Fichier Renommé}}.
+						}
+					\end{column}
+				\end{columns}
+				\begin{center}
+					\mprompt{
+						\prompt{mv AstroNomIe.TXT astronomie.txt}{}
+					}
+				\end{center}
+			}

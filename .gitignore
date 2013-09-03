@@ -210,3 +210,25 @@
 /spoly01.snm
 /spoly01.toc
 # stop automatic section for compile-latex:sys01.tex/spoly01
+# start automatic section for compile-latex:sys02.tex
+/.compile-latex/sys02
+/sys02.aux
+/sys02.fls
+/sys02.log
+/sys02.nav
+/sys02.out
+/sys02.pdf
+/sys02.snm
+/sys02.toc
+# stop automatic section for compile-latex:sys02.tex
+# start automatic section for compile-latex:sys02.tex/spoly02
+/.compile-latex/spoly02
+/spoly02.aux
+/spoly02.fls
+/spoly02.log
+/spoly02.nav
+/spoly02.out
+/spoly02.pdf
+/spoly02.snm
+/spoly02.toc
+# stop automatic section for compile-latex:sys02.tex/spoly02

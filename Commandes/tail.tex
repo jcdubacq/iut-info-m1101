@@ -1,0 +1,44 @@
+			% Syntaxe d'utilisation
+			\synt{tail}{< -int >}{fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche par défaut les 10 dernières lignes d'un fichier.
+					\item Si un entier \lin{n} précède le nom du fichier, la commande affiche les n dernières lignes du fichier.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						Soit le fichier \lin{planetes.txt} contenant les lignes suivantes:\\
+						\fileform[3cm]{planetes.txt}{%
+							\# Premier groupe\\
+							1\hspace{1em}Mercure\hspace{1em}Tellurique\\
+							2\hspace{1em}Venus\hspace{2em}Tellurique\\
+							3\hspace{1em}Terre\hspace{2em}Tellurique\\
+							4\hspace{1em}Mars\hspace{2.5em}Tellurique\\
+							\# Deuxième groupe\\
+							1\hspace{1em}Jupiter\hspace{1em}Gazeuse\\
+							2\hspace{1em}Saturne\hspace{1em}Gazeuse\\
+							3\hspace{1em}Uranus\hspace{1.5em}Gazeuse\\
+							4\hspace{1em}Neptune\hspace{1em}Gazeuse
+						}
+					\end{column}
+					\begin{column}{6cm}
+						La commande suivante affiche les 4 dernières lignes du fichier:
+						\begin{center}
+							\mpromptS{
+								\promptS{tail -4 planetes.txt}{%
+							1\hspace{1em}Jupiter\hspace{1em}Gazeuse\\
+							2\hspace{1em}Saturne\hspace{1em}Gazeuse\\
+							3\hspace{1em}Uranus\hspace{1.5em}Gazeuse\\
+							4\hspace{1em}Neptune\hspace{1em}Gazeuse
+					}
+								\promptS{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+				\end{columns}
+			}

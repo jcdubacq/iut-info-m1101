@@ -1,0 +1,24 @@
+			% Syntaxe d'utilisation
+			\synt{uniq}{}{fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche les lignes du fichier en supprimant les lignes consécutives identiques.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						Soit le fichier:\\
+						\fileform[3cm]{donnees.txt}{1\\lune\\Terre\\Terre\\lune}
+					\end{column}
+					\begin{column}{7cm}
+						\mpromptM{
+							\promptM{uniq donnees.txt}{1\\lune\\Terre\\lune}
+							\promptM{\cursor}
+						}
+					\end{column}
+				\end{columns}
+			}

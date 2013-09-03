@@ -1,0 +1,37 @@
+			% Syntaxe d'utilisation
+			\synt{gunzip}{}{fichier <fichier\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Décompresse un ou plusieurs fichiers (au format gzip) dont le nom est passé en paramètre.
+					\item Le fichier source (compressé) est supprimé et seul subsiste le fichier décompressé.
+					 \item Le fichier décompressé qui apparaît porte le même nom que le fichier initial auquel l'extension .gz a été supprimée.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						\dirtree{%
+						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+						.2 tellurique.tsv.
+						.2 {\color{solarizedGreen} astronomie.txt.gz}\DTfcomment{{\color{solarizedGreen}Avant gunzip}}.
+						}
+					\end{column}
+					\begin{column}{6cm}
+						\dirtree{%
+						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+						.2 tellurique.tsv.
+						.2 {\color{red}astronomie.txt}\DTfcomment{{\color{red}Après gunzip}}.
+						}
+					\end{column}
+				\end{columns}
+				\begin{center}
+					\mprompt{
+						\prompt{ls}{astronomie.txt.gz telluriques.tsv}
+						\prompt{gunzip astronomie.txt.gz}{}
+						\prompt{ls}{astronomie.txt telluriques.tsv}
+					}
+				\end{center}
+			}

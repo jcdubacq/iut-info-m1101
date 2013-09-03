@@ -1,0 +1,28 @@
+			% Syntaxe d'utilisation
+			\synt{tar}{cvz}{nom\_archive fichier\_ou\_repertoire <autres\_sources>}
+			% Syntaxe d'utilisation
+			\synt{tar}{xvz}{nom\_archive }
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item L'option \lin{z} permet de créer ou d'extraire une archive compressée.
+
+					\item L'extension donnée aux fichiers contenant une archive compressée par ce moyen est classiquement: \lin{.tgz}
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				Crée une archive compressée \lin{espace.tgz} avec le fichier \lin{astronomie.txt} et le répertoire \lin{Images/} et son contenu:\\
+				\begin{center}
+					\mprompt{
+						\prompt{tar cvz espace.tar astronomie.txt Images/}{}
+					}
+				\end{center}
+				Extrait le contenu d'une archive compressée \lin{espace.tgz} :\\
+				\begin{center}
+					\mprompt{
+						\prompt{tar xvz espace.tar}{}
+					}
+				\end{center}
+			}

@@ -1,0 +1,34 @@
+			% Syntaxe d'utilisation
+			\synt{cut}{-d 'sep' -f n}{fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche une colonne du fichier.
+					\item L'option \lin{<-d 'sep'>} permet de changer le séparateur par défaut qui est la tabulation. Le séparateur est donné entre guillement simples. 
+					\item L'option \lin{<-f n>} indique que la commande doit afficher la n$\up{ème}$ colonne.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						Cas\#1: les mots (les champs) sont séparés par des tabulations:\\
+						\fileform[4cm]{tellur.tsv}{1\hspace{3em}Mercure\hspace{3em}Venus\\2\hspace{3em}Terre\hspace{4em}Mars}\\
+						Commande \#1\\ \vspace{3pt}
+						\mpromptS{
+							\promptS{cut -f 2 tellur.tsv}{Mercure\\Terre}
+							\promptS{\cursor}
+						}
+					\end{column}
+					\begin{column}{6cm}
+						Cas\#2: les mots (les champs) sont séparés par le caractère \lin{=}:\\
+						\fileform[4cm]{jov.txt}{1=Jupiter=Saturne\\1=Uranus=Neptune}\\
+						Commande \#2\\ \vspace{3pt}
+						\mpromptS{
+							\promptS{cut -d '=' -f 3 jov.txt}{Saturne\\Neptune}
+							\promptS{\cursor}
+						}
+					\end{column}
+				\end{columns}
+			}

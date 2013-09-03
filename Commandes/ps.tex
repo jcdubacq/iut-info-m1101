@@ -1,0 +1,27 @@
+			% Syntaxe d'utilisation
+			\synt{ps}{<-eu>}{}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche les processus en cours d'exécution.
+					\item L'option \lin{<-e>} indique que tous les processus doivent être affichés,
+					\item L'option \lin{<-u>} restreint l'affichage aux processus de l'utilisateur.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{center}
+				\mprompt{
+					\prompt{ps -eu}{%
+					\begin{tabular}{@{}r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }l@{ }}
+						\multicolumn{11}{l}{Warning: bad ps syntax, perhaps a bogus '-'? See http://procps.sf.net}\\
+USER&PID&\%CPU&\%MEM&VSZ&RSS&TTY&STAT&START&TIME&COMMAND\\
+santini&5905&0.0&0.2&4824&1656&pts/1&Ss&09:27&0:00&-bash LC\_ALL=fr\_FR.UTF\\
+santini&5962&0.0&0.1&3884&896&pts/1&R+&09:48&0:00&ps -eu MANPATH=/etc/jav
+					\end{tabular}
+					}
+					\prompt{\cursor}{}
+				}
+				\end{center}
+			}

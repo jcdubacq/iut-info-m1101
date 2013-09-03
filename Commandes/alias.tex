@@ -1,0 +1,36 @@
+			% Syntaxe d'utilisation
+			\synt{alias}{}{nom\_de\_la\_commande=expression}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item créet un alias entre un nom de commande et une expression.
+					\item l'expression est donnée entre \it{quotes}: \lin{'expression \dots'}
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{%
+				\begin{columns}
+					\begin{column}{4.5cm}
+						\dirtree{%
+							.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+							.2 \DTd{public\_html}.
+							.3 index.html.
+							.2 astronomie.txt.
+							}
+					\end{column}
+					\begin{column}{7.5cm}
+						\mprompt{
+							\prompt{ll}{-bash: ll: command not found}
+							\prompt{alias ll='ls -l'}{}
+							\prompt{ls -l}{%
+								\begin{tabular}{@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r}
+									\multicolumn{9}{l}{total 32}\\
+									{\color{Green}drwxr-xr-x}&2&{\color{red}santini}&{\color{blue}ensinfo}&4096&20&jui&15:50&public\_html\\
+									{\color{Green}-rw-r--r--}&1&{\color{red}santini}&{\color{blue}ensinfo}&25&20&jui&15:49&telluriques.txt
+								\end{tabular}
+							}
+						}
+					\end{column}
+				\end{columns}
+			}

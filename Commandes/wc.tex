@@ -1,0 +1,36 @@
+			% Syntaxe d'utilisation
+			\synt{wc}{}{fichier <fichier\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche des statistiques sur le nombre de lignes, de mots et de caractères (comptés en nombre d'octets) contenus dans le fichier dont le chemin est donné en paramètre.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						Soit le fichier suivant:\\
+						\begin{center}
+							\fileform[4cm]{tellur.tsv}{1 Mercure Venus\\2 Terre Mars}
+						\end{center}
+					\end{column}
+					\begin{column}{6cm}
+						Commande \#1:\\
+						\begin{center}
+							\mpromptS{
+							\promptS{wc tellur.tsv}{\hspace{3em}2\hspace{3em}6\hspace{3em}29\hspace{1em}tellur.tsv}
+							\promptS{\cursor}{}
+							}
+						\end{center}
+					\end{column}
+				\end{columns}
+				L'affichage produit indique que le fichier \lin{tellur.tsv} comporte:
+				\begin{itemize}
+					\item 2 lignes,
+					\item 6 mots et
+					\item 29 caractères. La taille du fichier texte est donc de 29 octets \dots
+				\end{itemize}
+			}
+

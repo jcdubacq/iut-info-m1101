@@ -1,0 +1,46 @@
+			% Syntaxe d'utilisation
+			\synt{grep}{}{"motif" fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche les lignes du fichier qui comportent le \lin{"motif"}.
+					\item Les lignes sont affichées dans leur ordre d'apparition dans le fichier.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						Soit le fichier \lin{planetes.txt} contenant les lignes suivantes:\\
+						\fileform[3cm]{planetes.txt}{%
+						\# Premier groupe\\
+						1\hspace{1em}Mercure\hspace{1em}Tellurique\\
+						2\hspace{1em}Venus\hspace{2em}Tellurique\\
+						3\hspace{1em}Terre\hspace{2em}Tellurique\\
+						4\hspace{1em}Mars\hspace{2.5em}Tellurique\\
+						\# Deuxième groupe\\
+						1\hspace{1em}Jupiter\hspace{1em}Gazeuse\\
+						2\hspace{1em}Saturne\hspace{1em}Gazeuse\\
+						3\hspace{1em}Uranus\hspace{1.5em}Gazeuse\\
+						4\hspace{1em}Neptune\hspace{1em}Gazeuse
+						}
+					\end{column}
+					\begin{column}{7cm}
+						Commandes:\\ \vspace{5pt}
+						\mpromptM{
+							\promptM{grep 'Tellurique' planetes.txt}{%
+								1\hspace{1em}Mercure\hspace{1em}Tellurique\\
+								2\hspace{1em}Venus\hspace{2em}Tellurique\\
+								3\hspace{1em}Terre\hspace{2em}Tellurique\\
+								4\hspace{1em}Mars\hspace{2.5em}Tellurique
+							}
+							\promptM{grep '1' planetes.txt}{%
+								1\hspace{1em}Mercure\hspace{1em}Tellurique\\
+								1\hspace{1em}Jupiter\hspace{1em}Gazeuse\
+							}
+							\promptM{\cursor}
+						}
+					\end{column}
+				\end{columns}
+			}

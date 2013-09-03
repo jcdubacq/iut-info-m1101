@@ -1,0 +1,25 @@
+			% Syntaxe d'utilisation
+			\synt{more}{}{fichier <fichier\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche le contenu du (des) fichier(s) page par page,
+					\item L'affichage s'adapte à la taille du shell,
+					\item Pour passer à la ligne suivante, l'utilisateur presse la touche \Enter.
+					\item Pour passer à la page suivante, l'utilisateur presse la touche \keystroke{Space}.
+					\item Une fois que tout le contenu du fichier a défilé, l'utilisateur retrouve un nouveau prompt.
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{itemize}
+					\item Cette commande est utilisée pour parcourir des documents dont l'affichage dépasse la taille de la fenêtre du terminal.
+					\item Utilisée avec un tube (\cf Partie sur les Redirections) elle permet de visualiser tous les résultats d'une commande qui dépasserait la taille de la fenêtre du terminal. Par exemple, si un répertoire contient de très nombreux fichiers, la commande \lin{ls} qui affiche le contenu du répertoire peut produire un affichage très long. Si l'on souhaite passer en revue tous les fichiers il faut alors utiliser la commande suivante: 
+				\end{itemize}
+				\begin{center}
+					\mprompt{
+						\prompt{ls Ma\_Musique | more}{}
+					}
+				\end{center}
+			}

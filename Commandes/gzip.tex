@@ -1,0 +1,38 @@
+			% Syntaxe d'utilisation
+			\synt{gzip}{}{fichier <fichier\_2 \dots>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Compresse un ou plusieurs fichiers dont le nom est passé en paramètre.
+					\item Le fichier source (initial non compressé) est supprimé et seul subsiste le fichier compressé.
+					 \item Le fichier compressé produit porte le même nom que le fichier initial auquel l'extension .gz  a été ajoutée.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{6cm}
+						\dirtree{%
+						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+						.2 tellurique.tsv.
+						.2 {\color{red}astronomie.txt}\DTfcomment{{\color{red}Avant gzip}}.
+						}
+					\end{column}
+					\begin{column}{6cm}
+						\dirtree{%
+						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+						.2 tellurique.tsv.
+						.2 {\color{solarizedGreen} astronomie.txt.gz}\DTfcomment{{\color{solarizedGreen}Après gzip}}.
+						}
+					\end{column}
+				\end{columns}
+				\begin{center}
+					\mprompt{
+						\prompt{ls}{astronomie.txt telluriques.tsv}
+						\prompt{gzip astronomie.txt}{}
+						\prompt{ls}{astronomie.txt.gz telluriques.tsv}
+					}
+				\end{center}
+			}
+			

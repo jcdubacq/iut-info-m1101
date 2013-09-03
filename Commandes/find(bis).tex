@@ -1,0 +1,48 @@
+			% Syntaxe d'utilisation
+			\synt{find}{}{depart -iname "motif" -exec commande {\tt\char`\\};}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Exécute la \lin{commande} sur la liste des fichiers identifiés par \lin{find},
+					\item Dans la rédaction de la commande, la liste des fichiers est symbolisée par les caractères \lin{\{\}}.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{center}
+					\mprompt{%
+						\prompt{find ./ -iname *centauri* -exec mv \{\} Mes\_Photos  {\tt\char`\\};}{}
+					}
+				\end{center}
+				\begin{columns}
+					\begin{column}{6cm}
+						\tiny{
+						\dirtree{%
+							.1 \DTd{chez\_moi}\DTcomment{{\color{red}État Initial} Répertoire courant}.
+							.2 \DTd{Mes\_Images}.
+							.3 \DTd{JPG}.
+							.4 {\color{solarizedGreen}etacentauri.jpg}\DTcomment{{\color{solarizedGreen}Trouvé par \lin{find}}}.
+							.4 soleil.jpg.
+							.3 \DTd{GIF}.
+							.4 {\color{solarizedGreen}alphacentauri.gif}\DTcomment{{\color{solarizedGreen}Trouvé par \lin{find}}}.
+							.4 terre.gif.
+							.2 \DTd{Mes\_Photos}.
+						}
+						}
+					\end{column}
+					\begin{column}{6cm}
+						\dirtree{%
+							.1 \DTd{chez\_moi}\DTcomment{{\color{red}État Final} Répertoire courant }.
+							.2 \DTd{Mes\_Images}.
+							.3 \DTd{JPG}.
+							.4 soleil.jpg.
+							.3 \DTd{GIF}.
+							.4 terre.gif.
+							.2 \DTd{Mes\_Photos}.
+							.3 {\color{solarizedGreen}alphacentauri.jpg}\DTcomment{{\color{solarizedGreen}Déplacé par \lin{mv}}}.
+							.3 {\color{solarizedGreen}etacentauri.jpg}\DTcomment{{\color{solarizedGreen}Déplacé par \lin{mv}}}.
+						}
+					\end{column}
+				\end{columns}
+			}

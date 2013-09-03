@@ -1,0 +1,39 @@
+			% Syntaxe d'utilisation
+			\synt{find}{}{depart -iname "motif"}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Recherche dans les répertoires et sous-répertoires les fichiers dont le nom correspond au motif en partant du point de l'arborescence spécifié par le \lin{depart}.
+					\item L'option \lin{-iname} indique que le motif sera recherché sans tenir compte des majuscules et minuscules.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				\begin{columns}
+					\begin{column}{4cm}
+						\dirtree{%
+							.1 \DTd{chez\_moi}\DTcomment{{\color{red}Répertoire courant}}.
+							.2 \DTd{Mes\_Images}.
+							.3 \DTd{JPG}.
+							.4 soleil.jpg.
+							.4 lune.jpg.
+							.3 \DTd{GIF}.
+							.4 alphacentauri.gif.
+							.4 terre.gif.
+							.2 \DTd{Mes\_Photos}.
+							.3 etacentauri.jpg.
+							.3 phobos.gif.
+						}
+					\end{column}
+					\begin{column}{8cm}
+						\mpromptM{%
+							\promptM{find . -iname *.gif}{./Mes\_Images/GIF/alphacentauri.gif\\./Mes\_Images/GIF/terre.gif\\./Mes\_Photos/phobos.gif}
+							\promptM{find . -iname *centauri*}{./Mes\_Images/GIF/alphacentauri.gif\\./Mes\_Photos/etacentauri.jpg}
+
+							\promptM{find Mes\_Images/ -iname *e.*}{Mes\_Images/GIF/terre.gif\\Mes\_Images/JPG/lune.jpg}
+							\promptM{\cursor}{}
+						}
+					\end{column}
+				\end{columns}
+			}

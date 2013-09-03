@@ -1,0 +1,30 @@
+			% Syntaxe d'utilisation
+			\synt{wget}{chemin}{}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Client HTTP, HTTPS et FTP .
+					\item Permet de récupérer du contenu d'un serveur serveur Web ou FTP (télécharger).
+				\end{itemize}
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				\begin{center}
+					\mprompt{
+						\prompt{wget http://www-lipn.univ-paris13.fr/\~{}santini/intro\_syste\\me/2011\_2012\_S1D\_cours\_1.pdf .}{%
+						Résolution de www-lipn.univ-paris13.fr... 10.10.0.68\\
+Connexion vers www-lipn.univ-paris13.fr|10.10.0.68|:80... connecté.\\
+requête HTTP transmise, en attente de la réponse... 200 OK\\
+Longueur: 4568618 (4,4M) [application/pdf]\\
+Sauvegarde en : «2011\_2012\_S1D\_cours\_1.pdf»\\
+\\
+100\%[======================================>] 4 568 618   10,4M/s   ds 0,4s\\
+\\
+2012-01-02 16:02:59 (10,4 MB/s) - «2011\_2012\_S1D\_cours\_1.pdf» sauvegardé [4568618/4568618]
+}
+						\prompt{ls -l ./2011\_2012\_S1D\_cours\_1.pdf}{-rw-r--r-- 1 santini users 4,4M 2011-12-14 10:33 ./2011\_2012\_S1D\_cours\_1.pdf
+}
+					}
+				\end{center}
+			}

@@ -1,0 +1,21 @@
+			% Syntaxe d'utilisation
+			\synt{tar}{cv}{nom\_archive fichier\_ou\_repertoire <autres\_sources>}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Crée un fichier archive dont le nom (chemin) est donné en premier argument et porte classiquement l'extension \lin{.tar}.
+					\item Les fichiers sources qui servent a créer l'archive sont préservés par la commande \lin{tar}.
+					\item L'option \lin{c} (\textbf{C}reate), indique que la commande \lin{tar} doit utiliser un algorithme d'archivage.
+					\item L'option \lin{v} (\textbf{V}erbose), permet d'afficher le déroulement de l'archivage.
+				\end{itemize}
+				}
+			
+			% Exemple d'utilisation
+			\expl{
+				Regroupe dans la même archive \lin{espace.tar} le fichier \lin{astronomie.txt} et le répertoire \lin{Images/} et son contenu:\\\vspace{5pt}
+				\begin{center}
+					\mprompt{
+						\prompt{tar cv espace.tar astronomies.txt Images/}{}
+					}
+				\end{center}
+			}

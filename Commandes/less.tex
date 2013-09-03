@@ -1,0 +1,43 @@
+			% Syntaxe d'utilisation
+			\synt{less}{}{fichier}
+			
+			% Description de la commande
+			\desc{\begin{itemize}
+					\item Affiche le contenu d'un fichier,
+					\item Permet de naviguer en avant et en arrière dans le fichier.
+					\item Permet d'effectuer des recherches de mot(if)s.
+				\end{itemize}
+				La commande ouvre une interface dans la fenêtre du terminal. Contrairement à la commande \lin{more}, on ne revient pas à la ligne de commande lorsqu'on atteint la fin du fichier, pour cela il faut quitter l'application.
+				}
+			
+			% Exemple d'uitlisation
+			\expl{
+				Pour avoir une description complète des commandes de navigation dans l'interface de visualisation \lin{less}, reportez-vous aux pages de \lin{man}. Les commandes les plus utilisées sont:
+				\begin{columns}
+					\begin{column}{6cm}
+						\begin{tabular}{rl}
+							\hline
+							Combinaison\\de touches&Action\\
+							\hline
+							\keystroke{H}&Affiche l'aide (abrégé des commandes)\\
+							\keystroke{F}&Avancer d'une page (forward)\\
+							\keystroke{B}&Reculer d'une page (backward)\\
+							\keystroke{E}&Avancer d'une ligne\\
+							\keystroke{Y}&Reculer d'une ligne\\
+							\hline
+						\end{tabular}
+					\end{column}
+					\begin{column}{6cm}
+						\begin{tabular}{rl}
+							\hline
+							Combinaison\\de touches&Action\\
+							\hline
+							\keystroke{Q}&Quiter\\
+							\keystroke{G}&Aller à la première ligne\\
+							\Shift+\keystroke{G}&Aller à la dernière ligne\\
+							\keystroke{num}+\keystroke{G}&Aller à la ligne numéro \lin{num}\\										&\\
+							\hline
+						\end{tabular}
+					\end{column}
+				\end{columns}
+			}

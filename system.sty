@@ -10,12 +10,19 @@
 \newcommand{\linbox}[1]{\colorbox{solarizedRebase02}{\textbf{\texttt{#1}}}}
 
 % Formatage d'un terminal et de ses commandes et affichages
-\newcommand{\prompt}[3][\~{}]{%
+\newcommand{\promptP}[4][\~{}]{%
   \colorbox{solarizedRebase02}{%
-    \parbox{8.5cm}{%
+    \parbox{#2}{%
       \lin{%
-	[ {\color{solarizedRed} login}@{\color{solarizedGreen} localhost} {\color{solarizedBlue}#1 }] #2\ifx#3\relax\relax\else\\#3\fi}}}}
-\newcommand{\mprompt}[1]{\centerline{\fcolorbox{black}{solarizedRebase02}{\parbox{9cm}{#1}}}}
+	[ {\color{solarizedRed} login}@{\color{solarizedGreen} localhost} {\color{solarizedBlue}#1 }] #3\ifx#4\relax\relax\else\\#4\fi}}}}
+\newcommand{\mpromptP}[2]{\centerline{\fcolorbox{black}{solarizedRebase02}{\parbox{#1}{#2}}}}
+\newcommand{\prompt}[3][\~{}]{\promptP[#1]{85mm}{#2}{#3}}
+\newcommand{\mprompt}[1]{\mpromptP{90mm}{#1}}
+\newcommand{\promptS}[3][\~{}]{\promptP[#1]{54mm}{#2}{#3}}
+\newcommand{\mpromptS}[1]{\mpromptP{55mm}{#1}}
+\newcommand{\promptT}[3][\~{}]{\promptP[#1]{34mm}{#2}{#3}}
+\newcommand{\mpromptT}[1]{\mpromptP{35mm}{#1}}
+
 
 % Man
 \newcommand{\manpage}[2][\relax]{%
@@ -39,3 +46,27 @@
 
 %EXEMPLE
 \newcommand{\expl}[2][]{\begin{exampleblock}{Exemple d'utilisation: #1}\footnotesize{#2}\end{exampleblock}}
+
+% Pour les arborescences
+\usepackage{dirtree}
+\renewcommand*\DTstyle{\small}
+\renewcommand*\DTstylecomment{\small}
+\DTsetlength{0.2em}{1em}{0.2em}{0.4pt}{1.6pt}
+\newcommand{\DTd}[1]{{\color{solarizedBlue}#1/}}
+\newcommand{\DTg}[1]{{\color{solarizedGreen}#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{~~\color{solarizedYellow}{#1}}}
+
+\newcommand{\fileform}[3][6cm]{%
+	\vspace{3pt}\small
+	\begin{tabular}{|l|l}
+		\cline{1-1}\textbf{#2}&\\
+		\hline
+		\multicolumn{2}{|l|}{
+			\begin{minipage}{#1}
+				\lin{\\#3\\}
+			\end{minipage}
+		}\\
+		\hline
+	\end{tabular}
+	\vspace{3pt}
+}
