@@ -1,6 +1,7 @@
 \newif\ifpoly\polyfalse
 \newif\ifexo\exofalse
 \newif\ifprof\proffalse
+\newif\ifwhitex\whitexfalse
 \edef\myjob{\jobname}
 \edef\myjob{\meaning\myjob}
 \ifnum\pdfmatch{poly}{\myjob}>0\let\@x\relax\else\let\@x\null\fi
@@ -9,6 +10,8 @@
 \ifx\@x\relax\exotrue\fi
 \ifnum\pdfmatch{prof}{\myjob}>0\let\@x\relax\else\let\@x\null\fi
 \ifx\@x\relax\proftrue\exotrue\fi
+\ifnum\pdfmatch{white}{\myjob}>0\let\@x\relax\else\let\@x\null\fi
+\ifx\@x\relax\whitextrue\fi
 
 \NeedsTeXFormat{LaTeX2e}\relax
 \ProvidesClass{iutv2013}[2013/09/01 slides class for J-C Dubacq]
@@ -79,7 +82,11 @@
 \pgfpageslogicalpageoptions{3}{border code=\pgfstroke}
 \pgfpageslogicalpageoptions{4}{border code=\pgfstroke}
 \else
+\ifwhitex
+\usecolortheme{solarized}
+\else
 \usecolortheme[dark]{solarized}
+\fi
 \fi
 \AtBeginSection[]{
   \begin{frame}<handout:0>{Plan}
@@ -140,9 +147,9 @@
 \usepackage{version}
 \ifprof
 \newenvironment{correction}%
-  {\color[rgb]{0.7,0,0}\ifmmode\else\itshape\fi}{}%
+{\color[rgb]{0.7,0,0}\ifmmode\else\itshape\fi}{}%
 \newenvironment{xcorrection}%
-  {\color[rgb]{0.7,0,0}\par\itshape}{}%
+{\color[rgb]{0.7,0,0}\par\itshape}{}%
 \else
 \excludeversion{correction}\excludeversion{xcorrection}
 \fi
@@ -150,13 +157,14 @@
 \ifpoly\excludeversion{presentationonly}\else\ifexo\excludeversion{presentationonly}\else\includeversion{presentationonly}\fi\fi
 \ifpoly\includeversion{handoutonly}\else\excludeversion{handoutonly}\fi
 \ifexo\excludeversion{frame}\includeversion{exercice}
-\newenvironment{exercicelet}[1]{\subsubsection{#1}}{}\else%
-\newenvironment{exercice}
-  {\begin{frame}[fragile,environment=exercice]
-  \frametitle{\dialog{exercice}{-1ex} Exercices}}
-  {\end{frame}}
+\newenvironment{exercicelet}[1]{\subsubsection{#1}}{}%
+\else%
+\newenvironment{exercice}%
+{\begin{frame}[fragile,environment=exercice]%
+\relax\frametitle{\dialog{exercice}{-1ex} Exercices}}%
+{\end{frame}}
 \newenvironment{exercicelet}[1]{\begin{block}{#1}}{\end{block}}
 \fi
 \let\objectif\@gobble
-%\newenvironment{student}{}{}%
+% \newenvironment{student}{}{}%
 
