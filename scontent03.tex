@@ -363,7 +363,6 @@
     l'exécution n'est pas immédiate. Pour se rappeler de son
     fonctionnement vous pouvez utiliser la commande man.
     \begin{enumerate}\setcounter{enumi}{\value{cnti}}
-      \setcounter{cnti}{\value{enumi}}
     \item Évaluez l'instruction \verb|sleep 1000| puis tapez
       \Ctrl\keystroke{C}. Que se passe-t-il?
     \item Évaluez l'instruction \verb|sleep 1000 &| (n'oubliez pas le
@@ -381,6 +380,7 @@ ps -ef
 \end{verbatim}
     \item Quel est le numéro de processus associé à la commande
       \verb|sleep 1000 &|?
+      \setcounter{cnti}{\value{enumi}}
     \end{enumerate}
   \end{exercicelet}
 \end{exercice}

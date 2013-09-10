@@ -504,6 +504,40 @@
     Valider son identité avec le mot de passe
   \end{block}
 \end{frame}
+\begin{exercice}
+  Ce TP est un premier contact avec le système d'exploitation Linux. Il
+  vous permettra d'appréhender les différences entre cet OS et ceux que
+  vous pouvez avoir l'habitude d'utiliser (Windows, MacOS-X). Nous
+  présenterons au cours du TP les grandes lignes de l'environnement de
+  travail GNOME, la façon dont on peut interagir avec le système
+  d'exploitation au moyen de l'outil "Terminal" ainsi que les outils de
+  base pour envoyer des mails (configuration de votre compte mail à
+  l'IUT) et pour obtenir de l'information sur internet (notamment sur
+  Linux). Il existe de nombreuses versions gratuites ou payantes de
+  Linux. La distribution installée à l'IUT se nomme GENTOO et est
+  téléchargeable depuis \url{http://www.gentoo.org/}.
+  \begin{exercicelet}{Connexion initiale}
+    \begin{questions}
+    \item Lorsqu'on allume l'ordinateur un laps de temps est nécessaire
+      pour charger le système d'exploitation. Au terme de ce chargement,
+      une interface graphique propose à l'utilisateur de s'identifier.
+      Linux est un système d'exploitation multi-utilisateur. Chaque
+      utilisateur doit systématiquement s'identifier ("login") auprès du
+      système pour avoir le droit de l'utiliser. Une fois identifié,
+      l'utilisateur à accès a ses fichiers et son espace de travail
+      personnel. Une fois qu'il a fini d'utliser le système,
+      l'utilisateur se déconnecte ("logout"). La période entre
+      l'identification et la connexion est appellée "session
+      d'utilisation". Démarrez votre ordinateur.
+    \item Connectez-vous! Votre identifiant est votre numéro d'étudiant,
+      votre mot de passe est votre numéro INE.  Attention: les
+      identifiants et les mots de passe sont sensibles à la casse. Cela
+      veut dire que les caractères majuscules et minuscules sont
+      distingués.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
 
 \subsection{Une interface graphique}
 \begin{frame}{Accès au système}
@@ -515,6 +549,67 @@
     utiliserez l'environnement GNOME (\url{http://www.gnomefr.org/}).
   \end{block}
 \end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Métaphore du bureau}
+    Contrairement aux systèmes d'exploitation propriétaires,
+    l'environnement de travail (bureau) n'est pas directement lié au
+    système d'exploitation. Les deux environnements de travail les plus
+    utilisés sous Linux sont GNOME (\url{http://www.gnomefr.org/}) et
+    KDE (\url{http://fr.kde.org/})
+    
+    L'environnement choisi à l'IUT est GNOME .  Une fois la session
+    lancée et l'environnement chargé, vous arrivez dans un espace de
+    travail appelé \emph{bureau}.  Cet environnement de travail est
+    assez proche de celui qui peut être proposé par les systèmes
+    d'exploitation propriétaires. Au moyen de la souris, vous pouvez
+    intéragir avec le système. En cliquant sur les éléments graphiques,
+    vous pouvez ouvrir des menus, lancer des programmes, quitter le
+    système...
+    \begin{questions}
+    \item Identifier la barre de menu, la barre de tâches et le bureau.
+    \item Dans cet environnement, identifiez deux façons de lancer le
+      navigateur internet
+      (Firefox \includegraphics[height=2ex]{img/s01/firefox.png}), et
+      l'application terminal
+      (\includegraphics[height=2ex]{img/s01/terminal.png}).
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Lancement d'applications}
+    Comme la plupart des systèmes d'exploitation modernes, la
+    distribution de Linux mise à votre disposition est un système
+    multi-tâches. Cela signifie, que vous pouvez exécuter en parallèle
+    plusieurs applications. Il n'est pas rare que lors d'une session
+    vous lanciez plusieurs programmes où chaque programme est associé à
+    une fenêtre. À la suite des exercices précédents, vous devez avoir
+    au moins 4 fenêtres ouvertes (même si elles ne sont pas toutes
+    visibles à l'écran). Les fenêtres ouvertes apparaissent dans la
+    barre des tâches située dans la partie basse de l'écran qui doit
+    alors ressembler à ça:
+
+    \centerline{\includegraphics[width=.8\linewidth]{img/s01/barredestaches.png}}
+
+    \begin{questions}
+    \item Donnez différentes façons de passer d'un programme à l'autre,
+      d'une fenêtre à l'autre, (au moyen de la souris ou du clavier)?
+      Qu'observez-vous au niveau de la barre des tâches lorsque vous
+      passez d'une application à l'autre?
+    \item Identifiez l'outil permettant de passer d'un bureau à l'autre.
+      Décrivez dans quelles situations ces bureaux peuvent-être utiles.
+      Trouvez comment on déplace une fenêtre depuis un bureau vers un
+      autre.
+    \item Placez sur les bureaux 1 et 2, une fenêtre de terminal chacun
+      et sur les 3 et 4, une fenêtre de navigateur.
+      \centerline{Résultat
+        attendu: \includegraphics[height=2ex]{img/s01/barrepeuplee.png}}
+    \item Expliquez la fonction de chacun des boutons placés dans le
+      coin supérieur droit des fenêtres.  Fermez les fenêtres des
+      programmes suivants: un terminal (bureau 1) et un navigateur
+      (bureau 3).
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
 
 \subsection{Les logiciels disponibles}
 \begin{frame}{Les logiciels disponibles}
@@ -554,6 +649,58 @@
     \end{itemize}
   \end{block}
 \end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Éditeur de texte}
+    Nous allons créer un nouveau fichier. Pour cela nous allons utiliser
+    un outil fondamental pour tout programmeur: un éditeur de
+    texte. Plusieurs éditeurs de texte sont à votre disposition (vous
+    pouvez explorer le menu Applications \textrightarrow Accessoires ou
+    Applications \textrightarrow Développement dans la barre de menu de
+    GNOME).  À la différence de logiciels tels que Word, un éditeur de
+    texte ne permet que de saisir du texte brut, sans mise en forme. Les
+    programmes sont en général écrits dans un éditeur de texte.  Pour
+    lancer un éditeur de texte trois moyens sont à votre disposition:
+    \begin{itemize}
+    \item Lancer l'application depuis le menu application,
+    \item Lancer l'application depuis une icône du bureau,
+    \item Lancer l'application depuis la ligne de comande, par exemple
+      en tapant : \mprompt{ \prompt{gedit\Return}{}}
+    \end{itemize}
+    Ceci aura pour effet d'ouvrir une fenêtre de l'éditeur.
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Éditeur de texte (suite)}
+    \begin{questions}
+    \item Tapez du texte dans la fenêtre et enregistrez le fichier dans
+      votre répertoire personnel, avec le nom \verb|fichier_test_1.txt|.
+    \item Définissez ce qu'est un \emph{raccourci clavier} et à quoi il
+      sert (aidez-vous d'Internet si nécessaire).  Donnez une liste d'au
+      moins 8 \emph{raccourcis clavier} standards les plus utilisés des
+      éditeurs de texte.
+    \item Modifiez le fichier texte \verb|fichier_test_1.txt| pour que
+      le texte suivant y figure:
+      \begin{quote}
+        Ondoyons un poupon, dit Orgon, fils d'Ubu. Choux, bijoux, poux,
+        puis du mou, du conflit, buvons non point un grog : un punch. Il
+        but du vin itou, du rhum, du whisky, du coco, puis il dormit sur
+        un roc.
+      \end{quote}
+    \item En utilisant les raccourcis clavier ou les menus et après les
+      avoir testés, donnez les combinaisons ou procédures permettant de:
+      \begin{itemize}
+      \item Rechercher dans ce texte toutes les occurrences de la chaîne
+        de caractères \texttt{oux}.
+      \item Remplacer toutes les occurrences de la chaîne de caractères
+        \texttt{oux}, par la chaîne de caractères \texttt{ou}.
+      \item Supprimer toutes les occurrences de la chaîne de caractères
+        \texttt{du}.
+      \end{itemize}
+    \item Enregistrez les modifications dans un nouveau fichier appelé
+      \verb|fichier_test_2.txt|.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
 
 \subsection{Distribution et accès aux logiciels}
 \begin{frame}{Distribution et accès aux logiciels}
@@ -577,11 +724,12 @@
       \end{block}
     \end{column}
   \end{columns}
-  \begin{block}{Copyright\copyright{} vs Copyleft\textcopyleft}
-    Elles permettent de : Distribué en Copyleft\textcopyleft, les
-    sources modifiées préservent les droits précédents.  $\Rightarrow$
-    Les logiciels qui dérivent des sources Copyleft ne peuvent être
-    distribués avec un Copyright\copyright.
+  \begin{block}{Copyright\copyright{} contre Copyleft\textcopyleft}
+    Le Copyleft\textcopyleft utilise le cadre légal du copyright pour
+    inverser les rapports de force: le code distribué peut être modifié
+    et redistribué, mais uniquement avec les mêmes droits
+    \textrightarrow Les logiciels qui dérivent des sources Copyleft ne
+    peuvent être distribués hors Copyleft.
   \end{block}
   \begin{block}{Tout logiciel a un coût de développement}
     En général:
@@ -685,7 +833,7 @@
 \begin{frame}{La ligne de commande}
   \begin{center}
     \mprompt{
-      \prompt{nom\_commande \textit{options paramètres}}{affichage\\\dots}\\
+      \prompt{nom\_commande \textit{options paramètres}\Return}{affichage\\\dots}\\
       \prompt{\cursor}{} }
   \end{center}
   \begin{block}{Interpretation de la commande}
@@ -694,7 +842,7 @@
       commande connue du système,
     \item[options] Comme le nom l'indique les options ne sont pas
       obligatoires. Si il n'y en a pas la commande s'exécute selon un
-      mode "par défaut". L'ajout d'une option pourra modifier ce
+      mode «~par défaut~». L'ajout d'une option pourra modifier ce
       comportement par défaut.
     \item[paramètres] Certaines commandes peuvent fonctionner sans
       paramètre.
@@ -739,110 +887,96 @@
 \end{frame}
 
 \manpage{man}
+\begin{exercice}
+  \begin{exercicelet}{Usage du terminal}
+    Une fenêtre de Terminal est un outil de base fondamental à toute
+    personne travaillant sous Linux. Cette fenêtre propose ce que l'on
+    appelle une ligne de commande. C'est un moyen d'adresser directement
+    des commandes au système, sans avoir à passer par une interface
+    graphique. C'est un outil très puissant qui est de plus
+    programmable.  De ce fait, la ligne de commande permet de faire des
+    choses qu'aucun programme graphique n'est capable de faire
+    facilement. Cependant pour l'utiliser efficacement un apprentissage
+    est nécessaire. Ce module est là pour vous en donner un aperçu.
+    \begin{questions}
+    \item Rappelez la structure de la ligne de commande telle qu'elle
+      s'affiche dans le terminal (décrivez les différents éléments et
+      leur rôle).
+    \item Évaluez la commande suivante et commentez l'affichage produit:
+      \texttt{man ls}
+    \item Quelle est la fonction de la commande \texttt{ls}?
+    \item Testez la commande ls avec plusieurs options parmi celles que
+      vous avez identifié. Vérifiez que le comportement de la commande
+      est modifié par l'utilisation d'options différentes.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Usage du navigateur internet}
+    Un navigateur internet tel que le logiciel Firefox (lancé plus tôt),
+    est un outil de base dans tout travail informatique. Ces logiciels
+    permettent de «~naviguer~» sur les pages internet. Les pages
+    internet sont regroupées en sites internet, qui sont identifiés par
+    une adresse. Certains proposent de l'information, des applications,
+    le contenu d'autres est plus incertain.  Le principe de base pour
+    naviguer d'une page à l'autre sont les \emph{liens
+      hypertextes}. Précisés par le langage HTML, un \emph{lien
+      hypertexte} est une mise en forme qui associe un texte ou un
+    élément graphique de la page à l'adresse d'une page internet. En
+    cliquant sur le \emph{lien hypertexte}, la page correspondant à
+    l'adresse s'affiche dans le navigateur.
 
-\endinput
-\section{Fichiers et repertoires}
-\begin{frame}{Plan}
-  \tableofcontents[hideothersubsections,sections={1-4}]
-\end{frame}
-%%%%%%%%%%%%%% 
-\subsection{Les noms et contenus des fichiers}
-\begin{frame}{Noms et contenu des fichiers}
-  \begin{block}{La décomposition d'un nom de fichier}
-    \begin{columns}
-      \begin{column}{8cm}
-        Traditionnellement un nom de fichier se décompose en deux parties séparées par un point:
-        \begin{itemize}
-        \item La $1\up{ère}$ partie informe sur la nature du contenu du fichier,
-        \item La $2\up{ème}$ partie informe sur le format utilisé pour enregistrer les données.
-        \end{itemize}
-      \end{column}
-      \begin{column}{3cm}
-        \begin{tabular}{|r@{}r@{}l|}
-          \hline
-          {\color{red}nom}&.&{\color{ForestGreen}extension} \\
-          {\color{red}prefix}&.&{\color{ForestGreen}suffix} \\
-          {\color{red}description}&.&{\color{ForestGreen}format}\\
-          \hline
-        \end{tabular}
-      \end{column}
-    \end{columns}
-  \end{block}
-  \begin{columns}
-    \begin{column}{5.5cm}
-      \begin{block}{Exemples de formats de fichiers}
-        \begin{center}
-          \begin{tabular}{ll}
-            \hline
-            Extension&Contenu\\
-            \hline
-            .c&Sources C\\
-            .html&Document Web\\
-            .pdf&Document Mis en page\\
-            .txt&Texte brut\\
-            .mp3&Fichier Multimedia\\
-            \hline
-          \end{tabular}
-        \end{center}
-      \end{block}
-    \end{column}
-    \begin{column}{5.5cm}
-      \begin{block}{Exemples de noms de fichiers}
-        \begin{center}
-          \begin{tabular}{ll}
-            \hline
-            Enigmatique&Informatif\\
-            \hline
-            e3.c&teste\_boucle\_for.c\\
-            New.pdf&2011\_IntroSys\_cours\_1.pdf\\
-            toto.sh&test\_boucle\_for.sh\\
-            \hline
-          \end{tabular}
-        \end{center}
-      \end{block}
-      \vrule
-    \end{column}
-  \end{columns}
-  \begin{alertblock}{Le choix des noms des fichiers et répertoires}
-    \begin{itemize}
-    \item Ils doivent être choisis minutieusement pour être informatifs,
-    \item Choisir un nom peut être long, mais ce sera un grand gain de temps lorsqu'il s'agira de retrouver le fichier ou le répertoire concerné.
-    \end{itemize}
-  \end{alertblock}
-\end{frame}
-%%%%%%%%%%%%%% 
-\subsection{Organisation des données enregistrées}
-\begin{frame}{Organisation des données enregistrées}
-  \begin{block}{De très nombreux fichiers et répertoires}
-    \begin{columns}
-      \begin{column}{7cm}
-        \begin{itemize}
-        \item Le nombre de fichiers enregistrés sur un disque dur peut aisément dépasser 100.000 fichiers,
-        \item Chaque fichier est identifié par un nom,
-        \item Les fichiers sont regroupés dans des répertoires et sous-répertoires.
-        \item Chaque répertoire est identifié par un nom.
-        \end{itemize}
-      \end{column}
-      \begin{column}{4cm}
-        \includegraphics[width=4cm]{img/s01/file_system.jpg}
-      \end{column}
-    \end{columns}
-  \end{block}
-  \begin{block}{Une organisation en arborescence}
-    \begin{itemize}
-    \item Cette organisation arborescente permet de faciliter la recherche d'un fichier,
-    \item Les fichiers sont regroupés par application, par thème, par format, par fonction, \dots			\end{itemize}
-  \end{block}
-  \begin{alertblock}{Remarque}
-    \begin{itemize}
-    \item Si tous les fichiers étaient au même \textit{"endroit"}, il serait très difficile de les afficher dans un navigateur. Leur affichage n'apporterait rien car il y en aurait trop à lire.
-    \item L'organisation en arborescence est une organisation hiérarchique, qui permet d'organiser les données et de faciliter leur accès.
-    \end{itemize}
-  \end{alertblock}
-\end{frame}		
+    Dans la plupart des cas, il est simple d'identifier le texte
+    supportant un lien hypertexte. Celui-ci est coloré ou souligné de
+    façon à le distinguer des autres éléments de la page.  La fenêtre
+    d'un navigateur se structure en plusieurs parties que vous devez
+    apprendre à identifier et à utiliser:
 
+    \begin{questions}
+    \item Identifiez et nommez les différents éléments qui composent la
+      fenêtre d'un navigateur internet.
+    \item Donnez au moins 2 adresses correspondant à des moteurs de
+      recherche
+    \item Le Gentoo est un pingoin. Quels types d'information
+      trouvez-vous lorsque vous sollicitez un moteur de recherche avec
+      le mot clef \emph{Gentoo} ?
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Usage du client de messagerie électronique
+      (e-mail)}
+    Si votre inscription à l'IUT est finalisée, un compte mail personnel
+    à été créé à votre nom. Son adresse est de la forme:
+    \texttt{Prenom.Nom@iutv.univ-paris13.fr}
 
+    Grâce à un logiciel appelé \emph{client mail}, vous pouvez envoyer
+    et recevoir du courrier électronique. Consultez-le très
+    régulièrement (au moins une fois par jour)!
 
+    Un moyen d'accéder à vos mails est d'utiliser le client web-mail de
+    l'université: une application accessible depuis n'importe quel
+    navigateur internet (connecté).  L'adresse du web-mail de l'IUT est:
+    \url{http://mail.iutv.univ-paris13.fr}
 
+    Pour accéder à votre courrier vous devez fournir votre identifiant
+    et votre mot de passe.
 
-
+    \begin{questions}
+    \item Après votre connexion au web-mail et après avoir identifié et
+      cliqué sur le service de messagerie électronique, identifiez les
+      différents boutons et champs de l'interface.
+    \item Après avoir sélectionné le service de rédaction d'un message,
+      identifiez les différents champs de la fenêtre de
+      rédaction. Décrivez à quoi servent les champs "À", "Cc", "Cci",
+      "Sujet" et "Texte".
+    \item Renseignez les champs nécessaires et envoyez un mail à votre
+      voisin de table.
+    \item Ouvrez le mail que votre voisin vous a envoyé et répondez-lui
+      dans le corps du message reçu.
+    \item Donnez la procédure et pour ajouter l'adresse du web-mail de
+      l'université dans les racourcis (onglets et favoris) de votre
+      navigateur internet.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}

@@ -170,3 +170,4 @@
 \let\objectif\@gobble
 % \newenvironment{student}{}{}%
 
+\newenvironment{questions}{\begin{enumerate}[\bfseries Q1]\setcounter{enumi}{\value{cnti}}}{\setcounter{cnti}{\value{enumi}}\end{enumerate}}
