@@ -35,7 +35,7 @@
         C'est un exemple, il y en a plusieurs possibles.\end{xcorrection}
     \item Faites l'addition de votre âge et de votre année de naissance
       avec votre algorithme (vous devriez obtenir
-      $\Eta\Eta\Chi\Iota\Iota\Iota$ ou $\Eta\Eta\Chi\Iota\Iota$). De
+      $\Eta\Eta\Delta\Iota\Iota\Iota$ ou $\Eta\Eta\Delta\Iota\Iota$). De
       quelle représentations partez-vous ?
       \begin{correction}On part des représentations grecques, bien
         sûr. Ou alors des représentations en décimal, que l'on
@@ -218,8 +218,8 @@
       \texttt{0b1010,1}+\texttt{0b100,1}.
       \begin{xcorrection}$1\,1011\,1010$ et $10\,0010,1$ (ils peuvent
         vérifier en décimal).\end{xcorrection}
-    \item Faites les opérations suivantes en hexadécimal: $0x122+0x233$,
-      $0x87+0x54$, $0x18+0x9$, $2\times 0xED$, $0x100-0x3$.
+    \item Faites les opérations suivantes en hexadécimal: $0x122+0x233$;
+      $0x87+0x54$; $0x18+0x9$; $0xED+0xED$; $0x100-0x3$.
       \begin{xcorrection}355,DB,21,1DA,FD\end{xcorrection}
     \item Faites la multiplication suivante: $17\times129$ à la fois en
       décimal et en binaire.
@@ -259,9 +259,10 @@
     \end{array}\]
   \end{example}
   \begin{itemize}
-  \item En C1 et en VA+S, il suffit de mettre un négatif.
+  \item En C1 et en VA+S, il suffit de mettre un négatif pour opération
+    incorrecte
   \item En plus, problème du double zéro pour C1 et VA+S.
-  \item C2: comme si le dernier bit était de poids $-2^{n-1}$ au lieu de
+  \item C2: comme si le bit de poids fort était de poids $-2^{n-1}$ au lieu de
     $2^{n-1}$, arithmétique modulo $2^n$.
   \end{itemize}
 \end{frame}
@@ -350,7 +351,7 @@
     Ils sont équivalents à la fonction \emph{différent}.
   \end{block}
   \begin{block}{NOT}
-    L'opérateur binaire NOT, noté $\overline{a}$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
+    L'opérateur unaire NOT, noté $\overline{a}$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
 
     Il est équivalent à la fonction \emph{complémentation}.
 
@@ -374,16 +375,16 @@
       $\begin{tabular}{|cc|c|}\hline
       A&B&A$+$B\\\hline
       0&0&\begin{correction}0\end{correction}\\
-      0&1&\begin{correction}0\end{correction}\\
-      1&0&\begin{correction}0\end{correction}\\
+      0&1&\begin{correction}1\end{correction}\\
+      1&0&\begin{correction}1\end{correction}\\
       1&1&\begin{correction}1\end{correction}\\
       \hline\end{tabular}$\hfill
       $\begin{tabular}{|cc|c|}\hline
       A&B&A$\oplus$B\\\hline
       0&0&\begin{correction}0\end{correction}\\
-      0&1&\begin{correction}0\end{correction}\\
-      1&0&\begin{correction}0\end{correction}\\
-      1&1&\begin{correction}1\end{correction}\\
+      0&1&\begin{correction}1\end{correction}\\
+      1&0&\begin{correction}1\end{correction}\\
+      1&1&\begin{correction}0\end{correction}\\
       \hline\end{tabular}$
   }
   \end{exercicelet}
