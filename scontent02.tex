@@ -302,7 +302,8 @@
 %%%%%%%%%%%%%% 
 \subsection{Manipulation de l'arborescence en ligne de commande}
 \begin{frame}{Manipulation de l'arborescence en ligne de commande}
-  \begin{block}{Alternatives pour naviguer dans l'arborescence et manipuler les fichiers}
+  \begin{block}{Alternatives pour naviguer dans l'arborescence et
+      manipuler les fichiers}
     \begin{columns}
       \begin{column}{6cm}
         \begin{center}
@@ -336,16 +337,263 @@
     \end{center}
   \end{block}
 \end{frame}
-\manpage{pwd}
-\manpage{ls}
-\manpage{ls(bis)}
-\manpage{cd}
-\manpage{mkdir}
-\manpage{rm}
-\manpage{rm(bis)}
-\manpage{cp}
-\manpage{cp(bis)}
-\manpage{cp(ter)}
-\manpage{mv}
-\manpage{mv(bis)}
+\manpage{pwd} \manpage{ls} \manpage{ls(bis)} \manpage{cd}
+\manpage{mkdir} \manpage{rm} \manpage{rm(bis)} \manpage{cp}
+\manpage{cp(bis)} \manpage{cp(ter)} \manpage{mv} \manpage{mv(bis)}
 \manpage{mv(ter)}
+\begin{exercice}
+  \begin{exercicelet}{Préparation}
+    \begin{enumerate}
+    \item À l'issue du premier TP un répertoire nommé
+      \verb|Intro_Systeme| doit se trouver dans votre répertoire
+      personnel. Donnez la commande permettant d'afficher le contenu de
+      ce répertoire.
+    \item Donnez la commande permettant d'afficher l'ensemble des
+      fichiers contenus dans ce répertoire (y compris les fichiers
+      cachés).
+    \item Définissez la commande permettant de créer un répertoire pour
+      le TP 2. Ce répertoire sera contenu dans le répertoire
+      \verb|Intro_Systeme| et portera le nom \verb|TP_2|. Pour cela vous
+      devrez d'abord définir le répertoire \verb|Intro_Systeme| comme
+      votre répertoire courant.
+    \item Téléchargez l'archive contenant les données pour le TP 2:
+      Allez sur le site
+      \url{http://www-lipn.univ-paris13.fr/~santini/documents_pedagogiques}.
+      Téléchargez le fichier \verb|donnees_tdtp2.tar.gz|. Recherchez où
+      le fichier a été écrit dans l'arborescence de votre répertoire
+      personnel.
+    \item Donnez la suite de commandes permettant de déplacer le fichier
+      archive dans le répertoire \verb|TP_2| que vous venez de créer. À
+      la fin des commandes, le répertoire \verb|TP_2| sera toujours
+      votre répertoire courant.
+    \item Quelle commande permet de vérifier que l'archive est bien dans
+      le répertoire \verb|~/Intro_systeme/TP_2|?
+      \setcounter{cnti}{\value{enumi}}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Préparation}
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+    \item Quelles sont les informations données par le nom du fichier?
+    \item Les commandes \texttt{less} et \texttt{cat} permettent
+      d'afficher le contenu d'un fichier. Analysez la différence de
+      comportement entre ces deux commandes sur le fichier
+      \verb|donnees_tdtp2.tar.gz|. Qu'en concluez-vous?
+    \item La commande \verb|tar xvf fichier| permet de désarchiver une
+      archive non compressée, \texttt{gunzip} de décompresser un fichier
+      et \texttt{gzip} de le compresser. Sachant cela, quelle suite de
+      commandes faut-il taper pour extaire les données de l'archive
+      \verb|donnees_tdtp2.tar.gz|? Un répertoire était contenu dans
+      l'archive. Quel est son nom?
+    \item Les commandes \texttt{less} et \texttt{cat} permettent
+      d'afficher le contenu d'un fichier. Analysez la différence de
+      comportement entre ces deux commandes sur le fichier
+      \verb|donnees/command_line.txt|. Qu'en concluez-vous?
+      \setcounter{cnti}{\value{enumi}}
+    \end{enumerate}
+    
+    Remarques: si un affichage prend trop de temps, utilisez le
+    raccourci clavier adéquat pour suspendre l'exécution de la commande
+    courante.  Si l'affichage de votre terminal est durablement
+    perturbé, dans le menu Terminal \textrightarrow Réinitialiser le
+    terminal.
+  \end{exercicelet}
+\end{exercice}
+\subsection{Métacaractères}
+\begin{frame}{Le métacaractère \lin{*}}
+  \begin{block}{Le caractère \lin{*}}
+    \begin{itemize}
+    \item Le cataractère \lin{*} est utilisé comme un \textit{jocker}
+      pour remplacer une chaîne de caractères,
+    \item Il est utilisé pour pointer plusieurs fichiers ou répertoires
+      dont le nom partage un motif commun.
+    \item Le caractère \lin{*} peut être placé en début, en fin ou au
+      milieu d'une chaîne de caractères,
+    \item Le caractère \lin{*} peut être répété.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Exemple de manipulation avec la commande \lin{mv}}
+    \scriptsize{
+      \begin{columns}
+        \begin{column}{6cm}
+          \begin{center}
+            \mpromptS{%
+              \promptS{mv *.jpg Images/}{} }
+          \end{center}
+        \end{column}
+        \begin{column}{6cm}
+          Ici, le chemin \lin{*.jpg} pointe tous les fichiers du
+          répertoire courant dont le nom se fini par l'extension
+          \lin{.jpg}. Il pointe donc les fichiers \lin{etacentauri.jpg}
+          et \lin{aldebaran.jpg} et exclue les autres fichiers (ici le
+          fichier \lin{alphacentauri.gif}).
+        \end{column}
+      \end{columns}
+      \begin{columns}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 aldebaran{\color{solarizedGreen}.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            alphacentauri.gif .  .2
+            etacentauri{\color{solarizedGreen}.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                final}}.  }
+        \end{column}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 alphacentauri.gif .  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                final}}.  .3 {\color{solarizedGreen}aldebaran.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  .3
+            {\color{solarizedGreen} etacentauri.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  }
+        \end{column}
+      \end{columns}
+    }
+  \end{block}
+\end{frame}
+\begin{frame}{Exemples d'utilisation de l'étoile}
+  \begin{block}{Utilisation simple avec la commande \lin{mv}}
+    \scriptsize{
+      \begin{columns}
+        \begin{column}{6cm}
+          \begin{center}
+            \mpromptS{%
+              \promptS{mv al* Images/}{} }
+          \end{center}
+        \end{column}
+        \begin{column}{6cm}
+          Ici, le chemin \lin{al*} pointe tous les fichiers du
+          répertoire courant dont le nom commence par les caractères
+          \lin{al}. Il pointe donc les fichiers \lin{aldebaran.jpg} et
+          \lin{alphacentauri.gif} et exclue les autres fichiers (ici le
+          fichier \lin{etacentauri.jpg}).
+        \end{column}
+      \end{columns}
+      \begin{columns}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 {\color{solarizedGreen}al}debaran.jpg
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            {\color{solarizedGreen}al}phacentauri.gif
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            etacentauri.jpg.  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                final}}.  }
+        \end{column}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 etacentauri.jpg .  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                final}}.  .3 {\color{solarizedGreen}aldebaran.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  .3
+            {\color{solarizedGreen}alphacentauri.gif}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  }
+        \end{column}
+      \end{columns}
+    }
+  \end{block}
+  \begin{block}{Utilisation double avec la commande \lin{mv}}
+    \scriptsize{
+      \begin{columns}
+        \begin{column}{6cm}
+          \begin{center}
+            \mpromptS{%
+              \promptS{mv *centauri* JPG/}{} }
+          \end{center}
+        \end{column}
+        \begin{column}{6cm}
+          Ici, le chemin \lin{*centauri*} pointe tous les fichiers du
+          répertoire courant dont le nom contient la chaîne de
+          caractères \lin{centauri}. Il pointe donc les fichiers
+          \lin{alphacentauri.gif} et \lin{etacentauri.jpg} et exclue les
+          autres fichiers (ici le fichier \lin{aldebaran.jpg}).
+        \end{column}
+      \end{columns}
+      \begin{columns}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 aldebaran.jpg .  .2
+            alpha{\color{solarizedGreen}centauri}.gif
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            eta{\color{solarizedGreen}centauri}.jpg
+            \DTfcomment{{\color{solarizedGreen}Fichier ciblé}}.  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                Final}}.  }
+        \end{column}
+        \begin{column}{6cm}
+          \dirtree{%
+            .1
+            \DTd{{\color{solarizedRed}chez\_moi}}\DTfcomment{{\color{solarizedRed}Répertoire
+                Courant}}.  .2 aldebaran.jpg .  .2
+            \DTd{{\color{solarizedBlue}Images}}\DTfcomment{{\color{solarizedBlue}Répertoire
+                final}}.  .3 {\color{solarizedGreen}alphacentauri.gif}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  .3
+            {\color{solarizedGreen}etcentauri.jpg}
+            \DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.  }
+        \end{column}
+      \end{columns}
+    }
+  \end{block}
+\end{frame}
+\begin{frame}{Métacaractère et chemins ciblés}
+  \begin{block}{Exemple plus complexe et Détails de l'interprétation}
+    \begin{itemize}
+    \item Le cararctère \lin{*} est développé lors de l'interprétation.
+    \end{itemize}
+  \end{block}
+  \begin{center}
+    \includegraphics[width=12cm]{img/s02/star_met_mv_interp.jpg}
+  \end{center}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Interprétation de l'étoile}
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+    \item Quelle commande permet la création d'un répertoire nommé
+      \texttt{JPG}?
+    \item Quelle commande permet la création "simultanée" de deux
+      répertoires nommés \texttt{GIF} et \texttt{PNG}?
+    \item Quelle commande permet de déplacer depuis le répertoire
+      \texttt{images} tous les fichiers présentant l'extension
+      \texttt{jpg} dans le répertoire \texttt{JPG} nouvellement créé?
+    \item Quelle commande permet de copier depuis le répertoire
+      \texttt{images} tous les fichiers présentant l'extension
+      \texttt{png} dans le répertoire \texttt{PNG} nouvellement créé?
+    \item Définissez le répertoire \texttt{GIF} comme votre répertoire
+      courant. Quelle commande permet de déplacer les fichiers du
+      répertoire \texttt{images} dont l'extension est \texttt{gif} dans
+      le répertoire \texttt{GIF}?
+    \item Quel est le résultat de la séquence de commandes suivante?:
+\begin{verbatim}
+ cd ..
+ rm images
+\end{verbatim}
+    \item Comment modifier la dernière commande pour supprimer le
+      répertoire \texttt{images/}? Comment modifier la commande pour
+      éviter les invites de confirmation?
+    \item Quelle commande permet de copier le répertoire \texttt{GIF} et
+      son contenu dans un répertoire nommé \verb|images_GIF|?
+    \item Quelle est la fifférence entre les deux commandes suivantes:
+\begin{verbatim}
+      cd ~
+      cd /home/usager/votre_identifiant/
+\end{verbatim}
+    \item Donnez une commande utilisant le chemin absolu du répertoire
+      \verb|Intro_systeme| permettant de réaliser un copie nommée
+      \verb|Intro_Systeme_BackUp| de ce répertoire, dans votre
+      répertoire personnel.  \setcounter{cnti}{\value{enumi}}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}

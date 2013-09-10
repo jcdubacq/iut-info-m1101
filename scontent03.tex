@@ -50,7 +50,6 @@
     \end{column}
   \end{columns}
 \end{frame}
-
 \begin{frame}{Fichiers sources \textrightarrow Exécutable
     \textrightarrow Processus}
 
@@ -70,8 +69,8 @@
         r=3.0;\\
         x=0.0;\\
         y=7.1;\\
-        cercle([0.,0.],r)\\
-        segment([0.,0.],[x,y])}
+        cercle(0,0,,r)\\
+        segment(0,0,x,y)}
     \end{column}
     \begin{column}{3.8cm}
       \begin{block}{L'exécutable}
@@ -104,11 +103,38 @@
       \includegraphics[width=3.5cm]{img/s03/fichier_1_5.jpg}
     \end{column}
   \end{columns}
-	
 \end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Préparation}
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+    \item Vérifiez que votre répertoire courant est bien
+      \verb|TP_2|. Analysez l'affichage produit par la commande ls
+      suivie des options \texttt{-lh}. Vous pourrez comparer les
+      affichages obtenus par les commandes \texttt{ls -l} et \texttt{ls
+        -lh} pour comprendre l'effet de l'option \texttt{-h}. Vous
+      pourrez aussi rechercher cette information dans les pages de man.
+    \item Analysez l'arborescence créée lors de l'extraction des données
+      de l'archive au moyen de la commande \texttt{ls}. Vous dessinerez
+      cette arborescence.
+    \item Après vous être placé dans le répertoire créé lors de
+      l'extraction de l'archive (donnees), quelle commande permet
+      d'identifier le plus gros fichier (taille mémoire). Identifiez-le.
+    \item Quelles commandes vous permettent d'afficher le contenu des
+      fichiers texte \verb|command_line.txt| et \texttt{0readme}? Quels
+      sont leurs contenus?
+    \item Analysez le résulat de l'évaluation des commandes suivantes:
+\begin{verbatim}
+ file 0readme
+ file commande_line.txt
+ file images/solar.png
+\end{verbatim}
+    \item Quelle est la fonction de la commande \texttt{file}? Parcourez
+      les pages de manuel de cette commande.
+      \setcounter{cnti}{\value{enumi}}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
 
-
-		%%%%%%%%%%%%%%
 \subsection{Processus dans un système multitâches et mutli-utilisateurs}
 \begin{frame}{Identification des processus par le système
     d'exploitation}
@@ -143,8 +169,6 @@
     besoin de pouvoir identifier chaque processus.
   \end{alertblock}
 \end{frame}
-
-		%%%%%%%%%%%%%%
 \begin{frame}{PID et PPID}
   \begin{block}{PID - \textbf{P}rocess \textbf{ID}entifier}
     \begin{itemize}
@@ -175,7 +199,33 @@
     \end{itemize}
   \end{block}
 \end{frame}
-		%%%%%%%%%%%%%%
+
+\begin{exercice}
+  \begin{exercicelet}{Racourcis clavier et astuces en ligne de commande}
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+      \setcounter{cnti}{\value{enumi}}
+    \item Tapez les 2 caractères \texttt{sl} puis pressez la touche \Tab
+      (Tab). Que se passe-t-il?
+    \item Tapez les 3 caractères \texttt{sle} puis pressez la touche
+      \Tab. Que se passe-t-il?
+    \item À la suite de l'affichage précédent tapez la combinaison de
+      touches \Ctrl\keystroke{A}. Que se passe-t-il?
+    \item Que fait la commande \texttt{man sleep}? Que pouvez-vous dire
+      de la commande \texttt{sleep}?
+    \item Exécutez la commande \texttt{sleep 32000000}. Que se
+      passe-t-il si vous tapez la combinaison de touches
+      \Ctrl\keystroke{C}?
+    \item Quelle action produit la pression de la flèche \UArrow sur
+      votre clavier?
+    \item Quelle est l'action produite par la pression de la combinaison
+      de touches \Ctrl\keystroke{U} après avoir tapé quelques lettres?
+      Par la combinaison de touche \Ctrl\keystroke{L}?
+    \item Quelle est l'action produite en tapant ls\Spacebar\Tab (le
+      caractère \Spacebar signifie la présence d'un espace)?
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+
 \subsection{Gestion de la mémoire vive}
 \begin{frame}{Gestion de la mémoire vive}
   \begin{columns}
@@ -264,7 +314,6 @@
   \end{block}
 \end{frame}
 
-		%%%%%%%%%%%%%%
 \begin{frame}{Libération de la ligne de commande}
   Deux façons possibles de lancer une instruction en tâche de fond:
   \begin{columns}
@@ -291,15 +340,15 @@
         \begin{itemize}
         \item Si une tâche déjà lancée occupe la ligne de commande, il
           est possible de suspendre son exécution en pressant la
-          combinaison de touches \Ctrl+\keystroke{z}. La tâche est alors
+          combinaison de touches \Ctrl\keystroke{Z}. La tâche est alors
           interrompue et on retrouve un nouveau prompt.
         \item Il est possible de relancer le processus en tâche de fond
           au moyen de la commande \lin{bg}.
         \end{itemize}
         \begin{center}
           \scriptsize{ \mpromptS{
-              \promptS{gedit}{\^{}Z\\$\left[1\right]$+ Stopped gedit}
-              \promptS{bg}{$\left[1\right]$+ gedit \&}
+              \promptS{gedit}{\^{}Z\\\string[1\string]\string$+ Stopped
+                gedit} \promptS{bg}{\string[1\string]\string$+ gedit \&}
               \promptS{\cursor}{} } }
         \end{center}
       \end{block}
@@ -307,3 +356,57 @@
   \end{columns}
 \end{frame}
 
+\begin{exercice}
+  \begin{exercicelet}{Gestion des processus}
+    Afin d'illustrer la gestion des processus nous allons utiliser la
+    commande \texttt{sleep} pour simuler l'exécution de programmes dont
+    l'exécution n'est pas immédiate. Pour se rappeler de son
+    fonctionnement vous pouvez utiliser la commande man.
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+      \setcounter{cnti}{\value{enumi}}
+    \item Évaluez l'instruction \verb|sleep 1000| puis tapez
+      \Ctrl\keystroke{C}. Que se passe-t-il?
+    \item Évaluez l'instruction \verb|sleep 1000 &| (n'oubliez pas le
+      caractère \verb|&|). Que se passe-t-il?
+    \item La commande ps permet d'afficher la liste de processus qui
+      s'exécutent sur votre ordinateur. Un processus s'exécutant sous
+      Linux est identifié par un numéro de processus, et par un
+      propriétaire (celui qui a lancé le processus). Identifiez ces deux
+      données lors de l'appel des commandes suivantes, donnez un
+      explication à la différence des affichages (utilisez le man si
+      nécessaire):
+\begin{verbatim}
+ps
+ps -ef
+\end{verbatim}
+    \item Quel est le numéro de processus associé à la commande
+      \verb|sleep 1000 &|?
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}
+\begin{exercice}
+  \begin{exercicelet}{Gestion des processus (suite)}
+    \begin{enumerate}\setcounter{enumi}{\value{cnti}}
+      \setcounter{cnti}{\value{enumi}}
+    \item La commande kill permet de «~tuer~» (supprimer) un
+      processus. Sa syntaxe d'utilisation est la suivante: \texttt{kill
+        PID} où PID (Process ID) doit être remplacé par le numéro du
+      processus à supprimer.  \setcounter{cnti}{\value{enumi}}
+    \item Quelle commande permet de détruire le processus associé à
+      la commande \verb|sleep 1000 &|?
+    \item Tapez la commande \texttt{gedit} dans le terminal. Quel
+      est l'effet sur la ligne de commande? Pouvez-vous saisir de
+      nouvelle commandes?
+    \item Après avoir lancé \texttt{gedit} (celui-ci étant en cours
+      d'exécution), que se passe-t-il si on tape \Ctrl\keystroke{Z} dans
+      le terminal qui a lancé \texttt{gedit}? Quel est l'effet sur le programme
+      gedit (utilisez \texttt{ps} pour suivre l'état des processus)? Que se
+      passe-t-il si vous tapez \texttt{bg}?
+    \item Que fait la commande \texttt{top}?
+    \item Exécutez la command \texttt{ps -ef f}. Examinez comment est
+      construite la \emph{forêt} de processus. Repérez comment sont
+      agencés les processus qui gèrent vos terminaux entre eux.
+      \setcounter{cnti}{\value{enumi}}
+    \end{enumerate}
+  \end{exercicelet}
+\end{exercice}

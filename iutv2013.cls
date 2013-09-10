@@ -1,3 +1,5 @@
+\newcounter{cnti}
+\setcounter{cnti}{0}
 \newif\ifpoly\polyfalse
 \newif\ifexo\exofalse
 \newif\ifprof\proffalse

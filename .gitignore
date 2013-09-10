@@ -220,6 +220,7 @@
 /sys02.pdf
 /sys02.snm
 /sys02.toc
+/sys02.vrb
 # stop automatic section for compile-latex:sys02.tex
 # start automatic section for compile-latex:sys02.tex/spoly02
 /.compile-latex/spoly02
@@ -231,4 +232,29 @@
 /spoly02.pdf
 /spoly02.snm
 /spoly02.toc
+/spoly02.vrb
 # stop automatic section for compile-latex:sys02.tex/spoly02
+# start automatic section for compile-latex:sys03.tex
+/.compile-latex/sys03
+/sys03.aux
+/sys03.fls
+/sys03.log
+/sys03.nav
+/sys03.out
+/sys03.pdf
+/sys03.snm
+/sys03.toc
+/sys03.vrb
+# stop automatic section for compile-latex:sys03.tex
+# start automatic section for compile-latex:sys03.tex/spoly03
+/.compile-latex/spoly03
+/spoly03.aux
+/spoly03.fls
+/spoly03.log
+/spoly03.nav
+/spoly03.out
+/spoly03.pdf
+/spoly03.snm
+/spoly03.toc
+/spoly03.vrb
+# stop automatic section for compile-latex:sys03.tex/spoly03
