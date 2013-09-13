@@ -85,9 +85,9 @@
 \pgfpageslogicalpageoptions{4}{border code=\pgfstroke}
 \else
 \ifwhitex
-\usecolortheme{solarized}
-\else
 \usecolortheme[dark]{solarized}
+\else
+\usecolortheme{solarized}
 \fi
 \fi
 \AtBeginSection[]{

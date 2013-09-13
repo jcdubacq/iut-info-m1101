@@ -198,6 +198,7 @@
 /sys01.pdf
 /sys01.snm
 /sys01.toc
+/sys01.vrb
 # stop automatic section for compile-latex:sys01.tex
 # start automatic section for compile-latex:sys01.tex/spoly01
 /.compile-latex/spoly01
@@ -209,6 +210,7 @@
 /spoly01.pdf
 /spoly01.snm
 /spoly01.toc
+/spoly01.vrb
 # stop automatic section for compile-latex:sys01.tex/spoly01
 # start automatic section for compile-latex:sys02.tex
 /.compile-latex/sys02
