@@ -1,31 +1,31 @@
-			% Syntaxe d'utilisation
-			\synt{ls}{-l}{<source>}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche le contenu d'un répertoire en format long.
-					\item Le format long donne le nom du propriétaire et son groupe, ainsi que les droits des différentes classes d'utilisateurs sur les fichiers et répertoires.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-						.2 \DTd{public\_html}.
-						.3 index.html.
-						.2 astronomie.txt.
-						}
-				\begin{center}
-				\mprompt{
-					\prompt{ls -l}{%
-						\begin{tabular}{@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r}
-\multicolumn{9}{l}{total 32}\\
-{\color{Green}drwxr-xr-x}&2&{\color{red}santini}&{\color{blue}ensinfo}&4096&20&jui&15:50&public\_html\\
-{\color{Green}-rw-r--r--}&1&{\color{red}santini}&{\color{blue}ensinfo}&25&20&jui&15:49&telluriques.txt
-						\end{tabular}
-					}
-				}
-				\end{center}
-				Ici, le nom de l'utilisateur est \lin{\textcolor{red}{santini}}, nom du groupe est \lin{\textcolor{blue}{ensinfo}} et les droits sont colorés en {\color{Green}vert}.
-			}
+% Syntaxe d'utilisation
+\synt{ls}{-l}{<source>}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche le contenu d'un répertoire en format long.
+  \item Le format long donne le nom du propriétaire et son groupe, ainsi que les droits des différentes classes d'utilisateurs sur les fichiers et répertoires.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{chez\_moi}\DTfcomment{{\color{solarizedRed}Répertoire Courant}}.
+    .2 \DTd{public\_html}.
+    .3 index.html.
+    .3 astronomie.txt.
+  }
+  \begin{center}
+    \mprompt{
+      \prompt{ls -l}{%
+        \begin{tabular}{@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }r@{ }l}
+          \multicolumn{9}{l}{total 32}\\
+          {\color{solarizedGreen}drwxr-xr-x}&2&{\color{solarizedRed}santini}&{\color{solarizedBlue}ensinfo}&4096&20&jui&15:50&public\_html\\%
+          {\color{solarizedGreen}-rw-r-{}-r-{}-}&1&{\color{solarizedRed}santini}&{\color{solarizedBlue}ensinfo}&25&20&jui&15:49&astronomie.txt
+        \end{tabular}
+      }
+    }
+  \end{center}
+  Ici, le nom de l'utilisateur est \lin{\textcolor{solarizedRed}{santini}}, nom du groupe est \lin{\textcolor{solarizedBlue}{ensinfo}} et les droits sont colorés en {\color{solarizedGreen}vert}.
+}

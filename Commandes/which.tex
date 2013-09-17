@@ -1,33 +1,33 @@
-			% Syntaxe d'utilisation
-			\synt{which}{}{nom\_de\_la\_commande}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche le chemin du fichier correspondant à une commande.
-					\item Parcours successivement les répertoires de la variable \lin{\$PATH}. Dès qu'il trouve un fichier correspondant au nom de la commande il renvoie son chemin.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{%
-				\begin{columns}
-					\begin{column}{6cm}
-						\dirtree{%
-						.1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
-						.2 \DTd{bin}.
-						.3 ls\DTfcomment{{\color{Green}Exécutable \#1}}.
-						.3 \dots.
-						.2 \DTd{home}.
-						.3 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-						.4 \DTd{bin}.
-						.5 ls\DTfcomment{{\color{Green}Exécutable \#2}}.
-						}
-					\end{column}
-					\begin{column}{6cm}
-						\mpromptS{
-							\promptS[/home/chez\_mo]{echo \$PATH}{/bin\NoAutoSpaceBeforeFDP:/usr/bin\NoAutoSpaceBeforeFDP:/usr/local/bin\NoAutoSpaceBeforeFDP:/home/chez\_moi/bin}
-							\promptS[/home/chez\_moi]{which ls}{/bin/ls}
-						}
-					\end{column}
-				\end{columns}
-			}
+% Syntaxe d'utilisation
+\synt{which}{}{nom\_de\_la\_commande}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche le chemin du fichier correspondant à une commande.
+  \item Parcours successivement les répertoires de la variable \lin{\$PATH}. Dès qu'il trouve un fichier correspondant au nom de la commande il renvoie son chemin.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{%
+  \begin{columns}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{solarizedRed}Répertoire Racine}}.
+        .2 \DTd{bin}.
+        .3 ls\DTfcomment{{\color{solarizedGreen}Exécutable \#1}}.
+        .3 \dots.
+        .2 \DTd{home}.
+        .3 \DTd{chez\_moi}\DTfcomment{{\color{solarizedRed}Répertoire Courant}}.
+        .4 \DTd{bin}.
+        .5 ls\DTfcomment{{\color{solarizedGreen}Exécutable \#2}}.
+      }
+    \end{column}
+    \begin{column}{6cm}
+      \mpromptS{
+        \promptS[/home/chez\_mo]{echo \$PATH}{/bin\NoAutoSpaceBeforeFDP:/usr/bin\NoAutoSpaceBeforeFDP:/usr/local/bin\NoAutoSpaceBeforeFDP:/home/chez\_moi/bin}
+        \promptS[/home/chez\_moi]{which ls}{/bin/ls}
+      }
+    \end{column}
+  \end{columns}
+}

@@ -1,41 +1,557 @@
-\section{Foo}
-\subsection{Bar}
-\begin{frame}{Frame normale}
-...
+\section{Compléments sur l'arborescence}
+\subsection{Droits sur les fichiers}
+\begin{frame}{Propriété des fichiers}
+  \begin{block}{Identifications des utilisateurs dans un environnement
+      multi-utilisateurs}
+    \begin{enumerate}
+    \item[UID] (\textbf{U}ser \textbf{ID}entifier) numéro unique associé à
+      chaque utilisateur lors de la création de son compte.
+    \item[GID] (\textbf{G}roup \textbf{ID}entifier) numéro unique d'un groupe
+      d'utilisateurs. Chaque utilisateur peut être associé à un ou plusieurs
+      groupes.
+    \end{enumerate}
+  \end{block}
+  \begin{alertblock}{Utilité}
+    \begin{itemize}
+    \item Chaque fichier (ou répertoire) et chaque processus du système est
+      associé à un utilisateur: cet utilisateur est le propriétaire du fichier
+      (ou répertoire) ou celui qui a lancé le processus.
+    \item Être propriétaire d'un fichier ou d'un processus confère des droits
+      sur ceux-ci.
+    \end{itemize}
+  \end{alertblock}
+  \begin{block}{Connaitre l'identité du propriétaire d'un processus ou d'un
+      fichier}
+    \begin{itemize}
+    \item Les commandes \lin{top} et \lin{ps} affichent le nom du propriétaire
+      des processus.
+    \item La commande \lin{ls} avec l'option \lin{-l} affiche le nom et le
+      groupe du propriétaire d'un fichier ou d'un répertoire.
+    \item Les UID et GID sont enregistrés dans le fichier d'administration
+      \lin{/etc/passwd} ou d'autres mécanismes
+    \end{itemize}
+  \end{block}
 \end{frame}
-\begin{frame}{Une autre}
-...
+
+\manpage{ls(ter)}
+\begin{frame}{Les droits sur les fichiers et répertoires}
+  \begin{block}{3 catégories d'utilisateurs}
+    \begin{center}
+      \begin{tabular}{c|ccc|ccc|ccc}
+        \Huge{-}&\Huge{r}&\Huge{w}&\Huge{x}&\Huge{r}&\Huge{w}&\Huge{x}&\Huge{r}&\Huge{w}&\Huge{x}\\
+        &&&&&&&&&\\
+        Type de&\multicolumn{3}{c|}{Doits du}&\multicolumn{3}{c|}{Doits du}&\multicolumn{3}{c}{Doits des}\\
+        Fichier&\multicolumn{3}{c|}{propriétaire}&\multicolumn{3}{c|}{groupe}&\multicolumn{3}{c}{autres}\\
+        &\multicolumn{3}{c|}{(\textbf{U}ser)}&\multicolumn{3}{c|}{(\textbf{G}roup)}&\multicolumn{3}{c}{(\textbf{O}ther)}\\
+      \end{tabular}
+    \end{center}
+  \end{block}
+  \begin{columns}
+    \begin{column}{3.5cm}
+      \begin{block}{Types de fichiers}
+        \begin{center}
+          \begin{tabular}{ll}
+            \hline
+            &Types\\
+            \hline
+            -&Fichier ordinaire\\
+            d&Répertoire\\
+            l&lien symbolique\\
+            \hline
+          \end{tabular}
+        \end{center}
+      \end{block}
+    \end{column}
+    \begin{column}{8cm}
+      \begin{block}{Droits/Permissions}
+        \begin{center}
+          \begin{tabular}{llll}
+            \hline
+            &&Fichier&Répertoire\\
+            \hline
+            \lin{r}&(\textbf{R}ead)&lire&lister le contenu\\
+            \lin{w}&(\textbf{W}rite)&écrire et modifier&modifier le contenu\\
+            \lin{x}&(e\textbf{X}ecute)&exécution&traverser\\
+            \hline
+          \end{tabular}
+        \end{center}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{block}{Types d'utilisateurs}
+    \begin{center}
+      \begin{tabular}{lll}
+        \hline
+        && Cible\\
+        \hline
+        u&(\textbf{U})ser&Propriétaire du fichier/répertoire\\
+        g&(\textbf{G})roup&Membre du même groupe que le propriétaire\\
+        o&(\textbf{O})ther&Tous les autres\\
+        a&(\textbf{A})ll&Tous les utilisateurs (réunion de \lin{'u'}, \lin{'g'} et \lin{'o'}).\\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
 \end{frame}
-\begin{frame}{Encore une}
-...
-\end{frame}
+
+\manpage{chmod} \manpage{chmod(bis)}
+
 \begin{exercice}
-  \begin{exercicelet}{Un exo court}
-    Du texte
+  \begin{exercicelet}{Identification et droits}
     \begin{questions}
-    \item Une question
-      \begin{correction}
-        Une correction
-      \end{correction}
-    \item Autre sous-question
-    \end{questions}
-  \end{exercicelet}
-  \begin{exercicelet}{Un autre exo court}
-    \begin{questions}
-    \item Une question
-    \item Autre sous-question
+    \item Au moyen de la commande \lin{id}, affichez votre UID et votre GID?
+      Comparez-le avec celui de votre voisin de table. Qu'en concluez-vous?
+      Comparez-les avec celui de l'utilisateur \lin{root}. Qu'en
+      concluez-vous?
+    \item Quels sont vos droits sur le répertoire racine \lin{/}, \lin{root},
+      \lin{/tmp}, sur votre répertoire \lin{\~\//}, et celui de votre voisin
+      de table \lin{\~\//../login\_voisin}.
+    \item Pouvez-vous lire les données contenue dans le répertoire de votre
+      voisin. Quelle commande permettrait de le faire? Qui doit lancer la
+      commande?
+    \item Donnez les commandes octale et alphanumérique de changement de
+      droits permettant:
+      \begin{itemize}
+      \item d'autoriser aux membres de votre groupe et aux "autres" l'accès en
+        lecture aux images du répertoire \lin{donnees\_tdtp2/images}.
+      \item de donnez les droits d'écriture aux membres de votre groupe sur le
+        fichier \lin{donnees\_tdtp2/command\_line.txt}
+      \item de vous (le propriétaire) retirer toute possibilité de supprimer
+        le fichier \lin{donnees\_tdtp2/0readme}
+      \end{itemize}
+    \item Imaginez comment donner à votre voisin un accès sous votre
+      répertoire personnel à un répertoire dans lequel il aurait les droits
+      d'écriture sur un fichier spécifique, que vous ne pourriez vous que lire
+      (mais pas modifier). Il ne doit pas pouvoir créer un autre fichier chez
+      vous. Comment faites vous pour effacer ce fichier ?
     \end{questions}
   \end{exercicelet}
 \end{exercice}
 \begin{exercice}
-  \begin{exercicelet}{Un exo long}
+  \begin{exercicelet}{Remise en état}
+    Après toutes les modifications pouvant impliquer votre répertoire
+    personnel, n'oubliez pas \lin{chmod 711 ~} pour remettre les modes de
+    votre répertoire à leur état d'origine.
+  \end{exercicelet}
+\end{exercice}
+\subsection{Arborescence du système Linux}
+\begin{frame}{Les principaux répertoires et leur contenu}
+  \begin{block}{Une structure plus ou moins normalisée}
+    \begin{itemize}
+    \item Les fichiers nécessaires au fonctionnement du système sont organisés
+      en arborescence,
+    \item Cette arborescence est commune à presque toutes les distribution
+      linux,
+    \item Cette organisation rationalisée facilite l'installation de nouveaux
+      programmes qui savent où trouver les fichiers dont ils peuvent avoir
+      besoin.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Une organisation qui permet un cloisonnement}
+    \begin{itemize}
+    \item Les fichiers et les répertoires systèmes sont protégés par des
+      restrictions de droits,
+    \item De nombreux fichiers ne peuvent être modifiés par un utilisateur
+      «~normal~»,
+    \item Seul l'utilisateur \lin{root}, ou les utilisateur faisant partie du
+      groupe \lin{admin} peuvent avoir la permission de modifier certains
+      fichiers.
+    \item Il s'agit d'une protection. Pour réaliser une action susceptible
+      d'affecter le comportement du système il faut montrer "patte blanche" et
+      prendre conscience de ce que l'on fait. Entrer le mot de passe
+      \lin{root} doit être un signal d'alerte.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Les principaux répertoires et leur contenu}
+  \begin{center}
+    \begin{tabular}{ll}
+      \hline
+      Répertoire&Contenu\\[3pt]
+      \hline
+      /		&Répertoire racine: Toutes les données accessibles par le système\\[3pt]
+      /bin		&Binaires exécutables des commandes de bases (cd, ls, mkdir, \dots)\\[3pt]
+      /dev		&Fichiers spéciaux correspondants aux périphériques\\[3pt]
+      /etc		&Fichiers de configuration (profile, passwd,fstab... )\\[3pt]
+      /home	&Les répertoires personnels des utilisateurs\\[3pt]
+      /lib		&Librairies partagées et modules du noyeau\\[3pt]
+      /mnt		&Points de montage des périphériques\\[3pt]
+      /root		&Répertoire personnel de l'administrateur\\[3pt]
+      /tmp		&Données temporaires\\[3pt]
+      /usr		&Ressources accessibles par les utilisateurs\\[3pt]
+      /var		&Fichiers de log ou fichiers changeant fréquemment\\[3pt]
+      \hline
+    \end{tabular}
+  \end{center}
+  L'essentiel est synthétisé dans
+  \url{https://fr.wikipedia.org/wiki/Filesystem_Hierarchy_Standard}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Hiérarchie du système}
+    \begin{itemize}
+    \item[\ddialoginformation] Astuce: si la sortie d'une commande est trop
+      longue, on peut ajouter \verb/|less/ à la fin de la ligne pour
+      l'afficher par morceaux. Ceci vous sera expliqué dans quelques
+      séances...
+    \end{itemize}
     \begin{questions}
-    \item Une question
-    \item ...
+    \item Identifiez le propriétaire, le groupe et les différents droits des
+      fichiers contenus dans le répertoire \lin{/bin}? Quels sont vos droits
+      sur ces fichiers?
+    \item Ces fichiers on le droit \lin{x}. Que pouvez-vous en conclure?
+    \item A votre avis, que se passe-t-il en fait lorsque vous saisissez une
+      commande telle que \lin{ls} ?
+    \end{questions}
+  \end{exercicelet}
+  \begin{exercicelet}{FHS}
+    \begin{questions}
+    \item Identifiez, à l'aide de la FHS, la fonction de
+      \lin{/usr/include}. Confirmez votre hypothèse en regardant quelques
+      fichiers.
     \end{questions}
   \end{exercicelet}
 \end{exercice}
-\subsection{Baz}
+
+\subsection{Interprétation ou Compilation}
+\begin{frame}{Langages Compilés Vs Langages Interprétés}
+  \begin{block}{Caractéristiques des Langages
+      \only<1|handout:1>{Compilés}\only<2|handout:2>{Interprétes}}
+    \only<1|handout:1>{%
+      \begin{itemize}
+      \item L'ensemble du code source est compilé une seule fois avant
+        l'exécution en instructions machine (contenues dans un fichier:
+        exécutable).
+      \item Le compilateur n'est pas nécessaire lors de l'exécution.
+      \item Le compilateur est spécifique à la machine.
+      \item L'exécutable (code compilé) est spécifique à la machine.
+      \end{itemize}
+    } \only<2|handout:2>{%
+      \begin{itemize}
+      \item Les instructions du code source sont converties en instructions
+        machine lors de l'exécution du programme
+      \item L'interpréteur est nécessaire lors de l'exécution.
+      \item L'interpréteur est spécifique à la machine,
+      \item L'exécutable (le code source) n'est pas spécifique à la machine.
+      \end{itemize}
+    }
+  \end{block}
+  \begin{columns}
+    \begin{column}{5.5cm}
+      \begin{block}{Inconvenients}
+        \only<1|handout:1>{%
+          \begin{itemize}
+          \item Il faut recompiler pour prendre en compte une modification du
+            code.
+          \item L'exécutable n'est pas portable sur d'autres machines.
+          \end{itemize}
+        } \only<2|handout:2>{%
+          \begin{itemize}
+          \item Moins rapide.
+          \item Plusieurs fichiers (et librairies) servent à l'exécution.
+          \end{itemize}
+        }
+      \end{block}
+    \end{column}
+    \begin{column}{5.5cm}
+      \begin{block}{Avantages}
+        \only<1|handout:1>{%
+          \begin{itemize}
+          \item Plus rapide (spécifique à la machine qui exécute les
+            instructions).
+          \item L'ensemble des instructions sont regroupées dans un seul
+            fichier.
+          \end{itemize}
+        } \only<2|handout:2>{%
+          \begin{itemize}
+          \item Modifications du code source immédiatement prises en compte
+            lors de la réexécution.
+          \item Le code est portable sur d'autres machine
+          \end{itemize}
+        }
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{block}{Exemples de langages \only<1>{Compilés}\only<2>{Interprétés}}
+    \only<1|handout:1>{%
+      \begin{itemize}
+      \item C, C++, ADA, Pascal, Fortran, Cobol,
+      \end{itemize}
+    } \only<2|handout:2>{%
+      \begin{itemize}
+      \item Java, Python, Bash, Lisp, PHP, Prolog, Perl, Javascript
+      \end{itemize}
+    }
+  \end{block}
+\end{frame}
+
+\subsection{Exécution des commandes}
+\begin{frame}{Lancer un programme/une commande}
+  \begin{block}{Cas général}
+    \begin{itemize}
+    \item Pour exécuter un programme il suffit saisir sur la ligne de commande
+      le chemin menant au fichier contenant les instructions,
+    \item Si le fichier présente la permission \lin{"X"} pour exécutable, les
+      instructions qu'il contient sont exécutées.
+    \end{itemize}
+  \end{block}
+  \begin{columns}
+    \begin{column}{.45\textwidth}
+      \begin{block}{Script {bash} exécutable}
+        \begin{itemize}
+        \item Un script \lin{bash} est un fichier texte contenant des
+          instructions \lin{bash}
+        \item La première ligne contient le chemin menant à l'exécutable de
+          l'interpréter précédé des caractère \lin{\#!} (par exemple \lin{\#!
+            /bin/bash}),
+        \item La seconde ligne est souvent vide,
+        \item Les lignes suivantes comportent des instructions.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      
+      \fileform[.8\textwidth]{test\_bash.sh}{%
+        \#!/bin/bash\\ \\instruction 1 ;\\instruction 2 ;\\...\\instruction N
+        ; }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{exercice}
+  \begin{exercicelet}{Lancer un programme/une commande}
+    \begin{questions}
+    \item Après avoir créé un répertoire \lin{bin} dans votre répertoire
+      personnel, définissez créez dans ce répertoire un script nommé
+      \lin{listintro.sh}. Ce script comporte une unique commande permettant de
+      lister le contenu du répertoire de travail
+      \lin{Intro\_Systeme} dans lequel vous avez l'habitude de travailler.
+    \item Attribuez les droits d'exécution sur ce fichier. Il est normalement
+      devenu un exécutable.
+    \item Quelle commande permet d'exécuter ce script si le répertoire courant
+      es le répertoire \lin{\~\//bin} qui le contient? Idem, si le répertoire
+      courant est votre répertoire personnel. Vous vérifierez que le script se
+      comporte comme attendu (il vous place dans une autre répertoire).
+    \item la commande \lin{echo} permet d'afficher une message à
+      l'écran. Modifiez le script pour qu'il avertisse l'utilisateur du
+      changement de répertoire par un message explicite.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\manpage{echo}
+
+\begin{frame}{Lancer un programme/une commande}
+  \begin{block}{Cas général}
+    \begin{itemize}
+    \item Pour exécuter un programme il suffit saisir sur la ligne de commande
+      le chemin menant au fichier contenant les instructions,
+    \item Si le fichier présente la permission \lin{"X"} pour exécutable, les
+      instructions qu'il contient sont exécutées.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Cas particulier : les commandes}
+    \begin{itemize}
+    \item Une commande (\lin{ls}, \lin{gedit}, \lin{firefox}, \dots) est un
+      programme comme un autre,
+    \item Les instructions qui doivent être évaluées sont écrites dans un
+      fichier (\lin{/bin/ls}, \lin{/usr/bin/python},
+      \lin{/usr/share/bin/firefox}, \dots),
+    \item Pourtant \dots
+    \end{itemize}
+  \end{block}
+  \begin{alertblock}{Des chemins qui mènent nulle part !!!}
+    \begin{itemize}
+    \item les noms des commandes (\lin{ls}, \lin{gedit}, \lin{firefox} \dots)
+      sont toujours saisies comme des chemins relatifs (pas de \lin{/bin/...}
+      devant le nom du fichier), alors que le fichier de commande n'est pas
+      dans le répertoire courant !\dots
+    \item On donne donc un chemin vers un fichier qui n'existe pas \dots
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\subsection{Chemins par défaut et variable d'environnement}
+\begin{frame}{Chemins par défaut et variable d'environnement}
+  \begin{alertblock}{Lorsqu'on donne une commande au terminal, on ne spécifie
+      pas le chemin vers le fichier qui contient l'exécutable, on donne juste
+      le nom du fichier\dots}
+  \end{alertblock}
+  \begin{center}
+    \mprompt{ \prompt{ls}{%
+        Mes\_Documents/ Etoiles/ astronomie.txt cv.pdf } \prompt{\cursor}{} }
+  \end{center}
+  \begin{alertblock}{\dots alors, comment le système trouve-t-il le fichier a
+      exécuter correspondant à la commande ?\dots}
+  \end{alertblock}
+  \begin{block}{Un mécanisme propre aux commandes}
+    \begin{itemize}
+    \item Le premier mot tapé sur la ligne de commande est toujours
+      interprétée comme le nom d'un fichier exécutable,
+    \item Le système recherche donc dans une liste de répertoires contenant
+      les exécutables si un fichier porte le nom de cette commande,
+    \item Dès qu'il trouve dans ces répertoires un tel fichier, il l'exécute
+      \dots
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Chemins par défaut et variable d'environnement}
+  \begin{block}{Les variables d'environnement}
+    \begin{itemize}
+    \item Comme les variables d'un script, les variables d'environnement sont
+      associées à une valeur,
+    \item De telles variables sont définies par le système d'exploitation pour
+      son fonctionnement, ce sont les variables d'environnement,
+    \item ces variables peuvent être utilisées par les programmes.
+    \end{itemize}
+  \end{block}
+  \begin{block}{La variable d'environnement \lin{\$PATH}}
+    \begin{itemize}
+    \item Sa valeur est une liste de répertoires séparés par le signe \lin{':'}\\
+      \begin{center}
+        \linbox{PATH=repertoire1\NoAutoSpaceBeforeFDP:repertoire2\NoAutoSpaceBeforeFDP:...\NoAutoSpaceBeforeFDP:RepertoireN}
+      \end{center}
+    \item Lors de chaque appel de commande, l'interpréteur parcourt cette
+      liste dans l'ordre à la recherche d'un fichier portant le nom de la
+      commande,
+    \item Dès qu'il rencontre un tel fichier, il met fin à sa recherche et
+      exécute le fichier.
+    \end{itemize}
+  \end{block}
+  \begin{alertblock}{Rôle de \lin{\$PATH}}
+    \begin{itemize}
+    \item[\textrightarrow] Il s'agit d'une liste de répertoires que
+      l'interpréteur parcours automatiquement et séquentiellement (par défaut)
+      si aucun chemin n'est donné pour trouver le fichier exécutable.
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+%%%%%%%%%%%%%% 
+\manpage{which}
+%%%%%%%%%%%%%% 
+\begin{frame}{Chemins par défaut et variable d'environnement}
+  \begin{block}{La commande \lin{export} pour modifer la variable
+      \lin{\$PATH}}
+    \begin{itemize}
+    \item Définir la variable \lin{\$PATH}
+      \begin{center}
+        \small{ \mprompt{ \prompt[\~\//]{export
+              PATH=monDir1\NoAutoSpaceBeforeFDP:monDir2}{} } }
+      \end{center}
+    \item Ajouter un répertoire à \lin{\$PATH}
+      \begin{center}
+        \small{ \mprompt{ \prompt[\~\//]{export
+              PATH=\$PATH\NoAutoSpaceBeforeFDP:monDir2}{} } }
+      \end{center}
+    \end{itemize}
+  \end{block}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Environnement}
+    \begin{questions}
+    \item Au moyen de la commande \lin{env}, donnez la liste des répertoires
+      contenus dans \lin{\$PATH}.
+    \item Au moyen de la commande \lin{which}, afficher la localisation des
+      exécutables correspondants aux commandes \lin{mv}, \lin{cd}, \lin{man},
+      \lin{cat}, \lin{firefox}, \lin{acroread}.
+    \item Vérifiez que ces répertoires font partie de la liste contenue dans
+      la variable \lin{\$PATH}? Que se passerait-il si ce n'était pas le cas?
+    \item Ajouter le répertoire \lin{\~\//bin} à la liste des répertoires
+      \lin{\$PATH}.
+    \item Maintenant que \lin{\~\//bin} est parcoure par défaut lors de
+      l'appel d'une commande, comment invoque-t-on désormais l'exécution du
+      script \lin{listintro.sh}? Vérifiez le comportement attendu.
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\subsection{Configuration des variables d'environnement}
+\begin{frame}{Fichiers de configuration}
+  \begin{block}{Fichiers systèmes et utilisateurs}
+    \begin{itemize}
+    \item Les variables d'environnement (et d'autres variables de
+      configuration) sont définis dans divers fichiers.
+    \item On distingue les fichiers système qui définissent des comportements
+      pour tous les utilisateurs (stockés dans le répertoire \lin{/etc/}) des
+      fichiers de configuration propres à un utilisateur (stockés dans le
+      répertoire personnel)
+    \end{itemize}
+  \end{block}
+  \begin{center}
+    \begin{tabular}{llll}
+      \hline
+      fichier&Propriétaire&Applicable à& Évalué lors\\
+      \hline
+      \lin{/etc/profile}&\lin{root}&Tous&Au début de chaque shell de login\\
+      \lin{/home/chez\_moi/.profile}&\lin{utilisateur}&utilisateur&Au début de chaque shell de loginl\\
+      \lin{/etc/bashrc}&\lin{root}&Tous&Au début de chaque shell\\
+      \lin{/home/chez\_moi/.bashrc}&\lin{utilisateur}& utilisateur&Au début de chaque shell\\
+      \hline
+    \end{tabular}
+  \end{center}
+  \begin{block}{Configurer son environnement}
+    \begin{itemize}
+    \item Chaque utilisateur peut redéfinir ses variables d'environnement,
+    \item Pour cela il peut modifier le contenu des fichiers \lin{.bashrc} et
+      \lin{.profile} dans son répertoire personnel,
+    \item Ce sont des fichiers cachés (leur nom commence par un point:
+      \lin{.}). Pour voir si ils existent il faut utiliser l'option \lin{-a}
+      de la commende \lin{ls}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%%%%%%%%%%%%%% 
+\begin{frame}{Fichiers de configuration}
+  \begin{block}{Contenu d'un fichier \lin{.bashrc}}
+    \begin{itemize}
+    \item Redéfinition des variables d'environnement,
+    \item Définition des alias,
+    \item Définition des fonctions,
+    \item et de façon générale toutes les instructions que l'on souhaite
+      évaluer lors de l'ouverture d'un nouveau shell.
+    \end{itemize}
+  \end{block}
+  \begin{center}
+    \fileform[6cm]{.bashrc}{\# Mes aliases\\
+      alias ll='ls -l'\\
+      alias df='df -h'\\
+      alias rm='rm -i'\\
+      \# Mes variables\\
+      PATH=\$PATH\NoAutoSpaceBeforeFDP:\$HOME/bin }
+  \end{center}
+  \begin{alertblock}{Autres variables d'environnement}
+    \begin{description}
+    \item[\lin{\$HOME}] le chemin du répertoire personnel de l'utilisateur,
+    \item[\lin{\$PWD}] le chemin du répertoire courant.
+    \end{description}
+  \end{alertblock}
+
+\end{frame}
+
+\manpage{alias}
+
+\begin{exercice}
+  \begin{exercicelet}{Chemins par défaut et variable d'environnement}
+    \begin{questions}
+    \item Copiez l'exécutable de la commande \lin{ls} dans le répertoire
+      \lin{\~\//bin}. Deux versions de la même commande existe dans 2
+      répertoires différents listés sans \lin{\$PATH}. Quelle commande est
+      exécutée? Comment en être sur et pourquoi?
+    \item Si vous modifiez la variable \lin{\$PATH}, de la façon suivante,
+      quelle commande est alors exécutée?
+      \begin{center}
+        \small{ \mprompt{ \prompt[\~\//]{export
+              PATH=monDir2\NoAutoSpaceBeforeFDP:\$PATH}{} } }
+      \end{center}
+    \item Modifiez/créez un fichier \lin{\~\//.bashrc} pour ajouter le
+      répertoire \lin{\~\//bin} de façon stable à votre variable \lin{\$PATH}.
+    \item ajoutez dans le même fichier les alias qui vous paraissent
+      intéressants.
+    \end{questions}
+  \end{exercicelet}    
+\end{exercice}
 
 % Local Variables:
 % TeX-master: "sys04"

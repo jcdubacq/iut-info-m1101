@@ -311,111 +311,115 @@
   \begin{itemize}
   \item Il est possible d'interpréter les deux valeurs binaires comme
     représentant respectivement \emph{vrai} (1) ou \emph{faux} (0).
-  \item On peut définir des opérations correspondantes à la conjonction
-    (et), la disjonction (ou) et la négation (opposé de).
-  \item[\dialogerror] Ce ne sont pas des opérations arithmétiques
-    classiques.
-  \item[\dialogsystem] $c=ab$ ou $c=a\wedge b$ pour le \emph{et} (en C: $a=b\&c$)
-  \item[\dialogsystem] $c=a+b$ ou $c=a\wedge b$ pour le \emph{ou} (en C: $a=b|c$)
-  \item[\dialogsystem] $b=\overline{a}$ ou $b=\neg a$ pour le \emph{non} (en C: $a=\sim c$)
+  \item On peut définir des opérations correspondantes à la conjonction (et),
+    la disjonction (ou) et la négation (opposé de).
+  \item[\dialogerror] Ce ne sont pas des opérations arithmétiques classiques.
+  \item[\dialogsystem] $c=ab$ ou $c=a\wedge b$ pour le \emph{et} (en C:
+    $a=b\&c$)
+  \item[\dialogsystem] $c=a+b$ ou $c=a\vee b$ pour le \emph{ou} (en C:
+    $a=b|c$)
+  \item[\dialogsystem] $b=\overline{a}$ ou $b=\neg a$ pour le \emph{non} (en
+    C: $a=\sim c$)
   \end{itemize}
   \begin{example}[chemin sous UNIX]
     Soit $\mathcal A(p)$ la propriété « $p$ est un chemin existant » et
-    $\mathcal B(p)$ la propriété « $p$ est un chemin qui désigne un
-    répertoire ». Si on suppose qu'il n'y a que deux type d'objets
-    (répertoires et fichiers), la propriété $\mathcal C(p)$ « $p$ est un
-    chemin qui désigne un fichier » s'exprime par $\mathcal
-    A(p)\overline{\mathcal B(p)}$.
+    $\mathcal B(p)$ la propriété « $p$ est un chemin qui désigne un répertoire
+    ». Si on suppose qu'il n'y a que deux type d'objets (répertoires et
+    fichiers), la propriété $\mathcal C(p)$ « $p$ est un chemin qui désigne un
+    fichier » s'exprime par $\mathcal A(p)\overline{\mathcal B(p)}$.
   \end{example}
 \end{frame}
 \begin{frame}{Les opérateurs booléens}{AND et OR}
   \begin{block}{AND}
-    L'opérateur binaire AND, noté $a\times b$, renvoie $1$ si et seulement si ses deux arguments sont égaux à $1$.
+    L'opérateur binaire AND, noté $a\times b$, renvoie $1$ si et seulement si
+    ses deux arguments sont égaux à $1$.
 
-    L'opérateur général AND renvoie $1$ si et seulement si tous ses arguments sont égaux à $1$.
+    L'opérateur général AND renvoie $1$ si et seulement si tous ses arguments
+    sont égaux à $1$.
 
     Ils sont équivalents à la fonction \emph{minimum}.
   \end{block}
   \begin{block}{OR}
-    L'opérateur binaire OR, noté $a+b$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
+    L'opérateur binaire OR, noté $a+b$, renvoie $0$ si et seulement si ses
+    deux arguments sont égaux à $0$.
 
-    L'opérateur général OR renvoie $0$ si et seulement si tous ses arguments sont égaux à $0$.
+    L'opérateur général OR renvoie $0$ si et seulement si tous ses arguments
+    sont égaux à $0$.
 
     Ils sont équivalents à la fonction \emph{maximum}.
   \end{block}
 \end{frame}
-\begin{frame}{Les opérateurs booléens}{XOR et NOT} 
- \begin{block}{XOR}
-    L'opérateur binaire XOR, noté $a\oplus b$, renvoie $1$ si et seulement si ses deux arguments sont différents.
+\begin{frame}{Les opérateurs booléens}{XOR et NOT}
+  \begin{block}{XOR}
+    L'opérateur binaire XOR, noté $a\oplus b$, renvoie $1$ si et seulement si
+    ses deux arguments sont différents.
 
     Ils sont équivalents à la fonction \emph{différent}.
   \end{block}
   \begin{block}{NOT}
-    L'opérateur unaire NOT, noté $\overline{a}$, renvoie $0$ si et seulement si ses deux arguments sont égaux à $0$.
+    L'opérateur unaire NOT, noté $\overline{a}$, renvoie $0$ si et seulement
+    si son argument est égal à $1$.
 
     Il est équivalent à la fonction \emph{complémentation}.
 
     Il y a aussi les opérateurs généraux NOR et NAND qui sont en fait
-    NOT(OR(...)) et NOT(AND(...)). Ils sont rarement implémentés dans
-    les langages de programmation.
+    NOT(OR(...)) et NOT(AND(...)). Ils sont rarement implémentés dans les
+    langages de programmation.
   \end{block}
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Tables de vérité}
-    Faites une table qui montre toutes les paires d'arguments possibles
-    pour les opérateurs AND, OR, XOR et qui montre le résultat à côté.
-    \centerline{\LARGE
-      $\begin{tabular}{|cc|c|}\hline
-      A&B&A$\times$B\\\hline
-      0&0&\begin{correction}0\end{correction}\\
-      0&1&\begin{correction}0\end{correction}\\
-      1&0&\begin{correction}0\end{correction}\\
-      1&1&\begin{correction}1\end{correction}\\
-      \hline\end{tabular}$\hfill
-      $\begin{tabular}{|cc|c|}\hline
-      A&B&A$+$B\\\hline
-      0&0&\begin{correction}0\end{correction}\\
-      0&1&\begin{correction}1\end{correction}\\
-      1&0&\begin{correction}1\end{correction}\\
-      1&1&\begin{correction}1\end{correction}\\
-      \hline\end{tabular}$\hfill
-      $\begin{tabular}{|cc|c|}\hline
-      A&B&A$\oplus$B\\\hline
-      0&0&\begin{correction}0\end{correction}\\
-      0&1&\begin{correction}1\end{correction}\\
-      1&0&\begin{correction}1\end{correction}\\
-      1&1&\begin{correction}0\end{correction}\\
-      \hline\end{tabular}$
-  }
+    Faites une table qui montre toutes les paires d'arguments possibles pour
+    les opérateurs AND, OR, XOR et qui montre le résultat à côté.
+    \centerline{\LARGE $\begin{tabular}{|cc|c|}\hline A&B&A$\times$B\\\hline
+        0&0&\begin{correction}0\end{correction}\\
+        0&1&\begin{correction}0\end{correction}\\
+        1&0&\begin{correction}0\end{correction}\\
+        1&1&\begin{correction}1\end{correction}\\
+        \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
+        A&B&A$+$B\\\hline
+        0&0&\begin{correction}0\end{correction}\\
+        0&1&\begin{correction}1\end{correction}\\
+        1&0&\begin{correction}1\end{correction}\\
+        1&1&\begin{correction}1\end{correction}\\
+        \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
+        A&B&A$\oplus$B\\\hline
+        0&0&\begin{correction}0\end{correction}\\
+        0&1&\begin{correction}1\end{correction}\\
+        1&0&\begin{correction}1\end{correction}\\
+        1&1&\begin{correction}0\end{correction}\\
+        \hline\end{tabular}$ }
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Les champs de bits}
   \begin{itemize}
-  \item La notion de variable booléenne stockant une valeur vraie ou
-    faux est très souvent intégrée directement dans les langages
+  \item La notion de variable booléenne stockant une valeur vraie ou faux est
+    très souvent intégrée directement dans les langages
   \item[\dialogerror] Ce n'est pas le cas dans le langage C
   \item On appelle parfois ces variables des \emph{flags} (drapeaux).
-  \item Quand on réunit plusieurs de ces variables dans une même entité,
-    on appelle le résultat un champ de bits (anglais \emph{bit field}).
-  \item Ces champs de bits peuvent être stockés dans une seule variable
-    (selon leur nombre). On les considère comme un entier codé en NAT ou
-    C2.
+  \item Quand on réunit plusieurs de ces variables dans une même entité, on
+    appelle le résultat un champ de bits (anglais \emph{bit field}).
+  \item Ces champs de bits peuvent être stockés dans une seule variable (selon
+    leur nombre). On les considère comme un entier codé en NAT ou C2.
   \item On définit des opérations sur les champs de bits: le \emph{et
       bit-à-bit}, le \emph{ou bit-à-bit}, le \emph{not bit-à-bit} et le
     \emph{xor bit-à-bit}.
-  \item[\dialogsystem] Il s'agit de faire sur les bits de même position
-    dans deux champs de bits (un pour la négation) l'opération booléenne
+  \item[\dialogsystem] Il s'agit de faire sur les bits de même position dans
+    deux champs de bits (un pour la négation) l'opération booléenne
     correspondante.
   \end{itemize}
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Opérations booléennes}
     \begin{itemize}
-    \item Que vaut 0b10000110 AND Ob11101001 ?
-    \item Que vaut Ob10000110  OR 0b11101001 ?
-    \item Que vaut Ob10000110 XOR 0b11101001 ?
-    \item Que se passe-t-il si on calcule ($a$ est une variable
-      booléenne): $a+0$ ? $a+1$ ? $a\times 0$ ? $a\times 1$ ? $a+a$ ? $a+a+a+a+a+a$ ?
+    \item Que vaut 0b10000110 AND 0b11101001 ?
+      \begin{correction}10000000\end{correction}
+    \item Que vaut 0b10000110 OR 0b11101001 ?
+      \begin{correction}11101111\end{correction}
+    \item Que vaut 0b10000110 XOR 0b11101001 ?
+      \begin{correction}01101111\end{correction}
+    \item Que se passe-t-il si on calcule ($a$ est une variable booléenne):
+      $a+0$ ? $a+1$ ? $a\times 0$ ? $a\times 1$ ? $a+a$ ? $a+a+a+a+a+a$ ?
     \item Démontrez que $a+ab=a$;
       \begin{correction}Vu en cours. $a+ab=a(1+b)=a$.\end{correction}
     \item Démontrez que $a+bc=(a+b)(a+c)$;
@@ -431,30 +435,32 @@
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Masquage}
-  Lorsqu'un champ de bits est représenté par un entier, on peut accéder à un bit particulier en procédant à un ET:
-  $$b_x=(B\&(1<<x))>>x$$
+  Lorsqu'un champ de bits est représenté par un entier, on peut accéder à un
+  bit particulier en procédant à un ET:
+  $$b_x=(B\&(1\mathop{<\!<}x))\mathop{>\!>}x$$
   On obtient 1 si le bit numéro $x$ est à 1, 0 sinon.
   
   On peut aussi mettre à 1 le bit numéro $x$:
-  $$B=B|(1<<x)$$
+  $$B=B|(1\mathop{<\!<}x)$$
   ou à zéro:
-  $$B=B\&(\sim(1<<x))$$
+  $$B=B\&(\sim(1\mathop{<\!<}x))$$
 
   On peut aussi inverser le bit numéro $x$:
-  $$B=B\oplus(1<<x)$$
+  $$B=B\oplus(1\mathop{<\!<}x)$$
 
-  On peut tester si par exemple le bit 1 ou 3 sont à 1:
-  \texttt{if (a\&0b1010 != 0) ...}
+  On peut tester si par exemple le bit 1 ou 3 sont à 1: \texttt{if (a\&0b1010
+    != 0) ...}
 
-  L'ensemble de ces techniques pour manipuler un champ de bits sous la
-  forme d'un entier est appelé \emph{masquage}.
+  L'ensemble de ces techniques pour manipuler un champ de bits sous la forme
+  d'un entier est appelé \emph{masquage}.
   
-  Souvent, les valeurs $(1<<x)$ sont nommées pour qu'on puisse
+  Souvent, les valeurs $(1\mathop{<\!<}x)$ sont nommées pour qu'on puisse
   simplement utiliser leur nom au lieu de se souvenir de leur position.
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Analyse d'un masquage}
-    Dans un champ de bits qui contient $a=0b11001001$, on veut faire les choses suivantes:
+    Dans un champ de bits qui contient $a=0b11001001$, on veut faire les
+    choses suivantes:
     \begin{itemize}
     \item On veut vérifier si le bit 0 est actif ou non. Décomposez
       l'opération.
@@ -464,18 +470,23 @@
     \end{itemize}
   \end{exercicelet}
   \begin{exercicelet}{Analyse de touches}
-    Dans un système, la fonction \texttt{keyEvent()} renvoie une valeur entière sur 16 bits (dont 5 ignorés):
+    Dans un système, la fonction \texttt{keyEvent()} renvoie une valeur
+    entière sur 16 bits (dont 5 ignorés):
     \begin{itemize}
-    \item Les 8 premiers bits correspondent au numéro de la touche sur le clavier (pour les touches ordinaires)
-    \item Le 9\ieme{} bit correspond à la touche SHIFT (1: pressée, 0: pas pressée)
-    \item Le 10\ieme{} bit correspond à la touche CONTROL (1: pressée, 0: pas pressée)
-    \item Le 11\ieme{} bit correspond au fait d'appuyer sur une touche (1) ou de l'avoir juste relachée (0)
+    \item Les 8 premiers bits correspondent au numéro de la touche sur le
+      clavier (pour les touches ordinaires)
+    \item Le 9\ieme{} bit correspond à la touche SHIFT (1: pressée, 0: pas
+      pressée)
+    \item Le 10\ieme{} bit correspond à la touche CONTROL (1: pressée, 0: pas
+      pressée)
+    \item Le 11\ieme{} bit correspond au fait d'appuyer sur une touche (1) ou
+      de l'avoir juste relachée (0)
     \end{itemize}
     \begin{itemize}
-    \item[\ddialoghome] Faites un programme qui appelle cette fonction
-      (\texttt{a=keyEvent()}) puis qui en fonction de \texttt{a} affiche
-      un texte du genre: « Vous venez de lâcher la touche 27 en ayant
-      SHIFT appuyé et CONTROL lâché »
+    \item[\ddialoghome] Écrivez un programme qui appelle cette fonction
+      (\texttt{a=keyEvent()}) puis qui en fonction de \texttt{a} affiche un
+      texte du genre: « Vous venez de lâcher la touche 27 en ayant SHIFT
+      appuyé et CONTROL lâché »
     \end{itemize}
   \end{exercicelet}
 \end{exercice}

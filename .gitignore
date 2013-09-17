@@ -260,3 +260,27 @@
 /spoly03.toc
 /spoly03.vrb
 # stop automatic section for compile-latex:sys03.tex/spoly03
+# start automatic section for compile-latex:sys04.tex
+/.compile-latex/sys04
+/sys04.aux
+/sys04.fls
+/sys04.log
+/sys04.nav
+/sys04.out
+/sys04.pdf
+/sys04.snm
+/sys04.toc
+/sys04.vrb
+# stop automatic section for compile-latex:sys04.tex
+# start automatic section for compile-latex:sys04.tex/spoly04
+/.compile-latex/spoly04
+/spoly04.aux
+/spoly04.fls
+/spoly04.log
+/spoly04.nav
+/spoly04.out
+/spoly04.pdf
+/spoly04.snm
+/spoly04.toc
+/spoly04.vrb
+# stop automatic section for compile-latex:sys04.tex/spoly04

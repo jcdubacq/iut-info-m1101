@@ -1,36 +1,34 @@
-			% Syntaxe d'utilisation
-			\synt{chmod}{}{droit fichier}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Modifie les droits et permissions accordés par le propriétaire aux différents utilisateurs du système.
-				\end{itemize}
-				}
-			
-			% Exemple d'utilisation
-			\expl{
-				\begin{columns}
-					\begin{column}{6cm}
-						Retire au propriétaire le droit d'écriture sur le fichier \lin{cv\_2011.pdf}.\\
-						\mpromptS{
-							\promptS{chmod u-w cv\_2011.pdf}{}
-						}\\
-						\vspace{15pt}
-						Ajoute au propriétaire et aux membres de son groupe le droit d'exécution sur le fichier \lin{listing.bash}.\\
-						\mpromptS{
-							\promptS{chmod ug+x listing.bash}{}
-						}
-					\end{column}
-					\begin{column}{6cm}
-						Retire aux utilisateurs qui ne sont ni le propriétaire ni membre de son groupe les droits de lecture, d'écriture et d'exécution.\\
-						\mpromptS{
-							\promptS{chmod o-rwx listing.bash}{}
-						}\\
-						\vspace{20pt}
-						Ajoute à tous les utilisateurs, tous les droits.
-						\mpromptS{
-							\promptS{chmod a+rwx listing.bash}{}
-						}
-					\end{column}
-				\end{columns}
-			}
+% Syntaxe d'utilisation
+\synt{chmod}{}{droit fichier}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Modifie les droits et permissions accordés par le propriétaire aux différents utilisateurs du système.
+  \end{itemize}
+}
+
+% Exemple d'utilisation
+\expl{
+  \begin{columns}
+    \begin{column}{6cm}
+      Retire au propriétaire le droit d'écriture sur le fichier \lin{cv\_2011.pdf}.\\
+      \mpromptS{
+        \promptS{chmod u-w cv\_2011.pdf}{}
+      }
+      Ajoute au propriétaire et aux membres de son groupe le droit d'exécution sur le fichier \lin{listing.bash}.\\
+      \mpromptS{
+        \promptS{chmod ug+x listing.bash}{}
+      }
+    \end{column}
+    \begin{column}{6cm}
+      Retire aux utilisateurs qui ne sont ni le propriétaire ni membre de son groupe les droits de lecture, d'écriture et d'exécution.\\
+      \mpromptS{
+        \promptS{chmod o-rwx listing.bash}{}
+      }
+      Ajoute à tous les utilisateurs, tous les droits.
+      \mpromptS{
+        \promptS{chmod a+rwx listing.bash}{}
+      }
+    \end{column}
+  \end{columns}
+}
