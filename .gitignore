@@ -1,3 +1,6 @@
+/IntroSysteme_S1D
+/video.mp4
+/newexos
 # start automatic section for compile-latex:archi01.tex
 /.compile-latex/archi01
 /archi01.aux
@@ -284,3 +287,65 @@
 /spoly04.toc
 /spoly04.vrb
 # stop automatic section for compile-latex:sys04.tex/spoly04
+# start automatic section for compile-latex:sys05.tex/spoly04
+/.compile-latex/spoly04
+/spoly04.aux
+/spoly04.fls
+/spoly04.log
+/spoly04.nav
+/spoly04.out
+/spoly04.pdf
+/spoly04.snm
+/spoly04.toc
+/spoly04.vrb
+# stop automatic section for compile-latex:sys05.tex/spoly04
+# start automatic section for compile-latex:sys05.tex/sys04
+/.compile-latex/sys04
+/sys04.aux
+/sys04.fls
+/sys04.log
+/sys04.nav
+/sys04.out
+/sys04.pdf
+/sys04.snm
+/sys04.toc
+/sys04.vrb
+# stop automatic section for compile-latex:sys05.tex/sys04
+# start automatic section for compile-latex:archi05.tex
+/.compile-latex/archi05
+/archi05.aux
+/archi05.fls
+/archi05.log
+/archi05.nav
+/archi05.out
+/archi05.pdf
+/archi05.snm
+/archi05.toc
+/archi05.vrb
+# stop automatic section for compile-latex:archi05.tex
+# start automatic section for compile-latex:archi05.tex/exo05
+/.compile-latex/exo05
+/exo05.aux
+/exo05.fls
+/exo05.log
+/exo05.pdf
+# stop automatic section for compile-latex:archi05.tex/exo05
+# start automatic section for compile-latex:archi05.tex/poly05
+/.compile-latex/poly05
+/poly05.aux
+/poly05.fls
+/poly05.log
+/poly05.nav
+/poly05.out
+/poly05.pdf
+/poly05.snm
+/poly05.toc
+/poly05.vrb
+# stop automatic section for compile-latex:archi05.tex/poly05
+# start automatic section for compile-latex:archi05.tex/prof05
+/.compile-latex/prof05
+/prof05.aux
+/prof05.fls
+/prof05.log
+/prof05.pdf
+# stop automatic section for compile-latex:archi05.tex/prof05

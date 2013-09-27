@@ -1,28 +1,28 @@
-			% Syntaxe d'utilisation
-			\synt{cat}{}{fichier <fichier\_2 ...>}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche le contenu des fichiers les uns à la suite des autres.
-					\item Les fichiers sont concaténés dans l'ordre des paramètres.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				Cette commande est en générale utilisée pour concaténer des fichiers textes. On l'utilise avec une commande de redirection (\cf Partie Redirections) pour enregistrer le résultat de la concaténation dans un nouveau fichier.\\ \vspace{5pt}
-				\begin{columns}
-					\begin{column}{4cm}
-						Soient les deux fichiers suivants:\\
-						\fileform[3cm]{tellur.txt}{Mercure, Venus\\Terre, Mars}\\ 
-						\fileform[3cm]{jov.txt}{Jupiter, Saturne\\Uranus, Neptune}		
-					\end{column}
-					\begin{column}{7cm}
-						La commande:\\ \vspace{5pt}
-						\mpromptM{
-							\promptM{cat tellur.txt jov.txt}{Mercure, Venus\\Terre, Mars\\Jupiter, Saturne\\Uranus, Neptune}
-							\promptM{\cursor}
-						}\\ \vspace{5pt}
-					\end{column}
-				\end{columns}
-			}
+% Syntaxe d'utilisation
+\synt{cat}{}{fichier <fichier\_2 ...>}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche le contenu des fichiers les uns à la suite des autres.
+  \item Les fichiers sont concaténés dans l'ordre des paramètres.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  Cette commande est en générale utilisée pour concaténer des fichiers textes. On l'utilise avec une commande de redirection (cf. Partie Redirections) pour enregistrer le résultat de la concaténation dans un nouveau fichier.\\ \vspace{5pt}
+  \begin{columns}
+    \begin{column}{4cm}
+      Soient les deux fichiers suivants:\\
+      \fileform[3cm]{tellur.txt}{Mercure, Venus\\Terre, Mars}\\ 
+      \fileform[3cm]{jov.txt}{Jupiter, Saturne\\Uranus, Neptune}		
+    \end{column}
+    \begin{column}{7cm}
+      La commande:
+      \mpromptM{
+        \promptM{cat tellur.txt jov.txt}{Mercure, Venus\\Terre, Mars\\Jupiter, Saturne\\Uranus, Neptune}
+        \promptM{\cursor}
+      }\\ \vspace{5pt}
+    \end{column}
+  \end{columns}
+}

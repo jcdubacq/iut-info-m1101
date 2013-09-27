@@ -2,7 +2,7 @@
 \subsection{Du sens à la mesure}
 \begin{exercice}
   \begin{exercicelet}{Qu'est-ce que l'information}
-    \begin{enumerate}
+    \begin{questions}
     \item Proposez différents symbolismes utilisés pour noter un
       nombre. Donnez l'exemple de leur notation avec le nombre 9. Donnez des
       inconvénients de votre méthode.
@@ -11,7 +11,7 @@
       (lancer caché par la première personne, la deuxième doit pouvoir énoncer
       le résultat). Votre méthode fonctionne-t-elle si le dé comporte 20
       faces ? Et si le dé est à six faces mais étiqueté par des couleurs ?
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Qu'est-ce qu'une information ?}
@@ -74,16 +74,18 @@
 
 \begin{exercice}
   \begin{exercicelet}{Digital ou analogique?}
-    Est-ce que les données suivantes sont digitales ou analogiques :
-    \begin{itemize}
-    \item Le fait d'avoir un rendez-vous à une certaine heure un certain jour
-    \item La pression de l'air
-    \item Le résultat (stable) d'un dé
-    \item Votre nom de famille
-    \item Votre nombre de frères et sœurs
-    \item Votre taille
-    \item La couleur de vos yeux
-    \end{itemize}
+    \begin{questions}
+    \item Est-ce que les données suivantes sont digitales ou analogiques :
+      \begin{itemize}
+      \item Le fait d'avoir un rendez-vous à une certaine heure un certain jour
+      \item La pression de l'air
+      \item Le résultat (stable) d'un dé
+      \item Votre nom de famille
+      \item Votre nombre de frères et sœurs
+      \item Votre taille
+      \item La couleur de vos yeux
+      \end{itemize}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \subsection{Mesurer l'information}
@@ -173,7 +175,7 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Conversions}
-    \begin{itemize}
+    \begin{questions}
     \item Convertissez $24\times 10^8$ bits en $\mathrm{Go}$.
       \begin{correction} $24\times 10^8/8=3\times 10^8=0,3 \mathrm{Go}$
       \end{correction}
@@ -192,7 +194,7 @@
         Tib/s, car si on a un 2048, on a pas une pure puissance de 2, et la
         division du résultat par $2^{40}$ n'est pas un entier du tout...).
       \end{correction}
-    \end{itemize}
+    \end{questions}
   \end{exercicelet}
   % \begin{exercicelet}{Programmation}
   %   \begin{itemize}
@@ -212,8 +214,8 @@
 \subsection{De l'analogique au digital}
 \begin{frame}{L'information quantifiée}
   L'information n'est pas toujours disponible dans la nature sous forme
-  digitale. Il est donc nécessaire, pour la faire traiter par un
-  ordinateur, de la digitaliser.
+  digitale. Il est donc nécessaire, pour la faire traiter par un ordinateur,
+  de la digitaliser.
   
   La digitalisation se fait presque toujours de la même façon:
   \begin{itemize}
@@ -224,9 +226,9 @@
   \item Filtrage perceptuel numérique
   \end{itemize}
 
-  Nous reverrons un peu mieux ces notions ultérieurement. Les deux
-  premières étapes forment la \emph{discrétisation} (spatiale ou
-  temporelle), et la troisième la \emph{quantification}.
+  Nous reverrons un peu mieux ces notions ultérieurement. Les deux premières
+  étapes forment la \emph{discrétisation} (spatiale ou temporelle), et la
+  troisième la \emph{quantification}.
 \end{frame}
 \begin{frame}{L'information discrétisée}{Découpage spatial ou pixellisation}
   \begin{tikzpicture}[draw=solarizedRebase0]
@@ -236,95 +238,71 @@
     \pgfdeclareimage[height=51.2mm]{biglena16}{img/01/lena16.png}
     \pgfdeclareimage[height=51.2mm]{biglena64}{img/01/lena64.png}
     \draw[transparent,use as bounding box] (-3,0) rectangle (5.12,5.12);
-    \only<2-| handout:1-> {
-      \draw [dashed] (-3,1)--(0,0);
-      \draw [dashed] (-2,1)--(5.12,0);
-      \draw [dashed] (-2,2)--(5.12,5.12);
-      \draw [dashed] (-3,2)--(0,5.12);
-    }
-    \only<1,2| handout:1-> {
-      \node at (-2.5,1.5) {\pgfbox[center,center]{\pgfuseimage{lena}}};
-    }
-    \only<3-| handout:0> {
-      \node[fill opacity=.5] at (-2.5,1.5) {\pgfbox[center,center]{\pgfuseimage{lena}}};
-    }
-    \only<2| handout:0>{\node[fill opacity=.5] at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena}}};}
-    \only<3-4| handout:0>{
-      \node at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena}}};
-    }
-    \only<5-6| handout:1>{
-      \node at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena16}}};
-    }
-    \only<4-5| handout:1>{
-      \draw[step=.16] (0,0) grid (5.12,5.12);
-    }
-    \only<7-8| handout:2>{
-      \node at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena64}}};
-    }
-    \only<7| handout:2>{
-      \draw[step=.64] (0,0) grid (5.12,5.12);
-    }
-    \only<9-10| handout:3>{
-      \node at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena4}}};
-    }
-    \only<9| handout:3>{
-      \draw[step=.04] (0,0) grid (5.12,5.12);
-    }
+    \only<2-| handout:1-> { \draw [dashed] (-3,1)--(0,0); \draw [dashed]
+      (-2,1)--(5.12,0); \draw [dashed] (-2,2)--(5.12,5.12); \draw [dashed]
+      (-3,2)--(0,5.12); } \only<1,2| handout:1-> { \node at (-2.5,1.5)
+      {\pgfbox[center,center]{\pgfuseimage{lena}}}; } \only<3-| handout:0> {
+      \node[fill opacity=.5] at (-2.5,1.5)
+      {\pgfbox[center,center]{\pgfuseimage{lena}}}; } \only<2|
+    handout:0>{\node[fill opacity=.5] at (2.56,2.56)
+      {\pgfbox[center,center]{\pgfuseimage{biglena}}};} \only<3-4| handout:0>{
+      \node at (2.56,2.56) {\pgfbox[center,center]{\pgfuseimage{biglena}}}; }
+    \only<5-6| handout:1>{ \node at (2.56,2.56)
+      {\pgfbox[center,center]{\pgfuseimage{biglena16}}}; } \only<4-5|
+    handout:1>{ \draw[step=.16] (0,0) grid (5.12,5.12); } \only<7-8|
+    handout:2>{ \node at (2.56,2.56)
+      {\pgfbox[center,center]{\pgfuseimage{biglena64}}}; } \only<7|
+    handout:2>{ \draw[step=.64] (0,0) grid (5.12,5.12); } \only<9-10|
+    handout:3>{ \node at (2.56,2.56)
+      {\pgfbox[center,center]{\pgfuseimage{biglena4}}}; } \only<9| handout:3>{
+      \draw[step=.04] (0,0) grid (5.12,5.12); }
   \end{tikzpicture}
   \begin{itemize}
-  \item[\dialogwarning] La résolution d'échantillonnage influe sur la fidélité de l'image
-  \item[\dialogerror] L'information est perdue: on ne peut pas retrouver la précision.
-  \item[\dialognetwork] Source de l'image: Image Lena\qquad{\tiny\url{http://www.cs.cmu.edu/~chuck/lennapg/}}
+  \item[\dialogwarning] La résolution d'échantillonnage influe sur la fidélité
+    de l'image
+  \item[\dialogerror] L'information est perdue: on ne peut pas retrouver la
+    précision.
+  \item[\dialognetwork] Source de l'image: Image
+    Lena\qquad{\tiny\url{http://www.cs.cmu.edu/~chuck/lennapg/}}
   \end{itemize}
 \end{frame}
 \begin{frame}{L'information discrétisée}{Échantillonnage temporel}
-  Rappel: une fréquence, c'est une quantité d'événements par unité de temps ($1
-  Hz=1 s^{-1}$).
+  Rappel: une fréquence, c'est une quantité d'événements par unité de temps
+  ($1 Hz=1 s^{-1}$).
   \begin{tikzpicture}[draw=solarizedRebase0]
     \draw[transparent,use as bounding box] (-.5,-2) rectangle (9,2);
-    \draw[->](0,0)--(8,0) node[right] {$T$};
-    \draw(0,-2)--(0,2);
-    \foreach \x in {-2,-1.5,...,2} {
-      \draw[ultra thin] (0,\x)--++(-.2,0) node[left] {\tiny\x};
-    }
-    \foreach \x in {0,.5,...,8} {
-      \draw[ultra thin] (\x,.2)--++(0,-.2) node[below] {\tiny\x};
-    }
+    \draw[->](0,0)--(8,0) node[right] {$T$}; \draw(0,-2)--(0,2); \foreach \x
+    in {-2,-1.5,...,2} { \draw[ultra thin] (0,\x)--++(-.2,0) node[left]
+      {\tiny\x}; } \foreach \x in {0,.5,...,8} { \draw[ultra thin]
+      (\x,.2)--++(0,-.2) node[below] {\tiny\x}; }
     
-    \only<1-3,5| handout:1,3>{
-      \draw[smooth,samples=100,domain=0.0:8]
-      plot(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)});
-    }
+    \only<1-3,5| handout:1,3>{ \draw[smooth,samples=100,domain=0.0:8]
+      plot(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}); }
     \only<4,7-| handout:2,4->{
       \draw[opacity=.5,smooth,dashed,samples=100,domain=0.0:8]
-      plot(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)});
-    }
-    \only<5-6| handout:3>{
-      \draw[ultra thin,draw=solarizedRebase3,smooth,samples=100,domain=0.0:8]
-      plot(\x,{sin(\x*180)+0.2*sin(5*\x*180+450)});
-      \node[above] at (4,-2) {Il peut y avoir plusieurs reconstructions possibles};
-    }
-    \only<2-3| handout:1>{
-      \foreach \x in {0,.5,...,8}
-      \draw[draw=solarizedRebase3,dashed] (\x,0)--(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)});
-      \node[above] at (4,-2) {Intervalles réguliers: \emph{fréquence d'échantillonnage}};
-    }
-    \only<3-6| handout:1-3>{
-      \foreach \x in {0,.5,...,8}
-      \fill[fill=solarizedRed] (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle (.05);
-    }
-    \only<7| handout:4>{
-      \foreach \x in {0,.1,...,8}
-      \fill[fill=solarizedRed] (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle (.05);
-      \node[above] at (4,-2) {On garantit l'unicité en augmentant la fréquence d'échantillonnage};
-    }
-    \only<8| handout:5>{
-      \foreach \x in {0,.1,...,8} {
-        \fill[fill=solarizedRed] (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle (.03);
-        \fill[fill=solarizedBlue] (\x,{0.2*floor(5*(sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)))}) circle (.05);
-      }
-      \node[above] at (4,-2) {Après vient la quantification!};
-    }
+      plot(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}); }
+    \only<5-6| handout:3>{ \draw[ultra
+      thin,draw=solarizedRebase3,smooth,samples=100,domain=0.0:8]
+      plot(\x,{sin(\x*180)+0.2*sin(5*\x*180+450)}); \node[above] at (4,-2) {Il
+        peut y avoir plusieurs reconstructions possibles}; } \only<2-3|
+    handout:1>{ \foreach \x in {0,.5,...,8}
+      \draw[draw=solarizedRebase3,dashed]
+      (\x,0)--(\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)});
+      \node[above] at (4,-2) {Intervalles réguliers: \emph{fréquence
+          d'échantillonnage}}; } \only<3-6| handout:1-3>{ \foreach \x in
+      {0,.5,...,8} \fill[fill=solarizedRed]
+      (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle (.05);
+    } \only<7| handout:4>{ \foreach \x in {0,.1,...,8}
+      \fill[fill=solarizedRed]
+      (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle (.05);
+      \node[above] at (4,-2) {On garantit l'unicité en augmentant la fréquence
+        d'échantillonnage}; } \only<8| handout:5>{ \foreach \x in {0,.1,...,8}
+      { \fill[fill=solarizedRed]
+        (\x,{sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)}) circle
+        (.03); \fill[fill=solarizedBlue]
+        (\x,{0.2*floor(5*(sin(\x*180)+0.3*sin(4*\x*180)+0.2*sin(5*\x*180+450)))})
+        circle (.05); } \node[above] at (4,-2) {Après vient la
+        quantification!}; }
   \end{tikzpicture}
   \begin{itemize}
   \item[\ddialogsystem] Pour pouvoir reconstruire exactement un signal
@@ -337,28 +315,28 @@
 \begin{frame}{L'information quantifiée}
   \begin{block}{Quantification}
     Cette opération réduit un signal à des \emph{quanta} (singulier
-    \emph{quantum}) en nombre limité. Le nombre de \emph{quanta}
-    possibles s'appelle la \emph{valence}.
+    \emph{quantum}) en nombre limité. Le nombre de \emph{quanta} possibles
+    s'appelle la \emph{valence}.
 
     La reconstruction exacte du signal n'est plus possible, mais reste souvent
     proche de l'original.
   \end{block}
   \begin{example}{Signal électrique}
-    Une tension électrique compris entre 0 (large) et 10 V (strict) peut
-    ainsi être réduit à 10 quanta : 0~V, 1~V,\dots,9~V.
+    Une tension électrique compris entre 0 (large) et 10 V (strict) peut ainsi
+    être réduit à 10 quanta : 0~V, 1~V,\dots,9~V.
   \end{example}
-  Le nombre de bits nécessaires pour coder un état du signal peut être
-  exprimé par $$k=\left\lceil\log_2 V\right\rceil.$$
+  Le nombre de bits nécessaires pour coder un état du signal peut être exprimé
+  par $$k=\left\lceil\log_2 V\right\rceil.$$
 
   \dialoginformation Beaucoup plus sur la quantification des images plus tard.
 
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Signal électrique}
-    \begin{enumerate}
-    \item Un signal électrique qui va de 0 à 2,559 V est quantifié sur un quantum
-      de 0,01 V. Quel est le nombre de quanta ? Quelle quantité d'information
-      est transportée par un quantum ?
+    \begin{questions}
+    \item Un signal électrique qui va de 0 à 2,559 V est quantifié sur un
+      quantum de 0,01 V. Quel est le nombre de quanta ? Quelle quantité
+      d'information est transportée par un quantum ?
       \begin{xcorrection}
         8 bits par échantillon. La valence est de 256.
       \end{xcorrection}
@@ -374,10 +352,10 @@
       \begin{xcorrection}
         3600 s*20 ko/s=72 Mo (décimaux)
       \end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
   \begin{exercicelet}{CD audio}
-    \begin{enumerate}
+    \begin{questions}
     \item Un CD audio contient de la musique échantillonnée en stéréo sur 16
       bits par piste à 44100 Hz (nombre d'échantillons par seconde). Il dure
       environ 80 minutes. Calculez (de tête) l'ordre de grandeur de la
@@ -386,7 +364,7 @@
         Environ 800 Mo. En vrai: 807,5 Mio ou 846 Mo.  88200 octets par
         seconde par piste, soit 167400 octets/s, soit ~10 Mo/minute.
       \end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 

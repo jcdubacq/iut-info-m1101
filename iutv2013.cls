@@ -39,8 +39,8 @@
 \LoadClass[9pt,mathserif]{beamer}
 \fi
 \fi
-\usepackage[T2A,T1]{fontenc}%
-\usepackage[utf8]{inputenc}%
+\usepackage[LUC,T2A,T1]{fontenc}%
+\usepackage[utf8x]{inputenc}%
 \usepackage{arev}
 \usepackage{tgtermes,tgadventor}
 \usepackage[condensed]{tgheros}
@@ -48,18 +48,26 @@
 \usepackage{xcolor,textcomp}
 \RequirePackage[francais]{babel}
 \usepackage[autolanguage]{numprint}
-\usepackage{arabtex}
 \newtheorem{methode}{Méthode}
 \usepackage{frmath}
+\usepackage{enumerate}
 
-\ifexo % WITHOUT BEAMER
+\usepackage{newunicodechar}
+\DeclareFontFamily{LUC}{qhvc}{\qhv@set@spacing}
+\DeclareFontShape{LUC}{qhvc}{m}{n}{<-> \qhv@scale ec-qhvcr}{}
+\def\textgreatequal{\bgroup\fontencoding{LUC}\selectfont\unichar{8805}\egroup}
+\newunicodechar{≥}{\textgreatequal}
+
+\newcounter{cnt}\setcounter{cnt}{0}
+
+\ifexo % BEAMER
 \def\mode<#1>{}
 \def\setbeamercolor{\@ifstar\@gobbletwo\@gobbletwo}
 \usepackage{beamercolorthemesolarized}
 \def\subtitle#1{\title{#1}}
 \newcommand\institute[2][]{}
 \def\beamertitle{\maketitle}
-\else % WITH BEAMER
+\else % BEAMER
 \useoutertheme{infolines}
 \useinnertheme{circles}
 \setbeamertemplate{blocks}[rounded][shadow=false]
@@ -70,7 +78,6 @@
 \setbeamertemplate{itemize items}[default]
 \ifpoly
 \usecolortheme{solarized}
-\newcounter{cnt}\setcounter{cnt}{0}
 \usepackage{pgfpages}
 \def\markit{\pgftransformrotate{90}{\pgftext[base,y=10pt] {\stepcounter{cnt}\insertsubtitle{} --- \Alph{cnt}}}}
 \def\markitalso{\pgftransformrotate{90}{\pgftext[y=-380pt] {«~\inserttitle~»}}}
@@ -84,12 +91,12 @@
 \pgfpageslogicalpageoptions{3}{border code=\pgfstroke}
 \pgfpageslogicalpageoptions{4}{border code=\pgfstroke}
 \else
-\ifwhitex
+\ifwhitex % WHITEX
 \usecolortheme[dark]{solarized}
-\else
+\else % WHITEX
 \usecolortheme{solarized}
-\fi
-\fi
+\fi % WHITEX
+\fi % BEAMER
 \AtBeginSection[]{
   \begin{frame}<handout:0>{Plan}
     \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
@@ -156,6 +163,9 @@
 \excludeversion{correction}\excludeversion{xcorrection}
 \fi
 
+\newenvironment{questions}{\begin{enumerate}[\bfseries Q\small 1]\setcounter{enumi}{\value{cnti}}}{\setcounter{cnti}{\value{enumi}}\end{enumerate}}
+\newenvironment{questionshome}{\begin{enumerate}[\rlap{\smash{\raisebox{-4ex}{\dialoghome}}}\bfseries Q\small 1]\setcounter{enumi}{\value{cnti}}}{\setcounter{cnti}{\value{enumi}}\end{enumerate}}
+
 \ifpoly\excludeversion{presentationonly}\else\ifexo\excludeversion{presentationonly}\else\includeversion{presentationonly}\fi\fi
 \ifpoly\includeversion{handoutonly}\else\excludeversion{handoutonly}\fi
 \ifexo\excludeversion{frame}\includeversion{exercice}
@@ -170,4 +180,3 @@
 \let\objectif\@gobble
 % \newenvironment{student}{}{}%
 
-\newenvironment{questions}{\begin{enumerate}[\bfseries Q1]\setcounter{enumi}{\value{cnti}}}{\setcounter{cnti}{\value{enumi}}\end{enumerate}}

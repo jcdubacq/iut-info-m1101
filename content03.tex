@@ -16,7 +16,7 @@
     nombre $4$ s'écrit $\Iota\Iota\Iota\Iota$, pas $\Iota\Gamma$. La
     position des chiffres n'a théoriquement aucune importance, mais on les
     classait dans l'ordre décroissant de valeur.
-    \begin{enumerate}
+    \begin{questions}
     \item Ce système est-il un système de numération positionnelle ?
       \begin{correction}Non\end{correction}
     \item Écrivez votre âge et votre date de naissance en numération
@@ -48,7 +48,7 @@
         l'algorithme est différent (même si un peu similaire), mais le résultat
         (et donc la fonction calculée) est identique.
       \end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Addition dans les systèmes positionnels}
@@ -211,7 +211,7 @@
     \objectif{Maîtriser les conversions et les additions en base 2 et 16,
       maîtriser la multiplication en base 2, comprendre la notion de poids
       des chiffres dans un système positionnel}
-    \begin{enumerate}
+    \begin{questions}
     \item Faites les additions en binaire:
       \texttt{0b1101\,0101}+\texttt{0b1110\,0101};
       \texttt{0b1,1}+\texttt{0b110}+\texttt{0b100,1}+\texttt{0b111,1}+%
@@ -226,7 +226,7 @@
       \begin{xcorrection}2193 et 100010010001.\end{xcorrection}
     \item Faites la multiplication suivante en binaire: $110110\times 1101$.
       \begin{xcorrection}1010111110 (54*13=702)\end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \subsection{Addition et codage}
@@ -286,24 +286,26 @@
     \end{xcorrection}
   \end{exercicelet}
   \begin{exercicelet}{Addition en C2}
-    Faites les opérations suivantes en transformant les nombres au
-    préalable en codage C2 sur 8 bits (résultat aussi en C2 sur 8 bits):
-    \begin{itemize}
-    \item 45+17
-    \item 45-17 (soit 45+(-17))
-    \item -17-17
-    \item 17-45
-    \item 221+45
-    \end{itemize}
-    Dites aussi si le résultat obtenu est correct et s'il est représentable.
-    \begin{xcorrection}
-      00101101+00010001=...\\
-      00101101+11101111=...\\
-      11101111+11101111=11011110\\
-      ...+...=...\\ %TODO
-      11011101+00101101=00001010\\
-      Ils sont tous corrects s'ils sont représentables, donc tous sauf le dernier.
-    \end{xcorrection}
+    \begin{questions}
+    \item Faites les opérations suivantes en transformant les nombres au
+      préalable en codage C2 sur 8 bits (résultat aussi en C2 sur 8 bits):
+      \begin{itemize}
+      \item 45+17
+      \item 45-17 (soit 45+(-17))
+      \item -17-17
+      \item 17-45
+      \item 221+45
+      \end{itemize}
+      Dites aussi si le résultat obtenu est correct et s'il est représentable.
+      \begin{xcorrection}
+        00101101+00010001=...\\
+        00101101+11101111=...\\
+        11101111+11101111=11011110\\
+        ...+...=...\\ %TODO
+        11011101+00101101=00001010\\
+        Ils sont tous corrects s'ils sont représentables, donc tous sauf le dernier.
+      \end{xcorrection}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \subsection{Les champs de bits}
@@ -369,38 +371,42 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Tables de vérité}
-    Faites une table qui montre toutes les paires d'arguments possibles pour
-    les opérateurs AND, OR, XOR et qui montre le résultat à côté.
-    \centerline{\LARGE $\begin{tabular}{|cc|c|}\hline A&B&A$\times$B\\\hline
-        0&0&\begin{correction}0\end{correction}\\
-        0&1&\begin{correction}0\end{correction}\\
-        1&0&\begin{correction}0\end{correction}\\
-        1&1&\begin{correction}1\end{correction}\\
-        \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
-        A&B&A$+$B\\\hline
-        0&0&\begin{correction}0\end{correction}\\
-        0&1&\begin{correction}1\end{correction}\\
-        1&0&\begin{correction}1\end{correction}\\
-        1&1&\begin{correction}1\end{correction}\\
-        \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
-        A&B&A$\oplus$B\\\hline
-        0&0&\begin{correction}0\end{correction}\\
-        0&1&\begin{correction}1\end{correction}\\
-        1&0&\begin{correction}1\end{correction}\\
-        1&1&\begin{correction}0\end{correction}\\
-        \hline\end{tabular}$ }
+    \begin{questions}
+    \item Faites une table qui montre toutes les paires d'arguments possibles
+      pour les opérateurs AND, OR, XOR et qui montre le résultat à côté.
+      \begin{center}
+        \LARGE $\begin{tabular}{|cc|c|}\hline A&B&A$\times$B\\\hline
+          0&0&\begin{correction}0\end{correction}\\
+          0&1&\begin{correction}0\end{correction}\\
+          1&0&\begin{correction}0\end{correction}\\
+          1&1&\begin{correction}1\end{correction}\\
+          \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
+          A&B&A$+$B\\\hline
+          0&0&\begin{correction}0\end{correction}\\
+          0&1&\begin{correction}1\end{correction}\\
+          1&0&\begin{correction}1\end{correction}\\
+          1&1&\begin{correction}1\end{correction}\\
+          \hline\end{tabular}$\hfill $\begin{tabular}{|cc|c|}\hline
+          A&B&A$\oplus$B\\\hline
+          0&0&\begin{correction}0\end{correction}\\
+          0&1&\begin{correction}1\end{correction}\\
+          1&0&\begin{correction}1\end{correction}\\
+          1&1&\begin{correction}0\end{correction}\\
+          \hline\end{tabular}$
+      \end{center}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Les champs de bits}
   \begin{itemize}
-  \item La notion de variable booléenne stockant une valeur vraie ou faux est
-    très souvent intégrée directement dans les langages
+  \item La notion de variable booléenne stockant une valeur vraie ou faux
+    est très souvent intégrée directement dans les langages
   \item[\dialogerror] Ce n'est pas le cas dans le langage C
   \item On appelle parfois ces variables des \emph{flags} (drapeaux).
   \item Quand on réunit plusieurs de ces variables dans une même entité, on
     appelle le résultat un champ de bits (anglais \emph{bit field}).
-  \item Ces champs de bits peuvent être stockés dans une seule variable (selon
-    leur nombre). On les considère comme un entier codé en NAT ou C2.
+  \item Ces champs de bits peuvent être stockés dans une seule variable
+    (selon leur nombre). On les considère comme un entier codé en NAT ou C2.
   \item On définit des opérations sur les champs de bits: le \emph{et
       bit-à-bit}, le \emph{ou bit-à-bit}, le \emph{not bit-à-bit} et le
     \emph{xor bit-à-bit}.
@@ -411,7 +417,7 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Opérations booléennes}
-    \begin{itemize}
+    \begin{questions}
     \item Que vaut 0b10000110 AND 0b11101001 ?
       \begin{correction}10000000\end{correction}
     \item Que vaut 0b10000110 OR 0b11101001 ?
@@ -431,7 +437,7 @@
         cours. $a+\overline{a}b=a(b+\overline{b})+\overline{a}b=ab+a\overline{b}+
         \overline{a}b+ab=a(b+\overline{b})+b(a+\overline{a})=a+b$. NB:
         $x=x+x$.\end{correction}
-    \end{itemize}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \begin{frame}{Masquage}
@@ -461,13 +467,13 @@
   \begin{exercicelet}{Analyse d'un masquage}
     Dans un champ de bits qui contient $a=0b11001001$, on veut faire les
     choses suivantes:
-    \begin{itemize}
+    \begin{questions}
     \item On veut vérifier si le bit 0 est actif ou non. Décomposez
       l'opération.
     \item On veut changer le bit 1 en 1 et le bit 3 en 0. Décomposez les
       opérations qui permettent de le faire.
     \item Changez le bit 5, en expliquant les valeurs intermédiaires.
-    \end{itemize}
+    \end{questions}
   \end{exercicelet}
   \begin{exercicelet}{Analyse de touches}
     Dans un système, la fonction \texttt{keyEvent()} renvoie une valeur
@@ -482,12 +488,12 @@
     \item Le 11\ieme{} bit correspond au fait d'appuyer sur une touche (1) ou
       de l'avoir juste relachée (0)
     \end{itemize}
-    \begin{itemize}
-    \item[\ddialoghome] Écrivez un programme qui appelle cette fonction
+    \begin{questionshome}
+    \item Écrivez un programme qui appelle cette fonction
       (\texttt{a=keyEvent()}) puis qui en fonction de \texttt{a} affiche un
       texte du genre: « Vous venez de lâcher la touche 27 en ayant SHIFT
       appuyé et CONTROL lâché »
-    \end{itemize}
+    \end{questionshome}
   \end{exercicelet}
 \end{exercice}
 % Local Variables:

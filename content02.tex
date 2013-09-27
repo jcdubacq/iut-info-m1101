@@ -237,7 +237,7 @@
 
 \begin{exercice}
   \begin{exercicelet}{Puissances de 2}
-    \begin{enumerate}
+    \begin{questions}
     \item Écrivez la liste de toutes les puissances de 2, de $2^{-4}$ à
       $2^{16}$.
       \begin{xcorrection} 0,06125 -- 0,125 -- 0,25 -- 0,5 -- 1 -- 2 -- 4 -- 8
@@ -257,10 +257,10 @@
 
         C'est à savoir par c\oe ur. Aucune discussion à avoir.
       \end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
   \begin{exercicelet}{Conversions}
-    \begin{enumerate}
+    \begin{questions}
     \item Écrivez en binaire et en hexadécimal les nombres décimaux
       suivants: 28; 149; 1285.
       \begin{xcorrection}
@@ -274,7 +274,7 @@
     \item Comment trouver midi à quatorze heures ?
       \begin{xcorrection}En base 8. Ne pas insister sur cette
         question.\end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 \subsection{Des entiers naturels aux réels}
@@ -336,7 +336,7 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Changements de base}
-    \begin{enumerate}
+    \begin{questions}
     \item Écrivez en binaire et en hexadécimal les nombres décimaux
       suivants: 0,3125; 164,3125.
       \begin{xcorrection}
@@ -347,7 +347,7 @@
       \begin{xcorrection}
         10,1875.
       \end{xcorrection}
-    \end{enumerate}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 
@@ -431,29 +431,31 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Codage d'entiers}
-    Ce tableau comporte des cases inutilisées. Complétez-le:
-    \begin{center}
-      \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|c|>{$}c<{$}|>{\tt}c|}\hline
-        \mbox{\textbf{Décimal}}&\mbox{\textbf{Écriture}}&\textbf{Type de}&\mbox{\textbf{Codage}}&\mbox{Codage}\\
-        \mbox{}&\mbox{\textbf{Binaire}}&\textbf{codage}&\mbox{(binaire)}&\mbox{(hexa)}\\\hline
-        -18&-1\,0010&VA+S (8 bits)& 1001\,0010&0x92\\\hline
-        424&\begin{correction}1 1010 1000\end{correction}&NAT (16 bits)&\begin{correction}0000 0001 1010 1000\end{correction}&\begin{correction}0x01A8\end{correction}\\\hline
-        -138&\begin{correction}-1000\,1010\end{correction}&C2 (16 bits)&\begin{correction}1111 1111 0111 0110\end{correction}&\begin{correction}0xFF76\end{correction}\\\hline
-        \begin{correction}-115\end{correction}&-111\,0011&C1 (8 bits)&\begin{correction}10001100\end{correction}&\begin{correction}0x8C\end{correction}\\\hline
-        -4197&\begin{correction}-1 0000\end{correction}&VA+S (24 bits)&\begin{correction}1000 0000 0001\end{correction}&\begin{correction}0x801065\end{correction}\\
-        {}&\begin{correction}0110 0101\end{correction}&&\begin{correction}0000 0110 0101\end{correction}&\\\hline
-        -84&\begin{correction}-101\,0100\end{correction}&\begin{correction}C1 (8 bits)\end{correction}&\begin{correction}1010\,1011\end{correction}&0xAB\\\hline
-        341&\begin{correction}101010101\end{correction}&NAT (8 bits)&\begin{correction}Impossible!\end{correction}&\begin{correction}XXX\end{correction}\\\hline
-      \end{tabular}
-    \end{center}
+    \begin{questions}
+    \item Ce tableau comporte des cases inutilisées. Complétez-le:
+      \begin{center}
+        \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|c|>{$}c<{$}|>{\tt}c|}\hline
+          \mbox{\textbf{Décimal}}&\mbox{\textbf{Écriture}}&\textbf{Type de}&\mbox{\textbf{Codage}}&\mbox{Codage}\\
+          \mbox{}&\mbox{\textbf{Binaire}}&\textbf{codage}&\mbox{(binaire)}&\mbox{(hexa)}\\\hline
+          -18&-1\,0010&VA+S (8 bits)& 1001\,0010&0x92\\\hline
+          424&\begin{correction}1 1010 1000\end{correction}&NAT (16 bits)&\begin{correction}0000 0001 1010 1000\end{correction}&\begin{correction}0x01A8\end{correction}\\\hline
+          -138&\begin{correction}-1000\,1010\end{correction}&C2 (16 bits)&\begin{correction}1111 1111 0111 0110\end{correction}&\begin{correction}0xFF76\end{correction}\\\hline
+          \begin{correction}-115\end{correction}&-111\,0011&C1 (8 bits)&\begin{correction}10001100\end{correction}&\begin{correction}0x8C\end{correction}\\\hline
+          -4197&\begin{correction}-1 0000\end{correction}&VA+S (24 bits)&\begin{correction}1000 0000 0001\end{correction}&\begin{correction}0x801065\end{correction}\\
+          {}&\begin{correction}0110 0101\end{correction}&&\begin{correction}0000 0110 0101\end{correction}&\\\hline
+          -84&\begin{correction}-101\,0100\end{correction}&\begin{correction}C1 (8 bits)\end{correction}&\begin{correction}1010\,1011\end{correction}&0xAB\\\hline
+          341&\begin{correction}101010101\end{correction}&NAT (8 bits)&\begin{correction}Impossible!\end{correction}&\begin{correction}XXX\end{correction}\\\hline
+        \end{tabular}
+      \end{center}
+      \begin{xcorrection}
+        Rappel: pour décoder un complément à 2, il faut: inverser les bits si
+        signe=1, ajouter 1 à la valeur obtenue, on a la valeur absolue. Pour
+        encoder un complément à 2, il faut soustraire 1 à la valeur à encoder,
+        inverser les bits (si le signe est égal à 1). Si le signe est positif,
+        rien à faire de différent de NAT.
+      \end{xcorrection}
+    \end{questions}
   \end{exercicelet}
-  \begin{xcorrection}
-    Rappel: pour décoder un complément à 2, il faut: inverser les bits si
-    signe=1, ajouter 1 à la valeur obtenue, on a la valeur absolue. Pour
-    encoder un complément à 2, il faut soustraire 1 à la valeur à encoder,
-    inverser les bits (si le signe est égal à 1). Si le signe est positif,
-    rien à faire de différent de NAT.
-  \end{xcorrection}
 \end{exercice}
 \subsection{Codage des réels}
 \begin{frame}{Représentation en virgule flottante}
@@ -489,23 +491,25 @@
 \end{frame}
 \begin{exercice}
   \begin{exercicelet}{Codage IEEE754}
-    Ce tableau comporte des cases inutilisées. Complétez-le:
-    \begin{center}\renewcommand{\tabcolsep}{1mm}
-      \begin{tabular}{|c|c|c|c|c|c|>{$}c<{$}|>{\small}c|}\hline
-        \multicolumn{1}{|c|}{\textbf{Décimal}}&\multicolumn{1}{c|}{\textbf{Binaire}}&\multicolumn{1}{c|}{\textbf{Virgule flottante}}&\multicolumn{1}{c|}{\textbf{E}}&\multicolumn{3}{c|}{\textbf{Codage IEEE754}}&\textbf{Hexa}\\\cline{5-7}
-        &&&&S&E (8b)&\multicolumn{1}{c|}{\null\qquad M (23b)\qquad\null}&\\\hline
-        19,5&10011,1&1,00111$\times 2^4$&131&0&10000011&\mbox{00111}\underbrace{\mbox{0\ldots0}}_{\hbox to 0pt {18 fois}}&419C0000\\\hline
-        -7,5&\begin{correction}111,1\end{correction}&\begin{correction}1,111$\times 2^2$\end{correction}&\begin{correction}129\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000001\end{correction}&\begin{correction}\mbox{111}\underbrace{\mbox{0\ldots0}}_{\mbox{20 fois}}\end{correction}&\begin{correction}C0F00000\end{correction}\\\hline
-        -46,25&\begin{correction}101110,01\end{correction}&\begin{correction}1,0111001$\times 2^5$\end{correction}&\begin{correction}132\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000100\end{correction}&\begin{correction}\mbox{0111001}\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}\end{correction}&\begin{correction}C2390000\end{correction}\\\hline
-        0,3125&\begin{correction}0,0101\end{correction}&\begin{correction}1,01$\times 2^{-2}$\end{correction}&\begin{correction}125\end{correction}&\begin{correction}0\end{correction}&\begin{correction}01111101\end{correction}&\begin{correction}\mbox{01}\underbrace{\mbox{0\ldots0}}_{\mbox{21 fois}}\end{correction}&\begin{correction}3EA00000\end{correction}\\\hline
-        \begin{correction}-0,1875\end{correction}&\begin{correction}0,0011\end{correction}&\begin{correction}1,1$\times 2^{-3}$\end{correction}&\begin{correction}124\end{correction}&\begin{correction}1\end{correction}&\begin{correction}01111100\end{correction}&\begin{correction}\mbox{1}\underbrace{\mbox{0\ldots0}}_{\mbox{22 fois}}\end{correction}&BE400000\\\hline
-        \begin{correction}$+\infty$\end{correction}&\begin{correction}---\end{correction}&\begin{correction}---\end{correction}&\begin{correction}255\end{correction}&\begin{correction}0\end{correction}&\begin{correction}11111111\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&7F800000\\\hline
-        0&\begin{correction}0\end{correction}&\begin{correction}---\end{correction}&\begin{correction}0\end{correction}&\begin{correction}0\end{correction}&\begin{correction}00000000\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&\begin{correction}00000000\end{correction}\\\hline
-        -26,375&\begin{correction}-11010,011\end{correction}&\begin{correction}-1,1010011\end{correction}&\begin{correction}171\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10101011\end{correction}&\begin{correction}1010011\smash{\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}}\end{correction}&\begin{correction}D5D30000\end{correction}\\
-        $\times2^{40}$&\begin{correction}$\times 2^{40}$\end{correction}&\begin{correction}$\times 2^{44}$\end{correction}&&&&&\\
-        \hline
-      \end{tabular}
-    \end{center}
+    \begin{questions}
+    \item Ce tableau comporte des cases inutilisées. Complétez-le:
+      \begin{center}\renewcommand{\tabcolsep}{1mm}
+        \begin{tabular}{|c|c|c|c|c|c|>{$}c<{$}|>{\small}c|}\hline
+          \multicolumn{1}{|c|}{\textbf{Décimal}}&\multicolumn{1}{c|}{\textbf{Binaire}}&\multicolumn{1}{c|}{\textbf{Virgule flottante}}&\multicolumn{1}{c|}{\textbf{E}}&\multicolumn{3}{c|}{\textbf{Codage IEEE754}}&\textbf{Hexa}\\\cline{5-7}
+          &&&&S&E (8b)&\multicolumn{1}{c|}{\null\qquad M (23b)\qquad\null}&\\\hline
+          19,5&10011,1&1,00111$\times 2^4$&131&0&10000011&\mbox{00111}\underbrace{\mbox{0\ldots0}}_{\hbox to 0pt {18 fois}}&419C0000\\\hline
+          -7,5&\begin{correction}111,1\end{correction}&\begin{correction}1,111$\times 2^2$\end{correction}&\begin{correction}129\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000001\end{correction}&\begin{correction}\mbox{111}\underbrace{\mbox{0\ldots0}}_{\mbox{20 fois}}\end{correction}&\begin{correction}C0F00000\end{correction}\\\hline
+          -46,25&\begin{correction}101110,01\end{correction}&\begin{correction}1,0111001$\times 2^5$\end{correction}&\begin{correction}132\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10000100\end{correction}&\begin{correction}\mbox{0111001}\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}\end{correction}&\begin{correction}C2390000\end{correction}\\\hline
+          0,3125&\begin{correction}0,0101\end{correction}&\begin{correction}1,01$\times 2^{-2}$\end{correction}&\begin{correction}125\end{correction}&\begin{correction}0\end{correction}&\begin{correction}01111101\end{correction}&\begin{correction}\mbox{01}\underbrace{\mbox{0\ldots0}}_{\mbox{21 fois}}\end{correction}&\begin{correction}3EA00000\end{correction}\\\hline
+          \begin{correction}-0,1875\end{correction}&\begin{correction}0,0011\end{correction}&\begin{correction}1,1$\times 2^{-3}$\end{correction}&\begin{correction}124\end{correction}&\begin{correction}1\end{correction}&\begin{correction}01111100\end{correction}&\begin{correction}\mbox{1}\underbrace{\mbox{0\ldots0}}_{\mbox{22 fois}}\end{correction}&BE400000\\\hline
+          \begin{correction}$+\infty$\end{correction}&\begin{correction}---\end{correction}&\begin{correction}---\end{correction}&\begin{correction}255\end{correction}&\begin{correction}0\end{correction}&\begin{correction}11111111\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&7F800000\\\hline
+          0&\begin{correction}0\end{correction}&\begin{correction}---\end{correction}&\begin{correction}0\end{correction}&\begin{correction}0\end{correction}&\begin{correction}00000000\end{correction}&\begin{correction}\underbrace{\mbox{0\ldots0}}_{\mbox{23 fois}}\end{correction}&\begin{correction}00000000\end{correction}\\\hline
+          -26,375&\begin{correction}-11010,011\end{correction}&\begin{correction}-1,1010011\end{correction}&\begin{correction}171\end{correction}&\begin{correction}1\end{correction}&\begin{correction}10101011\end{correction}&\begin{correction}1010011\smash{\underbrace{\mbox{0\ldots0}}_{\mbox{16 fois}}}\end{correction}&\begin{correction}D5D30000\end{correction}\\
+          $\times2^{40}$&\begin{correction}$\times 2^{40}$\end{correction}&\begin{correction}$\times 2^{44}$\end{correction}&&&&&\\
+          \hline
+        \end{tabular}
+      \end{center}
+    \end{questions}
   \end{exercicelet}
 \end{exercice}
 % Local Variables:
