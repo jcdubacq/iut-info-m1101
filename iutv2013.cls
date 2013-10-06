@@ -59,6 +59,8 @@
 \newunicodechar{≥}{\textgreatequal}
 
 \newcounter{cnt}\setcounter{cnt}{0}
+\newcounter{cnta}\setcounter{cnta}{0}
+\newcounter{cntb}\setcounter{cntb}{0}
 
 \ifexo % BEAMER
 \def\mode<#1>{}
@@ -79,7 +81,7 @@
 \ifpoly
 \usecolortheme{solarized}
 \usepackage{pgfpages}
-\def\markit{\pgftransformrotate{90}{\pgftext[base,y=10pt] {\stepcounter{cnt}\insertsubtitle{} --- \Alph{cnt}}}}
+\def\markit{\pgftransformrotate{90}{\pgftext[base,y=10pt] {\stepcounter{cnt}\stepcounter{cntb}\ifnum\value{cntb}>26\stepcounter{cnta}\setcounter{cntb}{1}\fi\insertsubtitle{} --- \ifnum\value{cnta}>0\Alph{cnta}\Alph{cntb}\else\Alph{cnt}\fi}}}
 \def\markitalso{\pgftransformrotate{90}{\pgftext[y=-380pt] {«~\inserttitle~»}}}
 \pgfpagesuselayout{4 on 1}[a4paper,border shrink=6mm,landscape]
 \pgfpageslogicalpageoptions{1}{center=\pgfpoint{.25\pgfphysicalwidth+1.8*\pgfpageoptionborder}{.75\pgfphysicalheight-.9*\pgfpageoptionborder}}

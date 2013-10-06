@@ -1,0 +1,39 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20131008
+% compile-latex options:--jobname correction20131008
+\usepackage{textcomp}
+\title{Contrôle 1}
+\date{8/10/2013}
+\begin{document}
+\conditions{ Vous disposez de 2 heures pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé.  }
+\begin{questions}
+  \titledquestion{Codage de coordonnées polaires}\textbf{Codage de coordonnées polaires}\\
+  \begin{parts}
+    \part[1] Sur combien de bits sera stockée un angle ? Une distance ?
+    Une coordonnée ?
+    \begin{solutionordottedlines}[.25in]%
+      12 bits pour un angle (0.5, 0.25 si 9 bits), 32 bits pour une distance (0.25), 44 bits pour une coordonnée (0.25 pour la somme des deux).
+    \end{solutionordottedlines}
+    \part[1] Existe t-il des points qui ont plusieurs coordonnées polaires avec la définition
+    \begin{solutionordottedlines}[.25in]%
+      Oui (point origine, ou angle et angle+180 avec distance=-distance)
+    \end{solutionordottedlines}
+    \part[2] Expliquez en détail comment coder le point -1/60\textdegree.
+    \begin{solutionordottedlines}[1in]%
+      1 en IEEE754 = $2^0$, donc $E=127=0111\,1111$, donc \texttt{0x37800000} et \texttt{0b10 0101 1000}
+    \end{solutionordottedlines}
+    \part[4] Codez les autres points du graphique.
+    \begin{solutionordottedlines}[1in]%
+      0/0: Que des zéros\\
+      0.75/0: \texttt{0x37400000}/0\\
+      1.5/310: \texttt{0x37C00000}/1100 0001 1100 (1 0011 0110 si 9 bits)\\
+      2/45: \texttt{0x40000000}/1 1100 0010 (101101 si 9 bits)\\
+      1.4375/135: \texttt{0x3FB80000}/101 0100 0110 (1000 0111 si 9 bits)
+      0.5 points par réponse juste dans la limite de 4 points (j'avais oublié que j'avais mis 5 points).
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}

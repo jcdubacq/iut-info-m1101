@@ -39,14 +39,34 @@
       \item Un caractère
       \item Une chaîne de caractères
       \end{itemize}
+      \begin{xcorrection}
+        Un nombre entier positif ou nul est en général un type simple, de même
+        que un caractère. Pour tout le reste, ce sont des types composés. Un
+        nombre complexe, un point dans l'espace sont des tableaux de nombres
+        (2 ou 3), de même qu'un intervalle. Une date, c'est souvent une série
+        de nombres, même si on peut se fixer un point de référence et compter
+        par exemple le nombre de secondes depuis ce point de référence. Une
+        chaîne de caractères ou un nombre avec un très grand nombre de
+        chiffres non fixé à l'avance, c'est une liste d'élements simples
+        (caractères ou chiffres). Quant à l'étudiant, ce sont des types de
+        données hétérogènes, donc forcément composées.
+      \end{xcorrection}
     \end{questions}
   \end{exercicelet}
   \begin{exercicelet}{Une date}
     \begin{questions}
     \item Décrivez à partir de quels éléments on peut composer une donnée qui
       représente un moment précis de la journée.
+      \begin{correction}
+        Voir plus loin pour une correction possible. Le fuseau horaire se
+        discute (et dans ce cas, c'est une chaîne de caractères ou un code
+        dans une liste).
+      \end{correction}
     \item Discutez les éléments précis selon que l'on considère qu'un moment
       est pris à la seconde près ou beaucoup plus précis.
+      \begin{correction}
+        Le nombre de secondes peut être soit un entier, soit un flottant.
+      \end{correction}
     \end{questions}
   \end{exercicelet}
 \end{exercice}
@@ -177,10 +197,24 @@
     \item Dites quels sont les types de base du C à utiliser pour coder cette
       information, d'après les limites connues de stockage pour chaque
       type. Utilisez les tailles les plus petites possibles.
+      \begin{xcorrection}
+        Un \texttt{int} 32 bits pour l'année, des entiers très courts (donc
+        \texttt{char} ou \texttt{unsigned char}) pour mois, jour du mois,
+        heure, minute. Une adresse pour le fuseau horaire qui est en fait une
+        chaîne de caractères. Et un \texttt{float} pour les secondes.
+      \end{xcorrection}
     \item Donnez leur noms à la fois dans un modèle 32 bits et un modèle 64
       bits.
+      \begin{xcorrection}
+        Voir dans le tableau, mais \texttt{int} remplit bien sauf pour ILP64
+        (il s'appelle \verb|_int32|.
+      \end{xcorrection}
     \item Si on avait voulu aller de -5 milliards à +5 milliards d'années,
       quel type aurait-on dû utiliser ?
+      \begin{xcorrection}
+        Un entier sur 64 bits donc un \texttt{long int} (voire un \texttt{long
+          long int} sous Microsoft).
+      \end{xcorrection}
     \item Si les données sont dans l'ordre indiqué dans un type composé,
       précisez à quel moment les contraintes d'alignement provoquent des
       «~trous~» dans la structure.
@@ -197,7 +231,7 @@
       \begin{xcorrection}
         En 32 bits pour une adresse: 4+2+2+4+2+2+4=20 octets.
 
-        En 64 bits pour une adresse: 4+2+6+8+2+2+4=28 octets.
+        En 64 bits pour une adresse: 4+2+2+8+2+2+4=24 octets.
 
         Si on veut aller jusqu'à 5 milliards, il faut rajouter 4 octets à
         chaque fois.
@@ -273,10 +307,23 @@
       bits. Calculez les valeurs à stocker en hexadécimal (hormis l'adresse du
       fuseau horaire). Vous prendrez comme valeur d'adresse pour le fuseau
       horaire 0x12345678.
+      \begin{xcorrection}
+        L'an -4 c'est \texttt{0xFFFFFFFC}. Le mois, c'est \texttt{0xC}, le jour c'est \texttt{0x18}, l'heure c'est \texttt{0x15} et les minutes c'est \texttt{0x0x2D}. Les secondes c'est 0, et 0 en float c'est \texttt{0x00000000}.
+      \end{xcorrection}
     \item Écrivez, les uns après les autres, les octets qui composent cette
       date si on est dans un système 32 bits \emph{big-endian}
+      \begin{xcorrection}
+        \texttt{FF FF FF FC 0C 18 ?? ?? 12 34 56 78 15 2D ?? ?? 00 00 00 00}.
+        Les \texttt{??} sont du bourrage (ça peut être n'importe quelle
+        valeur).
+      \end{xcorrection}
     \item Écrivez, les uns après les autres, les octets qui composent cette
       date si on est dans un système 32 bits \emph{little-endian}
+      \begin{xcorrection}
+        \texttt{FC FF FF FF 0C 18 ?? ?? 78 56 34 12 15 2D ?? ?? 00 00 00 00}.
+        Les \texttt{??} sont du bourrage (ça peut être n'importe quelle
+        valeur).
+      \end{xcorrection}
     \end{questions}
   \end{exercicelet}
 \end{exercice}
@@ -290,8 +337,18 @@
     \item Quelle est la quantité d'information contenue dans la suite binaire
       110111001001 ?  Et dans la suite binaire 000000000000 ? Et dans la suite
       binaire 010101010101 ?
+      \begin{xcorrection}
+        C'est la même probabilité pour les suites, et la même quantité de bits
+        (12 bits).
+      \end{xcorrection}
     \item Est-ce qu'on pourrait écrire certaines de ces suites de façons plus
       courtes ? Proposez-en.
+      \begin{xcorrection}
+        Par exemple, 12 fois 0, 6 fois 01. Et pour le premier,
+        $A1\overline{A}1$, avec $A=B0B$, avec $B=CC$, avec $C=1$. Donc par
+        exemple $AC\overline{A}C$, $A=B\overline{C}B$, $B=CC$, $C=1$. Pas
+        vraiment plus cours \texttt{:-/}.
+      \end{xcorrection}
     \end{questions}
   \end{exercicelet}
 \end{exercice}
@@ -388,9 +445,10 @@
         reprend à la fin de chaque ligne à la ligne suivante à gauche.
       \end{minipage}\hfill
       \begin{minipage}[t]{.2\linewidth}
-        \begin{tikzpicture}[baseline={([yshift={-\ht\strutbox}]current bounding box.north)},scale=.15]
-          \draw[gray,very thin] (0,0) grid (16,16);
-          \foreach \i in {(5,0),(6,0),(7,0),(8,0),(9,0),(10,0),(12,0),(13,0),(14,0),(2,1),%
+        \begin{tikzpicture}[baseline={([yshift={-\ht\strutbox}]current
+            bounding box.north)},scale=.15]
+          \draw[gray,very thin] (0,0) grid (16,16); \foreach \i in
+          {(5,0),(6,0),(7,0),(8,0),(9,0),(10,0),(12,0),(13,0),(14,0),(2,1),%
             (3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),%
             (2,2),(3,2),(5,2),(8,2),(9,2),(10,2),%
             (2,3),(3,3),(4,3),(8,3),(9,3),(10,3),%
@@ -399,9 +457,8 @@
             (1,7),(5,7),(6,7),(12,7),(1,8),(13,8),(1,9),(13,9),(2,10),(13,10),%
             (3,11),(13,11),(3,12),(7,12),(10,12),(14,12),(15,12),%
             (4,13),(7,13),(9,13),(11,13),(13,13),(15,13),%
-            (5,14),(6,14),(8,14),(9,14),(12,14),(14,14),(13,15)} {
-            \fill \i rectangle ++(1,1);
-          }
+            (5,14),(6,14),(8,14),(9,14),(12,14),(14,14),(13,15)} { \fill \i
+            rectangle ++(1,1); }
         \end{tikzpicture}
       \end{minipage}\hfill\null
     \end{questionshome}

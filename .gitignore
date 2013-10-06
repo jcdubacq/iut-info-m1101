@@ -349,3 +349,65 @@
 /prof05.log
 /prof05.pdf
 # stop automatic section for compile-latex:archi05.tex/prof05
+# start automatic section for compile-latex:controle20131008.tex
+/.compile-latex/controle20131008
+/controle20131008.aux
+/controle20131008.fls
+/controle20131008.log
+/controle20131008.pdf
+# stop automatic section for compile-latex:controle20131008.tex
+# start automatic section for compile-latex:controle20131008.tex/correction20131008
+/.compile-latex/correction20131008
+/correction20131008.aux
+/correction20131008.fls
+/correction20131008.log
+/correction20131008.pdf
+# stop automatic section for compile-latex:controle20131008.tex/correction20131008
+# start automatic section for compile-latex:sys05.tex
+/.compile-latex/sys05
+/sys05.aux
+/sys05.fls
+/sys05.log
+/sys05.nav
+/sys05.out
+/sys05.pdf
+/sys05.snm
+/sys05.toc
+/sys05.vrb
+# stop automatic section for compile-latex:sys05.tex
+# start automatic section for compile-latex:sys05.tex/spoly05
+/.compile-latex/spoly05
+/spoly05.aux
+/spoly05.fls
+/spoly05.log
+/spoly05.nav
+/spoly05.out
+/spoly05.pdf
+/spoly05.snm
+/spoly05.toc
+/spoly05.vrb
+# stop automatic section for compile-latex:sys05.tex/spoly05
+# start automatic section for compile-latex:sys.tex
+/.compile-latex/sys
+/sys.aux
+/sys.fls
+/sys.log
+/sys.nav
+/sys.out
+/sys.pdf
+/sys.snm
+/sys.toc
+/sys.vrb
+# stop automatic section for compile-latex:sys.tex
+# start automatic section for compile-latex:sys.tex/spoly
+/.compile-latex/spoly
+/spoly.aux
+/spoly.fls
+/spoly.log
+/spoly.nav
+/spoly.out
+/spoly.pdf
+/spoly.snm
+/spoly.toc
+/spoly.vrb
+# stop automatic section for compile-latex:sys.tex/spoly
