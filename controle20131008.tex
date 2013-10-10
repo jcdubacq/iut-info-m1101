@@ -2,37 +2,285 @@
 % compile-latex options:--jobname controle20131008
 % compile-latex options:--jobname correction20131008
 \usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
 \title{Contrôle 1}
 \date{8/10/2013}
 \begin{document}
 \conditions{ Vous disposez de 2 heures pour faire ce contrôle. Aucun
   document autorisé. Toute tentative de communication avec un voisin ou
   l'extérieur peut être sanctionnée. Toutes les réponses doivent être
-  faites sur l'énoncé.  }
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
 \begin{questions}
-  \titledquestion{Codage de coordonnées polaires}\textbf{Codage de coordonnées polaires}\\
+  \titledquestion{Système}
+
+  Lorsqu'une commande vous est demandée, \textbf{donnez un exemple
+    d'utilisation} qui répond à la question.
   \begin{parts}
-    \part[1] Sur combien de bits sera stockée un angle ? Une distance ?
-    Une coordonnée ?
+    \part[\half] Quelle est la commande qui donne un texte d'aide sur
+    une commande Linux?
     \begin{solutionordottedlines}[.25in]%
-      12 bits pour un angle (0.5, 0.25 si 9 bits), 32 bits pour une distance (0.25), 44 bits pour une coordonnée (0.25 pour la somme des deux).
+      \texttt{man man}
     \end{solutionordottedlines}
-    \part[1] Existe t-il des points qui ont plusieurs coordonnées polaires avec la définition
+    \part[1] Quelle est l'interprétation du symbole spécial \verb|~|
+    dans le shell ? Donnez \textbf{deux} sens (légèrement) différents de
+    ce symbole.
+    \begin{solutionordottedlines}[.5in]%
+      On peut désigner son propre répertoire (symbole seul) ou celui de
+      quelqu'un d'autre.
+    \end{solutionordottedlines}
+    \part[1] Par quelle ligne de code commence un script shell écrit en \texttt{bash} ?
     \begin{solutionordottedlines}[.25in]%
-      Oui (point origine, ou angle et angle+180 avec distance=-distance)
+      \verb|#!/bin/bash| (accepter aussi avec sh).
     \end{solutionordottedlines}
-    \part[2] Expliquez en détail comment coder le point -1/60\textdegree.
-    \begin{solutionordottedlines}[1in]%
-      1 en IEEE754 = $2^0$, donc $E=127=0111\,1111$, donc \texttt{0x37800000} et \texttt{0b10 0101 1000}
+    \part[1] Citez au moins deux ressources gérées par le système
+    d'exploitation.
+    \begin{solutionordottedlines}[.5in]%
+      Le système d'exploitation arbitre au moins l'accès au processeur
+      et l'accès à la mémoire.
     \end{solutionordottedlines}
-    \part[4] Codez les autres points du graphique.
+    \part[\half] Quelle est la commande qui permet de visualiser une liste
+    détaillée des processus existants sur un système Linux ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ps -ef} (\texttt{ps -eu} est dans le cours et est accepté
+      aussi)
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Système 2}
+  \begin{parts}
+    \part[1] Quelle est la différence entre une variable du shell et une variable d'environnement ?
+    \begin{solutionordottedlines}[.5in]%
+    \end{solutionordottedlines}    
+    \part[1] Est-ce que deux processus peuvent être exécutés réellement
+    en même temps sur un processeur simple ? Expliquez
     \begin{solutionordottedlines}[1in]%
-      0/0: Que des zéros\\
-      0.75/0: \texttt{0x37400000}/0\\
-      1.5/310: \texttt{0x37C00000}/1100 0001 1100 (1 0011 0110 si 9 bits)\\
-      2/45: \texttt{0x40000000}/1 1100 0010 (101101 si 9 bits)\\
-      1.4375/135: \texttt{0x3FB80000}/101 0100 0110 (1000 0111 si 9 bits)
-      0.5 points par réponse juste dans la limite de 4 points (j'avais oublié que j'avais mis 5 points).
+      
+    \end{solutionordottedlines}
+    \part[1] Citez au moins quatre systèmes d'exploitation différent
+    \begin{solutionordottedlines}[.25in]%
+      Linux, Windows, OS X, Android, ...
+    \end{solutionordottedlines}
+    \part[1] Comment le shell trouve-t-il où est une commande ?
+    \begin{solutionordottedlines}[1in]%
+      Il utilise la variable \texttt{PATH} qui est une liste de
+      répertoires séparés par des deux-points. Il cherche dans ces
+      répertoires si un fichier du nom de la commande existe et s'arrête
+      au premier trouvé.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \newpage
+  \titledquestion{Arborescence}
+
+  \framebox{\begin{minipage}{.5\linewidth}%
+      \dirtree{%
+        .1 \DTd{}.  .2 \DTd{bin}.  .3 (\dots)\DTfcomment{(1)}.  .2
+        \DTd{home}.  .3 \DTd{jvaljean}\DTfcomment{Votre répertoire
+          personnel}.  .4 \DTd{Documents}\DTfcomment{Vous êtes ici}.  .5
+        \DTd{Ancien}. .6 \DTd{Paris}.  .7 greve.jpg.  .5
+        condamnation.pdf. .5 document1.txt.  .5 doc2.txt.  .5
+        facture.txt.  .5 mission.pdf.  .5 mission.jpg.  .4 \DTd{Coffre}.
+        .3 \DTd{gavroche}.  .4 avis.txt.  .2 (\dots)\DTfcomment{(2)}.  }
+    \end{minipage}}\hfill%
+  \begin{minipage}{.45\linewidth}
+    Voilà ci-contre un extrait de l'arborescence de votre système. Il y
+    a d'autres utilisateurs : \textit{\texttt{gavroche}} est dans votre
+    groupe, \textit{\texttt{thenardier}} et \textit{\texttt{cosette}} ne
+    le sont pas.
+
+    Vous devrez faire tout cet exercice sans \textbf{jamais} utiliser la
+    commande \texttt{cd}. Dans l'extrait d'arborescence, le répertoire
+    courant est indiqué. Il est possible que \textbf{deux} commandes
+    soient nécessaires pour certaines manipulations.
+  \end{minipage}
+  \begin{parts}
+    \bonuspart[\half] Répondez à \textnormal{toutes} les questions avec
+    une seule commande pour ce bonus!
+    \part[\half] Listez le contenu du répertoire \texttt{Ancien}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ls Ancien}
+    \end{solutionordottedlines}
+    \part[\half] Créez un répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mkdir -p Nouveau/Vacances} ou en deux commandes (sinon 0)
+    \end{solutionordottedlines}
+    \part[1] Lisez le contenu du fichier \texttt{avis.txt} chez
+    l'utilisateur \textit{\texttt{gavroche}}.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cat \~gavroche/avis.txt} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Déplacez tous les documents du répertoire courant dans \texttt{Coffre} sauf \texttt{condamnation.pdf}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mv *.txt mission.pdf} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Copiez \texttt{condamnation.pdf} et le répertoire \texttt{Paris} dans le répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cp -r condamnation.txt Ancien/Paris Nouveau/2013} (.5 pour le -r).
+    \end{solutionordottedlines}
+    \part[1] Sachant que les fichiers étaient lisibles par tout le
+    monde, changez les modes de \texttt{Coffre} pour que
+    \texttt{\textit{gavroche}} puisse connaître le contenu du
+    répertoire, que \texttt{\textit{thenardier}} ne puisse pas, et que
+    \texttt{\textit{cosette}} puisse (si vous lui en donnez le chemin)
+    lire un des fichiers. Utilisez les notations \textbf{numériques}
+    pour cette commande.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{chmod 751 \~/Coffre}
+    \end{solutionordottedlines}
+    \part[\half] Le mode de \texttt{Ancien} est au départ
+    \texttt{rwxr-xr-x}. En utilisant les notations \textbf{symboliques}
+    et non numériques pour cette commande, faites en sorte que plus
+    personne (même vous) ne puisse savoir quoi que ce soit sur le
+    répertoire \texttt{Paris} stocké dans \texttt{Ancien}.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{chmod a-rwx Ancien/Paris}
+    \end{solutionordottedlines}
+    \part[\half] Donnez ici deux exemples de répertoires ou fichiers que l'on trouve traditionnellement dans les parties non listées numéro 1 et 2.
+    \begin{solutionordottedlines}[.25in]%
+      1. ls et 2. usr
+    \end{solutionordottedlines}
+  \end{parts}
+  \newpage
+  \titledquestion{Codage}
+  \begin{parts}
+    \part[\half] Quel est le nombre \textbf{minimal} de bits nécessaire
+    pour coder l'information suivante: un numéro de page de l'annexe
+    d'un livre, qui vaut entre 1400 et 1912.
+    \begin{solutionordottedlines}[.25in]
+    \end{solutionordottedlines}
+    \part[\half] Quel est le plus grand entre $48\times 10^6$
+    bits et $6$ Mio ? Prouvez-le
+    \begin{solutionordottedlines}[.5in]
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
+    48, 226, 2251.
+    \begin{solutionordottedlines}[.75in]
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1] Convertissez en C2 sur 8 bits le nombre $-61$.
+    \begin{solutionordottedlines}[.25in]
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1] Faites l'opération suivante:
+    $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+    décimal.
+    \begin{solutionordottedlines}[.25in]
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1] Voici le récapitulatif du tableau de conversion UTF8:
+    \begin{center}\renewcommand{\tabcolsep}{1mm}
+      \begin{tabular}{|c|c|c|c|}\hline
+        Valeurs & Écriture binaire & Codage UTF-8 (binaire) & octets\\\hline
+        0x0--0x7F & abc\,defg & 0abc\,defg & 1 \\
+        0x80--0x7FF & abc\,defg\,hijk & 110a\,bcde~10fg\,hijk & 2 \\
+        0x800--0xFFFF & abcd\,efgh\,ijkl\,mnop & 1110\,abcd~10ef\,ghij~10kl\,mnop & 3 \\
+        0x10000--0x1FFFFF& a\,bcde\,fghi\,jklm\,nopq\,rstu & 1111\,0abc~10de\,fghi~10jk\,lmno~10pq\,rstu &	4 \\\hline
+      \end{tabular}
+    \end{center}
+    Donnez la séquence d'octets correspondant au texte «~1€~», dont les
+    valeurs unicodes sont 0x49 et 0x20AC.
+    \part[\half] Un signal audio a une fréquence d'échantillonage de
+    8000 Hz. Quelle est la fréquence maximale qui peut être reproduite
+    fidèlement avant quantification ? Justifiez
+    \begin{solutionordottedlines}[.25in]
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1] Un signal audio (mono-voie) à 8000 Hz utilise 1024 niveaux
+    d'intensité par échantillon. Combien de bits sont nécessaires pour
+    chaque échantillon ? (justifiez) En déduire la taille totale d'un
+    fichier qui code une minute de signal.
+    \begin{solutionordottedlines}[.25in]
+      $8000\times 10\times 60=4\,800\,000$ bits ou bien 600 ko.
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Flottants courts} On veut modifier la norme IEEE
+  754. On définit une nouvelle catégorie de nombres flottants sur 12
+  bits:
+  \begin{itemize}
+  \item 1 bit de signe;
+  \item 4 bits pour noter $E$ avec $E=e+7$;
+  \item 7 bits pour la partie fractionnaire $M$ de la valeur $v$.
+  \end{itemize}
+  On a $x=(-1)^s\times v\times 2^e$. On fait les mêmes
+  \textbf{exceptions} que dans la norme IEEE 754: pour
+  $E=\texttt{0b0000}$, on a $x=0$ et pour $E=\texttt{0b1111}$, on a
+  $x=\pm\infty$. NB: $2^{-6}=0,015\,625, 2^{-12}=0,000\,244\,140\,625$.
+  \begin{parts}
+    \part[1] Codez en \emph{flottant court} le nombre 3,5.
+    \begin{solutionordottedlines}[.5in]%
+      ...TODO
+    \end{solutionordottedlines}
+    \part[1] Quel est le plus grand nombre non infini que l'on peut
+    représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
+    valeur en décimal.
+    \begin{solutionordottedlines}[.5in]%
+      Codage $011101111111=0x77F$ (1/2), $E=0b1110=14$, $e=7$ et
+      $v=0b1,1111111$. Soit $x=0b1111\,1111=255$ (1/2). Notes partielles
+      si essentiellement bon.
+    \end{solutionordottedlines}
+    \part[1] Soit deux nombres $a$ et $b$, flottants courts, qui ont le
+    même exposant $e$. Quelle est la plus petite différence possible non
+    nulle entre ces deux nombres ?
+    \begin{solutionordottedlines}[.5in]%
+      La différence de $v$ vaut 0.0000001 donc différence totale
+      de $2^e\times2^{-7}$ donc $2^{e-7}$.
+    \end{solutionordottedlines}
+    \part[1] Transformez en décimal les deux nombres \emph{flottants
+      courts} codés par les chaînes de bits suivantes:
+    $\texttt{0b0011\,1010\,0000}$ et
+    $\texttt{0b0110\,0101\,1010}$.
+    \begin{solutionordottedlines}[.5in]%
+      ...TODO
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Programme étrange}%
+  Considérez le programme suivant:
+
+  \begin{lstlisting}[language=C,caption=Programme]
+fonction(int a) {
+  int b=0;
+  while (a!=0) {
+    a=a>>1;
+    b=b+(a&1)
+  }
+  return(b);
+}
+  \end{lstlisting}
+
+  \begin{parts}
+    \part[1] Pourquoi ce programme s'arrête-t-il ? Expliquez-bien.
+    \begin{solutionordottedlines}[.75in]
+      TODO
+    \end{solutionordottedlines}
+    \part[1] On appelle la fonction avec la valeur 21. Détaillez les
+    valeurs successives de \texttt{a} et \texttt{b} jusqu'à l'arrêt de
+    la fonction.
+
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        TODO
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        TODO
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        TODO
+      \end{solutionordottedlines}
+    \end{minipage}
+    \part[1] Que calcule cette fonction ?
+    \begin{solutionordottedlines}[.25in]
+      TODO
     \end{solutionordottedlines}
   \end{parts}
 \end{questions}

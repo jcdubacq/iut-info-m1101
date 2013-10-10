@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}\relax
-\ProvidesClass{JCexam}[2012/11/01 exam class for J-C Dubacq]
+\ProvidesClass{iutvexam}[2012/11/01 exam class for J-C Dubacq]
 \LoadClass[a4paper]{exam}
 \def\myjob{correction}
 \edef\myjob{\meaning\myjob}
@@ -12,12 +12,12 @@
 \usepackage{lmodern}
 \pagestyle{headandfoot}
 \addpoints
-\qformat{Question \thequestion: {\bfseries\thequestiontitle}\dotfill\thepoints}
+\qformat{Question \thequestion: {\bfseries\thequestiontitle}\dotfill\totalpoints}
 \renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
 \shadedsolutions
 
 \firstpageheader{IUT Villetaneuse\\\makebox[5cm]{Nom: \hrulefill}}
-{Architecture des ordinateurs\\
+{M1101: Introduction à l'informatique\\
   \@title}
 {\@date\\\makebox[3cm]{Groupe: \hrulefill}}
 \runningheader{}{\@title}{}
