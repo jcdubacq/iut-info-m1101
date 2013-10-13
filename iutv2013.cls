@@ -18,7 +18,7 @@
 \NeedsTeXFormat{LaTeX2e}\relax
 \ProvidesClass{iutv2013}[2013/09/01 slides class for J-C Dubacq]
 \PassOptionsToPackage{francais}{translator}
-\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{table,rgb}{xcolor}
 \PassOptionsToPackage{full}{textcomp}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 \ProcessOptions
@@ -44,19 +44,24 @@
 \usepackage{arev}
 \usepackage{tgtermes,tgadventor}
 \usepackage[condensed]{tgheros}
+\usepackage[table,rgb]{xcolor}
+\usepackage{textcomp}
 \usepackage{colortbl}%
-\usepackage{xcolor,textcomp}
 \RequirePackage[francais]{babel}
 \usepackage[autolanguage]{numprint}
 \newtheorem{methode}{Méthode}
 \usepackage{frmath}
-\usepackage{enumerate}
+\usepackage{enumerate,textcomp}
 
 \usepackage{newunicodechar}
 \DeclareFontFamily{LUC}{qhvc}{\qhv@set@spacing}
 \DeclareFontShape{LUC}{qhvc}{m}{n}{<-> \qhv@scale ec-qhvcr}{}
 \def\textgreatequal{\bgroup\fontencoding{LUC}\selectfont\unichar{8805}\egroup}
 \newunicodechar{≥}{\textgreatequal}
+\AtBeginDocument{\def\textmultiply{\bgroup\fontencoding{LUC}\selectfont\unichar{215}\egroup}}
+
+
+
 
 \newcounter{cnt}\setcounter{cnt}{0}
 \newcounter{cnta}\setcounter{cnta}{0}

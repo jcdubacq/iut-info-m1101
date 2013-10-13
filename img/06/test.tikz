@@ -1,0 +1,7 @@
+\begin{tikzpicture}[scale=.02]
+\draw[thin] (0,0) rectangle (300,200);
+\fill[green] (0,70) rectangle ++(100,80);
+\draw[red,thick] (5,5)--(250,95);
+\fill[blue] (90,80) circle (50);
+\node [inner sep=0pt,outer sep=0pt,anchor=south west] at (180,60) {Un texte};
+\end{tikzpicture}

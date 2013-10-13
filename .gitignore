@@ -411,3 +411,65 @@
 /spoly.toc
 /spoly.vrb
 # stop automatic section for compile-latex:sys.tex/spoly
+# start automatic section for compile-latex:sys06.tex
+/.compile-latex/sys06
+/sys06.aux
+/sys06.fls
+/sys06.log
+/sys06.nav
+/sys06.out
+/sys06.pdf
+/sys06.snm
+/sys06.toc
+/sys06.vrb
+# stop automatic section for compile-latex:sys06.tex
+# start automatic section for compile-latex:sys06.tex/spoly06
+/.compile-latex/spoly06
+/spoly06.aux
+/spoly06.fls
+/spoly06.log
+/spoly06.nav
+/spoly06.out
+/spoly06.pdf
+/spoly06.snm
+/spoly06.toc
+/spoly06.vrb
+# stop automatic section for compile-latex:sys06.tex/spoly06
+# start automatic section for compile-latex:archi06.tex
+/.compile-latex/archi06
+/archi06.aux
+/archi06.fls
+/archi06.log
+/archi06.nav
+/archi06.out
+/archi06.pdf
+/archi06.snm
+/archi06.toc
+/archi06.vrb
+# stop automatic section for compile-latex:archi06.tex
+# start automatic section for compile-latex:archi06.tex/exo06
+/.compile-latex/exo06
+/exo06.aux
+/exo06.fls
+/exo06.log
+/exo06.pdf
+# stop automatic section for compile-latex:archi06.tex/exo06
+# start automatic section for compile-latex:archi06.tex/poly06
+/.compile-latex/poly06
+/poly06.aux
+/poly06.fls
+/poly06.log
+/poly06.nav
+/poly06.out
+/poly06.pdf
+/poly06.snm
+/poly06.toc
+/poly06.vrb
+# stop automatic section for compile-latex:archi06.tex/poly06
+# start automatic section for compile-latex:archi06.tex/prof06
+/.compile-latex/prof06
+/prof06.aux
+/prof06.fls
+/prof06.log
+/prof06.pdf
+# stop automatic section for compile-latex:archi06.tex/prof06

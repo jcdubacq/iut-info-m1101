@@ -1,11 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}\relax
 \ProvidesClass{iutvexam}[2012/11/01 exam class for J-C Dubacq]
 \LoadClass[a4paper]{exam}
-\def\myjob{correction}
+\newif\ifprof\proffalse
+\edef\myjob{\jobname}
 \edef\myjob{\meaning\myjob}
-\edef\tmpjob{\jobname}
-\edef\tmpjob{\meaning\tmpjob}
-\ifx\myjob\tmpjob\printanswerstrue\fi
+\ifnum\pdfmatch{correction}{\myjob}>0\let\@x\relax\else\let\@x\null\fi
+\ifx\@x\relax\proftrue\fi
+
+\ifprof\printanswerstrue\fi
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} \usepackage{xspace,color}
 \usepackage[francais]{babel}

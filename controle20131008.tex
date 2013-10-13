@@ -55,11 +55,14 @@
   \begin{parts}
     \part[1] Quelle est la différence entre une variable du shell et une variable d'environnement ?
     \begin{solutionordottedlines}[.5in]%
-    \end{solutionordottedlines}    
+      Une variable du shell n'est pas transmise aux sous-processus du
+      shell. Compter \half au moins pour un simple « il faut mettre
+      \texttt{export} devant ».
+    \end{solutionordottedlines}
     \part[1] Est-ce que deux processus peuvent être exécutés réellement
     en même temps sur un processeur simple ? Expliquez
     \begin{solutionordottedlines}[1in]%
-      
+      Le processeur étant partagé, pas vraiment; il y a exécution concurrente avec priorités des 2 processus; Alternance rapide; Illusion de simultanéité
     \end{solutionordottedlines}
     \part[1] Citez au moins quatre systèmes d'exploitation différent
     \begin{solutionordottedlines}[.25in]%
@@ -152,26 +155,29 @@
     pour coder l'information suivante: un numéro de page de l'annexe
     d'un livre, qui vaut entre 1400 et 1912.
     \begin{solutionordottedlines}[.25in]
+      1912-1400=513 possibilités, donc 10 bits.
     \end{solutionordottedlines}
     \part[\half] Quel est le plus grand entre $48\times 10^6$
     bits et $6$ Mio ? Prouvez-le
     \begin{solutionordottedlines}[.5in]
-      ...TODO
+      $48\times10^6 bits < 6Mio$ car $48\times10^6 bits = 6\times10^6 octets = 6Mo$ or $6Mo < 6Mio$ car \\
+      $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+      $1000<1024$ (éventuellement moins de détails)
     \end{solutionordottedlines}
     \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
     48, 226, 2251.
     \begin{solutionordottedlines}[.75in]
-      ...TODO
+      0x30, 0xE2, 0x8CB
     \end{solutionordottedlines}
     \part[1] Convertissez en C2 sur 8 bits le nombre $-61$.
     \begin{solutionordottedlines}[.25in]
-      ...TODO
+      0xC3 ou $1100\,0011$\\
     \end{solutionordottedlines}
     \part[1] Faites l'opération suivante:
     $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
     décimal.
     \begin{solutionordottedlines}[.25in]
-      ...TODO
+      $0b1\,1101\,0001=465_{10}$
     \end{solutionordottedlines}
     \part[1] Voici le récapitulatif du tableau de conversion UTF8:
     \begin{center}\renewcommand{\tabcolsep}{1mm}
@@ -185,11 +191,18 @@
     \end{center}
     Donnez la séquence d'octets correspondant au texte «~1€~», dont les
     valeurs unicodes sont 0x49 et 0x20AC.
+    \begin{solutionordottedlines}[.25in]
+      0x49, puis 0xE2 0x82 0xAC.\\
+      $0x49\in [0x0;0x7F]$ $\rightarrow$ codage sur 1 octet. Le code ascii est le code UTF-8 solution:$0x49$\\
+      $0x20AC\in [0x800;0xFFFF]$ $\rightarrow$ codage sur 3 octets selon le motif $111\,abcd\,\,10ef\,ghij\,\,10kl\,mnop$ avec $abcd\,efgh\,ijkl\,mnop=0x20AC=0011\,0000\,1010\,1100$ soit: solution: $1110\,0010\,\,1000\,0010\,\,1010\,1100=0xE282AC$
+    \end{solutionordottedlines}
     \part[\half] Un signal audio a une fréquence d'échantillonage de
     8000 Hz. Quelle est la fréquence maximale qui peut être reproduite
     fidèlement avant quantification ? Justifiez
     \begin{solutionordottedlines}[.25in]
-      ...TODO
+      D'après le Théorème d'échantillonnage de Nyquist-Shannon on a
+      $f_{echan}>2*f_{Max}$ donc or ici
+      $f_{Max}<f_{chan}/2=8000Hz/2=4000Hz$
     \end{solutionordottedlines}
     \part[1] Un signal audio (mono-voie) à 8000 Hz utilise 1024 niveaux
     d'intensité par échantillon. Combien de bits sont nécessaires pour
@@ -214,7 +227,7 @@
   \begin{parts}
     \part[1] Codez en \emph{flottant court} le nombre 3,5.
     \begin{solutionordottedlines}[.5in]%
-      ...TODO
+      $3,5=11,1=1,11\times2$ donc $0100 0110 0000$ soit 0x460.
     \end{solutionordottedlines}
     \part[1] Quel est le plus grand nombre non infini que l'on peut
     représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
@@ -236,7 +249,7 @@
     $\texttt{0b0011\,1010\,0000}$ et
     $\texttt{0b0110\,0101\,1010}$.
     \begin{solutionordottedlines}[.5in]%
-      ...TODO
+      1,25 et 54,5
     \end{solutionordottedlines}
   \end{parts}
 
@@ -257,7 +270,8 @@ fonction(int a) {
   \begin{parts}
     \part[1] Pourquoi ce programme s'arrête-t-il ? Expliquez-bien.
     \begin{solutionordottedlines}[.75in]
-      TODO
+      Le décalage à droite n'introduit que des zéros dans le nombre a,
+      donc a finit par être nul (division entière par 2).
     \end{solutionordottedlines}
     \part[1] On appelle la fonction avec la valeur 21. Détaillez les
     valeurs successives de \texttt{a} et \texttt{b} jusqu'à l'arrêt de
@@ -265,22 +279,22 @@ fonction(int a) {
 
     \begin{minipage}{.3\linewidth}
       \begin{solutionordottedlines}[1in]
-        TODO
+        21,0 (facultatif)\\10,1
       \end{solutionordottedlines}
     \end{minipage}\hfill
     \begin{minipage}{.3\linewidth}
       \begin{solutionordottedlines}[1in]
-        TODO
+        5,1\\2,2
       \end{solutionordottedlines}
     \end{minipage}\hfill
     \begin{minipage}{.3\linewidth}
       \begin{solutionordottedlines}[1in]
-        TODO
+        1,2\\0,3
       \end{solutionordottedlines}
     \end{minipage}
     \part[1] Que calcule cette fonction ?
     \begin{solutionordottedlines}[.25in]
-      TODO
+      Le nombre de bits à 1 dans le codage binaire de l'entier a.
     \end{solutionordottedlines}
   \end{parts}
 \end{questions}

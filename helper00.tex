@@ -1,0 +1,99 @@
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{solarizedRebase3}}
+\DeclareCaptionFormat{listing}{\colorbox{solarizedRebase00}{\parbox{\textwidth}{\hspace{15pt}#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+\usepackage{realboxes}
+
+\lstdefinelanguage{JavaScript}{
+  sensitive=true,
+  keywords={break, else, case, finally, return, catch, for, switch, while, continue, default, if, throw, in, try, do},
+  keywords=[2]{this, true, false, null, instanceof, typeof, new, void, with, function, delete, var},
+  keywords=[3]{console,window,arguments,document,node,$,jQuery},
+  % $ Error was removed due to case insensitivity bug
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+\lstset{literate=%
+  {Ö}{{\"O}}1
+  {à}{{\`a}}1
+  {é}{{\'e}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}2
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+  {ö}{{\"o}}1
+  {ê}{{\^e}}1
+  {â}{{\^a}}1
+}
+\lstset{
+  language=Javascript,
+  numbers=left,
+  basicstyle=\fontfamily{qhvc}\footnotesize,
+  numberstyle=\fontfamily{qhvc}\tiny,
+  keywordstyle=\color{red}\bfseries,
+  keywordstyle=[2]\color{solarizedRed}\bfseries,
+  keywordstyle=[3]\color{solarizedRebase3}\bfseries,
+  identifierstyle=\color{solarizedRebase3},
+  stringstyle=\fontfamily{qhvc}\color{solarizedBlue},
+  commentstyle=\fontfamily{qhvc}\color{solarizedMagenta},
+  numbersep=5pt,
+  tabsize=2,
+  extendedchars=true,
+  breaklines=true,
+  frame=b,
+  columns=fullflexible,
+  showspaces=false,
+  showtabs=false,
+  xleftmargin=10pt,
+  framexleftmargin=10pt,
+  framexrightmargin=5pt,
+  framexbottommargin=1pt,
+  showstringspaces=false,
+  % escapeinside={}{}
+}
+
+% Background
+\usepackage{etoolbox,ifthen}
+
+\tikzstyle{highlighter} = [solarizedRebase3,fill=solarizedYellow,dashed,opacity=.2]
+\tikzstyle{highlightergreen} =[highlighter,fill=solarizedGreen,solid,line width=0.5pt,rounded corners=3pt]
+\tikzstyle{highlighterblue} =[highlighter,fill=solarizedBlue,solid,line width=0.5pt]
+\tikzstyle{highlightermagenta} =[highlighter,fill=solarizedMagenta,solid,line width=0.5pt]
+\pgfdeclarelayer{foreground}
+\pgfdeclarelayer{background} 
+\pgfsetlayers{background,main,foreground} 
+\xdef\highlighter{highlighter}
+
+\newcounter{highlight}[page]
+\newcommand{\bh}[0]{%
+  \stepcounter{highlight}%
+  \tikz[remember picture, overlay]{%
+    \coordinate (begin highlight \arabic{highlight}) at (-.1em,-.2\baselineskip);%
+  }}
+\newcommand{\eh}[0]{%
+  \tikz[remember picture, overlay]{%
+    \coordinate (end highlight \arabic{highlight}) at (.1em,.8\baselineskip);;%
+    \draw[\highlighter] (begin highlight \arabic{highlight}) rectangle (end highlight \arabic{highlight});
+  }}
+
+\makeatletter %   Redefine macros from listings package:
+\renewcommand\lstinline[1][]{%
+    \leavevmode\bgroup\bh\aftergroup\eh % \hbox\bgroup --> \bgroup
+      \def\lst@boxpos{b}%
+      \lsthk@PreSet\lstset{flexiblecolumns,#1}%
+      \lsthk@TextStyle
+      \@ifnextchar\bgroup{\afterassignment\lst@InlineG \let\@let@token}%
+                         \lstinline@}
+\makeatother
+
+\def\event#1{\bgroup\edef\highlighter{highlightergreen}\fontfamily{qhvc}\normalsize\bh#1\eh[highlightergreen]\egroup}
+\long\def\shortjs{\edef\highlighter{highlightergreen}\lstinline[basicstyle=\fontfamily{qhvc}\normalsize]}
+\def\shorthtml{\edef\highlighter{highlightermagenta}\lstinline[basicstyle=\fontfamily{qhvc}\normalsize,language=HTML]}
+\def\shortphp{\edef\highlighter{highlighterblue}\lstinline[basicstyle=\fontfamily{qhvc}\normalsize,language=PHP]}
+% \catcode`\$=11 %$
