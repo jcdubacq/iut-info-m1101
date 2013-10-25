@@ -10,27 +10,32 @@
   \end{itemize}
   Une image est un format \emph{composite}. Il contient entre autres:
   \begin{itemize}
-  \item La largeur et la hauteur en pixels (obligatoire)
-  \item Les données d'intensité de chaque pixel (obligatoire)
-  \item Des informations sur le rendu des couleurs (voir plus loin, le gamma
-    et le gamut)
-  \item Des informations sur le rendu physique (par exemple, tailles en cm)
-  \item Des méta-données (sujet, auteur, lieu de prise)
+  \item la largeur et la hauteur en pixels (obligatoire),
+  \item les données d'intensité de chaque pixel (obligatoire),
+  \item des informations sur le rendu des couleurs (voir plus loin, le gamma
+    et le gamut),
+  \item des informations sur le rendu physique (par exemple, dimensions en
+    cm),
+  \item des méta-données (sujet, auteur, lieu de prise).
   \end{itemize}
 \end{frame}
 \begin{frame}[fragile]{Le format PBM}
   \begin{columns}
     \begin{column}{0.7\linewidth}
-      Le format PBM est un format matriciel qui est composé des éléments
-      suivants:
       \begin{itemize}
-      \item une entête en mode texte qui commence par P4 en ASCII, du blanc
-      \item la largeur écrite en ASCII, du blanc
-      \item la hauteur écrite en ASCII, \textbf{un} blanc
+      \item Le format PBM est un format matriciel qui est composé des éléments
+        suivants:
+        \begin{itemize}
+        \item une entête en mode texte qui commence par P4 en ASCII, du blanc,
+        \item la largeur écrite en ASCII, du blanc,
+        \item la hauteur écrite en ASCII, \textbf{un} blanc,
+        \end{itemize}
       \item Les données binaires ligne par ligne de haut en bas.
       \item Chaque ligne est découpée en paquet de 8 pixels noirs ou blancs
         consécutifs, codés en binaire (1=noir). Si la largeur n'est pas un
         multiple de 8, on complète par des 0 à droite.
+      \item Les blancs sont les caractères ASCII espace et TAB, CR, NL (0x09,
+        0x0A, 0x0D)
       \end{itemize}
     \end{column}%
     \begin{column}{0.3\linewidth}
@@ -111,10 +116,10 @@
   \item Format développé par comité \emph{(Joint Picture Expert Group)}
   \item Adapté au stockage de photographies
   \item Méta-données riches (EXIF, XMP, ITPC)
-  \item Filtrage perceptuel numérique: on enlève des couleurs (filtrage
-    haute-fréquences)
-  \item Compression sur un filtrage plus ou moins intense
-  \item Stockage avec perte de qualité
+  \item Filtrage perceptuel numérique paramétrable: réduire les couleurs
+    (filtrage hautes-fréquences)
+  \item Compression sur un filtrage plus ou moins intense \emph{(qualité)}
+  \item Stockage avec perte de qualité \emph{(artefacts)}
   \end{itemize}
   \begin{columns}
     \begin{column}{.33\linewidth}\centering
@@ -193,9 +198,8 @@
   \begin{columns}
     \begin{column}{.5\linewidth}
       \begin{itemize}
-      \item Le format SVG est un format en mode texte qui décrit des images
-        vectorielles.
-      \item Des balises faites avec < et > délimitent les éléments
+      \item Format en mode texte qui décrit des images vectorielles.
+      \item Des balises écrites avec < et > délimitent les éléments
       \item On décrit les courbes par leurs coordonnées
       \item Métadonnées en XML possibles
       \item Visualisables directement dans les navigateurs
@@ -366,15 +370,17 @@
   \item Réaction du cerveau à l'intensité des longueurs d'ondes de la lumière
   \item Certaines longueurs d'onde ne sont pas visibles
   \item Le mélange de longueurs d'onde est vu comme une autre couleur.
-  \item Certaines couleurs ne sont obtensibles que par mélange (rose, marron)
+  \item On n'obtient certaines couleurs que par mélange (rose, marron)
   \item On distingue la couleur d'une source lumineuse, et la couleur d'un
     objet éclairé.
-  \item[\ddialogwarning] Un objet absorbe une partie de la lumière et recrache
-    le reste. Par exemple, la chlorophylle absorbe essentiellement tout sauf
-    le vert.
-  \item Les couleurs d'une source s'additionnent: synthèse additive
-  \item Les couleurs de pigments se masquent mutuellement: synthèse
-    soustractive
+    \begin{itemize}
+    \item[\ddialogwarning] Un objet absorbe une partie de la lumière et
+      recrache le reste. Par exemple, la chlorophylle absorbe essentiellement
+      tout sauf le vert.
+    \item Les couleurs d'une source s'additionnent: synthèse additive
+    \item Les couleurs de pigments se masquent mutuellement: synthèse
+      soustractive
+    \end{itemize}
   \end{itemize}
   \begin{center}
     \includegraphics[width=.8\linewidth]{img/06/Spectrum_roygbiv.jpg}
@@ -451,11 +457,12 @@
   \begin{columns}
     \begin{column}{.6\linewidth}
       \begin{itemize}
-      \item Depuis le début de la conception des moniteurs, le standard est de
-        recomposer la couleur par synthèse additive de 3 couleurs.
+      \item Le standard est de recomposer la couleur par synthèse additive de
+        3 couleurs.
       \item On mesure les couleurs par l'intensité de chacune des couleurs
         primaires: rouge, vert et bleu
-      \item On obtient des couleurs par mélange de différentes intensités
+      \item On obtient des couleurs par mélange de différentes intensités de
+        RVB
       \item Un système équivalent permet de désigner les couleurs par teinte,
         saturation et luminance relative (valeur): TSV (en anglais HSB,
         Hue/Saturation/Brightness).
@@ -558,7 +565,7 @@
     Une imprimante en quadrichromie est capable d'imprimer 6 pages par
     minutes, en 1200 points par pouce en mode RVB 8 bits par composante. Pour
     simplifier, on considérera qu'il y a une surface de 10 pouces × 6 pouces
-    imprimable. Quelle est la quantité d'information qu'on doit fournier à
+    imprimable. Quelle est la quantité d'information qu'on doit fournir à
     l'imprimante pour une page ? Pour une minute d'impression ?
     \begin{xcorrection}
       Même chose que précédemment, mais seulement 8 bits, donc chaque page

@@ -341,8 +341,10 @@ done
 					then\\
 					\hspace*{2em}expr\_1\\
 					elif test\_2\\
+					then\\
 					\hspace*{2em}expr\_2\\
 					elif test\_3\\
+					then\\
 					\hspace*{2em}expr\_3\\
 					else\\
 					\hspace*{2em}expr\_4\\
@@ -378,11 +380,11 @@ done
 				\hline\\
 				Syntaxe&Valeur\\
 				\hline\\
-				$[[$ -d fichier$]]$&Vrai si fichier est un nom de répertoire valide (si il existe).\\[3pt]
-				$[[$ -f fichier $]]$&Vrai si fichier est un nom de fichier valide (si il existe).\\[3pt]
-				$[[$ -r fichier $]]$&Vrai si il y a le droit de lecture sur le fichier.\\[3pt]
-				$[[$ -w fichier$]]$&Vrai si il y a le droit d'écriture sur le fichier.\\[3pt]
-				$[[$ -x fichier $]]$&Vrai si il y a le droit d'exécution sur le fichier.\\[3pt]
+				$[$ -d fichier$]$&Vrai si fichier est un nom de répertoire valide (si il existe).\\[3pt]
+				$[$ -f fichier $]$&Vrai si fichier est un nom de fichier valide (si il existe).\\[3pt]
+				$[$ -r fichier $]$&Vrai si il y a le droit de lecture sur le fichier.\\[3pt]
+				$[$ -w fichier$]$&Vrai si il y a le droit d'écriture sur le fichier.\\[3pt]
+				$[$ -x fichier $]$&Vrai si il y a le droit d'exécution sur le fichier.\\[3pt]
 				\hline
 			\end{tabular}
 		\end{center}
@@ -420,10 +422,10 @@ Le Fichier $PWD/ico est supprime
 				\hline\\
 				Syntaxe&Valeur\\
 				\hline\\
-				$[[$ chaine\_1 = chaine\_2 $]]$&Vrai si les 2 chaînes sont identiques.\\[2pt]
-				$[[$ chaine\_1 != chaine\_2 $]]$&Vrai si les 2 chaînes sont différentes.\\[2pt]
-				$[[$ -n chaine $]]$&Vrai si la chaîne est non vide.\\[2pt]
-				$[[$ -z chaine $]]$&Vrai si la chaîne est vide.\\[2pt]
+				$[$ chaine\_1 = chaine\_2 $]$&Vrai si les 2 chaînes sont identiques.\\[2pt]
+				$[$ chaine\_1 != chaine\_2 $]$&Vrai si les 2 chaînes sont différentes.\\[2pt]
+				$[$ -n chaine $]$&Vrai si la chaîne est non vide.\\[2pt]
+				$[$ -z chaine $]$&Vrai si la chaîne est vide.\\[2pt]
 				\hline
 			\end{tabular}
 		\end{center}
@@ -444,12 +446,12 @@ Le Fichier $PWD/ico est supprime
 				\hline\\
 				Syntaxe&Valeur\\
 				\hline\\
-				$[[$ nb\_1 -eq nb\_2 $]]$&Vrai si nb\_1 = nb\_2 (eq pour equal).\\[2pt]
-				$[[$ nb\_1 -ne nb\_2 $]]$&Vrai si nb\_1 $\neq$ nb\_2 (ne pour not equal).\\[2pt]
-				$[[$ nb\_1 -gt nb\_2 $]]$&Vrai si nb\_1 $>$ nb\_2 (gt pour greater than).\\[2pt]
-				$[[$ nb\_1 -ge nb\_2 $]]$&Vrai si nb\_1 $\geq$ nb\_2 (ge pour greater or equal).\\[2pt]
-				$[[$[ nb\_1 -lt nb\_2 $]]$&Vrai si nb\_1 $<$ nb\_2 (ge pour lower than).\\[2pt]
-				$[[$[ nb\_1 -le nb\_2 $]]$&Vrai si nb\_1 $\leq$ nb\_2 (ge pour lower or equal).\\[2pt]
+				$[$ nb\_1 -eq nb\_2 $]$&Vrai si nb\_1 = nb\_2 (eq pour equal).\\[2pt]
+				$[$ nb\_1 -ne nb\_2 $]$&Vrai si nb\_1 $\neq$ nb\_2 (ne pour not equal).\\[2pt]
+				$[$ nb\_1 -gt nb\_2 $]$&Vrai si nb\_1 $>$ nb\_2 (gt pour greater than).\\[2pt]
+				$[$ nb\_1 -ge nb\_2 $]$&Vrai si nb\_1 $\geq$ nb\_2 (ge pour greater or equal).\\[2pt]
+				$[$ nb\_1 -lt nb\_2 $]$&Vrai si nb\_1 $<$ nb\_2 (ge pour lower than).\\[2pt]
+				$[$ nb\_1 -le nb\_2 $]$&Vrai si nb\_1 $\leq$ nb\_2 (ge pour lower or equal).\\[2pt]
 				\hline
 			\end{tabular}
 		\end{center}
@@ -464,9 +466,9 @@ Le Fichier $PWD/ico est supprime
 				\hline
 				Syntaxe&Valeur\\
 				\hline\\
-				! $[[$ test $]]$&NOT: Vrai si le test renvoie Faux (négation).\\[2pt]
-				$[[$ test\_1 $]]$ $|$ $|$ $[[$ test\_2 $]]$&OU logique.\\[2pt]
-				$[[$ test\_1 $]]$ \&\& $[[$ test\_2 $]]$&ET logique.\\[2pt]
+				! $[$ test $]$&NOT: Vrai si le test renvoie Faux (négation).\\[2pt]
+				$[$ test\_1 $]$ $|$ $|$ $[$ test\_2 $]$&OU logique.\\[2pt]
+				$[$ test\_1 $]$ \&\& $[$ test\_2 $]$&ET logique.\\[2pt]
 				\hline
 			\end{tabular}
 		\end{center}

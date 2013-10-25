@@ -42,13 +42,14 @@
     d'exploitation.
     \begin{solutionordottedlines}[.5in]%
       Le système d'exploitation arbitre au moins l'accès au processeur
-      et l'accès à la mémoire.
+      et l'accès à la mémoire. Les périphériques aussi, mais pas la ROM
+      ou le GRUB. .25 par ressource.
     \end{solutionordottedlines}
     \part[\half] Quelle est la commande qui permet de visualiser une liste
     détaillée des processus existants sur un système Linux ?
     \begin{solutionordottedlines}[.25in]%
       \texttt{ps -ef} (\texttt{ps -eu} est dans le cours et est accepté
-      aussi)
+      aussi). J'ai aussi accepté \texttt{top}.
     \end{solutionordottedlines}
   \end{parts}
   \titledquestion{Système 2}
@@ -64,7 +65,7 @@
     \begin{solutionordottedlines}[1in]%
       Le processeur étant partagé, pas vraiment; il y a exécution concurrente avec priorités des 2 processus; Alternance rapide; Illusion de simultanéité
     \end{solutionordottedlines}
-    \part[1] Citez au moins quatre systèmes d'exploitation différent
+    \part[1] Citez au moins quatre systèmes d'exploitation différents
     \begin{solutionordottedlines}[.25in]%
       Linux, Windows, OS X, Android, ...
     \end{solutionordottedlines}
@@ -110,7 +111,10 @@
     \end{solutionordottedlines}
     \part[\half] Créez un répertoire \texttt{Nouveau/Vacances}
     \begin{solutionordottedlines}[.25in]%
-      \texttt{mkdir -p Nouveau/Vacances} ou en deux commandes (sinon 0)
+      \texttt{mkdir -p Nouveau/Vacances} ou en deux commandes. J'ai
+      finalement accepté en une, en donnant 0,75 (la moitié du bonus de
+      \emph{une seule commande}) à ceux qui avaient mis le \texttt{-p}
+      ou fait en deux commandes.
     \end{solutionordottedlines}
     \part[1] Lisez le contenu du fichier \texttt{avis.txt} chez
     l'utilisateur \textit{\texttt{gavroche}}.
@@ -119,7 +123,7 @@
     \end{solutionordottedlines}
     \part[1] Déplacez tous les documents du répertoire courant dans \texttt{Coffre} sauf \texttt{condamnation.pdf}
     \begin{solutionordottedlines}[.25in]%
-      \texttt{mv *.txt mission.pdf} ou autre solution à base de \texttt{..}
+      \texttt{mv *.txt mission.pdf ../Coffre} ou autre solution à base de \texttt{..}
     \end{solutionordottedlines}
     \part[1] Copiez \texttt{condamnation.pdf} et le répertoire \texttt{Paris} dans le répertoire \texttt{Nouveau/Vacances}
     \begin{solutionordottedlines}[.25in]%
@@ -257,14 +261,14 @@
   Considérez le programme suivant:
 
   \begin{lstlisting}[language=C,caption=Programme]
-fonction(int a) {
-  int b=0;
-  while (a!=0) {
-    a=a>>1;
-    b=b+(a&1)
-  }
-  return(b);
-}
+    fonction(int a) {
+      int b=0;
+      while (a!=0) {
+        a=a>>1;
+        b=b+(a&1)
+      }
+      return(b);
+    }
   \end{lstlisting}
 
   \begin{parts}
