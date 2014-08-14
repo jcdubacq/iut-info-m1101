@@ -473,3 +473,31 @@
 /prof06.log
 /prof06.pdf
 # stop automatic section for compile-latex:archi06.tex/prof06
+# start automatic section for compile-latex:controle20131118.tex
+/.compile-latex/controle20131118
+/controle20131118.aux
+/controle20131118.fls
+/controle20131118.log
+/controle20131118.pdf
+# stop automatic section for compile-latex:controle20131118.tex
+# start automatic section for compile-latex:controle20131118.tex/correction20131118
+/.compile-latex/correction20131118
+/correction20131118.aux
+/correction20131118.fls
+/correction20131118.log
+/correction20131118.pdf
+# stop automatic section for compile-latex:controle20131118.tex/correction20131118
+# start automatic section for compile-latex:controle20131203.tex/controle20131118
+/.compile-latex/controle20131118
+/controle20131118.aux
+/controle20131118.fls
+/controle20131118.log
+/controle20131118.pdf
+# stop automatic section for compile-latex:controle20131203.tex/controle20131118
+# start automatic section for compile-latex:controle20131203.tex/correction20131118
+/.compile-latex/correction20131118
+/correction20131118.aux
+/correction20131118.fls
+/correction20131118.log
+/correction20131118.pdf
+# stop automatic section for compile-latex:controle20131203.tex/correction20131118

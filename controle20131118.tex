@@ -1,0 +1,449 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20131118
+% compile-latex options:--jobname correction20131118
+\usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 2}
+\date{18/11/2013}
+\begin{document}
+\conditions{ Vous disposez de 2 heures pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
+\begin{questions}
+  \titledquestion{Scripts}
+  \begin{parts}
+    \part[\half] Quelle variable désigne \texttt{ijkl} dans la commande \texttt{./toto.sh abcd efgh ijkl mnop}?
+    \begin{solutionordottedlines}[.25in]%
+      \verb|$3|%$
+    \end{solutionordottedlines}
+    \part[\half] Que met-on comme première ligne d'un script shell ?
+    \begin{solutionordottedlines}[.25in]%
+      \verb|#!/bin/sh| (ou bash).
+    \end{solutionordottedlines}
+    \part[\half] Que contient la variable \verb|PWD|?
+    \begin{solutionordottedlines}[.25in]%
+      Le chemin du répertoire courant
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande shell pour faire afficher le
+    résultat de l'opération $2187\times 1309$?
+    \begin{solutionordottedlines}[.25in]%
+      \verb|echo $((2187*1309))|%$
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande shell pour faire afficher le
+    résultat de l'opération $2187\times a$, sachant que $a$ est une
+    variable qui contient un entier?
+    \begin{solutionordottedlines}[.25in]%
+      \verb|echo $((2187*a))|%$
+    \end{solutionordottedlines}
+    \part[\half] Sachant que \verb|~/bin| est inclus dans le PATH,
+    explicitez les commandes pour que \verb|~/toto/toto.sh| puisse
+    être appelé en tapant directement \texttt{toto.sh}.
+    \begin{solutionordottedlines}[.25in]%
+      \verb|mv ~/toto/toto.sh ~/bin;chmod 755 ~/bin/toto.sh| ou 
+      \verb|PATH="~/toto:$PATH";chmod 755 ~/toto/toto.sh|
+    \end{solutionordottedlines}
+    \part[\half] Comment afficher en une seule ligne de test le texte \texttt{ok} si le fichier/répertoire \texttt{toto} existe et si \texttt{titi} n'est pas un répertoire?
+    \begin{solutionordottedlines}[.75in]%
+      \verb|if [ -e toto ]&& ! [ -d titi ]; then echo "ok"; fi|
+    \end{solutionordottedlines}
+    \part[1] Faites un programme qui affiche chaque seconde un mot de la
+    phrase « bonjour amis terriens qui venez en paix » (donc qui dure
+    sept secondes). Il attend une seconde \emph{avant} d'afficher, pas
+    \emph{après}.
+    \begin{solutionordottedlines}[.75in]%
+      \verb|for i in bonjour amis terriens qui venez en paix; do echo $i; done| %$
+    \end{solutionordottedlines}
+    \part[2] Faites un script shell qui affiche, s'il existe, le
+    contenu du fichier \texttt{README.txt} du répertoire \textbf{parent}
+    du répertoire courant, et affiche «~Aucune aide n'est disponible,
+    contactez "root"~» sinon. Attention, il y a une apostrophe dans
+    cette phrase et deux guillemets.
+    \begin{solutionordottedlines}[1in]%
+      \begin{lstlisting}[language=sh,caption=Programme]
+        if [ -f ../README.txt ]; then # 0,5 pour le if correct avec else et fi
+        cat ../README.txt # 0,5 pour le chemin correct
+        else
+        echo "Aucune aide n'est disponible, contactez" '"root"'
+        fi # 0,5 pour les guillemets et 0,5 pour l'apostrophe
+      \end{lstlisting}
+    \end{solutionordottedlines}
+  \end{parts}
+  \newpage
+  \titledquestion{Script de statistiques}
+  \begin{parts}
+    \part[3]
+    Écrivez un script qui donne pour \textbf{tous} les fichiers *.txt
+    présents dans le répertoire courant le nombre de lignes de ce
+    fichier sous la forme: «~Fichier toto.txt:\textbackslash n72\textbackslash n~». (le
+    \texttt{\textbackslash n} est un retour à la ligne). Les
+    statistiques doivent être mises dans un fichiers \texttt{stats.out}
+    également. Les messages d'erreurs (par exemple, si \texttt{titi.txt}
+    est en fait un répertoire, la commande qui compte les lignes émet un
+    message d'erreur) doivent être mis dans \texttt{stats.err}. À la fin
+    du programme, affichez toutes les lignes de \texttt{stats.err} qui
+    comportent le mot \texttt{dossier}.
+
+    Ce programme acceptera en \textbf{paramètre optionnel} un nom de répertoire,
+    dans lequel il faudra aller s'il est donné (et s'il n'est pas donné,
+    on travaillera dans le répertoire courant).
+    \begin{solutionordottedlines}[3in]%
+      \half pour penser à effacer; \half pour le 2>, \half pour le >,
+      \half pour le append; \half pour le paramètre optionnel; \half
+      pour le reste (boucle for, wc, etc.).
+      \begin{lstlisting}[language=sh,caption=Programme]
+        if [ -n "$1" ]; then
+        cd "$1"
+        fi
+        rm -f stats.out stats.err
+        for i in *.txt; do
+        echo Fichier $i: >> stats.out
+        wc -l $i >> stats 2>> stats.err
+        done
+        cat stats.err|grep dossier # ou grep dossier stats.err
+      \end{lstlisting} %
+    \end{solutionordottedlines}
+    \bonuspart[\half] Modifiez votre programme pour avoir
+    «~Fichier toto.txt: 72\textbackslash n~» dans \texttt{stats.out}.
+    \begin{solutionordottedlines}[.25in]%
+      Il suffit de faire un echo -n au lieu de echo.
+    \end{solutionordottedlines}
+    \part[\half] Rajoutez deux lignes à la fin de votre script pour
+    afficher aussi les trois premières lignes de résultat
+    \texttt{stats.out}, la chaîne \texttt{...} et les trois dernières
+    lignes du résultat.
+
+    \begin{solutionordottedlines}[.5in]%
+      head -3 stats.out ; echo ... ; tail -3 stats.out
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Données}
+  \begin{parts}
+    \part[\half] Le nombre hexadécimal \texttt{0x12345678} a été mis à
+    l'adresse \texttt{0xC0800008} en mode \texttt{little-endian}. Quel
+    est l'autre mode possible ? Donnez le contenu et l'adresse de chacun
+    des quatre octets qui contient une partie du nombre.
+    \begin{solutionordottedlines}[.5in]%
+      0,25 seulement s'ils mettent les mauvaises adresses, 0,5 si bon
+      (0x78, 0x56, 0x34, 0x12).
+    \end{solutionordottedlines}
+    \part[1] Quelle est la taille habituelle d'un \texttt{int} en C ? Quelle est sa valeur maximale ?
+    \begin{solutionordottedlines}[.5in]%
+      \half pour 4 octets, \half pour $2^{31}-1$.
+    \end{solutionordottedlines}
+    \part[1] À quoi sert la compression de données ? Est-ce qu'on peut
+    récupérer la qualité d'origine ? Citez au moins un algorithme de
+    compression de données.
+    \begin{solutionordottedlines}[.75in]%
+      \half pour une explication qui tienne, \half pour un nom d'algorithme.
+    \end{solutionordottedlines}
+    \part[1] Un bus fonctionne à 0,5 GHz avec une largeur de 64
+    bits. Chaque échange nécessite un cycle pour transmettre une
+    adresse, et 1 cycle pour transmettre une valeur. Quel est le débit
+    maximal de données qui circule sur ce bus ?
+    \begin{solutionordottedlines}[.5in]%
+      $0,25\times10^9\times 8 = 2 Go/s$.
+    \end{solutionordottedlines}
+    \part[1] À quoi sert un codec ? Dans quel contexte en trouve-t-on ?
+    Quel est le lien avec un format ?
+    \begin{solutionordottedlines}[1in]%
+      \half pour une explication qui tienne, \half pour dire que
+      certains formats imposent un codec mais que d'autres ne l'imposent
+      pas ; un codec vidéo accepte en général plusieurs formats.
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Images et couleurs}
+  \begin{parts}
+    \part[1\half] Pour les trois couleurs suivantes: rouge, cyan et noir
+    définissez (en pourcentage du maximum) la quantité de chaque
+    composante RVB et CMJN qui est nécessaire.
+    \begin{center}
+      \begin{tabular}{l|ccc|cccc}
+        \textbf{Couleur} & R & V & B & C & M & J & N\\\hline
+        \rule{0cm}{.25in} Rouge & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm}\\\hline
+        \rule{0cm}{.25in} Cyan &&&&&&&\\\hline
+        \rule{0cm}{.25in} Noir &&&&&&&\\
+      \end{tabular}
+    \end{center}
+    \part[1] Une photo de 5 pouces sur 4 a été scannée en CMJN sur 12
+    bits par composante à 300 points par pouce (dans chaque
+    dimension). Quelle est la quantité d'information extraite de cette
+    image ? Formule, application numérique (en Mo).
+    \begin{solutionordottedlines}[.75in]%
+      10800000 octets, soit 10,8 Mo.
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Processeur}
+  \begin{parts}
+    \part[1] Un programme de 1000 instructions machine comporte 200
+    instructions flottantes et 800 instructions ordinaires. Les
+    instructions flottantes mettent en moyenne 8 cycles pour s'exécuter,
+    et les instructions ordinaires mettent 3 cycles. Calculer le nombre
+    de cycles nécessaire à l'exécution de ce programme et son IPC moyen
+    (dont vous rappellerez la définition).
+    \begin{solutionordottedlines}[.75in]%
+      IPC moyen=0,25 (4000 cycles).
+    \end{solutionordottedlines}
+    \part[2] Expliquez ce qu'est un langage compilé et un langage
+    interprété, en mettant en lumière les différences entre les deux.
+    \begin{solutionordottedlines}[2in]%
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}
+\begin{parts}
+  \part[1] Quelle est la différence entre une variable du shell et une variable d'environnement ?
+  \begin{solutionordottedlines}[.5in]%
+    Une variable du shell n'est pas transmise aux sous-processus du
+    shell. Compter \half au moins pour un simple « il faut mettre
+    \texttt{export} devant ».
+  \end{solutionordottedlines}
+  \part[1] Est-ce que deux processus peuvent être exécutés réellement
+  en même temps sur un processeur simple ? Expliquez
+  \begin{solutionordottedlines}[1in]%
+    Le processeur étant partagé, pas vraiment; il y a exécution concurrente avec priorités des 2 processus; Alternance rapide; Illusion de simultanéité
+  \end{solutionordottedlines}
+  \part[1] Citez au moins quatre systèmes d'exploitation différents
+  \begin{solutionordottedlines}[.25in]%
+    Linux, Windows, OS X, Android, ...
+  \end{solutionordottedlines}
+  \part[1] Comment le shell trouve-t-il où est une commande ?
+  \begin{solutionordottedlines}[1in]%
+    Il utilise la variable \texttt{PATH} qui est une liste de
+    répertoires séparés par des deux-points. Il cherche dans ces
+    répertoires si un fichier du nom de la commande existe et s'arrête
+    au premier trouvé.
+  \end{solutionordottedlines}
+\end{parts}
+
+\newpage
+\titledquestion{Arborescence}
+
+\framebox{\begin{minipage}{.5\linewidth}%
+    \dirtree{%
+      .1 \DTd{}.  .2 \DTd{bin}.  .3 (\dots)\DTfcomment{(1)}.  .2
+      \DTd{home}.  .3 \DTd{jvaljean}\DTfcomment{Votre répertoire
+        personnel}.  .4 \DTd{Documents}\DTfcomment{Vous êtes ici}.  .5
+      \DTd{Ancien}. .6 \DTd{Paris}.  .7 greve.jpg.  .5
+      condamnation.pdf. .5 document1.txt.  .5 doc2.txt.  .5
+      facture.txt.  .5 mission.pdf.  .5 mission.jpg.  .4 \DTd{Coffre}.
+      .3 \DTd{gavroche}.  .4 avis.txt.  .2 (\dots)\DTfcomment{(2)}.  }
+  \end{minipage}}\hfill%
+\begin{minipage}{.45\linewidth}
+  Voilà ci-contre un extrait de l'arborescence de votre système. Il y
+  a d'autres utilisateurs : \textit{\texttt{gavroche}} est dans votre
+  groupe, \textit{\texttt{thenardier}} et \textit{\texttt{cosette}} ne
+  le sont pas.
+
+  Vous devrez faire tout cet exercice sans \textbf{jamais} utiliser la
+  commande \texttt{cd}. Dans l'extrait d'arborescence, le répertoire
+  courant est indiqué. Il est possible que \textbf{deux} commandes
+  soient nécessaires pour certaines manipulations.
+\end{minipage}
+\begin{parts}
+  \bonuspart[\half] Répondez à \textnormal{toutes} les questions avec
+  une seule commande pour ce bonus!
+  \part[\half] Listez le contenu du répertoire \texttt{Ancien}
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{ls Ancien}
+  \end{solutionordottedlines}
+  \part[\half] Créez un répertoire \texttt{Nouveau/Vacances}
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{mkdir -p Nouveau/Vacances} ou en deux commandes. J'ai
+    finalement accepté en une, en donnant 0,75 (la moitié du bonus de
+    \emph{une seule commande}) à ceux qui avaient mis le \texttt{-p}
+    ou fait en deux commandes.
+  \end{solutionordottedlines}
+  \part[1] Lisez le contenu du fichier \texttt{avis.txt} chez
+  l'utilisateur \textit{\texttt{gavroche}}.
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{cat \~gavroche/avis.txt} ou autre solution à base de \texttt{..}
+  \end{solutionordottedlines}
+  \part[1] Déplacez tous les documents du répertoire courant dans \texttt{Coffre} sauf \texttt{condamnation.pdf}
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{mv *.txt mission.pdf ../Coffre} ou autre solution à base de \texttt{..}
+  \end{solutionordottedlines}
+  \part[1] Copiez \texttt{condamnation.pdf} et le répertoire \texttt{Paris} dans le répertoire \texttt{Nouveau/Vacances}
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{cp -r condamnation.txt Ancien/Paris Nouveau/2013} (.5 pour le -r).
+  \end{solutionordottedlines}
+  \part[1] Sachant que les fichiers étaient lisibles par tout le
+  monde, changez les modes de \texttt{Coffre} pour que
+  \texttt{\textit{gavroche}} puisse connaître le contenu du
+  répertoire, que \texttt{\textit{thenardier}} ne puisse pas, et que
+  \texttt{\textit{cosette}} puisse (si vous lui en donnez le chemin)
+  lire un des fichiers. Utilisez les notations \textbf{numériques}
+  pour cette commande.
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{chmod 751 \~/Coffre}
+  \end{solutionordottedlines}
+  \part[\half] Le mode de \texttt{Ancien} est au départ
+  \texttt{rwxr-xr-x}. En utilisant les notations \textbf{symboliques}
+  et non numériques pour cette commande, faites en sorte que plus
+  personne (même vous) ne puisse savoir quoi que ce soit sur le
+  répertoire \texttt{Paris} stocké dans \texttt{Ancien}.
+  \begin{solutionordottedlines}[.25in]%
+    \texttt{chmod a-rwx Ancien/Paris}
+  \end{solutionordottedlines}
+  \part[\half] Donnez ici deux exemples de répertoires ou fichiers que l'on trouve traditionnellement dans les parties non listées numéro 1 et 2.
+  \begin{solutionordottedlines}[.25in]%
+    1. ls et 2. usr
+  \end{solutionordottedlines}
+\end{parts}
+\newpage
+\titledquestion{Codage}
+\begin{parts}
+  \part[\half] Quel est le nombre \textbf{minimal} de bits nécessaire
+  pour coder l'information suivante: un numéro de page de l'annexe
+  d'un livre, qui vaut entre 1400 et 1912.
+  \begin{solutionordottedlines}[.25in]
+    1912-1400=513 possibilités, donc 10 bits.
+  \end{solutionordottedlines}
+  \part[\half] Quel est le plus grand entre $48\times 10^6$
+  bits et $6$ Mio ? Prouvez-le
+  \begin{solutionordottedlines}[.5in]
+    $48\times10^6 bits < 6Mio$ car $48\times10^6 bits = 6\times10^6 octets = 6Mo$ or $6Mo < 6Mio$ car \\
+    $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+    $1000<1024$ (éventuellement moins de détails)
+  \end{solutionordottedlines}
+  \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
+  48, 226, 2251.
+  \begin{solutionordottedlines}[.75in]
+    0x30, 0xE2, 0x8CB
+  \end{solutionordottedlines}
+  \part[1] Convertissez en C2 sur 8 bits le nombre $-61$.
+  \begin{solutionordottedlines}[.25in]
+    0xC3 ou $1100\,0011$\\
+  \end{solutionordottedlines}
+  \part[1] Faites l'opération suivante:
+  $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+  décimal.
+  \begin{solutionordottedlines}[.25in]
+    $0b1\,1101\,0001=465_{10}$
+  \end{solutionordottedlines}
+  \part[1] Voici le récapitulatif du tableau de conversion UTF8:
+  \begin{center}\renewcommand{\tabcolsep}{1mm}
+    \begin{tabular}{|c|c|c|c|}\hline
+      Valeurs & Écriture binaire & Codage UTF-8 (binaire) & octets\\\hline
+      0x0--0x7F & abc\,defg & 0abc\,defg & 1 \\
+      0x80--0x7FF & abc\,defg\,hijk & 110a\,bcde~10fg\,hijk & 2 \\
+      0x800--0xFFFF & abcd\,efgh\,ijkl\,mnop & 1110\,abcd~10ef\,ghij~10kl\,mnop & 3 \\
+      0x10000--0x1FFFFF& a\,bcde\,fghi\,jklm\,nopq\,rstu & 1111\,0abc~10de\,fghi~10jk\,lmno~10pq\,rstu &	4 \\\hline
+    \end{tabular}
+  \end{center}
+  Donnez la séquence d'octets correspondant au texte «~1€~», dont les
+  valeurs unicodes sont 0x49 et 0x20AC.
+  \begin{solutionordottedlines}[.25in]
+    0x49, puis 0xE2 0x82 0xAC.\\
+    $0x49\in [0x0;0x7F]$ $\rightarrow$ codage sur 1 octet. Le code ascii est le code UTF-8 solution:$0x49$\\
+    $0x20AC\in [0x800;0xFFFF]$ $\rightarrow$ codage sur 3 octets selon le motif $111\,abcd\,\,10ef\,ghij\,\,10kl\,mnop$ avec $abcd\,efgh\,ijkl\,mnop=0x20AC=0011\,0000\,1010\,1100$ soit: solution: $1110\,0010\,\,1000\,0010\,\,1010\,1100=0xE282AC$
+  \end{solutionordottedlines}
+  \part[\half] Un signal audio a une fréquence d'échantillonage de
+  8000 Hz. Quelle est la fréquence maximale qui peut être reproduite
+  fidèlement avant quantification ? Justifiez
+  \begin{solutionordottedlines}[.25in]
+    D'après le Théorème d'échantillonnage de Nyquist-Shannon on a
+    $f_{echan}>2*f_{Max}$ donc or ici
+    $f_{Max}<f_{chan}/2=8000Hz/2=4000Hz$
+  \end{solutionordottedlines}
+  \part[1] Un signal audio (mono-voie) à 8000 Hz utilise 1024 niveaux
+  d'intensité par échantillon. Combien de bits sont nécessaires pour
+  chaque échantillon ? (justifiez) En déduire la taille totale d'un
+  fichier qui code une minute de signal.
+  \begin{solutionordottedlines}[.25in]
+    $8000\times 10\times 60=4\,800\,000$ bits ou bien 600 ko.
+  \end{solutionordottedlines}
+\end{parts}
+\titledquestion{Flottants courts} On veut modifier la norme IEEE
+754. On définit une nouvelle catégorie de nombres flottants sur 12
+bits:
+\begin{itemize}
+\item 1 bit de signe;
+\item 4 bits pour noter $E$ avec $E=e+7$;
+\item 7 bits pour la partie fractionnaire $M$ de la valeur $v$.
+\end{itemize}
+On a $x=(-1)^s\times v\times 2^e$. On fait les mêmes
+\textbf{exceptions} que dans la norme IEEE 754: pour
+$E=\texttt{0b0000}$, on a $x=0$ et pour $E=\texttt{0b1111}$, on a
+$x=\pm\infty$. NB: $2^{-6}=0,015\,625, 2^{-12}=0,000\,244\,140\,625$.
+\begin{parts}
+  \part[1] Codez en \emph{flottant court} le nombre 3,5.
+  \begin{solutionordottedlines}[.5in]%
+    $3,5=11,1=1,11\times2$ donc $0100 0110 0000$ soit 0x460.
+  \end{solutionordottedlines}
+  \part[1] Quel est le plus grand nombre non infini que l'on peut
+  représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
+  valeur en décimal.
+  \begin{solutionordottedlines}[.5in]%
+    Codage $011101111111=0x77F$ (1/2), $E=0b1110=14$, $e=7$ et
+    $v=0b1,1111111$. Soit $x=0b1111\,1111=255$ (1/2). Notes partielles
+    si essentiellement bon.
+  \end{solutionordottedlines}
+  \part[1] Soit deux nombres $a$ et $b$, flottants courts, qui ont le
+  même exposant $e$. Quelle est la plus petite différence possible non
+  nulle entre ces deux nombres ?
+  \begin{solutionordottedlines}[.5in]%
+    La différence de $v$ vaut 0.0000001 donc différence totale
+    de $2^e\times2^{-7}$ donc $2^{e-7}$.
+  \end{solutionordottedlines}
+  \part[1] Transformez en décimal les deux nombres \emph{flottants
+    courts} codés par les chaînes de bits suivantes:
+  $\texttt{0b0011\,1010\,0000}$ et
+  $\texttt{0b0110\,0101\,1010}$.
+  \begin{solutionordottedlines}[.5in]%
+    1,25 et 54,5
+  \end{solutionordottedlines}
+\end{parts}
+
+\titledquestion{Programme étrange}%
+Considérez le programme suivant:
+
+\begin{lstlisting}[language=C,caption=Programme]
+  fonction(int a) {
+    int b=0;
+    while (a!=0) {
+      a=a>>1;
+      b=b+(a&1)
+    }
+    return(b);
+  }
+\end{lstlisting}
+
+\begin{parts}
+  \part[1] Pourquoi ce programme s'arrête-t-il ? Expliquez-bien.
+  \begin{solutionordottedlines}[.75in]
+    Le décalage à droite n'introduit que des zéros dans le nombre a,
+    donc a finit par être nul (division entière par 2).
+  \end{solutionordottedlines}
+  \part[1] On appelle la fonction avec la valeur 21. Détaillez les
+  valeurs successives de \texttt{a} et \texttt{b} jusqu'à l'arrêt de
+  la fonction.
+
+  \begin{minipage}{.3\linewidth}
+    \begin{solutionordottedlines}[1in]
+      21,0 (facultatif)\\10,1
+    \end{solutionordottedlines}
+  \end{minipage}\hfill
+  \begin{minipage}{.3\linewidth}
+    \begin{solutionordottedlines}[1in]
+      5,1\\2,2
+    \end{solutionordottedlines}
+  \end{minipage}\hfill
+  \begin{minipage}{.3\linewidth}
+    \begin{solutionordottedlines}[1in]
+      1,2\\0,3
+    \end{solutionordottedlines}
+  \end{minipage}
+  \part[1] Que calcule cette fonction ?
+  \begin{solutionordottedlines}[.25in]
+    Le nombre de bits à 1 dans le codage binaire de l'entier a.
+  \end{solutionordottedlines}
+\end{parts}
+\end{questions}
+\end{document}
