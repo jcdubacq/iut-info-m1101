@@ -138,7 +138,7 @@
 \subtitle{Les bits}
 \author{Jean-Christophe Dubacq}%
 \institute[IUTV]{IUT de Villetaneuse}%{\includegraphics{img/logo_iut}}
-\date{S1 2013}
+\date{S1 2014}
 
 \usepackage{tikz}%
 \usetikzlibrary{snakes,calc,shapes,arrows,mindmap}%
@@ -176,6 +176,7 @@
 \ifpoly\excludeversion{presentationonly}\else\ifexo\excludeversion{presentationonly}\else\includeversion{presentationonly}\fi\fi
 \ifpoly\includeversion{handoutonly}\else\excludeversion{handoutonly}\fi
 \ifexo\excludeversion{frame}\includeversion{exercice}
+\usepackage{hyperref}
 \newenvironment{exercicelet}[1]{\subsubsection{#1}}{}%
 \else%
 \newenvironment{exercice}%
