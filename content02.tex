@@ -380,10 +380,9 @@
     Exemple: $-12_{10}$=\mm{0b1100} se code $1000\,1100$ en VA+S 8 bits.
   \end{definition}
   \begin{definition}[Codage complément à 1 --- C1]
-    L'entier écrit en base $2$ est complété par des $0$
-    à gauche jusqu'à la taille désirée moins $1$. \emph{Si le nombre
-      est négatif,} on \textbf{complémente} alors chacun des chiffres
-    ($0\leftrightarrow1$). Puis signe devant ($+\rightarrow0$).
+    L'entier écrit en base $2$ est complété par des $0$ à gauche jusqu'à la
+    taille désirée. \emph{Si le nombre est négatif,} on \textbf{complémente}
+    alors chacun des chiffres ($0\leftrightarrow1$).
 
     Exemple: $-12_{10}$=\mm{0b1100} se code $1111\,0011$ en C1 8 bits.
   \end{definition}
@@ -392,23 +391,14 @@
 \begin{frame}{Le codage des entiers relatifs (2)}
   \framesubtitle{C2, le plus utilisé}
   \begin{definition}[Codage complément à 2 --- C2]
-    Si le nombre est positif, on le complète par des $0$ à gauche jusqu'à
-    la taille désirée moins $1$. \emph{Si le nombre est négatif,} on lui
-    ajoute $1$, on l'écrit en base $2$ (après soustraction), on le
-    complète par des $0$ à gauche jusqu'à la taille désirée moins
-    $1$, et on \textbf{complémente} alors chacun des chiffres
-    ($0\leftrightarrow1$). Enfin (positif ou négatif), on met le signe
-    devant ($+\rightarrow0,-\rightarrow1$).
+    Si le nombre est positif, on complète son écriture binaire par des $0$ à
+    gauche jusqu'à la taille désirée. \emph{Si le nombre est négatif,} on
+    écrit \emph{sa valeur absolue moins $1$} en base $2$, on le complète par
+    des $0$ à gauche jusqu'à la taille désirée, et on \textbf{complémente}
+    alors chacun des chiffres ($0\leftrightarrow1$).
 
     Exemple: $-12_{10}$=\mm{0b1100} se code $1111\,0100$ en C2 8 bits.
   \end{definition}
-
-  Deuxième méthode: si négatif, on ajoute $1$ (donc on enlève $1$ à la
-  valeur absolue), on complète jusqu'à la taille désirée (et non pas
-  taille moins $1$), on complémente (si négatif), et c'est fini.
-
-  Troisième méthode: on complète jusqu'à la taille désirée, si négatif,
-  on complémente et on \emph{ajoute} $1$, et c'est fini.
 \end{frame}
 \begin{frame}{Le codage des entiers relatifs (3)}
   \framesubtitle{C2 (deuxième étape)}

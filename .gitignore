@@ -531,3 +531,17 @@
 /sprof01.out
 /sprof01.pdf
 # stop automatic section for compile-latex:sys01.tex/sprof01
+# start automatic section for compile-latex:controle20140930.tex
+/.compile-latex/controle20140930
+/controle20140930.aux
+/controle20140930.fls
+/controle20140930.log
+/controle20140930.pdf
+# stop automatic section for compile-latex:controle20140930.tex
+# start automatic section for compile-latex:controle20140930.tex/correction20140930
+/.compile-latex/correction20140930
+/correction20140930.aux
+/correction20140930.fls
+/correction20140930.log
+/correction20140930.pdf
+# stop automatic section for compile-latex:controle20140930.tex/correction20140930

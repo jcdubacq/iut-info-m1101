@@ -1,0 +1,275 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20140930
+% compile-latex options:--jobname correction20140930
+\usepackage{textcomp,array,enumerate}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 1}
+\date{30/09/2014}
+\begin{document}
+\conditions{ Vous disposez de 1 heure et demie pour faire ce
+  contrôle. Aucun document autorisé. Toute tentative de communication
+  avec un voisin ou l'extérieur peut être sanctionnée. Toutes les
+  réponses doivent être faites sur l'énoncé. La taille de la réponse
+  attendue dépend de la taille allouée pour répondre. }
+\begin{questions}
+  \titledquestion{Système}
+
+  Lorsqu'une commande vous est demandée, \textbf{donnez un exemple
+    d'utilisation} qui répond à la question.
+  \begin{parts}
+    \part[1] Quelle est l'interprétation du symbole spécial \verb|~|
+    dans le shell ?
+    \begin{solutionordottedlines}[.5in]%
+      On peut désigner son propre répertoire (symbole seul) ou celui de
+      quelqu'un d'autre.
+    \end{solutionordottedlines}
+    \part[1] Un chemin \emph{absolu} commence par un symbole spécifique. Lequel ? Donnez un exemple de chemin absolu.
+    \begin{solutionordottedlines}[.25in]%
+      \verb|/bin/bash| (par exemple)
+    \end{solutionordottedlines}
+    \part[\half] Sous Linux, comment le système reconnaît-il le type de données dans un fichier: par son extension, par son nom, par son contenu, par des métadonnées, par son numéro d'inode ? Est-ce que cette réponse est vraie sous tous les systèmes ?
+    \begin{solutionordottedlines}[.25in]%
+      Par son contenu, et non.
+    \end{solutionordottedlines}
+
+    % \part[\half] Quelle est la commande qui donne un texte d'aide sur
+    % une commande Linux?
+    % \begin{solutionordottedlines}[.25in]%
+    %   \texttt{man man}
+    % \end{solutionordottedlines}
+    \part[1] Citez deux ressources gérées par le système
+    d'exploitation.
+    \begin{solutionordottedlines}[.5in]%
+      Le système d'exploitation arbitre au moins l'accès au processeur
+      et l'accès à la mémoire. Les périphériques aussi, mais pas la ROM
+      ou le GRUB. .25 par ressource.
+    \end{solutionordottedlines}
+    % \part[\half] Quelle est la commande qui permet de visualiser une liste
+    % détaillée des processus existants sur un système Linux ?
+    % \begin{solutionordottedlines}[.25in]%
+    %   \texttt{ps -ef} (\texttt{ps -eu} est dans le cours et est accepté
+    %   aussi). J'ai aussi accepté \texttt{top}, et on peut accepter \texttt{ps aux}.
+    % \end{solutionordottedlines}
+    \part[1] Est-ce que deux processus peuvent être exécutés réellement
+    en même temps sur un processeur simple ? Expliquez
+    \begin{solutionordottedlines}[1in]%
+      Le processeur étant partagé, pas vraiment; il y a exécution concurrente avec priorités des 2 processus; Alternance rapide; Illusion de simultanéité
+    \end{solutionordottedlines}
+    \part[\half] Citez au moins quatre systèmes d'exploitation différents
+    \begin{solutionordottedlines}[.25in]%
+      Linux, Windows, OS X, Android, ...
+    \end{solutionordottedlines}
+    \part[\half] Citez au moins deux commandes permettant de voir le contenu d'un fichier, dont une (ou deux) dans la console.
+    \begin{solutionordottedlines}[.25in]%
+      cat, less, gedit, etc.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \newpage
+  \titledquestion{Arborescence}
+
+  \framebox{\begin{minipage}{.5\linewidth}%
+      \dirtree{%
+        .1 \DTd{}.  .2 \DTd{bin}.  .3 (\dots)\DTfcomment{(1)}.  .2
+        \DTd{home}.  .3 \DTd{jvaljean}\DTfcomment{Votre répertoire
+          personnel}.  .4 \DTd{Documents}\DTfcomment{Vous êtes ici}.  .5
+        \DTd{Ancien}. .6 \DTd{Paris}.  .7 greve.jpg.  .5
+        condamnation.pdf. .5 document1.txt.  .5 doc2.txt.  .5
+        facture.txt.  .5 mission.pdf.  .5 mission.jpg.  .4 \DTd{Coffre}.
+        .3 \DTd{gavroche}.  .4 avis.txt.  .2 (\dots)\DTfcomment{(2)}.  }
+    \end{minipage}}\hfill%
+  \begin{minipage}{.45\linewidth}
+    Voilà ci-contre un extrait de l'arborescence de votre système. Il y
+    a d'autres utilisateurs : \textit{\texttt{gavroche}} est dans votre
+    groupe, \textit{\texttt{thenardier}} et \textit{\texttt{cosette}} ne
+    le sont pas.
+
+    Vous devrez faire tout cet exercice sans \textbf{jamais} utiliser la
+    commande \texttt{cd}. Dans l'extrait d'arborescence, le répertoire
+    courant est indiqué. Il est possible que \textbf{deux} commandes
+    soient nécessaires pour certaines manipulations.
+  \end{minipage}
+  \begin{parts}
+    \bonuspart[\half] Répondez à \textnormal{toutes} les questions avec
+    une seule commande pour ce bonus!
+    \part[\half] Listez le contenu du répertoire \texttt{Ancien}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ls Ancien}
+    \end{solutionordottedlines}
+    \part[\half] Créez un répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mkdir -p Nouveau/Vacances} ou en deux commandes. J'ai
+      finalement accepté en une, en donnant 0,75 (la moitié du bonus de
+      \emph{une seule commande}) à ceux qui avaient mis le \texttt{-p}
+      ou fait en deux commandes.
+    \end{solutionordottedlines}
+    \part[1] Lisez le contenu du fichier \texttt{avis.txt} chez
+    l'utilisateur \textit{\texttt{gavroche}}.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cat \~gavroche/avis.txt} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Déplacez tous les documents du répertoire courant dans \texttt{Coffre} sauf \texttt{condamnation.pdf}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mv *.txt mission.pdf ../Coffre} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Copiez \texttt{condamnation.pdf} et le répertoire \texttt{Paris} dans le répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cp -r condamnation.txt Ancien/Paris Nouveau/2013} (.5 pour le -r).
+    \end{solutionordottedlines}
+    \part[1] Sachant que les fichiers étaient lisibles par tout le
+    monde, changez les modes de \texttt{Coffre} pour que
+    \texttt{\textit{gavroche}} puisse connaître le contenu du
+    répertoire, que \texttt{\textit{thenardier}} ne puisse pas, et que
+    \texttt{\textit{cosette}} puisse (si vous lui en donnez le chemin)
+    lire un des fichiers.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{chmod 751 \~/Coffre}
+    \end{solutionordottedlines}
+    \part[\half] Le mode de \texttt{Ancien} est au départ
+    \texttt{rwxr-xr-x}. Faites en sorte que plus
+    personne (même vous) ne puisse savoir quoi que ce soit sur le
+    répertoire \texttt{Paris} stocké dans \texttt{Ancien}.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{chmod a-rwx Ancien/Paris}
+    \end{solutionordottedlines}
+    % \part[\half] Donnez ici deux exemples de répertoires ou fichiers que l'on trouve traditionnellement dans les parties non listées numéro 1 et 2.
+    % \begin{solutionordottedlines}[.25in]%
+    %   1. ls et 2. usr
+    % \end{solutionordottedlines}
+  \end{parts}
+  \newpage
+  \titledquestion{Codage}
+  \begin{parts}
+    \part[\half] Quel est le nombre \textbf{minimal} de bits nécessaire
+    pour coder l'information suivante: un numéro de page de l'annexe
+    d'un livre, qui vaut entre 1400 et 1912.
+    \begin{solutionordottedlines}[.25in]
+      1912-1400=513 possibilités, donc 10 bits.
+    \end{solutionordottedlines}
+    \part[\half] Quel est le plus grand entre $48\times 10^6$
+    bits et $6$ Mio ? Justifiez votre réponse.
+    \begin{solutionordottedlines}[.5in]
+      $48\times10^6 bits < 6Mio$ car $48\times10^6 bits = 6\times10^6 octets = 6Mo$ or $6Mo < 6Mio$ car \\
+      $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+      $1000<1024$ (éventuellement moins de détails)
+    \end{solutionordottedlines}
+    % \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
+    % 48, 226, 2251.
+    % \begin{solutionordottedlines}[.75in]
+    %   0x30, 0xE2, 0x8CB
+    % \end{solutionordottedlines}
+    \part[1] Convertissez en C2 sur 8 bits le nombre $-61$.
+    \begin{solutionordottedlines}[.25in]
+      0xC3 ou $1100\,0011$\\
+    \end{solutionordottedlines}
+    \part[1] Faites l'opération suivante:
+    $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+    décimal.
+    \begin{solutionordottedlines}[1in]
+      $0b1\,1101\,0001=465_{10}$
+    \end{solutionordottedlines}
+    \part[\half] Un signal audio a une fréquence d'échantillonage de
+    8000 Hz. Quelle est la fréquence maximale qui peut être reproduite
+    fidèlement avant quantification ? Justifiez
+    \begin{solutionordottedlines}[.25in]
+      D'après le Théorème d'échantillonnage de Nyquist-Shannon on a
+      $f_{echan}>2*f_{Max}$ donc or ici
+      $f_{Max}<f_{chan}/2=8000Hz/2=4000Hz$
+    \end{solutionordottedlines}
+    \part[1] Un signal audio (mono-voie) à 8000 Hz utilise 1024 niveaux
+    d'intensité par échantillon. Combien de bits sont nécessaires pour
+    chaque échantillon ? (justifiez) En déduire la taille totale d'un
+    fichier qui code \emph{une minute} de signal.
+    \begin{solutionordottedlines}[.25in]
+      $8000\times 10\times 60=4\,800\,000$ bits ou bien 600 ko.
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Flottants courts} On veut modifier la norme IEEE
+  754. On définit une nouvelle catégorie de nombres flottants sur 12
+  bits:
+  \begin{itemize}
+  \item 1 bit de signe;
+  \item 4 bits pour noter $E$ avec $E=e+7$;
+  \item 7 bits pour la partie fractionnaire $M$ de la valeur $v$.
+  \end{itemize}
+  On a $x=(-1)^s\times v\times 2^e$ (attention à la distinction
+  $e$/$E$). On fait les mêmes \textbf{exceptions} que dans la norme IEEE
+  754: pour $E=\texttt{0b0000}$, on a $x=0$ et pour $E=\texttt{0b1111}$,
+  on a $x=\pm\infty$. NB: $2^{-6}=0,015\,625,
+  2^{-12}=0,000\,244\,140\,625$.
+  \begin{parts}
+    \part[1] Codez en \emph{flottant court} le nombre 3,5.
+    \begin{solutionordottedlines}[.5in]%
+      $3,5=11,1=1,11\times2$ donc $0100 0110 0000$ soit 0x460.
+    \end{solutionordottedlines}
+    \part[1] Quel est le plus grand nombre non infini que l'on peut
+    représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
+    valeur en décimal.
+    \begin{solutionordottedlines}[.5in]%
+      Codage $011101111111=0x77F$ (1/2), $E=0b1110=14$, $e=7$ et
+      $v=0b1,1111111$. Soit $x=0b1111\,1111=255$ (1/2). Notes partielles
+      si essentiellement bon.
+    \end{solutionordottedlines}
+    % \part[1] Soit deux nombres $a$ et $b$, flottants courts, qui ont le
+    % même exposant $e$. Quelle est la plus petite différence possible non
+    % nulle entre ces deux nombres ?
+    % \begin{solutionordottedlines}[.5in]%
+    %   La différence de $v$ vaut 0.0000001 donc différence totale
+    %   de $2^e\times2^{-7}$ donc $2^{e-7}$.
+    % \end{solutionordottedlines}
+    \part[1] Transformez en décimal les deux nombres \emph{flottants
+      courts} codés par les chaînes de bits suivantes:
+    $\texttt{0b0011\,1010\,0000}$ et
+    $\texttt{0b0110\,0101\,1010}$.
+    \begin{solutionordottedlines}[.5in]%
+      1,25 et 54,5
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Algorithme}%
+  Considérez la méthode suivante qui agit sur deux suites $A$ et $B$ de $n$ bits :
+  \begin{enumerate}
+  \item Comparer le bit le plus à gauche (numéroté $n-1$) de $A$ et $B$.
+  \item S'il est différent, renvoyer \textbf{1} si $A_{n-1}=0$ et \textbf{-1} si $A_{n-1}=1$ et terminer l'opération.
+  \item Poser $i=n-2$.
+  \item Tant que $i\geq0$, faire les opérations suivantes:
+    \begin{enumerate}[1\string:]
+    \item Si $A_i\neq B_i$, renvoyer \textbf{-1} si $A_{n-1}=A_{i}$ et \textbf{1} si $A_{n-1}\neq A_{i}$ et terminer l'opération.
+    \item Faire $i=i-1$ sinon, et recommencer.
+    \end{enumerate}
+  \item Si on a parcouru toute la suite et que $A$ et $B$ sont donc
+    identiques, renvoyer \textbf{0}.
+  \end{enumerate}
+  \begin{parts}
+    \part[\half] Quelles sont les valeurs renvoyées par cet algorithme ?
+    \begin{solutionordottedlines}[.25in]
+      -1, 0 ou 1.
+    \end{solutionordottedlines}
+    \part[1] Cet algorithme sert en fait à faire des comparaisons du codage VA+S. Donnez un sens aux valeurs renvoyées par le calcul de F(A,B).
+    \begin{solutionordottedlines}[.5in]
+      -1 : A<B ; 0 : A=B ; 1: A>B
+    \end{solutionordottedlines}
+    \part[1]
+    Pour $n=4$, comparez ainsi les chaînes suivantes :
+    \begin{tabular}{|>{\Large \strut }c|>{\Large}c|>{\Large\rule{1cm}{0mm}}c|}\hline
+      A & B & \multicolumn{1}{c|}{\Large F(A,B)}\\\hline
+      1001 & 0001 & \\\hline
+      0011 & 0011 & \\\hline
+      0101 & 1001 & \\\hline
+      0101 & 0111 & \\\hline
+    \end{tabular}
+    \begin{solution}
+      
+    \end{solution}
+    \part[1] Est-ce qu'on peut utiliser le même algorithme pour deux nombres IEEE754 (virgule flottante) \textbf{non nuls} ? Justifier.
+    \begin{solutionordottedlines}[2in]
+      Comparer deux nombres en virgule flottante se fait comme en VA+S : on compare d'abord le signe (avec les négatifs plus petits que les positifs), puis l'exposant (plus l'exposant est grand, plus on est grand en valeur absolu), puis la mantisse si l'exposant est identique.
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}
