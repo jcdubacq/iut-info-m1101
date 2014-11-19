@@ -1,44 +1,44 @@
 \section{Les scripts Bash}
 \subsection{Introduction}
 \begin{frame}{Rappel}
-\begin{block}{Les interpréteurs}
-\begin{itemize}
-\item L'interpréteur parcourt le texte tapé par l'utilisateur, identifie les commandes et les paramètres, et si la syntaxe est correcte, lance un processus.
-\item Plusieurs interpréteurs existent : csh, tcsh, bash.
-\item Bash est l’interpréteur du projet GNU. Il est le plus utilisé sous linux. C'est Bash l'interpréteur qu'on utilise dans ce cours.
-\item L'interpréteur peut lire les commandes à partir d'un fichier, le \emph{script} shell.
-\end{itemize}
-\end{block}
+  \begin{block}{Les interpréteurs}
+    \begin{itemize}
+    \item L'interpréteur parcourt le texte tapé par l'utilisateur, identifie les commandes et les paramètres, et si la syntaxe est correcte, lance un processus.
+    \item Plusieurs interpréteurs existent : csh, tcsh, bash.
+    \item Bash est l’interpréteur du projet GNU. Il est le plus utilisé sous linux. C'est Bash l'interpréteur qu'on utilise dans ce cours.
+    \item L'interpréteur peut lire les commandes à partir d'un fichier, le \emph{script} shell.
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Introduction}
-\begin{block}{Structure d'un script Bash}
-\begin{itemize}
-\item Un script Bash commence toujours par la ligne \alert{\#!/bin/bash} , suivi par une série d'instructions et commentaires (optionels)
-\item Un commentaire est une partie rédigée du script qui ne sera pas considérée comme une instruction lors de l'exécution du script. Pour commenter une portion du script on utilise le caractère \#. L'ensemble du texte situé sur la même ligne et après le carcactère \# sera considéré comme un commentaire et ne sera pas évalué.
-\end{itemize}
-\end{block}
+  \begin{block}{Structure d'un script Bash}
+    \begin{itemize}
+    \item Un script Bash commence toujours par la ligne \alert{\#!/bin/bash} , suivi par une série d'instructions et commentaires (optionels)
+    \item Un commentaire est une partie rédigée du script qui ne sera pas considérée comme une instruction lors de l'exécution du script. Pour commenter une portion du script on utilise le caractère \#. L'ensemble du texte situé sur la même ligne et après le carcactère \# sera considéré comme un commentaire et ne sera pas évalué.
+    \end{itemize}
+  \end{block}
 
-\begin{block}{Exemple}
-\begin{center}
+  \begin{block}{Exemple}
+    \begin{center}
 \begin{verbatim}
 #!/bin/bash
 echo Liste des Fichiers:
 #affiche la liste
 ls
 \end{verbatim}
-\end{center}
-\end{block}
+    \end{center}
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Introduction}
-\begin{block}{Execution d'un script}
-\begin{itemize}
-\item Un script est un simple fichier texte (habituellement, ils ont l'extension \alert{.sh}) . Pour l'executer, il faut avant tout le rendre exécutable: \verb|chmod u+x script.sh|
-\item Maintenant, on peut l'exécuter en faisant: \verb|./script.sh|
-\item On peut aussi le lancer en appelant explicitement l'interpréteur: \verb|bash script.sh|
-\end{itemize}
-\end{block}
+  \begin{block}{Execution d'un script}
+    \begin{itemize}
+    \item Un script est un simple fichier texte (habituellement, ils ont l'extension \alert{.sh}) . Pour l'executer, il faut avant tout le rendre exécutable: \verb|chmod u+x script.sh|
+    \item Maintenant, on peut l'exécuter en faisant: \verb|./script.sh|
+    \item On peut aussi le lancer en appelant explicitement l'interpréteur: \verb|bash script.sh|
+    \end{itemize}
+  \end{block}
 
 
   \begin{exercicelet}{Premier script Bash}
@@ -56,30 +56,30 @@ ls
     \begin{questions}
     \item Définissez et exécutez un script nommé \texttt{exo\_1\_script.sh} qui réalise la suite de commandes suivante: \texttt{echo "Debut"; sleep 2; echo "Apres 2 sec."; sleep 5; echo "Apres 5sec"}
     \item Que se passe-t-il si vous commentez les lignes commencant par la commande sleep?
-	\item Définissez un script \texttt{exo\_2\_script.sh} qui affiche "Bonjour", définit le répertoire \texttt{~/Intro\_Systeme/TP\_3/scripts/} comme répertoire courant, puis crée dans celui-ci un répertoire \texttt{Test}, et finalement copie dans \texttt{Test} le fichier \texttt{/proc/cpuinfo}.
-	\item Définissez un script nommé \texttt{exo\_3\_script.sh} qui affiche le contenu du répertoire \texttt{Test}, puis supprime le fichier \texttt{cpuinfo} y contenu (\texttt{Test/cpuinfo}), et finalement crée dans \texttt{Test} un fichier \texttt{infoCPU.txt} composé par les lignes du fichier \texttt{/proc/cpuinfo} qui contiennent le mot \texttt{'cpu'}.
+    \item Définissez un script \texttt{exo\_2\_script.sh} qui affiche "Bonjour", définit le répertoire \texttt{~/Intro\_Systeme/TP\_3/scripts/} comme répertoire courant, puis crée dans celui-ci un répertoire \texttt{Test}, et finalement copie dans \texttt{Test} le fichier \texttt{/proc/cpuinfo}.
+    \item Définissez un script nommé \texttt{exo\_3\_script.sh} qui affiche le contenu du répertoire \texttt{Test}, puis supprime le fichier \texttt{cpuinfo} y contenu (\texttt{Test/cpuinfo}), et finalement crée dans \texttt{Test} un fichier \texttt{infoCPU.txt} composé par les lignes du fichier \texttt{/proc/cpuinfo} qui contiennent le mot \texttt{'cpu'}.
     \end{questions}
   \end{exercicelet}
 \end{exercice}
 
 \subsection{Variables et Paramètres}
 \begin{frame}[fragile]{Les Variables}
-\begin{block}{Les variables en Bash}
-\begin{itemize}
-\item Pour affecter une valeur à une variable c'est très simple. Il suffit d'écrire \texttt{nom\_variable=valeur}
-\item Pour accéder au contenu d'une variable, il faut utiliser le préfixe \lin{\$}
-%\item Pour supprimer une variable, il faut utiliser l'instruction \lin{unset}.
-\item On peut accéder aussi aux variables d'environnement, qui ont été définies ailleurs (par exemple \texttt{\$PATH}) 
-\end{itemize}
-\end{block}
+  \begin{block}{Les variables en Bash}
+    \begin{itemize}
+    \item Pour affecter une valeur à une variable c'est très simple. Il suffit d'écrire \texttt{nom\_variable=valeur}
+    \item Pour accéder au contenu d'une variable, il faut utiliser le préfixe \lin{\$}
+      % \item Pour supprimer une variable, il faut utiliser l'instruction \lin{unset}.
+    \item On peut accéder aussi aux variables d'environnement, qui ont été définies ailleurs (par exemple \texttt{\$PATH}) 
+    \end{itemize}
+  \end{block}
 
-\begin{block}{Exemple}
+  \begin{block}{Exemple}
 \begin{verbatim}
 MSG=Bonjour
 echo $MSG
 echo $PATH
 \end{verbatim}
-\end{block}
+  \end{block}
 
   \begin{exercicelet}{Les Variables}
     \begin{questions}
@@ -90,33 +90,33 @@ echo $PATH
 \end{frame}
 
 \begin{frame}[fragile]{Les Paramètres}
-\begin{block}{Les paramètres}
-\begin{itemize}
-\item Il s'agit d'unes variables spéciales qui contiennent les arguments fournis au script par la ligne de commandes
-\item \textbf{\$0}: nom du script
-\item \textbf{\$1 \$2 ... }: paramètres en position 1, 2, ...
-\item \textbf{\$\#}: nombre de paramètres positionnels
-\item \textbf{\$*}: ensemble des paramètres
-\end{itemize}
-\end{block}
+  \begin{block}{Les paramètres}
+    \begin{itemize}
+    \item Il s'agit d'unes variables spéciales qui contiennent les arguments fournis au script par la ligne de commandes
+    \item \textbf{\$0}: nom du script
+    \item \textbf{\$1 \$2 ... }: paramètres en position 1, 2, ...
+    \item \textbf{\$\#}: nombre de paramètres positionnels
+    \item \textbf{\$*}: ensemble des paramètres
+    \end{itemize}
+  \end{block}
 
-\begin{block}{Exemple}
-\small{
-Soit \texttt{arg.sh} le script suivant:
+  \begin{block}{Exemple}
+    \small{
+      Soit \texttt{arg.sh} le script suivant:
 \begin{verbatim}
 #!/bin/bash
 echo "Nombre d'argument "$#
 echo "Les arguments sont "$*
 echo "Le second argument est "$2
 \end{verbatim}
-\vspace{0.1cm}
-	\promptM{./arg.sh A B C}{
+      \vspace{0.1cm}
+      \promptM{./arg.sh A B C}{
 	Nombre d'argument 3 \\
 	Les arguments sont A B C \\
 	Le second argument est B
-}
-}
-\end{block}
+      }
+    }
+  \end{block}
   
 \end{frame}
 
@@ -124,7 +124,7 @@ echo "Le second argument est "$2
   \begin{exercicelet}{Introduction aux scripts Bash}
     \begin{questions}
     \item Définissez un script nommé \texttt{exo\_5\_script.sh} à partir du script \texttt{exo\_2\_script.sh}, et modifiez-le pour que le nom du répertoire \texttt{Test/} soit passé comme un paramètre du script.
-	\item Rédigez un script recevant 3 paramètres (nom, prénom et serveur) permettant l'affichage d'une adresse mail formatée (nom.prénom@serveur)
+    \item Rédigez un script recevant 3 paramètres (nom, prénom et serveur) permettant l'affichage d'une adresse mail formatée (nom.prénom@serveur)
 
     \end{questions}
   \end{exercicelet}
@@ -133,146 +133,146 @@ echo "Le second argument est "$2
 \section{Structures de contrôle en BASH}
 \subsection{Les calculs arithmétiques}
 \begin{frame}{Les calculs arithmétiques}
-	\begin{alertblock}{\lin{Bash} un langage orienté sur le traitement des chaînes de caractères}
-		Même si ce langage n'est pas fait pour effectuer des opérations de calcul arithmétique il propose des fonctionnalités de base permettant d'effectuer des calculs simples tels que les additions, soustractions, multiplications et divisions. 
-	\end{alertblock}
-	\begin{block}{Syntaxe}
-		\begin{center}
-			\linbox{\$(( \it{expression\_arithmétique} ))}
-		\end{center}
-	\end{block}
-	\begin{block}{Exemples}
-		\begin{center}
-			\tiny{%
-			\mpromptS{%
-				\promptS{total=\$(( 5 + 3 ))}{}
-				\promptS{echo \$total}{8}
-				\promptS{echo \$(( 5 - 3 ))}{2}
-				\promptS{echo \$(( 5 * 3 ))}{15}
-				\promptS{echo \$(( 5 / 3 ))}{1}
-			}
-			}
-		\end{center}
-	\end{block}
+  \begin{alertblock}{\lin{Bash} un langage orienté sur le traitement des chaînes de caractères}
+    Même si ce langage n'est pas fait pour effectuer des opérations de calcul arithmétique il propose des fonctionnalités de base permettant d'effectuer des calculs simples tels que les additions, soustractions, multiplications et divisions. 
+  \end{alertblock}
+  \begin{block}{Syntaxe}
+    \begin{center}
+      \linbox{\$(( \it{expression\_arithmétique} ))}
+    \end{center}
+  \end{block}
+  \begin{block}{Exemples}
+    \begin{center}
+      \tiny{%
+        \mpromptS{%
+          \promptS{total=\$(( 5 + 3 ))}{}
+          \promptS{echo \$total}{8}
+          \promptS{echo \$(( 5 - 3 ))}{2}
+          \promptS{echo \$(( 5 * 3 ))}{15}
+          \promptS{echo \$(( 5 / 3 ))}{1}
+        }
+      }
+    \end{center}
+  \end{block}
 \end{frame}
 
 \begin{exercice}
   \begin{exercicelet}{Les calculs arithmétiques}
     \begin{questions}
     \item Proposez une suite de 2 commandes affectant à une variable \texttt{res} le résultat des opérations arithmétiques suivantes et affichant le résultat contenu dans cette variable: $5 + 7$ et $3 * 2$
-	\item Proposez une suite de 3 commandes permettant:
-	\begin{itemize}
-		\item d'affecter à une variable \texttt{res} la valeur $3$,
-		\item d'ajouter $13$ à la variable \texttt{res},
-		\item d'afficher le résultat de l'addition stockée dans la variable \texttt{res}.
-	\end{itemize}
+    \item Proposez une suite de 3 commandes permettant:
+      \begin{itemize}
+      \item d'affecter à une variable \texttt{res} la valeur $3$,
+      \item d'ajouter $13$ à la variable \texttt{res},
+      \item d'afficher le résultat de l'addition stockée dans la variable \texttt{res}.
+      \end{itemize}
 
 
     \end{questions}
   \end{exercicelet}
 \end{exercice}
 
-		\subsection{La boucle for}
+\subsection{La boucle for}
 \begin{frame}{\lin{for}}
-	\begin{columns}
-		\begin{column}{5cm}
-			\begin{block}{\lin{for} Boucle itérative}
-				\begin{itemize}
-					\item permet de répéter l'évaluation d'une ou plusieurs instructions,
-					\item à chaque tour de boucle une variable appelée itérateur change de valeur,
-					\item la sortie de boucle s'effectue lorsque l'itérateur atteint une certaine valeurs.
-				\end{itemize}
-			\end{block}
-		\end{column}
-		\begin{column}{6cm}
-			\begin{block}{Syntaxe \#1}
-				\begin{center}
-					\mpromptS{%
-						for ((\it{ init ; test ; incr })); do\\
-						\hspace*{2em}expr\_1\\
-						\hspace*{2em}expr\_2\\
-						\hspace*{2em}\dots\\
-						done
-					}
-				\end{center}
-				Ici, la condition d'arrêt est sur la valeur numérique de l'itérateur.
-			\end{block}
-		\end{column}
-	\end{columns}
-	\begin{block}{Exemple \#1}
-		\small{%
-			\begin{columns}
-				\begin{column}{5cm}
-					\fileform[5cm]{test\_for\_loop\_1.bash}{\#!/bin/bash\\\\echo "test \#1"\\for (( i = 0 ; i < 3 ; i++ ));do\\\hspace*{2em}echo '\$i = '\$i\\done}
-				\end{column}
-				\begin{column}{5.5cm}
-					\mpromptS{%
-						\promptS{./test\_for\_loop\_1.bash}{test \#1\\\$i = 0\\\$i = 1\\\$i = 2}
-					}
-				\end{column}
-			\end{columns}
-		}
-	\end{block}
+  \begin{columns}
+    \begin{column}{5cm}
+      \begin{block}{\lin{for} Boucle itérative}
+        \begin{itemize}
+        \item permet de répéter l'évaluation d'une ou plusieurs instructions,
+        \item à chaque tour de boucle une variable appelée itérateur change de valeur,
+        \item la sortie de boucle s'effectue lorsque l'itérateur atteint une certaine valeurs.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{6cm}
+      \begin{block}{Syntaxe \#1}
+        \begin{center}
+          \mpromptS{%
+            for ((\it{ init ; test ; incr })); do\\
+            \hspace*{2em}expr\_1\\
+            \hspace*{2em}expr\_2\\
+            \hspace*{2em}\dots\\
+            done
+          }
+        \end{center}
+        Ici, la condition d'arrêt est sur la valeur numérique de l'itérateur.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{block}{Exemple \#1}
+    \small{%
+      \begin{columns}
+        \begin{column}{5cm}
+          \fileform[5cm]{test\_for\_loop\_1.bash}{\#!/bin/bash\\\\echo "test \#1"\\for (( i = 0 ; i < 3 ; i++ ));do\\\hspace*{2em}echo '\$i = '\$i\\done}
+        \end{column}
+        \begin{column}{5.5cm}
+          \mpromptS{%
+            \promptS{./test\_for\_loop\_1.bash}{test \#1\\\$i = 0\\\$i = 1\\\$i = 2}
+          }
+        \end{column}
+      \end{columns}
+    }
+  \end{block}
 \end{frame}
-		%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 
 \begin{frame}{\lin{for}}
-	\begin{columns}
-		\begin{column}{5cm}
-			\begin{block}{\lin{for} Boucle itérative}
-				\begin{itemize}
-					\item permet de répéter l'évaluation d'une instruction,
-					\item à chaque tour de boucle une variable appelée itérateur change de valeur,
-					\item la sortie de boucle s'effectue lorsque l'itérateur a parcouru toute la liste.
-				\end{itemize}
-			\end{block}
-		\end{column}
-		\begin{column}{6cm}
-			\begin{block}{Syntaxe \#2}
-				\begin{center}
-					\mpromptS{%
-						for var in val\_1 val\_2 \dots; do\\
-						\hspace*{2em}expr\_1\\
-						\hspace*{2em}expr\_2\\
-						\hspace*{2em}\dots\\
-						done
-					}
-				\end{center}
-				Ici, la boucle s'arrête lorsque toute la liste des valeurs a été parcourue.
-			\end{block}
-		\end{column}
-	\end{columns}
-	\begin{block}{Exemple \#2}
-		\small{%
-			\begin{columns}
-				\begin{column}{5cm}
-					\fileform[5cm]{test\_for\_loop\_2.bash}{\#!/bin/bash\\\\echo "test \#2"\\for i in hello la terre;do\\\hspace*{2em}echo '\$i = '\$i\\done}
-				\end{column}
-				\begin{column}{5.5cm}
-					\mpromptS{%
-						\promptS{./test\_for\_loop\_2.bash}{test \#2\\\$i = hello\\\$i = la\\\$i = terre}
-					}
-				\end{column}
-			\end{columns}
-		}
-	\end{block}
+  \begin{columns}
+    \begin{column}{5cm}
+      \begin{block}{\lin{for} Boucle itérative}
+        \begin{itemize}
+        \item permet de répéter l'évaluation d'une instruction,
+        \item à chaque tour de boucle une variable appelée itérateur change de valeur,
+        \item la sortie de boucle s'effectue lorsque l'itérateur a parcouru toute la liste.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{6cm}
+      \begin{block}{Syntaxe \#2}
+        \begin{center}
+          \mpromptS{%
+            for var in val\_1 val\_2 \dots; do\\
+            \hspace*{2em}expr\_1\\
+            \hspace*{2em}expr\_2\\
+            \hspace*{2em}\dots\\
+            done
+          }
+        \end{center}
+        Ici, la boucle s'arrête lorsque toute la liste des valeurs a été parcourue.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{block}{Exemple \#2}
+    \small{%
+      \begin{columns}
+        \begin{column}{5cm}
+          \fileform[5cm]{test\_for\_loop\_2.bash}{\#!/bin/bash\\\\echo "test \#2"\\for i in hello la terre;do\\\hspace*{2em}echo '\$i = '\$i\\done}
+        \end{column}
+        \begin{column}{5.5cm}
+          \mpromptS{%
+            \promptS{./test\_for\_loop\_2.bash}{test \#2\\\$i = hello\\\$i = la\\\$i = terre}
+          }
+        \end{column}
+      \end{columns}
+    }
+  \end{block}
 \end{frame}
 
 \begin{exercice}
   \begin{exercicelet}{La boucle \texttt{for}}
     \begin{questions}
     \item Dans le cours nous avons vu plusieurs syntaxes possibles pour la boucle for. Soit le script suivant:
-    \begin{minipage}[c]{5cm}
-    \begin{verbatim}
+      \begin{minipage}[c]{5cm}
+\begin{verbatim}
 #!/bin/bash
 # affiche les 10 premiers entiers pairs
 for int in 2 4 6 8 10 12 14 16 18 20
 do
 echo $int
 done   
-	\end{verbatim}
-	\end{minipage}
+\end{verbatim}
+      \end{minipage}
 
-	\item Modifiez ce script pour remplacer la liste de valeurs par une expression arithmétique
+    \item Modifiez ce script pour remplacer la liste de valeurs par une expression arithmétique
 
     \end{questions}
   \end{exercicelet}
@@ -280,158 +280,158 @@ done
 
 \subsection{Les branchements conditionnels if}
 \begin{frame}{\lin{if}}
-	\begin{block}{Branchements conditionnels}
-		\begin{itemize}
-			\item Le \lin{if} permet de mettre en place des alternatives.
-			\item Un test (dont le résultat est Vrai ou Faux) permet de conditionner les expressions qui seront évaluées.
-		\end{itemize}
-	\end{block}\vrule
-	\begin{columns}
-		\begin{column}{6cm}
-			\begin{block}{Syntaxe \#1}
-				\mpromptS{%
-					if test\\
-					then\\
-					\hspace*{2em}expr\_1\\
-					\hspace*{2em}expr\_2\\
-					\hspace*{2em}\dots\\
-					fi
-				}
-			\end{block}
-		\end{column}
-		\begin{column}{5cm}
-			\begin{block}{Comportement}
-				\begin{itemize}
-					\item Ici, les expressions ne sont évaluées que si le test renvoie la valeur Vrai.\\
-					\item Aucune des expressions ne sont évaluées si le test renvoie la valeur Faux.
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
+  \begin{block}{Branchements conditionnels}
+    \begin{itemize}
+    \item Le \lin{if} permet de mettre en place des alternatives.
+    \item Un test (dont le résultat est Vrai ou Faux) permet de conditionner les expressions qui seront évaluées.
+    \end{itemize}
+  \end{block}\vrule
+  \begin{columns}
+    \begin{column}{6cm}
+      \begin{block}{Syntaxe \#1}
+        \mpromptS{%
+          if test\\
+          then\\
+          \hspace*{2em}expr\_1\\
+          \hspace*{2em}expr\_2\\
+          \hspace*{2em}\dots\\
+          fi
+        }
+      \end{block}
+    \end{column}
+    \begin{column}{5cm}
+      \begin{block}{Comportement}
+        \begin{itemize}
+        \item Ici, les expressions ne sont évaluées que si le test renvoie la valeur Vrai.\\
+        \item Aucune des expressions ne sont évaluées si le test renvoie la valeur Faux.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
-		%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 
 \begin{frame}{\lin{if}}
-	\begin{columns}
-		\begin{column}{6cm}
-			\begin{block}{Syntaxe \#2}
-				\mpromptS{%
-					if test\\
-					then\\
-					\hspace*{2em}expr\_1\\
-					else\\
-					\hspace*{2em}expr\_2\\
-					fi
-				}
-			\end{block}
-		\end{column}
-		\begin{column}{5cm}
-			\begin{block}{Comportement}
-				\begin{itemize}
-					\item Si le test renvoie la valeur Vrai l'expression \lin{expr\_1} est évaluée, et\\
-					\item sinon le test renvoie la valeur Faux c'est l'expression \lin{expr\_2} qui est évaluée.
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
-	\begin{columns}
-		\begin{column}{6cm}
-			\begin{block}{Syntaxe \#3}
-				\mpromptS{%
-					if test\_1\\
-					then\\
-					\hspace*{2em}expr\_1\\
-					elif test\_2\\
-					then\\
-					\hspace*{2em}expr\_2\\
-					elif test\_3\\
-					then\\
-					\hspace*{2em}expr\_3\\
-					else\\
-					\hspace*{2em}expr\_4\\
-					fi
-				}
-			\end{block}
-		\end{column}
-		\begin{column}{5cm}
-			\begin{block}{Comportement}
-				\begin{itemize}
-					\item Si \lin{test\_1} renvoie la valeur Vrai l'expression \lin{expr\_1} est évaluée,\\
-					\item si \lin{test\_2} renvoie la valeur Vrai l'expression \lin{expr\_2} est évaluée,\\
-					\item si \lin{test\_3} renvoie la valeur Vrai l'expression \lin{expr\_3} est évaluée, et\\
-					\item si aucun des tests ne renvoie la valeur Vrai alors c'est l'expression \lin{expr\_4} qui est évaluée.
-				\end{itemize}
-			\end{block}
-		\end{column}
-	\end{columns}
+  \begin{columns}
+    \begin{column}{6cm}
+      \begin{block}{Syntaxe \#2}
+        \mpromptS{%
+          if test\\
+          then\\
+          \hspace*{2em}expr\_1\\
+          else\\
+          \hspace*{2em}expr\_2\\
+          fi
+        }
+      \end{block}
+    \end{column}
+    \begin{column}{5cm}
+      \begin{block}{Comportement}
+        \begin{itemize}
+        \item Si le test renvoie la valeur Vrai l'expression \lin{expr\_1} est évaluée, et\\
+        \item sinon le test renvoie la valeur Faux c'est l'expression \lin{expr\_2} qui est évaluée.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{6cm}
+      \begin{block}{Syntaxe \#3}
+        \mpromptS{%
+          if test\_1\\
+          then\\
+          \hspace*{2em}expr\_1\\
+          elif test\_2\\
+          then\\
+          \hspace*{2em}expr\_2\\
+          elif test\_3\\
+          then\\
+          \hspace*{2em}expr\_3\\
+          else\\
+          \hspace*{2em}expr\_4\\
+          fi
+        }
+      \end{block}
+    \end{column}
+    \begin{column}{5cm}
+      \begin{block}{Comportement}
+        \begin{itemize}
+        \item Si \lin{test\_1} renvoie la valeur Vrai l'expression \lin{expr\_1} est évaluée,\\
+        \item si \lin{test\_2} renvoie la valeur Vrai l'expression \lin{expr\_2} est évaluée,\\
+        \item si \lin{test\_3} renvoie la valeur Vrai l'expression \lin{expr\_3} est évaluée, et\\
+        \item si aucun des tests ne renvoie la valeur Vrai alors c'est l'expression \lin{expr\_4} qui est évaluée.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
-		%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 
 \begin{frame}{Les tests}
-	\begin{block}{Les tests peuvent prendre plusieurs formes}
-	Il peuvent porter sur:
-		\begin{itemize}
-			\item l'arborescence (présence, absence, permission sur les répertoires et fichiers),
-			\item les chaînes de caractères,
-			\item les valeurs numériques.
-		\end{itemize}
-	\end{block}
-	\begin{block}{Tests de l'arborescence}
-		\begin{center}
-			\begin{tabular}{ll}
-				\hline\\
-				Syntaxe&Valeur\\
-				\hline\\
-				$[$ -d fichier$]$&Vrai si fichier est un nom de répertoire valide (si il existe).\\[3pt]
-				$[$ -f fichier $]$&Vrai si fichier est un nom de fichier valide (si il existe).\\[3pt]
-				$[$ -r fichier $]$&Vrai si il y a le droit de lecture sur le fichier.\\[3pt]
-				$[$ -w fichier$]$&Vrai si il y a le droit d'écriture sur le fichier.\\[3pt]
-				$[$ -x fichier $]$&Vrai si il y a le droit d'exécution sur le fichier.\\[3pt]
-				\hline
-			\end{tabular}
-		\end{center}
-	\end{block}
+  \begin{block}{Les tests peuvent prendre plusieurs formes}
+    Il peuvent porter sur:
+    \begin{itemize}
+    \item l'arborescence (présence, absence, permission sur les répertoires et fichiers),
+    \item les chaînes de caractères,
+    \item les valeurs numériques.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Tests de l'arborescence}
+    \begin{center}
+      \begin{tabular}{ll}
+        \hline\\
+        Syntaxe&Valeur\\
+        \hline\\
+        $[$ -d fichier$]$&Vrai si fichier est un nom de répertoire valide (si il existe).\\[3pt]
+        $[$ -f fichier $]$&Vrai si fichier est un nom de fichier valide (si il existe).\\[3pt]
+        $[$ -r fichier $]$&Vrai si il y a le droit de lecture sur le fichier.\\[3pt]
+        $[$ -w fichier$]$&Vrai si il y a le droit d'écriture sur le fichier.\\[3pt]
+        $[$ -x fichier $]$&Vrai si il y a le droit d'exécution sur le fichier.\\[3pt]
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
 \end{frame}
-%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% 
 \begin{exercice}
   \begin{exercicelet}{Tests de l'arborescence}
     \begin{questions}
     \item Créez un script \texttt{ico\_existe.sh}, qui teste si un fichier \texttt{ico} est présent dans le répertoire courant. Si le fichier existe, le script affiche le message d'avertissement suivant (\$PWD sera remplacé lors de l'exécution par la valeur de la variable d'environnement):
-    \begin{minipage}[c]{5cm}
-    \begin{verbatim}
+      \begin{minipage}[c]{5cm}
+\begin{verbatim}
 Attention: le fichier $PWD/ico existe
-	\end{verbatim}
-	\end{minipage}
-	
-	
-	\item Modifiez le script pour qu’il supprime le fichier \texttt{ico} si celui-ci existe et affiche un message d'avertissement indiquant que le fichier est supprimé. Les affichages seront alors les suivants:
-	\begin{minipage}[c]{5cm}
-    \begin{verbatim}
+\end{verbatim}
+      \end{minipage}
+      
+      
+    \item Modifiez le script pour qu’il supprime le fichier \texttt{ico} si celui-ci existe et affiche un message d'avertissement indiquant que le fichier est supprimé. Les affichages seront alors les suivants:
+      \begin{minipage}[c]{5cm}
+\begin{verbatim}
 Attention: le fichier $PWD/ico existe
 Le Fichier $PWD/ico est supprime
-	\end{verbatim}
-	\end{minipage}
+\end{verbatim}
+      \end{minipage}
     \item Modifiez ce script pour qu'il teste en plus si le répertoire courant contient un répertoire nommé \texttt{ico/}. Si il ne contient pas de répertoire \texttt{ico/}, le script crée ce répertoire.
     \end{questions}
   \end{exercicelet}
 \end{exercice}
 
-		%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 
 \begin{frame}{Les tests}
-	\begin{block}{Tests sur les chaînes de caractères}
-		\begin{center}
-			\begin{tabular}{ll}
-				\hline\\
-				Syntaxe&Valeur\\
-				\hline\\
-				$[$ chaine\_1 = chaine\_2 $]$&Vrai si les 2 chaînes sont identiques.\\[2pt]
-				$[$ chaine\_1 != chaine\_2 $]$&Vrai si les 2 chaînes sont différentes.\\[2pt]
-				$[$ -n chaine $]$&Vrai si la chaîne est non vide.\\[2pt]
-				$[$ -z chaine $]$&Vrai si la chaîne est vide.\\[2pt]
-				\hline
-			\end{tabular}
-		\end{center}
-	\end{block}
-	
-	  \begin{exercicelet}{Tests sur les chaînes}
+  \begin{block}{Tests sur les chaînes de caractères}
+    \begin{center}
+      \begin{tabular}{ll}
+        \hline\\
+        Syntaxe&Valeur\\
+        \hline\\
+        $[$ chaine\_1 = chaine\_2 $]$&Vrai si les 2 chaînes sont identiques.\\[2pt]
+        $[$ chaine\_1 != chaine\_2 $]$&Vrai si les 2 chaînes sont différentes.\\[2pt]
+        $[$ -n chaine $]$&Vrai si la chaîne est non vide.\\[2pt]
+        $[$ -z chaine $]$&Vrai si la chaîne est vide.\\[2pt]
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
+  
+  \begin{exercicelet}{Tests sur les chaînes}
     \begin{questions}
     \item Définissez un script \texttt{testPWD.sh} qui prend en paramètre une chaîne de caractères et la compare avec la variable d'environnement \texttt{\$PWD}, il doit afficher 'OK' si le paramètre correspond à la valeur de la variable, 'Non' en cas contraire.
     \end{questions}
@@ -440,84 +440,126 @@ Le Fichier $PWD/ico est supprime
 \end{frame}
 
 \begin{frame}{Les tests}
-	\begin{block}{Tests sur les valeurs numériques}
-		\begin{center}
-			\begin{tabular}{ll}
-				\hline\\
-				Syntaxe&Valeur\\
-				\hline\\
-				$[$ nb\_1 -eq nb\_2 $]$&Vrai si nb\_1 = nb\_2 (eq pour equal).\\[2pt]
-				$[$ nb\_1 -ne nb\_2 $]$&Vrai si nb\_1 $\neq$ nb\_2 (ne pour not equal).\\[2pt]
-				$[$ nb\_1 -gt nb\_2 $]$&Vrai si nb\_1 $>$ nb\_2 (gt pour greater than).\\[2pt]
-				$[$ nb\_1 -ge nb\_2 $]$&Vrai si nb\_1 $\geq$ nb\_2 (ge pour greater or equal).\\[2pt]
-				$[$ nb\_1 -lt nb\_2 $]$&Vrai si nb\_1 $<$ nb\_2 (ge pour lower than).\\[2pt]
-				$[$ nb\_1 -le nb\_2 $]$&Vrai si nb\_1 $\leq$ nb\_2 (ge pour lower or equal).\\[2pt]
-				\hline
-			\end{tabular}
-		\end{center}
-	\end{block}
+  \begin{block}{Tests sur les valeurs numériques}
+    \begin{center}
+      \begin{tabular}{ll}
+        \hline\\
+        Syntaxe&Valeur\\
+        \hline\\
+        $[$ nb\_1 -eq nb\_2 $]$&Vrai si nb\_1 = nb\_2 (eq pour equal).\\[2pt]
+        $[$ nb\_1 -ne nb\_2 $]$&Vrai si nb\_1 $\neq$ nb\_2 (ne pour not equal).\\[2pt]
+        $[$ nb\_1 -gt nb\_2 $]$&Vrai si nb\_1 $>$ nb\_2 (gt pour greater than).\\[2pt]
+        $[$ nb\_1 -ge nb\_2 $]$&Vrai si nb\_1 $\geq$ nb\_2 (ge pour greater or equal).\\[2pt]
+        $[$ nb\_1 -lt nb\_2 $]$&Vrai si nb\_1 $<$ nb\_2 (ge pour lower than).\\[2pt]
+        $[$ nb\_1 -le nb\_2 $]$&Vrai si nb\_1 $\leq$ nb\_2 (ge pour lower or equal).\\[2pt]
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
 
 \end{frame}
-		%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% 
 \begin{frame}{Les tests}
-	\begin{block}{Opérateurs booléens}
-		\begin{center}
-			\begin{tabular}{ll}
-				\hline
-				Syntaxe&Valeur\\
-				\hline\\
-				! $[$ test $]$&NOT: Vrai si le test renvoie Faux (négation).\\[2pt]
-				$[$ test\_1 $]$ $|$ $|$ $[$ test\_2 $]$&OU logique.\\[2pt]
-				$[$ test\_1 $]$ \&\& $[$ test\_2 $]$&ET logique.\\[2pt]
-				\hline
-			\end{tabular}
-		\end{center}
-	\end{block}
-	\begin{block}{Tables de vérité}
-		\begin{columns}
-			\begin{column}{5.5cm}
-				\begin{center}
-					\begin{tabular}{|l|l|l|}
-					\hline
-					\textbf{ET (\&\&)}&\textbf{Vrai}&\textbf{Faux}\\
-					\hline
-					\textbf{Vrai}&Vrai&Faux\\
-					\hline
-					\textbf{Faux}&Faux&Faux\\
-					\hline
-					\end{tabular}
-				\end{center}
-			\end{column}
-			\begin{column}{5.5cm}
-				\begin{center}
-					\begin{tabular}{|l|l|l|}
-					\hline
-					\textbf{OU ($|$ $|$)}&\textbf{Vrai}&\textbf{Faux}\\
-					\hline
-					\textbf{Vrai}&Vrai&Vrai\\
-					\hline
-					\textbf{Faux}&Vrai&Faux\\
-					\hline
-					\end{tabular}
-				\end{center}
-			\end{column}
-		\end{columns}
-				\begin{center}
-					\begin{tabular}{|l|l|l|}
-					\hline
-					\textbf{NOT (!)}&\textbf{Vrai}&\textbf{Faux}\\
-					\hline
-					&Faux&Vra\\
-					\hline
-					\end{tabular}
-				\end{center}
-	\end{block}
+  \begin{block}{Opérateurs booléens}
+    \begin{center}
+      \begin{tabular}{ll}
+        \hline
+        Syntaxe&Valeur\\
+        \hline\\
+        ! $[$ test $]$&NOT: Vrai si le test renvoie Faux (négation).\\[2pt]
+        $[$ test\_1 $]$ $|$ $|$ $[$ test\_2 $]$&OU logique.\\[2pt]
+        $[$ test\_1 $]$ \&\& $[$ test\_2 $]$&ET logique.\\[2pt]
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
+  \begin{block}{Tables de vérité}
+    \begin{columns}
+      \begin{column}{5.5cm}
+        \begin{center}
+          \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{ET (\&\&)}&\textbf{Vrai}&\textbf{Faux}\\
+            \hline
+            \textbf{Vrai}&Vrai&Faux\\
+            \hline
+            \textbf{Faux}&Faux&Faux\\
+            \hline
+          \end{tabular}
+        \end{center}
+      \end{column}
+      \begin{column}{5.5cm}
+        \begin{center}
+          \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{OU ($|$ $|$)}&\textbf{Vrai}&\textbf{Faux}\\
+            \hline
+            \textbf{Vrai}&Vrai&Vrai\\
+            \hline
+            \textbf{Faux}&Vrai&Faux\\
+            \hline
+          \end{tabular}
+        \end{center}
+      \end{column}
+    \end{columns}
+    \begin{center}
+      \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{NOT (!)}&\textbf{Vrai}&\textbf{Faux}\\
+        \hline
+        &Faux&Vra\\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
 \end{frame}
 
 \begin{exercice}
-	 \begin{exercicelet}{Tests sur les valeurs numériques}
+  \begin{exercicelet}{Tests sur les valeurs numériques}
     \begin{questions}
     \item Définissez un script \texttt{testTemp.sh} qui prend en paramètre une valeur numérique et une lettre ('C' ou 'F'). Si la lettre choisie est 'C', le script doit afficher 'chaud' si le paramètre numérique est plus grand que $25$, 'froid' si est moins que $10$, 'normal' dans les autres cas. Si la lettre choisie est 'F', il affiche 'chaud' si le paramètre numérique est plus grand que $78$ et 'froid' si le paramètre numérique est inférieur à $50$, 'normal' dans les autres cas. Si la lettre n'est pas 'C' ou 'F', il affiche un message d'erreur. 
     \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\begin{frame}[fragile]{Substitution de commande}
+  \begin{block}{Un moyen de composer les instructions}
+    La syntaxe \verb|$(commande avec des arguments)| est remplacée à
+    l'exécution par le résultat de l'exécution dans un sous-shell de la
+    commande \texttt{commande avec des arguments}.
+
+    Cette fonctionnalité très puissante permet d'utiliser des commandes
+    pour les affecter dans des variables et ensuite s'en servir dans le
+    script.
+  
+    C'est une substitution
+  \end{block}
+  \begin{block}{Exemple}
+    \begin{center}
+\begin{verbatim}
+#!/bin/bash
+TITLE="En ce jour du $(date -I)"
+MOTS=$(grep cool /usr/share/dict/words)
+for i in $MOTS; do
+  echo "$TITLE, $i est un mot cool"
+done
+\end{verbatim} %$
+    \end{center}
+  \end{block}
+
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Archiveur}
+    Faites un script qui a les actions suivantes si on lui donne en argument un répertoire (par exemple \verb|~/M1101/TD6|):
+    \begin{questions}
+    \item S'arrête si la cible n'est pas un répertoire
+    \item Définit une variable BACKUPDIR qui vaut le chemin du répertoire du dessus suivi du mot \texttt{sauvegarde} (ici \verb|~/M1101/sauvegarde|) en utilisant la commande \texttt{dirname}
+    \item Crée le répertoire s'il n'existe pas
+    \item Définir une variable faite avec la date du jour et le nom du répertoire (par exemple 2014-10-31-TD6) en utilisante les commandes \texttt{basename} et \texttt{date}.
+    \item Crée une archive compressée du répertoire (ici en exécutant \verb|tar czf ~/M1101/sauvegarde/2014-10-31-TD6.tgz ~/M1101/TD6|)
+    \end{questions}
+    On pourra affiner en s'arrêtant si une archive existe déjà sous ce
+    nom avant de la créer (ou proposer de l'effacer en utilisant la
+    commande \texttt{read x} pour lire une variable depuis le terminal).
   \end{exercicelet}
 \end{exercice}
