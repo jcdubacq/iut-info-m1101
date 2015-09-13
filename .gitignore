@@ -1,6 +1,7 @@
 /IntroSysteme_S1D
 /video.mp4
 /newexos
+/.compile-latex
 # start automatic section for compile-latex:archi01.tex
 /.compile-latex/archi01
 /archi01.aux
