@@ -6,7 +6,7 @@ else
     ACTION=build
 fi
 
-for i in $(seq -w 1 10) ''; do
+for i in $(seq -w 0 10) ''; do
     if [ -f "archi$i.tex" ]; then
         cl2 --filter "archi${i}.tex" --action "$ACTION" "$@"
     fi

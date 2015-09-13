@@ -14,7 +14,7 @@
   \colorbox{solarizedRebase02}{%
     \parbox{#2}{%
       \lin{%
-	[ {\color{solarizedRed} login}@{\color{solarizedGreen} localhost} {\color{solarizedBlue}#1 }] #3\ifx#4\relax\relax\else\\#4\fi}}}}
+	{\color{solarizedRed} login}@{\color{solarizedGreen} hostname}\string:{\color{solarizedBlue}#1}\$ #3\ifx#4\relax\relax\else\\#4\fi}}}}
 \newcommand{\mpromptP}[2]{\centerline{\fcolorbox{black}{solarizedRebase02}{\parbox{#1}{#2}}}}
 \newcommand{\prompt}[3][\~{}]{\promptP[#1]{85mm}{#2}{#3}}
 \newcommand{\mprompt}[1]{\mpromptP{95mm}{#1}}

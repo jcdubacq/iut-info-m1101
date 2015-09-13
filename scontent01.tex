@@ -87,9 +87,76 @@
   \end{alertblock}
 \end{frame}
 
-%XXXX Insérer schéma fonctionnement hardware <=> kernel <=> OS <=> apps
+\begin{frame}{La mémoire : une bibliothèque plus ou moins grande}
+  \begin{block}{Le guichet et les fiches numérotées}
+    \begin{itemize}
+    \item Permet de stocker des informations comme nombre entiers
+    \item[\dialoginformation] Toute information \emph{d'un ordinateur} peut être vue comme des nombres entiers
+    \item Fiches numérotées par des adresses entières. Exemple: la fiche numéro 221 contient la valeur 18.
+    \item[\dialogwarning] L'interprétation de l'information n'est pas incluse → notion de codage
+    \end{itemize}
+  \end{block}
+  \begin{block}{Les performances}
+    \begin{itemize}
+    \item Guichet unique d'accès : une requête à la fois.
+    \item On peut \emph{écrire} une valeur dans une fiche ou \emph{lire} une fiche, rien d'autre
+    \item[\dialogsystem] On peut aussi demander un paquet de fiches contiguës → plus rapide!
+    \item Notion de \emph{mémoire cache hiérarchique} : copie de Grande Bibliothèque dans une bibliothèque plus rapide et plus petite
+    \item Performance : de l'ordre de 20 Go/s
+    \end{itemize}
+  \end{block}
+\end{frame}
 
-
+\begin{frame}{Le processeur : un moteur à quatre temps}
+  \begin{block}{Un assemblage hétéroclite}
+    \begin{itemize}
+    \item Une unité de calcul qui sait faire... des calculs (simples)
+    \item Des registres qui retiennent chacun \textnormal{une} valeur
+    \item Des circuits de transmission contrôlables électriquement, qui
+      relient les composants entre eux et aussi le processeur à la
+      mémoire.
+    \item Une unité de contrôle qui découpe une \emph{instruction} en
+      morceaux et contrôle les transmissions des circuits en fonction
+      des résultats.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Un cycle vital immuable}
+    Le processeur effectue des opérations très rapidement, en suivant toujours la même procédure générale :
+    \begin{enumerate}
+    \item \emph{Récupération} de l'instruction : on demande à la mémoire
+      le contenu d'une adresse, dont la valeur est trouvée dans le
+      registre PC.
+    \item \emph{Décodage} de l'instruction : la valeur est analysée, les
+      circuits de transmission sont mis en route
+    \item \emph{Exécution} de l'instruction : l'unité de calcul est
+      mobilisée
+    \item \emph{Écriture des résultats} : un registre sauvegarde le
+      résultat, le PC est augmenté de 1
+    \end{enumerate}
+    Des instructions spécifiques, au lieu de calculs, permettent d'accéder
+    à la mémoire en lecture (étape 2) ou écriture (étape 4) au lieu des
+    registres.
+  \end{block}
+\end{frame}
+\begin{frame}
+  \begin{block}{L'étonnante efficacité}
+    \begin{itemize}
+    \item[\dialogwarning] Les instructions données doivent être simples (opérations arithémtiques entre deux valeurs, tests élémentaires uniquement).
+    \item Les registres sont très rapides ; la durée d'un cycle est de l'ordre de la nanoseconde.
+    \item Toute opération complexe est divisée par un humain en opérations élémentaires → \emph{programmation}.
+    \item Les instructions forment un code compact appelé \emph{code machine}.
+    \item[\dialogsystem] Analogie : pour faire une multiplication, on
+      peut faire plein d'additions et tester si on arrive à 0.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Les grands défauts}
+    \begin{itemize}
+    \item[\dialogerror] Aucune intelligence
+    \item[\dialogerror] Aucune compréhension réelle des valeurs manipulées
+    \item[\dialogerror] On ne peut pas tout surveiller → \emph{bugs}
+    \end{itemize}
+  \end{block}
+\end{frame}
 
 \begin{frame}{L'horizon matériel}
   \begin{block}{Interaction avec le matériel}
@@ -109,21 +176,22 @@
   \begin{alertblock}{Haut Niveau $\rightarrow$}
     \begin{itemize}
     \item Logiciel,langages de programmation, \dots
-    \item[\dialoginformation] C'est le domaine de l'informatique et des informaticiens
+    \item[\dialoginformation] C'est le domaine de l'informatique et des
+      informaticiens
     \item[\dialogsystem] Une interface: Le système d'exploitation
     \end{itemize}
   \end{alertblock}
   \begin{alertblock}{Bas niveau}
     \begin{itemize}
-    \item \textit{Firmwares}, exécution des instructions machine,
-      \dots
+    \item \textit{Firmwares}, exécution des instructions machine, \dots
     \item C'est le domaine de la physique et des électroniciens.
     \end{itemize}
   \end{alertblock}
 \end{frame}
 
+% XXXX Insérer schéma fonctionnement hardware <=> kernel <=> OS <=> apps
+
 \section{Le système d'exploitation}
-\label{sec:OSGeneralites}
 \subsection{La fonction du système d'exploitation}
 \begin{frame}{Le système d'exploitation}
   Le système d'exploitation permet de développer des programmes sans
@@ -134,11 +202,12 @@
     \begin{column}{5.5cm}
       \begin{block}{Côté Système, l'O.S.}
         \begin{itemize}
-        \item coordonne l'utilisation des ressources (par exemple temps CPU
-          accordé à chaque processus, allocation mémoire, \dots),
+        \item coordonne l'utilisation des ressources (par exemple quel «
+          programme » utilise le processeur à un moment donné,
+          allocation de la mémoire, \dots),
         \item assure la maintenance et la fiabilité du système (par exemple
           gestion des fichiers, de la sécurité informatique, \dots)
-        \item \dots
+        \item fournit des services commun à tous les programmes
         \end{itemize}
       \end{block}
       \begin{block}{Côté utilisateur, l'O.S.}
@@ -147,7 +216,6 @@
           matérielles,
         \item propose une interface de programmation permettant
           d'utiliser ces matériels
-        \item \dots
         \end{itemize}
       \end{block}
     \end{column}
@@ -164,19 +232,21 @@
   \begin{columns}
     \begin{column}{5.5cm}
       \begin{block}{Beaucoup d'OS différents existent:}
-        Chaque architecture matérielle  demande un système d'exploitation adapté. Certain systèmes d'exploitation sont plus souples et prennent en charge des architectures matérielles multiples.
+        Chaque architecture matérielle demande un système d'exploitation
+        adapté. Certain systèmes d'exploitation sont plus souples et
+        prennent en charge des architectures matérielles multiples.
       \end{block}
       \begin{center}
         \includegraphics[width=5.5cm]{img/s01/OS_archi.jpg}
       \end{center}
     \end{column}
     \begin{column}{5.5cm}
-      \begin{block}{Deux OS se distinguent:}
-        Windows est le système d'exploitation le plus utilisé, et Linux est le système d'exploitation le plus souple.\\
+      \begin{block}{Trois OS se distinguent:}
+        Windows est le système d'exploitation le plus utilisé, OS X est réputé le plus simple et Linux est le système d'exploitation le plus souple.\\
         Statistiques au 5 janvier 2011: \url{http://gs.statcounter.com/}\\
         \begin{itemize}
-        \item 95\% des ordinateurs utilisent Windows,
-        \item il existe plus de 600 Systèmes Linux\dots
+        \item 90\% des ordinateurs utilisent Windows,
+        \item il existe plus de 600 distributions Linux\dots
         \end{itemize}
       \end{block}
       \vrule
@@ -210,7 +280,7 @@
         \item Sources non disponibles
         \item Sources non modifiables
           % \item Plus difficilement programmable
-        \item Communauté active: nombreux utilisateurs
+        \item Communauté active: nombreux utilisateurs, services payants
         \item Plus ergonomique: pour les utilisateurs (interfaces
           d'utilisation optimisées)
         \end{itemize}
@@ -218,12 +288,13 @@
       \end{block}
     \end{column}
   \end{columns}
-  \begin{alertblock}{Linux un système puissant en constante évolution}
-    Depuis une dizaine d'année, Linux a beaucoup évolué. La plupart des
-    distributions proposent des systèmes d'installation automatisés, des
-    outils de bureautique ressemblant aux suites commerciales. Il
-    bénéficie en outre d'une sécurité accrue à l'heure des virus et
-    autres failles de sécurité.
+  \begin{alertblock}{Les systèmes, en constante évolution}
+    Depuis une dizaine d'année, Linux et Windows ont beaucoup évolué. La
+    plupart des distributions Linux proposent des systèmes
+    d'installation automatisés, des outils de bureautique ressemblant
+    aux suites commerciales. Il bénéficie en outre d'une sécurité accrue
+    à l'heure des virus et autres failles de sécurité. Windows propose
+    de plus en plus de fonctionnalités empruntées à Linux.
   \end{alertblock}
 \end{frame}
 
@@ -245,7 +316,7 @@
       1983.
     \end{itemize}
   \end{block}
-  \begin{block}{Ahjourd'hui}
+  \begin{block}{Aujourd'hui}
     \begin{itemize}
     \item C'est un système très largement diffusé et utilisé sur lequel
       ont été développées plusieurs distributions (qui sont des suites
@@ -271,7 +342,7 @@
         \url{http://www.debian.org/}\\
       \end{column}
       \begin{column}{3cm}
-        \includegraphics[width=1cm]{img/s01/gentoo_logo.png}
+        \includegraphics[width=1cm]{img/s01/openlogo-100.png}
       \end{column}
     \end{columns}
   \end{block}
@@ -287,14 +358,13 @@
     Il vous est possible:
     \begin{itemize}
     \item d'utiliser Linux dans les salles machines,
-    \item d'utiliser Linux via le service de bureaux virtuels \textit{via} le portail de l'université:\\ \url{https://portail.cevif.univ-paris13.fr/}
     \item d'installer une version de Linux sur votre ordinateur personnel (installation ou version Live).
     \end{itemize}
   \end{alertblock}
 \end{frame}
 
 \subsection{Un système multi-utilisateurs}
-\begin{frame}{Un système Multi-Utilisateurs}
+\begin{frame}{Un système avec plusieurs utilisateurs}
   \begin{block}{Des utilisateurs et des droits}
     \begin{itemize}
     \item Chaque personne accédant au système est identifiée par un
@@ -302,18 +372,17 @@
       (dit \textit{password}).
     \item Chaque utilisateur bénéficie de permissions: exécution de
       certains programmes, lecture de certaines données, écriture de
-      fichiers dans une limite de taille et dans seulement certains
-      répertoires.
-    \item Chaque utilisateur bénéficie d'un espace de travail réservé
-      sur le disque. Cet espace de travail est un répertoire de
-      l'arborescence dans lequel l'utilisateur à tous les droits: il
-      peut y créer des sous-répertoires, y écrire des fichiers, y
-      installer des programmes et applications. Toutes ses données et
-      préférences personnelles y sont regroupées.
+      fichiers seulement dans certains répertoires.
+    \item Chaque utilisateur bénéficie d'un \emph{espace de travail}
+      réservé sur le disque. C'est un répertoire de l'arborescence dans
+      lequel l'utilisateur a tous les droits: il peut y créer des
+      sous-répertoires, y écrire des fichiers, y installer des
+      programmes et applications. Toutes ses données et préférences
+      personnelles y sont regroupées.
     \item Ce répertoire est appelé "Répertoire Personnel" ou
       \textit{"Home Directory"}. Il est en général placé dans un
       répertoire qui s'appelle \lin{/home/} et porte le nom de
-      l'utilisateur : \lin{/home/nom\_utilisateur/}.
+      l'utilisateur.
     \end{itemize}
   \end{block}
   \begin{alertblock}{Superutilisateur - Root}
@@ -356,8 +425,8 @@
   base pour envoyer des mails (configuration de votre compte mail à
   l'IUT) et pour obtenir de l'information sur internet (notamment sur
   Linux). Il existe de nombreuses versions gratuites ou payantes de
-  Linux. La distribution installée à l'IUT se nomme GENTOO et est
-  téléchargeable depuis \url{http://www.gentoo.org/}.
+  Linux. La distribution installée à l'IUT se nomme Debian et est
+  téléchargeable depuis \url{http://www.debian.org/}.
   \begin{exercicelet}{Connexion initiale}
     \begin{questions}
     \item Lorsqu'on allume l'ordinateur un laps de temps est nécessaire
@@ -685,7 +754,7 @@
     \item[options] Comme le nom l'indique les options ne sont pas
       obligatoires. Si il n'y en a pas la commande s'exécute selon un
       mode «~par défaut~». L'ajout d'une option pourra modifier ce
-      comportement par défaut.
+      comportement par défaut. Attention à la différence entre \texttt{-} et \texttt{-{}-}
     \item[paramètres] Certaines commandes peuvent fonctionner sans
       paramètre.
     \end{description}
@@ -698,7 +767,7 @@
     \begin{itemize}
     \item Les forums d'utilisateurs:
       \begin{itemize}
-      \item \url{http://www.gentoo.fr/forum/}
+      \item \url{https://wiki.debian.org/fr/FrenchLists}
       \item \url{http://www.lea-linux.org/}
       \item \url{http://www.linux-france.org/}
       \end{itemize}
@@ -731,7 +800,7 @@
 \manpage{man}
 \begin{exercice}
   \begin{exercicelet}{Usage du terminal}
-    Une fenêtre de Terminal est un outil de base fondamental à toute
+    Une fenêtre de terminal est un outil de base fondamental à toute
     personne travaillant sous Linux. Cette fenêtre propose ce que l'on
     appelle une ligne de commande. C'est un moyen d'adresser directement
     des commandes au système, sans avoir à passer par une interface
@@ -779,9 +848,7 @@
       fenêtre d'un navigateur internet.
     \item Donnez au moins 2 adresses correspondant à des moteurs de
       recherche
-    \item Le Gentoo est un pingoin. Quels types d'information
-      trouvez-vous lorsque vous sollicitez un moteur de recherche avec
-      le mot clef \emph{Gentoo} ?
+    \item Avec un moteur de recherche, trouvez l'origine du nom de la distribution linux \emph{Debian} ?
     \end{questions}
   \end{exercicelet}
 \end{exercice}
@@ -790,7 +857,7 @@
       (e-mail)}
     Si votre inscription à l'IUT est finalisée, un compte mail personnel
     à été créé à votre nom. Son adresse est de la forme:
-    \texttt{Prenom.Nom@iutv.univ-paris13.fr}
+    \texttt{Prenom.Nom@edu.univ-paris13.fr}
 
     Grâce à un logiciel appelé \emph{client mail}, vous pouvez envoyer
     et recevoir du courrier électronique. Consultez-le très
@@ -799,7 +866,7 @@
     Un moyen d'accéder à vos mails est d'utiliser le client web-mail de
     l'université: une application accessible depuis n'importe quel
     navigateur internet (connecté).  L'adresse du web-mail de l'IUT est:
-    \url{http://mail.iutv.univ-paris13.fr}
+    \url{http://ent.univ-paris13.fr}
 
     Pour accéder à votre courrier vous devez fournir votre identifiant
     et votre mot de passe.
@@ -816,7 +883,7 @@
       voisin de table.
     \item Ouvrez le mail que votre voisin vous a envoyé et répondez-lui
       dans le corps du message reçu.
-    \item Donnez la procédure et pour ajouter l'adresse du web-mail de
+    \item Donnez la procédure pour ajouter l'adresse du web-mail de
       l'université dans les racourcis (onglets et favoris) de votre
       navigateur internet.
     \end{questions}
@@ -955,3 +1022,14 @@
   \end{block}
 \end{frame}
 
+
+% Local Variables:
+% TeX-master: "sys01"
+% TeX-PDF-mode: t
+% fill-column: 78
+% coding: utf-8-unix
+% mode-require-final-newline: t
+% mode: latex
+% mode: flyspell
+% ispell-local-dictionary: "francais"
+% End:

@@ -545,3 +545,83 @@
 /correction20140930.log
 /correction20140930.pdf
 # stop automatic section for compile-latex:controle20140930.tex/correction20140930
+# start automatic section for compile-latex:archi00.tex
+/.compile-latex/archi00
+/archi00.aux
+/archi00.fls
+/archi00.log
+/archi00.nav
+/archi00.out
+/archi00.pdf
+/archi00.snm
+/archi00.toc
+# stop automatic section for compile-latex:archi00.tex
+# start automatic section for compile-latex:archi00.tex/exo00
+/.compile-latex/exo00
+/exo00.aux
+/exo00.fls
+/exo00.log
+/exo00.out
+/exo00.pdf
+# stop automatic section for compile-latex:archi00.tex/exo00
+# start automatic section for compile-latex:archi00.tex/poly00
+/.compile-latex/poly00
+/poly00.aux
+/poly00.fls
+/poly00.log
+/poly00.nav
+/poly00.out
+/poly00.pdf
+/poly00.snm
+/poly00.toc
+# stop automatic section for compile-latex:archi00.tex/poly00
+# start automatic section for compile-latex:archi00.tex/prof00
+/.compile-latex/prof00
+/prof00.aux
+/prof00.fls
+/prof00.log
+/prof00.out
+/prof00.pdf
+# stop automatic section for compile-latex:archi00.tex/prof00
+# start automatic section for compile-latex:controle20141121.tex
+/.compile-latex/controle20141121
+/controle20141121.aux
+/controle20141121.fls
+/controle20141121.log
+/controle20141121.pdf
+# stop automatic section for compile-latex:controle20141121.tex
+# start automatic section for compile-latex:controle20141121.tex/correction20141121
+/.compile-latex/correction20141121
+/correction20141121.aux
+/correction20141121.fls
+/correction20141121.log
+/correction20141121.pdf
+# stop automatic section for compile-latex:controle20141121.tex/correction20141121
+# start automatic section for compile-latex:controle20150115.tex
+/.compile-latex/controle20150115
+/controle20150115.aux
+/controle20150115.fls
+/controle20150115.log
+/controle20150115.pdf
+# stop automatic section for compile-latex:controle20150115.tex
+# start automatic section for compile-latex:controle20150115.tex/correction20150115
+/.compile-latex/correction20150115
+/correction20150115.aux
+/correction20150115.fls
+/correction20150115.log
+/correction20150115.pdf
+# stop automatic section for compile-latex:controle20150115.tex/correction20150115
+# start automatic section for compile-latex:controle20150522.tex
+/.compile-latex/controle20150522
+/controle20150522.aux
+/controle20150522.fls
+/controle20150522.log
+/controle20150522.pdf
+# stop automatic section for compile-latex:controle20150522.tex
+# start automatic section for compile-latex:controle20150522.tex/correction20150522
+/.compile-latex/correction20150522
+/correction20150522.aux
+/correction20150522.fls
+/correction20150522.log
+/correction20150522.pdf
+# stop automatic section for compile-latex:controle20150522.tex/correction20150522
