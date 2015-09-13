@@ -1,0 +1,81 @@
+\usepackage{csvsimple,multicol}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais,bloc]{automultiplechoice}
+\newcommand{\testduration}[1]{\def\QCMduration{#1}}
+\newcommand{\testid}[1]{\def\QCMtestidnum{#1}\def\QCMtestid{Test #1}}
+\newcommand{\testmodule}[1]{\def\QCMtestmodule{#1}}
+\newcommand{\testtitle}[1]{\def\QCMtesttitle{#1}}
+\newcommand{\testdocs}[1]{\def\QCMdocs{#1}}
+\newcommand{\autoinput}{\input{../sources/qcm\QCMtestidnum.tex}\csvreader[head to column names]{../students.csv}{}{\sujet}}
+\newcommand{\qp}[2][1]{\def\questionpoints{#2}\def\badpoints{#1}}
+\makeatletter
+\renewenvironment{question}[2][]{%
+  \global\def\AMCid@name{#2}\AMC@affecte{#2}{\AMCid@quest}%
+  \ifAMC@calibration\AMCmessage{Q=\the\AMCid@quest}\fi%
+  \AMCtype@multifalse\ifAMC@qbloc\noindent\begin{minipage}{\linewidth}\fi%
+  \ifAMC@affichekeys\index{\texttt{#2}}\fi%
+  \AMCbeginQuestion{\ifAMC@affichekeys\ifAMC@ensemble\AMC@qaff\ \fi[\texttt{#2}]\else\AMC@qaff\fi}{#1}%
+  \AMCformulaire@dedansfalse\setcounter{AMC@ncase}{0}%
+  \AMCmem@ireQ{\arabic{AMCquestionaff}}%
+\ifx#1\relax\relax%
+\bareme{e=0,v=0,b=\questionpoints,p=0}%
+\else%
+\bareme{e=0,v=0,formula=(\questionpoints*NBC/NB)-(NMC*NMC),p=0}%
+\fi%
+}%
+{\ifAMC@qbloc\end{minipage}\vspace{\AMCinterBquest}\else\vspace{\AMCinterIquest}\fi\AMCmessage{FQ}}
+\makeatother
+
+% 
+% 
+
+\testmodule{M1101}
+
+\testdocs{ Aucun document ni outil n'est autorisé.
+  Les questions faisant apparaître le symbole \multiSymbole{} peuvent
+  présenter zéro, une ou plusieurs bonnes réponses. Les autres ont une
+  unique bonne réponse. Des points négatifs pourront être affectés à de
+  mauvaises réponses.  }
+
+\gdef\questionpoints{12}
+
+\def\AMCbeginQuestion#1#2{\par\noindent{\bf Question #1 (\questionpoints)} #2\hspace*{1em}}
+
+\newenvironment{rep}[1][1]{%
+  \ifnum#1<2\global\let\QCMmulticols\null\else%
+  \let\QCMmulticols\relax%
+  \begin{multicols}{#1}%
+    \fi\AMCBoxedAnswers\begin{reponses}}{%
+    \end{reponses}\ifx\QCMmulticols\relax\end{multicols}\fi%
+}
+
+\newcommand{\sujet}{ \onecopy{1}{
+    \noindent{\bf \QCMtestmodule  \hfill \QCMtestid}
+
+    \begin{center}\em
+      \QCMtesttitle
+    \end{center}
+
+    \hfill \champnom{\fbox{
+        \begin{minipage}{.8\linewidth}
+          Nom:
+          \Large\bf \prenom{} \nom{} (\groupe)
+
+          \vspace*{1mm}
+        \end{minipage}
+      }} \hfill
+
+
+    \hrulefill
+
+    \begin{center}\em
+      Durée : \QCMduration{}.
+      \QCMdocs
+    \end{center}
+
+    \QCMmatter
+
+    \AMCassociation{\ID}
+  }
+}

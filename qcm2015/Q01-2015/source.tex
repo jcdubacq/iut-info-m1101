@@ -1,0 +1,26 @@
+\documentclass[a4paper,10pt]{article}
+\input{../sources/subject.tex}
+\testid{1} % Mettre ici le numero du controle
+\testtitle{Information et Manipulations de base}
+\testduration{10 minutes}
+\newcommand{\QCMmatter}{ % Mettre ici les appels aux groupes de questions
+  \section*{Questions basiques}
+
+  \cleargroup{tout}
+  \melangegroupe{information}
+  \melangegroupe{distribution}
+  \melangegroupe{fonctionnement}
+  \copygroup{distribution}{tout}
+  \copygroup{information}{tout}
+  \copygroup{fonctionnement}{tout}
+  \melangegroupe{tout}
+  \restituegroupe{tout}
+}
+
+\begin{document}
+\autoinput
+% Pour prendre les questions dans des fichiers manuellement, remplacer la ligne ci-dessus par:
+% \input{../sources/qcm5.tex}
+% \csvreader[head to column names]{../students.csv}{}{\sujet}
+\end{document}
+
