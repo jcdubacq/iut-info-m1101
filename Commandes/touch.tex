@@ -1,0 +1,25 @@
+% Syntaxe d'utilisation
+\synt{touch}{}{chemin [chemin\_2 \dots]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Si le chemin est occupé par un fichier ou un répertoire, mise à jour de la date de dernière modification.
+  \item Sinon, création d'un ou de plusieurs fichiers vides à l'endroit spécifié par le chemin.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+    .2 astronomie.txt.
+    .2 \color{solarizedGreen}{lisezmoi.txt}\DTfcomment{{\color{solarizedGreen}Création Commande \#1}}.
+    .2 \DTd{Stars}.
+    .3 \color{solarizedGreen}{TCeti.txt}\DTfcomment{{\color{solarizedGreen}Création Commande \#2}}.
+    .3 \color{solarizedGreen}{ACentauri.txt}\DTfcomment{{\color{solarizedGreen}Création Commande \#2}}.
+  }
+  \mprompt{
+    \prompt{touch lisezmoi.txt}{}
+    \prompt{touch Stars/TCeti.txt Stars/ACentauri.txt}{}
+  }
+}

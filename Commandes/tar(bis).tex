@@ -1,20 +1,39 @@
-			% Syntaxe d'utilisation
-			\synt{tar}{xv}{nom\_archive }
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Extrait les fichiers et répertoires d'une archive.
-					\item Les fichiers sont placés dans le répertoire courant.
-					\item L'option \lin{x} (e\textbf{X}tarct) indique que la commande \lin{tar} doit utiliser un algorithme de désarchivage.
-				\end{itemize}
-				}
-			
-			% Exemple d'utilisation
-			\expl{
-				Extrait le contenu de l'archive \lin{espace.tar} :\\\vspace{5pt}
-				\begin{center}
-					\mprompt{
-						\prompt{tar xv espace.tar}{}
-					}
-				\end{center}
-			}
+% Syntaxe d'utilisation
+\dsynt{tar}{tvf}{nom\_archive}{tar}{xvf}{nom\_archive [chemin(s) dans l'archive]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Examine une archive ou crée des fichiers à partir de l'archive.
+  \item Le fichier archive est préservé par la commande \lin{tar}.
+  \item L'option \lin{x} (e\textbf{x}tract), permet de désarchiver.
+  \item L'option \lin{t} (lis\textbf{t}), permet de lister le contenu d'une archive
+  \end{itemize}
+}
+
+% Exemple d'utilisation
+\expl{
+  \begin{columns}
+    \begin{column}{55mm}
+      \dirtree{%
+        .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 espace.tar.
+        .2 {\color{solarizedGreen}astronomie.txt}\DTfcomment{{\color{solarizedGreen}{créé par la commande \#2}}}.
+        .2 {\color{solarizedGreen}Images}\DTfcomment{{\color{solarizedGreen}{créé par la commande \#3}}}.
+        .3 {\color{solarizedGreen}soleil2.jpg}\DTfcomment{{\color{solarizedGreen}{créé par la commande \#3}}}.
+        .3 {\color{solarizedGreen}Terre1.jpg}\DTfcomment{{\color{solarizedGreen}{créé par la commande \#3}}}.
+      }
+    \end{column}%
+    \begin{column}{6cm}
+      \mpromptS{
+        \promptS{tar tvf espace.tar}{astronomie.txt\\%
+          Images/\\%
+          Images/soleil2.jpg\\%
+          Images/Terre1.jpg
+        }
+        \promptS{tar xvf espace.tar astronomie.txt}{astronomie.txt}
+        \promptS{tar xf espace.tar}{}
+        \promptS{\cursor}{}
+      }
+    \end{column}
+  \end{columns}
+}

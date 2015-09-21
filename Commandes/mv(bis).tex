@@ -1,52 +1,52 @@
-			% Exemple d'uitlisation
-			\expl[Déplacer un Répertoire]{
-				\begin{columns}
-					\begin{column}{6cm}
-						État Initial de l'arborescence:\\
-						\dirtree{%
-							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
-							.2 {\color{red} astronomie.txt}\DTfcomment{{\color{red}Fichier Source}}.
-							.2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire Cible}}.
-						}
-					\end{column}
-					\begin{column}{6cm}
-						État Final de l'arborescence:\\
-						\dirtree{%
-							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
-							.2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire Cible}}.
-							.3 {\color{solarizedGreen} astronomie.txt}\DTfcomment{{\color{solarizedGreen}Fichier Déplacé}}.
-						}
-					\end{column}
-				\end{columns}
-				\begin{center}
-					\mprompt{
-						\prompt{mv astronomie.txt Etoiles}{}
-					}
-				\end{center}
-			}
-			% Exemple d'uitlisation
-			\expl[Renommer un Répertoire]{
-				\begin{columns}
-					\begin{column}{6cm}
-						État Initial de l'arborescence:\\
-						\dirtree{%
-							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
-							.2 \DTd{{\color{red}Etoiles}}\DTfcomment{{\color{red}Répertoire Source}}.
-							.3 astronomie.txt.
-						}
-					\end{column}
-					\begin{column}{6cm}
-						État Final de l'arborescence:\\
-						\dirtree{%
-							.1 \DTd{{\color{solarizedBlue}chez\_moi}}\DTfcomment{{\color{red}Répertoire Courant}}.
-							.2 \DTd{{\color{solarizedGreen}Relativite}}\DTfcomment{{\color{solarizedGreen}Répertoire Renommé}}.
-							.3 astronomie.txt.
-						}
-					\end{column}
-				\end{columns}
-				\begin{center}
-					\mprompt{
-						\prompt{mv Etoiles Relativite}{}
-					}
-				\end{center}
-			}
+% Exemple d'uitlisation
+\expl[Déplacer un Répertoire]{
+  \begin{columns}
+    \begin{column}{6cm}
+      État Initial de l'arborescence:\\
+      \dirtree{%
+        .1 \DTd{{\color{solarizedBlue}moi}}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 {\color{red} astronomie.txt}\DTfcomment{{\color{red}Fichier source}}.
+        .2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire cible}}.
+      }
+    \end{column}
+    \begin{column}{6cm}
+      État Final de l'arborescence:\\
+      \dirtree{%
+        .1 \DTd{{\color{solarizedBlue}moi}}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire cible}}.
+        .3 {\color{solarizedGreen} astronomie.txt}\DTfcomment{{\color{solarizedGreen}Fichier déplacé}}.
+      }
+    \end{column}
+  \end{columns}
+  \begin{center}
+    \mprompt{
+      \prompt{mv astronomie.txt Etoiles}{}
+    }
+  \end{center}
+}
+% Exemple d'uitlisation
+\expl[Renommer un répertoire]{
+  \begin{columns}
+    \begin{column}{6cm}
+      État Initial de l'arborescence:\\
+      \dirtree{%
+        .1 \DTd{{\color{solarizedBlue}moi}}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 \DTd{{\color{red}Etoiles}}\DTfcomment{{\color{red}Répertoire Source}}.
+        .3 astronomie.txt.
+      }
+    \end{column}
+    \begin{column}{6cm}
+      État final de l'arborescence:\\
+      \dirtree{%
+        .1 \DTd{{\color{solarizedBlue}moi}}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 \DTd{{\color{solarizedGreen}Relativite}}\DTfcomment{{\color{solarizedGreen}Répertoire Renommé}}.
+        .3 astronomie.txt.
+      }
+    \end{column}
+  \end{columns}
+  \begin{center}
+    \mprompt{
+      \prompt{mv Etoiles Relativite}{}
+    }
+  \end{center}
+}

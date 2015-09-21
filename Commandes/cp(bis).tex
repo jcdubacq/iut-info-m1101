@@ -1,25 +1,25 @@
-			% Syntaxe d'utilisation
-			\synt{cp}{}{source <source\_2 \dots> cible}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Copie plusieurs fichiers sources vers la cible.
-					\item Les sources doivent être des fichiers ordinaires, et la cible un répertoire.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.2 {\color{red}cv.pdf}\DTfcomment{{\color{red}Fichier Source Commande \#2}}.
-				.2 {\color{red}motivations.pdf}\DTfcomment{{\color{red}Fichier Source Commande \#2}}.
-				.2 \DTd{Candidature}\DTfcomment{{\color{solarizedBlue}Répertoire Cible Commande \#2}}.
-				.3 {\color{solarizedGreen}cv.pdf}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la Commande \#2}}.
-				.3 {\color{solarizedGreen}motivations.pdf}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la Commande \#2}}.
-				}
-				Commande \#2:
-				\mprompt{
-					\prompt{cp cv.pdf motivations.pdf Candidature}{}
-				}
-			}
+% Syntaxe d'utilisation
+\synt{cp}{}{source <source\_2 \dots> cible}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Copie plusieurs fichiers sources vers la cible.
+  \item Les sources doivent être des fichiers ordinaires, et la cible un répertoire.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+    .2 {\color{red}cv.pdf}\DTfcomment{{\color{red}Fichier source}}.
+    .2 {\color{red}motivations.pdf}\DTfcomment{{\color{red}Fichier source}}.
+    .2 \DTd{Candidature}\DTfcomment{{\color{solarizedBlue}Répertoire cible}}.
+    .3 {\color{solarizedGreen}cv.pdf}\DTfcomment{{\color{solarizedGreen}Copié/créé par la commande}}.
+    .3 {\color{solarizedGreen}motivations.pdf}\DTfcomment{{\color{solarizedGreen}Copié/créé par la commande}}.
+  }
+  \mprompt{
+    \prompt{cp cv.pdf motivations.pdf Candidature}{}
+    \prompt{cp cv.pdf motivations.pdf Candidature/ \# Moins ambigu}{}
+  }
+}

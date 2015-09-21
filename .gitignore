@@ -626,3 +626,19 @@
 /correction20150522.log
 /correction20150522.pdf
 # stop automatic section for compile-latex:controle20150522.tex/correction20150522
+# start automatic section for compile-latex:sys02.tex/sexo02
+/.compile-latex/sexo02
+/sexo02.aux
+/sexo02.fls
+/sexo02.log
+/sexo02.out
+/sexo02.pdf
+# stop automatic section for compile-latex:sys02.tex/sexo02
+# start automatic section for compile-latex:sys02.tex/sprof02
+/.compile-latex/sprof02
+/sprof02.aux
+/sprof02.fls
+/sprof02.log
+/sprof02.out
+/sprof02.pdf
+# stop automatic section for compile-latex:sys02.tex/sprof02

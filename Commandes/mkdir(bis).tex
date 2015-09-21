@@ -1,0 +1,25 @@
+% Syntaxe d'utilisation
+\synt{mkdir}{-p}{chemin <chemin\_2 \dots>}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Création d'un ou de plusieurs répertoires aux endroits spécifiés par les chemins.
+  \item Si depuis la racine en suivant un chemin, on rencontre un fichier, il y a un message d'erreur.
+  \item Si depuis la racine en suivant un chemin, il n'y pas de répertoire, il est créé.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+    .2 astronomie.txt.
+    .2 \DTd{Etoiles}.
+    .2 \DTd{{\color{solarizedGreen}Galaxies}}\DTfcomment{{\color{solarizedGreen}Création Commande \#1}}.
+    .3 \DTd{{\color{solarizedGreen}M91}}\DTfcomment{{\color{solarizedGreen}Création Commande \#1}}.
+    .4 \DTd{{\color{solarizedGreen}highres}}\DTfcomment{{\color{solarizedGreen}Création Commande \#1}}.
+  }
+  \mprompt{
+    \prompt{mkdir -p Galaxies/M91/highres}{}
+  }
+}

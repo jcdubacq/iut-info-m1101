@@ -1,28 +1,24 @@
-			% Syntaxe d'utilisation
-			\synt{rm}{}{chemin <chemin\_2 \dots>}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item La commande supprime le fichier pointé par le(s) chemin(s).
-					\item Si le chemin pointe sur un répertoire, la commande affiche un message d'erreur.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.2 {\color{solarizedGreen}astronomie.txt}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#1}}.
-				.2 \DTd{Etoiles}.
-				.3 {\color{solarizedGreen}soleil.jpg}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#2}}.
-				.2 {\color{solarizedGreen}aldebaran.gif}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#2}}.
-				}
-				Commande \#1:
-				\mprompt{
-					\prompt{rm astronomie.txt}{}
-				}\\
-				Commande \#2:
-				\mprompt{
-					\prompt{rm aldebaran.gif Etoiles/soleil.jpg}{}
-				}
-			}
+% Syntaxe d'utilisation
+\synt{rm}{}{chemin [chemin\_2 \dots]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item La commande supprime le fichier pointé par le(s) chemin(s).
+  \item Si le chemin pointe sur un répertoire, la commande affiche un message d'erreur.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+    .2 {\color{solarizedGreen}astronomie.txt}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#1}}.
+    .2 \DTd{Etoiles}.
+    .3 {\color{solarizedGreen}soleil.jpg}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#2}}.
+    .2 {\color{solarizedGreen}aldebaran.gif}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#2}}.
+  }
+  \mprompt{
+    \prompt{rm astronomie.txt}{}
+    \prompt{rm aldebaran.gif Etoiles/soleil.jpg}{}
+  }
+}

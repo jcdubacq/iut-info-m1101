@@ -1,0 +1,210 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20150522
+% compile-latex options:--jobname correction20150522
+\usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 1}
+\date{22/5/2015}
+\begin{document}
+\conditions{ Vous disposez de 2 heures pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
+\begin{questions}
+  \titledquestion{Système}
+
+  Lorsqu'une commande vous est demandée, \textbf{donnez un exemple
+    d'utilisation} qui répond à la question.
+  \begin{parts}
+    \part[\half] Quelle est la commande qui donne un texte d'aide sur
+    une commande Linux?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{man man}
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet de récupérer les dernières lignes d'un fichier ou de l'entrée standard?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{tail -n 20}
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet de filter par un motif l'entrée (ou un fichier) ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{grep motif}
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet d'obtenir toutes les informations d'identité (identifiants numériques, groupes, etc.) de l'utilisateur courant ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{id}
+    \end{solutionordottedlines}
+    \part[1] Quelle sont les deux commandes qui permettent (avec ou sans options) d'obtenir toutes les informations à propos d'un fichier (droits, taille, dates importantes) ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ls} et \texttt{stat}
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet de trier les lignes d'un fichier ou de l'entrée standard par ordre alphabétique ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{sort}
+    \end{solutionordottedlines}
+    \part[1] Quelle est l'interprétation du symbole spécial \verb|~|
+    dans le shell ? Donnez \textbf{deux} sens (légèrement) différents de
+    ce symbole.
+    \begin{solutionordottedlines}[.5in]%
+      On peut désigner son propre répertoire (symbole seul) ou celui de
+      quelqu'un d'autre.
+    \end{solutionordottedlines}
+    \part[1] Par quelle ligne de code commence un script shell écrit en \texttt{bash} ?
+    \begin{solutionordottedlines}[.25in]%
+      \verb|#!/bin/bash| (accepter aussi avec sh).
+    \end{solutionordottedlines}
+    \part[1] Citez au moins deux ressources gérées par le système
+    d'exploitation.
+    \begin{solutionordottedlines}[.5in]%
+      Le système d'exploitation arbitre au moins l'accès au processeur
+      et l'accès à la mémoire. Les périphériques aussi, mais pas la ROM
+      ou le GRUB. .25 par ressource.
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet de visualiser une liste
+    détaillée des processus existants sur un système Linux ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ps -ef} (\texttt{ps -eu} est dans le cours et est accepté
+      aussi). J'ai aussi accepté \texttt{top}.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Système 2}
+  \begin{parts}
+    \part[2] Syntaxe de variables : on exécute la ligne suivante. Que s'affiche t'il ?\\
+    \verb|A=2;B="$A++";C='X $A';D=$(echo coucou);echo "$A $B $C $D"| %$
+    \begin{solutionordottedlines}[.5in]%
+      \verb|2 2++ X $A coucou|
+    \end{solutionordottedlines}
+    \part[1] Est-ce que deux processus peuvent être exécutés réellement
+    en même temps sur un processeur simple ? Expliquez
+    \begin{solutionordottedlines}[1in]%
+      Le processeur étant partagé, pas vraiment; il y a exécution concurrente avec priorités des 2 processus; Alternance rapide; Illusion de simultanéité
+    \end{solutionordottedlines}
+    \part[1] Quelles sont les 4 étapes du cycle du processeur ?
+    \begin{solutionordottedlines}[.25in]%
+      Voir cours
+    \end{solutionordottedlines}
+    \part[1] Comment le shell trouve-t-il où est une commande qui n'est
+    pas un chemin absolu ou relatif (par exemple \texttt{cat fichier},
+    où est situé \texttt{cat} ?)
+    \begin{solutionordottedlines}[1in]%
+      Il utilise la variable \texttt{PATH} qui est une liste de
+      répertoires séparés par des deux-points. Il cherche dans ces
+      répertoires si un fichier du nom de la commande existe et s'arrête
+      au premier trouvé.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Arborescence}
+
+  \framebox{\begin{minipage}{.5\linewidth}%
+      \dirtree{%
+        .1 \DTd{}.  .2 \DTd{bin}.  .3 (\dots)\DTfcomment{(1)}.  .2
+        \DTd{home}.  .3 \DTd{jvaljean}\DTfcomment{Votre répertoire
+          personnel}.  .4 \DTd{Documents}\DTfcomment{Vous êtes ici}.  .5
+        \DTd{Paris}. .6 greve.jpg.  .5
+        condamnation.pdf.  .3 \DTd{gavroche}.  .4 avis.txt.  .2
+        (\dots)\DTfcomment{(2)}.  }
+    \end{minipage}}\hfill%
+  \begin{minipage}{.45\linewidth}
+    Voilà ci-contre un extrait de l'arborescence de votre système. Il y
+    a d'autres utilisateurs : \textit{\texttt{gavroche}} est dans votre
+    groupe, \textit{\texttt{thenardier}} et \textit{\texttt{cosette}} ne
+    le sont pas. Les \emph{fichiers} sont tous lisibles par tous initialement
+  \end{minipage}
+  \begin{parts}
+    \part[3] Comment être sûr que seul vous (\texttt{jvaljean}) puissiez
+    lire le document \texttt{condamnation.pdf}, tout en laissant la
+    possibilité à \textit{\texttt{gavroche}} de regarder les photos que
+    vous avez mis de l'ancien Paris dans le répertoire \texttt{Paris}
+    (il connaît le chemin), et que ni \textit{\texttt{cosette}} ni
+    \textit{\texttt{thenardier}} ne puissent même savoir qu'un document
+    \texttt{condamnation.pdf} existe.
+    \begin{solutionordottedlines}[1in]%
+    \end{solutionordottedlines}
+    \part[1] Quels droits doit donner \textit{\texttt{gavroche}} sur
+    le fichier de son répertoire pour que \textit{\texttt{cosette}}
+    puisse le lire, mais pas le modifier et que
+    \textit{\texttt{jvaljean}} puisse y ajouter des choses ?
+    \begin{solutionordottedlines}[.25in]%
+    \end{solutionordottedlines}
+  \end{parts}
+  \newpage
+  \titledquestion{Codage}
+  \begin{parts}
+    \part[1] Quel est le nombre \textbf{minimal} de bits nécessaire
+    pour coder l'information suivante: le nom d'un roi du Danemark de la
+    maison d'Oldenbourg (de Christian I\ier à Christian VIII, de
+    Frédéric I\ier à Fréderic VII, et Jean).
+    \begin{solutionordottedlines}[.25in]
+      16 possibilités, donc 4 bits
+    \end{solutionordottedlines}
+    \part[1] Quel est le plus grand entre $48\times 10^6$
+    bits et $6$ Mio ? Prouvez-le
+    \begin{solutionordottedlines}[.5in]
+      $48\times10^6 bits < 6Mio$ car $48\times10^6 bits = 6\times10^6 octets = 6Mo$ or $6Mo < 6Mio$ car \\
+      $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+      $1000<1024$ (éventuellement moins de détails)
+    \end{solutionordottedlines}
+    \part[2] Convertissez en hexadécimal les 4 nombres suivants:
+    16, 48, 226, 2251.
+    \begin{solutionordottedlines}[.75in]
+      0x10, 0x30, 0xE2, 0x8CB
+    \end{solutionordottedlines}
+    \part[2] Convertissez en C2 sur 8 bits le nombre $-59$.
+    \begin{solutionordottedlines}[.25in]
+      0xC5 ou $1100\,0101$\\
+    \end{solutionordottedlines}
+    \part[2] Faites l'opération suivante:
+    $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+    décimal.
+    \begin{solutionordottedlines}[.25in]
+      $0b1\,1101\,0001=465_{10}$
+    \end{solutionordottedlines}
+    \part[2] Voici le récapitulatif du tableau de conversion UTF8:
+    \begin{center}\renewcommand{\tabcolsep}{1mm}
+      \begin{tabular}{|c|c|c|c|}\hline
+        Valeurs & Écriture binaire & Codage UTF-8 (binaire) & octets\\\hline
+        0x0--0x7F & abc\,defg & 0abc\,defg & 1 \\
+        0x80--0x7FF & abc\,defg\,hijk & 110a\,bcde~10fg\,hijk & 2 \\
+        0x800--0xFFFF & abcd\,efgh\,ijkl\,mnop & 1110\,abcd~10ef\,ghij~10kl\,mnop & 3 \\
+        0x10000--0x1FFFFF& a\,bcde\,fghi\,jklm\,nopq\,rstu & 1111\,0abc~10de\,fghi~10jk\,lmno~10pq\,rstu &	4 \\\hline
+      \end{tabular}
+    \end{center}
+    Donnez la séquence d'octets correspondant au texte «~1€~», dont les
+    valeurs unicodes sont 0x49 et 0x20AC.
+    \begin{solutionordottedlines}[.25in]
+      0x49, puis 0xE2 0x82 0xAC.\\
+      $0x49\in [0x0;0x7F]$ $\rightarrow$ codage sur 1 octet. Le code ascii est le code UTF-8 solution:$0x49$\\
+      $0x20AC\in [0x800;0xFFFF]$ $\rightarrow$ codage sur 3 octets selon le motif $111\,abcd\,\,10ef\,ghij\,\,10kl\,mnop$ avec $abcd\,efgh\,ijkl\,mnop=0x20AC=0011\,0000\,1010\,1100$ soit: solution: $1110\,0010\,\,1000\,0010\,\,1010\,1100=0xE282AC$
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Programme étrange}%
+  Considérez le programme suivant:
+
+  \begin{lstlisting}[language=C,caption=Programme]
+    int main() {
+      char a=1;
+      while (a!=0) {
+        a=a+1;
+      }
+    }
+  \end{lstlisting}
+
+  \begin{parts}
+    \part[3] Est-ce que ce programme s'arrête ? Expliquez-bien.
+    \begin{solutionordottedlines}[.75in]
+    \end{solutionordottedlines}
+    \part[1] Combien de fois la boucle est-elle exécutée ?
+    \begin{solutionordottedlines}[.25in]
+      256
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}

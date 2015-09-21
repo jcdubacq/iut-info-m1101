@@ -1,29 +1,31 @@
-			% Syntaxe d'utilisation
-			\synt{cp}{}{source cible}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Copie le fichier source vers la cible.
-					\item La source doit être un fichier ordinaire (pas un répertoire),							\item Si la source est un répertoire la commande produit un message d'erreur.
-					\item Si la cible :
-					\begin{itemize}
-						\item est le chemin d'un répertoire existant, le fichier sera copié dans ce répertoire et conservera son nom,
-						\item ne correspond pas à un répertoire existant, le fichier sera copié avec le nom \lin{cible}.
-					\end{itemize}
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.2 {\color{red}astronomie.txt}\DTfcomment{{\color{red}Fichier Source Commande \#1}}.
-				.2 \DTd{Etoiles}\DTfcomment{{\color{solarizedBlue}Répertoire Cible Commande \#1}}.
-				.3 {\color{solarizedGreen}astronomie.txt}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la Commande \#1}}.
-				.2 cv.pdf.
-				}
-				Commande \#1:
-				\mprompt{
-					\prompt{cp astronomie.txt Etoiles}{}
-				}
-			}
+% Syntaxe d'utilisation
+\synt{cp}{}{source cible}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Copie le fichier source vers la cible.
+  \item La source doit être un fichier ordinaire (pas un répertoire),
+  \item Si la source est un répertoire la commande produit un message d'erreur.
+  \item Si la cible :
+    \begin{itemize}
+    \item est le chemin d'un répertoire existant, le fichier sera copié dans ce répertoire et conservera son nom,
+    \item ne correspond pas à un répertoire existant, le fichier sera copié avec le nom (chemin) \lin{cible}.
+    \end{itemize}
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+    .2 {\color{red}astronomie.txt}\DTfcomment{{\color{red}Fichier source commandes \#1 et \#2}}.
+    .2 \DTd{Etoiles}\DTfcomment{{\color{solarizedBlue}Répertoire cible commande \#1}}.
+    .3 {\color{solarizedGreen}astronomie.txt}\DTfcomment{{\color{solarizedGreen}Copié/Créé par la commande \#1}}.
+    .3 {\color{solarizedGreen}info.txt}\DTfcomment{{\color{solarizedGreen}copié/créé par la commande \#2}}.
+    .2 cv.pdf.
+  }
+  \mprompt{
+    \prompt{cp astronomie.txt Etoiles}{}
+    \prompt{cp astronomie.txt Etoiles/info.txt}{}
+  }
+}

@@ -1,28 +1,28 @@
-			% Syntaxe d'utilisation
-			\synt{ls}{}{<source>}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche le contenu d'un répertoire.
-					\item Par défaut si aucune source n'est indiquée, la commande affiche le contenu du répertoire courant.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-				.1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
-				.2 \DTd{home}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.3 \DTd{chez\_moi}.
-				.4 astronomie.txt.
-				.4 \DTd{Etoiles}.
-				}
-				\begin{center}
-					\mprompt{
-						\prompt[/home/]{ls}{chez\_moi/}
-					}
-					\mprompt{
-						\prompt[/home/]{ls chez\_moi/ }{Etoiles/ astronomie.txt}
-					}
-				\end{center}
-			}
+% Syntaxe d'utilisation
+\synt{ls}{}{<source>}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche le contenu d'un répertoire.
+  \item Par défaut si aucune source n'est indiquée, la commande affiche le contenu du répertoire courant.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{}\DTfcomment{{\color{red}Répertoire racine}}.
+    .2 \DTd{home}\DTfcomment{{\color{red}Répertoire courant}}.
+    .3 \DTd{moi}.
+    .4 astronomie.txt.
+    .4 \DTd{Etoiles}.
+  }
+  \begin{center}
+    \mprompt{
+      \prompt[/home/]{ls}{moi/}
+    }
+    \mprompt{
+      \prompt[/home/]{ls moi/ }{Etoiles/ astronomie.txt}
+    }
+  \end{center}
+}

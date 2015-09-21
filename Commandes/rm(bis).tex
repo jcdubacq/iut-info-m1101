@@ -1,25 +1,25 @@
-			% Syntaxe d'utilisation
-			\synt{rm}{-r}{chemin <chemin\_2 \dots>}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item L'option \lin{-r} (\textbf{R}écursif) permet de supprimer un répertoire et tout son contenu.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\dirtree{%
-				.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.2 astronomie.txt.
-				.2 \DTd{{\color{solarizedGreen}Etoiles}}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#1}}.
-				.3 {\color{solarizedGreen}soleil.jpg}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#1}}.
-				.3 \DTd{{\color{solarizedGreen}Galaxie}}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#1}}.
-				.4 {\color{solarizedGreen}Andromede.pdf}\DTfcomment{{\color{solarizedGreen}Supprimé par la Commande \#1}}.
-				.2 aldebaran.gif.
-				}
-				Commande \#1:
-				\mprompt{
-					\prompt{rm -r Etoiles}{}
-				}
-			}
+% Syntaxe d'utilisation
+\synt{rm}{-r}{chemin <chemin\_2 \dots>}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item L'option \lin{-r} (comme \textbf{r}écursif) permet de supprimer un répertoire et tout son contenu.
+  \item[\dialogwarning] L'option \lin{-f} (comme \textbf{f}orce) permet d'ignorer certaines questions.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \dirtree{%
+    .1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
+    .2 astronomie.txt.
+    .2 \DTd{{\color{solarizedGreen}Etoiles}}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#1}}.
+    .3 {\color{solarizedGreen}soleil.jpg}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#1}}.
+    .3 \DTd{{\color{solarizedGreen}Galaxie}}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#1}}.
+    .4 {\color{solarizedGreen}Andromede.pdf}\DTfcomment{{\color{solarizedGreen}Supprimé par la commande \#1}}.
+    .2 aldebaran.gif.
+  }
+  \mprompt{
+    \prompt{rm -r Etoiles}{}
+  }
+}

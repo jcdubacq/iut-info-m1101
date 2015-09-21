@@ -1,40 +1,40 @@
-			% Syntaxe d'utilisation
-			\synt{pwd}{}{}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche le nom du répertoire courant.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\begin{columns}
-					\begin{column}{6cm}
-						\dirtree{%
-						.1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
-						.2 \DTd{home}.
-						.3 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-						.4 \DTd{Etoiles}.
-						}
-						\begin{center}
-							\mpromptS{
-								\promptS{pwd}{/home/chez\_moi}
-							}
-						\end{center}
-					\end{column}
-					\begin{column}{6cm}
-						\dirtree{%
-						.1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
-						.2 \DTd{home}.
-						.3 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Personnel}}.
-						.4 \DTd{Etoiles}\DTfcomment{{\color{red}Répertoire Courant}}.
-						}
-						\begin{center}
-							\mpromptS{
-								\promptS[\~{}/Etoiles]{pwd}{/home/chez\_moi/Etoiles/}
-							}
-						\end{center}
-					\end{column}
-				\end{columns}
-			}
+% Syntaxe d'utilisation
+\synt{pwd}{}{}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche le nom du répertoire courant.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \begin{columns}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{red}Répertoire racine}}.
+        .2 \DTd{home}.
+        .3 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+        .4 \DTd{Etoiles}.
+      }
+      \begin{center}
+        \mpromptS{
+          \promptS{pwd}{/home/moi}
+        }
+      \end{center}
+    \end{column}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{red}Répertoire racine}}.
+        .2 \DTd{home}.
+        .3 \DTd{moi}\DTfcomment{{\color{red}Répertoire personnel}}.
+        .4 \DTd{Etoiles}\DTfcomment{{\color{red}Répertoire courant}}.
+      }
+      \begin{center}
+        \mpromptS{
+          \promptS[\~{}/Etoiles]{pwd}{/home/moi/Etoiles}
+        }
+      \end{center}
+    \end{column}
+  \end{columns}
+}
