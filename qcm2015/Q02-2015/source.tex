@@ -1,0 +1,34 @@
+\documentclass[a4paper,10pt,draft]{article}
+\input{../sources/subject.tex}
+\usepackage[]{units}
+\testid{2} % Mettre ici le numero du controle
+\testtitle{Information et Chemins}
+\testduration{18 minutes}
+\newcommand{\QCMmatter}{ % Mettre ici les appels aux groupes de questions
+
+  \cleargroup{archi}
+  \cleargroup{systeme}
+  \melangegroupe{conversionbits}
+  \melangegroupe{signaux}
+  \melangegroupe{boiteaoutils}
+  \melangegroupe{linux1}
+  \copygroup{conversionbits}{archi}
+  \copygroup{signaux}{archi}
+  \copygroup{boiteaoutils}{systeme}
+  \copygroup{linux1}{systeme}
+  \melangegroupe{archi}
+  \melangegroupe{systeme}
+  \section*{Bits et signaux}
+  \restituegroupe{archi}
+  \section*{Chemins sous linux}
+  \restituegroupe{systeme}
+
+}
+
+\begin{document}
+\autoinput
+% Pour prendre les questions dans des fichiers manuellement, remplacer la ligne ci-dessus par:
+% \input{../sources/qcm5.tex}
+% \csvreader[head to column names]{../students.csv}{}{\sujet}
+\end{document}
+

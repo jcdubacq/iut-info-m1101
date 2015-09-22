@@ -1,0 +1,202 @@
+\element{conversionbits}{
+  \qp{12}
+  \begin{questionmult}{conversion1}
+    Un appareil a émis \unitfrac[100]{b}{ms} pendant \unit[80]{s}. À la fin, il a émis:
+    \begin{rep}[3]
+      \bonne{\unit[1]{Mo}}
+      \mauvaise{\unit[64]{Mo}}
+      \mauvaise{\unit[64]{Mb}}
+      \bonne{\unit[8]{Mb}}
+      \mauvaise{\unit[1]{ko}}
+      \mauvaise{\unit[8]{kb}}
+      \mauvaise{\unit[64]{ko}}
+    \end{rep}
+  \end{questionmult}
+}
+
+\element{conversionbits}{
+  \qp{6}
+  \begin{question}{bits1}
+    De combien de bits ai-je besoin pour coder le résultat d'un dé à six faces ?
+    \begin{rep}[4]
+      \mauvaise{$2$}
+      \bonne{$3$}
+      \mauvaise{$2^6=64$}
+      \mauvaise{$6$}
+    \end{rep}
+  \end{question}
+}
+
+\element{conversionbits}{
+  \qp{6}
+  \begin{question}{bits2}
+    De combien de bits ai-je besoin pour coder le résultat d'un dé à vingt faces ?
+    \begin{rep}[4]
+      \mauvaise{$4$}
+      \bonne{$5$}
+      \mauvaise{$2^{20}$}
+      \mauvaise{$20$}
+    \end{rep}
+  \end{question}
+}
+
+\element{conversionbits}{
+  \qp{12}
+  \begin{questionmult}{unites}
+    Je convertis 2 MiB en kib ou en bits (2 bonnes réponses exactement):
+    \bareme{mz=12}
+    \begin{rep}[3]
+      \bonne{$2^{24}=16777216$ bits}
+      \bonne{$2^{14}=16384$ kib}
+      \mauvaise{$2^{20}=1048576$ bits}
+      \mauvaise{$2048$ kib}
+      \mauvaise{$2000$ kib}
+      \mauvaise{$2000000$ bits}
+      \mauvaise{$16$ kib}
+      \mauvaise{$16000$ bits}
+      \mauvaise{$250$ kib}
+      \mauvaise{$250000$ bits}
+      \mauvaise{$2^{18}=262144$ bits}
+      \mauvaise{$0,25$ kib}
+    \end{rep}
+  \end{questionmult}
+}
+
+\element{signaux-out}{
+  \qp{12}
+  \begin{questionmult}{periode1}
+    Un signal périodique de fréquence maximale 1 kHz est échantillonné
+    pour être discrétisé. Quelle sont les fréquences d'échantillonnage
+    qui garantissent qu'il n'y aura aucune perte avant la quantification
+    ?
+    \begin{rep}[3]
+      \bonne{4 kHz}
+      \bonne{2 kHz}
+      \mauvaise{1 kHz}
+      \mauvaise{0,5 kHz}
+      \mauvaise{Il y a toujours des pertes}
+    \end{rep}
+  \end{questionmult}
+}
+
+\element{signaux}{
+  \qp{6}
+  \begin{question}{periode2}
+    Un signal périodique de fréquence maximale 1 kHz est échantillonné
+    pour être discrétisé. Quelle est la fréquence la plus petite qui
+    garantit qu'il n'y aura aucune perte avant la quantification ?
+    \begin{rep}[3]
+      \mauvaise{4 kHz}
+      \bonne{2 kHz}
+      \mauvaise{1 kHz}
+      \mauvaise{0,5 kHz}
+      \mauvaise{Il y a toujours des pertes}
+    \end{rep}
+  \end{question}
+}
+
+\element{signaux}{
+  \begin{question}{quanta}
+    On mesure la pression de l'air à 1000 Pa (pascals) près (on arrondit donc au millier la plus proche). L'instrument permet de mesurer de 80000 Pa à 124000 Pa. Quel est le nombre de quanta de cet instrument ?
+    \begin{rep}[4]
+      \bonne{45}
+      \mauvaise{44}
+      \mauvaise{44000}
+      \mauvaise{45000}
+      \mauvaise{124000}
+      \mauvaise{124}
+      \mauvaise{80}
+      \mauvaise{80000}
+    \end{rep}
+  \end{question}
+}
+
+\element{boiteaoutils}{
+  \qp{6}
+  \begin{question}{pwd}
+    Quelle commande permet d'afficher le chemin du répertoire
+    courant ?
+    \ttfamily
+    \begin{rep}[3]
+      \bonne{pwd}
+      \mauvaise{cd}
+      \mauvaise{cd\ \textasciitilde}
+      \mauvaise{pwd\ \textasciitilde}
+      \mauvaise{pwd .}
+      \mauvaise{cd .}
+    \end{rep}
+  \end{question}
+}
+
+\element{linux1}{
+  \qp{6}
+  \begin{question}{chemin1}
+    Est-ce que le chemin \texttt{/bin/ls} est un chemin... :
+    \begin{rep}[4]
+      \bonne{...absolu}
+      \mauvaise{...relatif}
+      \mauvaise{...personnel}
+      \mauvaise{...de montage}
+    \end{rep}
+  \end{question}
+}
+
+\element{linux1}{
+  \qp{6}
+  \begin{question}{chemin2}
+    Est-ce que le chemin \texttt{../toto.txt} est un chemin... :
+    \begin{rep}[4]
+      \mauvaise{...absolu}
+      \bonne{...relatif}
+      \mauvaise{...personnel}
+      \mauvaise{...de montage}
+    \end{rep}
+  \end{question}
+}
+\element{linux1}{
+  \qp{6}
+  \begin{question}{chemin3}
+    Est-ce que le chemin \texttt{README.md} est un chemin... :
+    \begin{rep}[4]
+      \mauvaise{...absolu}
+      \bonne{...relatif}
+      \mauvaise{...personnel}
+      \mauvaise{...de montage}
+    \end{rep}
+  \end{question}
+}
+\element{boiteaoutils}{
+  \qp{6}
+  \begin{question}{mkdir}
+    Quelle option de \texttt{mkdir} permet de créer tous les répertoires manquants intermédiaires?
+    \begin{rep}[4]
+      \mauvaise{\texttt{-rf}}
+      \bonne{\texttt{-p}}
+      \mauvaise{\texttt{-f}}
+      \mauvaise{\texttt{-i}}
+    \end{rep}
+  \end{question}
+}
+
+\element{boiteaoutils}{
+  \qp{24}
+  \begin{questionmult}{commandes}
+    Quel(s) nom(s) de commande est un nom de commande UNIX connue?
+    \ttfamily
+    \begin{rep}[4]
+      \mauvaise{copy}
+      \mauvaise{del}
+      \mauvaise{tch}
+      \mauvaise{remove}
+      \mauvaise{move}
+      \mauvaise{list}
+      \bonne{cp}
+      \bonne{touch}
+      \bonne{rm}
+      \bonne{ls}
+      \bonne{rmdir}
+      \bonne{mv}
+    \end{rep}
+  \end{questionmult}
+}
+

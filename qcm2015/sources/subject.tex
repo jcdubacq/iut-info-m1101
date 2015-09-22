@@ -8,6 +8,7 @@
 \newcommand{\testtitle}[1]{\def\QCMtesttitle{#1}}
 \newcommand{\testdocs}[1]{\def\QCMdocs{#1}}
 \newcommand{\autoinput}{\input{../sources/qcm\QCMtestidnum.tex}\csvreader[head to column names]{../students.csv}{}{\sujet}}
+\newcommand{\autoinputone}{\input{../sources/qcm\QCMtestidnum.tex}\csvreader[head to column names]{../studentsone.csv}{}{\sujet}}
 \newcommand{\qp}[2][1]{\def\questionpoints{#2}\def\badpoints{#1}}
 \makeatletter
 \renewenvironment{question}[2][]{%
@@ -24,7 +25,8 @@
 \bareme{e=0,v=0,formula=(\questionpoints*NBC/NB)-(NMC*NMC),p=0}%
 \fi%
 }%
-{\ifAMC@qbloc\end{minipage}\vspace{\AMCinterBquest}\else\vspace{\AMCinterIquest}\fi\AMCmessage{FQ}}
+{\ifAMC@qbloc\end{minipage}\vspace{\AMCinterBquest}\else\vspace{\AMCinterIquest}\fi\AMCmessage{FQ}%
+}
 \makeatother
 
 % 

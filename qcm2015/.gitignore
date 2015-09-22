@@ -1,4 +1,4 @@
-*
+*[a-z]*
 !/students-scodoc.csv
 !*.tex
 !*.png
