@@ -1,0 +1,24 @@
+% Syntaxe d'utilisation
+\synt{stat}{}{chemin [chemin\_2 \dots]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Si le chemin est occupé par un fichier ou un répertoire, affiche les métadonnées relatives au chemin.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \mprompt{
+    \prompt{stat /etc/fstab}{  Fichier : « /etc/fstab »
+      Taille : 672       	Blocs : 8          Blocs d'E/S : 4096   fichier
+      Périphérique : 801h/2049d	Inœud : 5244539     Liens : 1
+      Accès : (0644/-rw-r--r--)  UID : (    0/    root)   GID : (    0/    root)
+      Accès : 2015-09-22 22:04:47.768711256 +0200
+      Modif. : 2013-11-13 09:12:51.763972183 +0100
+      Changt : 2015-08-09 10:57:36.553313285 +0200
+      Créé : -
+    }
+    \prompt{\cursor}{}
+  }
+}

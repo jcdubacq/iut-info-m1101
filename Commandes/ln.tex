@@ -1,44 +1,40 @@
-			% Syntaxe d'utilisation
-			\synt{ln}{-s}{source cible}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Crée un lien symbolique entre la référence source et le chemin cible..
-				\end{itemize}
-				}
-			
-			% Exemple d'utilisation
-			\expl{
-				\begin{center}
-					\mprompt{
-						\prompt{ln -s Galaxies Etoiles/Galaxies}{}
-					}
-				\end{center}
-				Le lien symbolique sur un répertoire donne également accès à toutes les références contenues dans le répertoire pointé par le lien. Ainsi, le fichier \lin{\~{}/Galaxie/Adromede.pdf} est aussi accessible par le chemin \lin{\~{}/Etoiles/Galaxie/Andromede.pdf}.
-				\begin{columns}
-					\begin{column}{6cm}
-						\dirtree{%
-						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-						.2 astronomie.txt.
-						.2 \DTd{{\color{red}Galaxie}}\DTfcomment{{\color{red}Référence Source}}.
-						.3 Andromede.pdf.
-						.2 \DTd{{\color{solarizedBlue}Etoiles}}\DTfcomment{{\color{solarizedBlue}Répertoire Cible}}.
-						.3 soleil.jpg.
-						.2 aldebaran.gif.
-						}
-					\end{column}
-					\begin{column}{6cm}
-						\dirtree{%
-						.1 \DTd{chez\_moi}\DTfcomment{{\color{red}Répertoire Courant}}.
-						.2 astronomie.txt.
-						.2 \DTd{{\color{red}Galaxie}}\DTfcomment{{\color{red}Référence Source}}.
-						.3 Andromede.pdf.
-						.2 \DTd{Etoiles}.
-						.3 soleil.jpg.
-						.3 \DTd{{\color{solarizedGreen}Galaxie}}\DTfcomment{{\color{solarizedGreen}Nouveau chemin}}.
-						.4 {\color{solarizedGreen}Andromede.pdf}\DTfcomment{{\color{solarizedGreen}Nouveau chemin}}.
-						.2 aldebaran.gif.
-						}
-					\end{column}
-				\end{columns}
-			}
+% Syntaxe d'utilisation
+\synt{ln}{}{source [cible]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Crée un lien dur entre la référence source et le chemin cible.
+  \end{itemize}
+}
+
+% Exemple d'utilisation
+\expl{
+  \begin{center}
+    \mprompt{
+      \prompt{ln astronomie.txt Etoiles/lisezmoi.txt}{}
+    }
+  \end{center}
+  Le lien sur un fichier crée une deuxième entrée pointant vers le même inode.
+  \begin{columns}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 astronomie.txt\DTfcomment{{\color{red}Référence source}}.
+        .2 \DTd{{\color{solarizedBlue}Etoiles}}.
+        .3 soleil.jpg.
+        .2 aldebaran.gif.
+      }
+    \end{column}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{moi}\DTfcomment{{\color{red}Répertoire courant}}.
+        .2 astronomie.txt.
+        .2 \DTd{Etoiles}.
+        .3 soleil.jpg.
+        .3 lisezmoi.txt\DTfcomment{{\color{solarizedGreen}Nouveau chemin}}.
+        .2 aldebaran.gif.
+      }
+    \end{column}
+  \end{columns}
+}
+

@@ -1,29 +1,46 @@
-			% Syntaxe d'utilisation
-			\synt{mount}{}{périphérique  point\_de\_montage}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item \lin{périphérique} correspond soit à un fichier de périphérique (\lin{/dev/xxx}), soit à l'adresse d'un disque (\lin{nom\_réseau\_du\_disque:répertoire\_du\_disque}).
-					\item \lin{point\_de\_montage} correspond à un nom de répertoire valide dans l'arborescence principale donnant accès au contenu de l'arborescence du périphérique.
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				
-				\begin{center}
-					\mpromptM{
-								\promptM[/home]{mount /dev/sda1 /mnt/usb}{}	
-					}
-				\end{center}
-				\dirtree{%
-				.1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
-				.2 \DTd{mnt}.
-				.3 \DTd{usb}\DTfcomment{{\color{Blue}Point de Montage}}.
-				.4 \DTg{photo}\DTfcomment{{\color{Green}Contenu du périphérique}}.
-				.5 {\color{Green}\dots}\DTfcomment{{\color{Green}Contenu du périphérique}}.
-				.4 {\color{Green}CV.pdf}\DTfcomment{{\color{Green}Contenu du périphérique}}.
-				.2 \DTd{home}\DTfcomment{{\color{red}Répertoire Courant}}.
-				.3 \dots.
-				}
-			}
+% Syntaxe d'utilisation
+\synt{mount}{}{[[périphérique] point\_de\_montage]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item \lin{périphérique} correspond à périphérique
+    (\lin{/dev/xxx}). Il y a plusieurs syntaxes possibles.
+  \item \lin{point\_de\_montage} correspond à un nom de répertoire
+    valide dans l'arborescence principale donnant accès au contenu de
+    l'arborescence du périphérique.
+  \item Sans argument, la commande liste tous les montages en cours
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \mprompt{
+    \prompt[/home]{mount /dev/sde1 /mnt/usb}{}	
+  }
+  \begin{columns}
+    \begin{column}{6cm}
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{red}Répertoire racine du périphérique \texttt{/dev/sde1}}}.
+        .2 \DTd{photo}.
+        .3 {\color{solarizedGreen}\dots}\DTfcomment{{\color{solarizedGreen}Contenu...}}.
+        .2 {\color{solarizedGreen}CV.pdf}.
+      }
+      \hrule
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{red}Répertoire Racine}}.
+        .2 \DTd{mnt}.
+        .3 \DTd{usb}\DTfcomment{{\color{solarizedBlue}Répertoire normal}}.
+      }
+    \end{column}$\rightarrow$
+    \begin{column}{55mm}
+      \dirtree{%
+        .1 \DTd{}\DTfcomment{{\color{red}Répertoire racine}}.
+        .2 \DTd{mnt}.
+        .3 \DTd{usb}\DTfcomment{{\color{solarizedBlue}Point de montage}}.
+        .4 \DTg{photo}\DTfcomment{{\color{solarizedGreen}Contenu du périphérique}}.
+        .5 {\color{solarizedGreen}\dots}\DTfcomment{{\color{solarizedGreen}Contenu du périphérique}}.
+        .4 {\color{solarizedGreen}CV.pdf}\DTfcomment{{\color{solarizedGreen}Contenu du périphérique}}.
+      }
+    \end{column}%
+  \end{columns}
+}

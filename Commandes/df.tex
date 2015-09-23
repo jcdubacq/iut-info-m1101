@@ -1,26 +1,30 @@
-			% Syntaxe d'utilisation
-			\synt{df}{-h}{}
-			
-			% Description de la commande
-			\desc{\begin{itemize}
-					\item Affiche les disques montés et leur capacité de mémoire.
-					\item L'option \lin{-h} (human readable) convertie l'affichage des tailles mémoires en unités conventionnelles (en nombre de blocs par défaut).
-				\end{itemize}
-				}
-			
-			% Exemple d'uitlisation
-			\expl{
-				\begin{center}
-					\mprompt{
-						\prompt{df -h}{%
-							\begin{tabular}{llllll}
-Sys. de fichiers			&Taille	&Uti.		&Disp.	&Uti\%	&Monté sur\\
-/dev/sda1				&56G	&16G	&37G	&31\%	&/\\
-myserver:/home/sant	&1,8T	&1,6T	&192G	&90\%	&/users/santini\\
-\dots				&\dots	  	&\dots	 	&\dots	   	&\dots 	&\dots\\
-							\end{tabular}	
-						}
-						\prompt{\cursor}{}
-					}
-				\end{center}
-			}
+% Syntaxe d'utilisation
+\synt{df}{[-h]}{[emplacement]}
+
+% Description de la commande
+\desc{\begin{itemize}
+  \item Affiche les disques montés et leur capacité de mémoire (celui de
+    la partition qui correspond à l'emplacement, tous s'il n'y en a
+    pas).
+  \item L'option \lin{-h} (human readable) convertie l'affichage des
+    tailles mémoires en unités conventionnelles binaires (en nombre de
+    blocs par défaut). Avec \lin{-H} c'est en unités décimales.
+  \end{itemize}
+}
+
+% Exemple d'uitlisation
+\expl{
+  \begin{center}
+    \mprompt{
+      \prompt{df -h}{%
+        \begin{tabular}{llllll}
+          Sys. de fichiers			&Taille	&Uti.		&Disp.	&Uti\%	&Monté sur\\
+          /dev/sda1				&56G	&16G	&37G	&31\%	&/\\
+          myserver:/home/moi	&1,8T	&1,6T	&192G	&90\%	&/users/moi\\
+          \dots				&\dots	  	&\dots	 	&\dots	   	&\dots 	&\dots\\
+        \end{tabular}	
+      }
+      \prompt{\cursor}{}
+    }
+  \end{center}
+}

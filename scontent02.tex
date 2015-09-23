@@ -358,34 +358,6 @@
   \end{columns}
 \end{frame}
 
-%%%%%%%%%%%%%% 
-% MOVE TO 03
-% \subsection{Tout est fichier}
-% \begin{frame}{Tout est Fichier}
-%   \begin{block}{Gestion des fichiers}
-%     Lors de la création du système de fichier une table des i-nodes est créée. Celle-ci fixe le nombre maximum de fichiers.
-%   \end{block}
-%   \begin{block}{Fichiers}
-%     \begin{itemize}
-%     \item Chaque fichier est décrit comme un i-node.
-%     \item L'i-node contient un certain nombre de \textit{métadonnées} concernant le fichier:
-%       \begin{itemize}
-%       \item adresse sur le disque et taille du fichier en nombre d'octets,
-%       \item identification du propriétaire (UID et GID) et permissions (lecture, écriture et exécussion),
-%       \item dates de dernière modification et de dernier accès,
-%       \item \dots
-%       \end{itemize}
-%     \item Le nom du fichier n'est pas stocké dans son i-node!
-%     \end{itemize}
-%   \end{block}
-%   \begin{block}{Répertoire}
-%     {\color{solarizedAccent}Un répertoire est un fichier} spécial listant les références des fichiers qu'il contient sous forme de couples (nom\_du\_fichier, i-node).
-%   \end{block}
-%   \begin{block}{Fichiers spéciaux}
-%     Les fichiers de périphériques sont des fichiers spéciaux mis en place par le système pour assurer le lien avec un périphérique.
-%   \end{block}
-% \end{frame}
-%%%%%%%%%%%%%% 
 \subsection{Quelques mini-manuels}
 \begin{frame}{Conventions}
   \begin{block}{Noms et chemins}
@@ -757,6 +729,473 @@
 \end{verbatim}
     \item Fabriquez une archive qui contient le répertoire Photos (et
       uniquement celui-ci). Vérifiez son contenu.
+    \end{questions}
+  \end{exercicelet}
+  % ----------------limite approximative de cours
+\end{exercice}
+
+\subsection{Arborescence et montage}
+\begin{frame}{Le partitionnement}
+  \begin{block}{Du disque aux partitions}
+    \begin{itemize}
+    \item Un disque est souvent divisé en plusieurs zones d'usage
+      distinct (par exemple, système et données utilisateurs).
+    \item Chacun de ces zones est appelée une \emph{partition}. Elle
+      est un système de fichiers indépendant des autres, et peut être
+      combinée avec d'autres.
+    \item Sous Windows, chaque partition est désignée par une lettre
+      en fonction de son ordre de découverte par le système. Cette
+      lettre fait partie du chemin.
+    \item[\dialogwarning] L'ordre des partitions peut changer et donc
+      la lettre ; ça pose problème pour les mises à jour.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Montage et démontage}
+    \begin{itemize}
+    \item Un système d'exploitation peut rendre accessible une
+      partition : c'est le \emph{montage} de la partition.
+    \item Inversement : c'est le \emph{démontage} de la partition.
+    \item[\dialogsystem] Une partition montée peut être utilisée
+      normalement par les programmes.
+    \item[\dialogerror] Une partition démontée doit utiliser une
+      interface spéciale plus compliquée qui contourne le \emph{système
+        de fichiers} et permet d'accéder directement au disque.
+    \end{itemize}
+  \end{block}
+\end{frame}
+\begin{frame}{Les partitions sous Linux}
+  \begin{block}{L'arbre unique}
+    \begin{itemize}
+    \item Sous Linux, les partitions sont toutes dans regroupés dans une seule arborescence.
+    \item[\ddialogsystem] Les partitions qui ne sont pas la racine sont accrochées dans
+      la partition racine (ou une autre déjà accrochée) au niveau d'un
+      répertoire qui sert de \emph{point de montage}.
+    \item[\ddialogerror] Le contenu du point de montage est alors
+      inaccessible et remplacé par le contenu du système de fichier qui
+      a été monté
+    \item Le chemin absolu d'un élément du système monté est le chemin
+      du point de montage suivi du chemin dans le système de fichiers
+      monté.
+    \item[\ddialoginformation] Exemple: fichier \texttt{moi/toto.txt}
+      dans un système monté sur \texttt{/home}, le chemin absolu est
+      \texttt{/home/moi/toto.txt}.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Le pseudo-système \texttt{/dev}}
+    Sous Linux, les périphériques sont accessibles par une interface de
+    type fichier. Leur chemin est \texttt{/dev/codeperipherique}. 
+
+    Le sous-arbre à partir de \texttt{/dev} est un système de fichiers
+    indépendant d'un périphérique physique. On parle de \emph{système de
+      fichiers virtuel}.
+  \end{block}
+\end{frame}
+
+\manpage{mount}
+
+\begin{exercice}
+  \begin{exercicelet}{Analyse de périphériques}
+    \begin{questions}
+    \item Le périphérique \texttt{zero} est un périphérique virtuel. La
+      commande \texttt{dd if=/dev/zero count=1 | hexdump -v} permet de
+      voir les 512 premiers octets de ce périphérique virtuel (en
+      hexadécimal). Regardez-le. Qu'est-ce qu'il a de particulier ?
+      \begin{correction}
+        Ce périphérique virtuel n'emet que des octets dont la valeur est
+        zéro. Un nombre infini d'octets. L'utilité ne paraît pas très
+        évidente, mais ce n'est pas compliqué à faire. Un périphérique
+        virtuel est en fait un programme (plus précisément, un morceau
+        de ce qu'on appelle le noyau du système d'exploitation) qui
+        réagit comme un périphérique, sauf qu'il ne correspond à aucune
+        interface physique particulière. Le noyau le considère comme
+        s'il existait quelque part un disque infini qui ne contient que
+        des zéros.
+      \end{correction}
+    \item Le périphérique \texttt{urandom} est un périphérique
+      virtuel. La commande \texttt{dd if=/dev/urandom count=1 | hexdump
+        -v} permet de voir les 512 premiers octets de ce périphérique
+      virtuel (en hexadécimal). Regardez-le. Recommencez. Qu'est-ce
+      qu'il a de particulier ?
+      \begin{correction}
+        Ce périphérique virtuel émet des octets ayant une valeur au
+        hasard (entre 0 et 255 donc, ou 0 à FF en hexadécimal). Un
+        nombre infini d'octets. L'utilité paraît un peu meilleure que
+        /dev/zero, puisqu'on imagine bien que des programmes puissent
+        demander un accès à une source de données aléatoires (par
+        exemple, pour simuler un dé).
+      \end{correction}
+    \item Le périphérique \texttt{sda1} est une des partitions du disque
+      dur. La commande \texttt{dd if=/dev/sda1 count=1 | hexdump -v}
+      permet de voir les 512 premiers octets de ce périphérique virtuel
+      (en hexadécimal). Regardez-le. Que se passe-t-il ? Un programme
+      normal comme \lin{dd} peut-il examiner le disque dur en
+      outrepassant le système de fichiers ?
+      \begin{correction}
+        Ce coup-ci, c'est un vrai périphérique (c'est la partition
+        /boot, si je ne me trompe pas sur l'installation du CRIT). Mais
+        ils n'ont pas le droit de le consulter ! En effet, l'interface
+        d'accès hors-système de fichiers est réservé à des programmes
+        spéciaux (comprendre lancés par l'utilisateur root) de façon à
+        éviter les mauvaises manipulations qui peuvent découler de
+        manipulations non cadrées des données du disque.
+      \end{correction}
+    \item En utilisant la commande \lin{mount}, analysez les différentes
+      partitions présentes dans votre système. Identifiez celles qui
+      correspondent à un vrai périphérique et les systèmes de fichier
+      virtuel.
+      \begin{correction}
+        Il n'y a a priori que / et /boot qui sont de vraies partitions
+        d'un vrai disque dur local, et /home qui est une partition
+        exportée à travers le réseau (par le protocole nfs4).
+      \end{correction}
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\begin{frame}{Espace libre}
+  Une partition occupe une taille fixe. La plupart des systèmes de
+  fichiers sont \textbf{de taille fixe}. Elles peuvent accueillir
+  uniquement une certaine quantité de données.
+  \begin{alertblock}{L'espace de travail}
+    Comme dans un parking, la quantité de données que l'on peut mettre
+    dans un disque ne doit pas être égale à la quantité de données qu'il
+    peut accueillir, sinon, on ne peut pas faire un certain nombre
+    d'opérations. En plus de l'espace réservé à la signalisation (index
+    et tables divers), on réserve aussi un peu d'espace pour les
+    programmes importants du système.
+  \end{alertblock}
+  \begin{alertblock}{La fragmentation}
+    Les fichiers sont posés par petits blocs dans la partition (qui est
+    elle-même un gros bloc dans l'ensemble du disque). Parce qu'un
+    fichier est plus rapide à lire si les blocs sont les uns à côté des
+    autres, les systèmes de fichiers essayent de maintenir cet
+    état. Sous Windows, on peut aider le système en procédant à une
+    opération de rangement : la \emph{défragmentation}.
+
+    Les systèmes de fichiers utilisés sous Linux n'ont quasiment pas de
+    fragmentation si on utilise moins de 95\% de leur espace.
+  \end{alertblock}
+\end{frame}
+
+\manpage{df}
+
+\begin{exercice}
+  \begin{exercicelet}{Partitions et espace disque}
+    \begin{questions}
+    \item Analysez l'espace disque disponible et utilisé sur toutes les
+      partitions de votre ordinateur. Comparez les unités décimales et
+      binaires.
+    \item En utilisant \lin{df /} et \lin{df /etc}, vérifiez que ces
+      deux répertoires sont bien sur la même partition. Comparez avec
+      \lin{df \textasciitilde} et \lin{df /boot}.
+    \item Si un utilisateur remplit complètement la partition qui
+      abritent ses données, qu'est-ce qui cesse de fonctionner ?
+      Qu'est-ce qui peut continuer à fonctionner ?
+    \item L'administrateur \texttt{root} a pour répertoire personnel
+      \lin{/root}. En regardant sur quelle partition c'est, expliquez
+      pourquoi ce n'est pas dans \lin{/home}.
+      \begin{correction}
+        Ça permet à l'administrateur de pouvoir continuer à intervenir
+        sur le système même quand l'utilisateur a rempli sa propre
+        partition (lorsqu'elle est séparée, ce qui est une bonne
+        pratique).
+      \end{correction}
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\begin{frame}{Les nœuds d'index}
+  \begin{block}{Les nœuds d'index ou inodes}
+    \begin{itemize}
+    \item  Les données des fichiers sont stockées dans des blocs
+      numérotés.
+    \item[\ddialoginformation] L'organisation des fichiers et répertoires
+      est elle stockée dans des blocs spéciaux appelés nœuds d'index (ou
+      \emph{inodes}). Un chemin est associé à un inode unique qui va
+      contenir la liste des numéros de blocs de données qu'il utilise.
+    \item Un répertoire est un inode qui pointe vers un bloc de données
+      qui contient un tableau de type nom → inode
+    \item Un fichier est un inode qui pointe vers un ou plusieurs blocs
+      de données qui contiennent... les données.
+    \item[\ddialogwarning] L'inode, c'est le représentant du fichier. Il
+      contient aussi les \emph{métadonnées} associées.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Lire la structure des inodes}
+    Les inodes sont simplement désignés par un numéro. La commande
+    \lin{ls -i} ou \lin{stat} permet d'accéder à cette information.
+  \end{block}
+\end{frame}
+
+\manpage{stat}
+
+
+\begin{exercice}
+  \begin{exercicelet}{Découvrir les métadonnées}
+    \begin{questions}
+    \item En utilisant la commande \lin{stat \~}, trouvez le numéro
+      d'inode de votre répertoire personnel.
+    \item Quelles autres sortes de métadonnées arrivez-vous à comprendre ?
+      \begin{correction}
+        Le minimum est les dates de modification et de lecture. On va
+        aussi voir un peu plus loin le numéro de périphérique.
+      \end{correction}
+    \item Avec la commande \lin{ls -ia1 \~}, regardez les numéros
+      d'inodes de vos répertoires. Sont-ils différents ? Comment
+      l'expliquez-vous ?
+      \begin{correction}
+        Avec les options données, il y a bien un numéro identique :
+        celui qui correspond à l'entrée \lin{.} qui est la boucle dans
+        chaque répertoire qui pointe sur lui-même. Les autres sont
+        évidemment différents.
+      \end{correction}
+    \item Maintenant, regardez le numéro d'inode avec \lin{stat} du
+      répertoire \lin{/home/usager}. Est-ce que vous le reconnaissez ?
+      \begin{correction}
+        C'est le numéro d'inode de \lin{..} dans le listing précédent.
+      \end{correction}
+    \item Regardez avec ces commandes les valeurs des numéros d'inode de
+      \lin{/}, \lin{/.} et \lin{/..}. Expliquez.
+      \begin{correction}
+        Ce sont les mêmes valeurs, parce que / est la racine d'un
+        système, donc les données inscrites dans le disque indiquent
+        bien que le parent de / n'est autre que lui-même.
+      \end{correction}
+    \item Recommencez avec \lin{stat /home} et \lin{stat /}. Que
+      remarquez-vous à propos de ces numéros d'inodes ? Est-ce que ces
+      répertoires sont identiques ? Comme l'expliquer ?
+      \begin{correction}
+        \lin{/home} et \lin{/} sont tous deux des racines de systèmes de
+        fichiers... mais pas de la même partition. Ils portent tous les
+        deux (a priori) le même numéro d'inode (normalement 2), mais si
+        on regarde le numéro de périphérique (ou par exemple avec
+        \lin{stat -c \%m / /home /home/usager} qui affiche les points de
+        montage) qu'il ne s'agit pas de la même partition.
+      \end{correction}
+    \item Dans le répertoire \lin{\~/Documents/m1101/textes}, il y a un
+      fichier texte. Regardez ses métadonnées. Dans une autre fenêtre,
+      lisez-le. Puis regardez encore. Est-ce que quelque chose a changé ?
+      \begin{correction}
+        La date de dernier accès (atime) doit changer.
+      \end{correction}
+    \item Faites une copie de ce fichier. Modifiez la copie avec
+      \lin{gedit copie.txt}. Vérifiez que les métadonnées changent
+      encore. Lesquelles ? Est-ce qu'il y a une commande qui permet de
+      faire ce changement de métadonnées sans vraiment changer le
+      fichier ? (après, supprimez la copie).
+      \begin{correction}
+        La commande touch. Ils devraient essayer !
+      \end{correction}
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\begin{frame}{Les liens durs}
+  \begin{block}{Un fichier, deux chemins (et plus si affinités)}
+    Vu la structure utilisée, il est possible de mettre le même numéro
+    d'inode dans deux répertoires différents (même nom ou pas) ou sous
+    deux noms dans le même répertoire. On obtient ainsi deux chemins qui
+    pointent vers le même fichier. C'est ce qu'on appelle un \emph{lien}
+    ou \emph{lien dur} (hardlink).
+
+    Lorsqu'on édite le premier « fichier », le deuxième est aussitôt
+    modifié (normal, c'est le même).
+
+    Lorsqu'on supprime l'un des deux fichiers, l'autre reste. Pour
+    savoir quand effacer vraiment le fichier, il utiliser le compteur de
+    liens (lorsqu'il est à zéro, on peut effacer).
+
+    On ne peut pas faire de liens durs entre partitions différentes.q
+  \end{block}
+  \begin{block}{Boîte à outils : les partitions}
+    \begin{center}
+      \begin{tabular}{ll}
+        \hline
+        Commande&Fonction principale\\
+        \hline
+        \lin{mount}&Manipuler les partitions\\
+        \lin{df}&Afficher l'espace restant\\\hline
+        \lin{ls}&Afficher le contenu d'un répertoire\\
+        \lin{stat}&Afficher les métadonnées d'un chemin\\\hline
+        \lin{ln}&Créer un lien (dur ou symbolique)\\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{block}
+\end{frame}
+
+\manpage{ln}
+
+
+\begin{exercice}
+  \begin{exercicelet}{Liens durs}
+    \begin{questions}
+    \item Dans votre répertoire \lin{\~/Documents/m1101/textes}, créez
+      un petit fichier \lin{source.txt}. Insérez quelques lignes de
+      texte dedans (avec \lin{gedit source.txt}), puis quittez l'éditeur
+      de texte.
+    \item Vérifiez dans la console son numéro d'inode, et son
+      contenu. Quelles sont les commandes pour cela ?
+      \begin{correction}
+        stat et cat
+      \end{correction}
+    \item Faites une copie de \lin{source.txt} vers \lin{copie.txt}, et
+      un lien de \lin{source.txt} vers \lin{lien.txt}. Vérifiez le
+      contenu de la copie et du lien. Vérifiez que les numéros d'inode
+      et les compteurs de liens sont comme ce à quoi vous vous
+      attendiez.
+      \begin{correction}
+        La copie a un numéro différent, pas le lien. Le compteur de
+        liens est à 2 pour le lien comme pour la source.
+      \end{correction}
+    \item Avec l'éditeur de texte, comme plus haut, modifiez le fichier
+      source. Regardez les trois fichiers dans le terminal. Est-ce
+      conforme à vos attentes ? Essayez ensuite en changeant la copie.
+      \begin{correction}
+        La source et le lien changent, pas la copie. Ensuite, la copie
+        change, aucun des deux autres ne changent.
+      \end{correction}
+    \item Faites un lien de \lin{lien.txt} vers
+      \lin{lienlien.txt}. Vérifiez le compteur de liens. Effacez ensuite
+      \lin{lien.txt}, et vérifiez encore.
+      \begin{correction}
+        On passe à 3, puis à nouveau à 2.
+      \end{correction}
+    \item Modifiez \lin{lienlien.txt}, puis regardez tous les
+      contenus. Effacez le fichier \lin{source.txt}. Le fichier
+      \lin{lienlien.txt} est-il toujours là ?
+      \begin{correction}
+        C'est un lien, donc c'est un lien. À la fin, il est toujours là.
+      \end{correction}
+    \item Essayez de faire un lien entre \lin{copie.txt} et
+      \lin{/tmp/copie.txt}. Que se passe-t-il ? Pourquoi ? Expliquez.
+      \begin{correction}
+        On ne peut pas faire de liens entre partitions parce que les
+        inodes sont des informations locales avec leur numérotation
+        locale à chaque partition.
+      \end{correction}
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+
+\begin{frame}{Les liens symboliques}
+  \begin{block}{Une redirection}
+    \begin{itemize}
+    \item[\ddialogsystem] Sous Windows ou sous Unix, on peut créer des «
+      raccourcis » qui lient un chemin spécifique à un autre endroit
+      dans l'arborescence.
+    \item Unix les appelle des liens symboliques.
+    \item Windows les appelle des raccourcis.
+    \item Un lien symbolique est un chemin (relatif ou absolu) qui
+      indique un autre point de l'arbre. Il fonctionne au niveau chemin
+      et pas au niveau inode.
+    \item Un lien symbolique peut traverser les partitions.
+    \item[\ddialogwarning] Un lien symbolique peut pointer sur un chemin
+      qui ne correspond pas à un fichier ou un répertoire. On dit qu'il
+      est brisé.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{exercice}
+  \begin{exercicelet}{Liens symboliques}
+    \begin{questions}
+    \item Dans votre répertoire \lin{\~/Documents/m1101/textes}, recréez
+      un petit fichier \lin{source.txt}, effacez \lin{lienlien.txt} et
+      \lin{copie.txt}.
+    \item Faites un lien symbolique de \lin{source.txt} vers
+      \lin{lien.txt}. Vérifiez le contenu du lien. Regardez les
+      métadonnées associées.
+    \item Avec l'éditeur de texte, comme plus haut, modifiez le fichier
+      source. Regardez les deux fichiers dans le terminal. Est-ce
+      conforme à vos attentes ?
+      \begin{correction}
+        La source et le lien changent.
+      \end{correction}
+    \item Faites un lien de \lin{lien.txt} vers
+      \lin{lienlien.txt}. Vérifiez le contenu des trois fichiers (en
+      modifiant).
+      \begin{correction}
+        Il est identique.
+      \end{correction}
+    \item Modifiez \lin{lienlien.txt}, puis regardez tous les
+      contenus. Effacez le fichier \lin{source.txt}. Le fichier
+      \lin{lienlien.txt} est-il toujours là ?
+      \begin{correction}
+        C'est un lien symbolique, donc brisé.
+      \end{correction}
+    \item Essayez de faire un lien entre \lin{commande.txt} et
+      \lin{/tmp/story.txt}. Que se passe-t-il ? Pourquoi ? Expliquez.
+      \begin{correction}
+        On peut faire des liens symboliques entre partitions.
+      \end{correction}
+    \item Faites un lien symbolique vers un répertoire. Que se passe-t-il ? Quel est le danger ?
+      \begin{correction}
+        Le danger c'est la récursion infinie.
+      \end{correction}
+    \end{questions}
+  \end{exercicelet}
+\end{exercice}
+
+\begin{frame}{L'archivage et les liens}
+  \begin{block}{Les formats zip et tar}
+    \begin{itemize}
+    \item Le format \texttt{tar} permet d'archiver autant les liens durs que les liens symboliques
+    \item Le format \texttt{zip} ne permet que d'archiver les liens symboliques
+    \item Le programme \texttt{zip} remplace, par défaut, les liens symboliques par des copies.
+    \item L'option \lin{--symlinks} permet de conserver les liens symboliques dans les archives \texttt{zip}.
+    \item Le programme \texttt{tar} a une option \lin{--dereference} qui
+      transforme les liens symboliques en copies. Les liens durs ne sont
+      archivés qu'une seule fois par défaut.
+    \item[\dialogwarning] Un lien symbolique archivé en tant que tel pointant en dehors de l'archive peut être brisé!
+    \end{itemize}
+  \end{block}
+  \begin{example}[Création d'archives]
+    \mprompt{
+      \prompt{zip -{}-symlinks -r sel.zip sel/}{  adding: selection/ (stored 0\%)\\
+        adding: selection/best.jpg (stored 0\%)\\
+        adding: selection/img\_1363.jpg (deflated 2\%)\\
+        adding: selection/img\_1221.jpg (deflated 1\%)
+      }
+      \prompt{unzip sel.zip}{}
+    }
+  \end{example}
+\end{frame}
+\begin{exercice}
+  \begin{exercicelet}{Liens et archives}
+    \begin{questions}
+    \item Dans votre répertoire \lin{\~{}/Documents/m1101}, créez
+      un répertoire \lin{selection}.
+    \item Faites un lien symbolique dans \lin{selection} d'une image de
+      \lin{images}, un lien dur et une copie de fichier. Rajoutez un
+      lien dur dans \lin{selection} vers la copie de fichier sous un
+      autre nom (par exemple \lin{lameilleure.jpg}.
+    \item Archivez le répertoire \lin{selection} au format \texttt{tar}. Vérifiez avec
+      \lin{tar vvf selection.tar} que les fichiers sont tous présents,
+      sauf le lien symbolique.
+    \item Archivez avec \texttt{zip} le même répertoire. Vérifiez (avec
+      \lin{stat sel.zip}) que la taille de l'archive est cohérente avec
+      la présence de quatre images (et non pas trois).
+      \begin{correction}
+        zip, par défaut, remplace les liens symboliques par des copies.
+      \end{correction}
+    \item Archivez dans un autre fichier \texttt{zip} le même répertoire
+      avec la conservation des liens symboliques. Comparez les tailles
+      et expliquez.
+      \begin{correction}
+        Le fichier est plus petit car le lien symbolique est conservé en
+        tant que tel, pas comme une copie.
+      \end{correction}
+    \item Créez trois répertoires \lin{d1}, \lin{d2}, \lin{d3}. Dans
+      chacun de ces répertoires, décompressez les archives crées
+      précédemment. Regardez ce qui arrive aux liens symboliques et aux
+      liens durs dans chacun des cas.
+      \begin{correction}
+        Les liens symboliques sont brisés, sauf zip sans options (qui en
+        fait avait fait une copie).
+      \end{correction}
     \end{questions}
   \end{exercicelet}
 \end{exercice}
