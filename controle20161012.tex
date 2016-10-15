@@ -1,0 +1,277 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20161012
+% compile-latex options:--jobname correction20161012
+\usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 1}
+\date{8/10/2013}
+\begin{document}
+\conditions{ Vous disposez de 2 heures pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
+\begin{questions}
+  \titledquestion{Système}
+
+  Lorsqu'une commande vous est demandée, \textbf{donnez un exemple
+    d'utilisation} qui répond à la question.
+  \begin{parts}
+    \part[3] Complétez le tableau:\par
+    \def\spacer{\rule{0mm}{5mm}\rule{4cm}{.5pt}}
+    \begin{tabular}{p{42mm}l}
+      \spacer & Lister les fichiers (pour un répertoire, le contenu du répertoire)\\
+      \spacer & Obtenir de l'aide sur une commande\\
+      \spacer & Créer un raccourci vers un autre chemin, qui peut être brisé\\
+      \spacer & Déplacer ou renommer un fichier\\
+      \spacer & Greffer un nouveau système de fichier dans l'arborescence des fichiers\\
+      \spacer & Obtenir les méta-données sur un fichier\\
+    \end{tabular}
+
+    \part[1] Quelle est l'interprétation du symbole spécial \verb|~|
+    dans le shell ? Donnez \textbf{deux} sens (légèrement) différents de
+    ce symbole.
+    \begin{solutionordottedlines}[.5in]%
+      On peut désigner son propre répertoire (symbole seul) ou celui de
+      quelqu'un d'autre.
+    \end{solutionordottedlines}
+    \part[1\half] Donnez au moins trois métadonnées bien différentes qui sont stockés dans l'i-nœud rattaché à un fichier.
+    \begin{solutionordottedlines}[.5in]%
+      Droits d'accès, propriétaire, dates de dernière ... (modification, lecture), taille en octets et en blocs...
+    \end{solutionordottedlines}
+    \part[1] Citez au moins deux ressources gérées par le système
+    d'exploitation.
+    \begin{solutionordottedlines}[.5in]%
+      Le système d'exploitation arbitre au moins l'accès au processeur
+      et l'accès à la mémoire. Les périphériques aussi, mais pas la ROM
+      ou le GRUB. .25 par ressource.
+    \end{solutionordottedlines}
+    \part[\half] Quelle est la commande qui permet de visualiser
+    l'espace libre de chaque point de montage avec leurs
+    caractéristiques sous Linux ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{df}
+    \end{solutionordottedlines}
+    \part[1\half] Un système de fichiers \emph{case-insensitive} est un
+    système ou la portion de chemin qui le parcourt ne tient pas compte
+    de la différence majuscule/minuscule. Un tel système a été monté au
+    point de montage \texttt{/media/divers/WIN}. Regroupez les chemins suivants
+    selon qu'ils désignent ou pas un même fichier:
+    \begin{enumerate}
+    \item \texttt{/media/Divers/win/Usage/Document.txt}
+    \item \texttt{/media/divers/WIN/Usage/document.txt} %
+    \item \texttt{/media/divers/WIN/Usage/../USAGE/document.txt} %
+    \item \texttt{/media/divers/WIN/Usage/.../Usage/document.txt}
+    \item \texttt{/media/divers/WIN/Usage/../document.txt}
+    \item \texttt{/media/divers/WIN/./USAGE/Document.TXT} %
+    \item \texttt{/media/divers/WIN/Usage/.././Usage/document.txt}
+    \end{enumerate}
+    \begin{solutionordottedlines}[.25in]%
+      2,3 et 6 sont les mêmes fichiers ; les autres sont tous différents.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \newpage
+  \titledquestion{Arborescence}
+
+  \framebox{\begin{minipage}{.5\linewidth}%
+      \dirtree{%
+        .1 \DTd{}.  .2 \DTd{bin}.  .3 (\dots)\DTfcomment{(1)}.  .2
+        \DTd{home}.  .3 \DTd{jvaljean}\DTfcomment{Votre répertoire
+          personnel}.  .4 \DTd{Documents}\DTfcomment{Vous êtes ici}.  .5
+        \DTd{Ancien}. .6 \DTd{Paris}.  .7 greve.jpg.  .5
+        condamnation.pdf. .5 document1.txt.  .5 doc2.txt.  .5
+        facture.txt.  .5 mission.pdf.  .5 mission.jpg.  .4 \DTd{Coffre}.
+        .3 \DTd{gavroche}.  .4 avis.txt.  .2 (\dots)\DTfcomment{(2)}.  }
+    \end{minipage}}\hfill%
+  \begin{minipage}{.45\linewidth}
+    Voilà ci-contre un extrait de l'arborescence de votre système. Il y
+    a d'autres utilisateurs : \textit{\texttt{gavroche}} est dans votre
+    groupe, \textit{\texttt{thenardier}} et \textit{\texttt{cosette}} ne
+    le sont pas.
+
+    Vous devrez faire tout cet exercice sans \textbf{jamais} utiliser la
+    commande \texttt{cd}. Dans l'extrait d'arborescence, le répertoire
+    courant est indiqué. Répondez à \textnormal{toutes} les questions
+    avec une seule commande.
+
+  \end{minipage}
+  \begin{parts}
+    \part[\half] Listez le contenu du répertoire \texttt{Ancien}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ls Ancien}
+    \end{solutionordottedlines}
+    \part[\half] Créez un répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mkdir -p Nouveau/Vacances} ou \texttt{mkdir Nouveau Nouveau/Vacances}.
+    \end{solutionordottedlines}
+    \part[1] Créez un lien sur le fichier \texttt{facture.txt} dans le répertoire courant sous le nom \texttt{TODO}. Est-ce que l'information existera toujours si on exécute \texttt{rm facture.txt} ? Et si on l'édite et qu'on supprime toutes les lignes (et qu'on sauvegarde, bien sûr) ?
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{ln facture.txt TODO}. Oui, et non.
+    \end{solutionordottedlines}
+    \part[\half] Lisez le contenu du fichier \texttt{avis.txt} chez
+    l'utilisateur \textit{\texttt{gavroche}}.
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cat \~gavroche/avis.txt} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Déplacez tous les documents du répertoire courant dans \texttt{Coffre} sauf \texttt{condamnation.pdf}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{mv *.txt mission.pdf ../Coffre} ou autre solution à base de \texttt{..}
+    \end{solutionordottedlines}
+    \part[1] Copiez \texttt{condamnation.pdf} et le répertoire \texttt{Paris} dans le répertoire \texttt{Nouveau/Vacances}
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{cp -r condamnation.txt Ancien/Paris Nouveau/2013} (.5 pour le -r).
+    \end{solutionordottedlines}
+    \part[1] Donnez la commande qui permet d'archiver tous vos documents dans une archive située dans \texttt{coffre} (nom au choix).
+    \begin{solutionordottedlines}[.25in]%
+      \texttt{tar cvf ~/Coffre/archive.tar ~/Documents}
+    \end{solutionordottedlines}
+  \end{parts}
+  \newpage
+  \titledquestion{Codage}
+  \begin{parts}
+    \part[1] Quel est le nombre \textbf{minimal} de bits nécessaire
+    pour coder l'information suivante: un numéro de page de l'annexe
+    d'un livre, qui vaut entre 1900 et 2412 (bornes comprises).
+    \begin{solutionordottedlines}[.25in]
+      2412-1900=513 possibilités, donc 10 bits.
+    \end{solutionordottedlines}
+    \part[\half] Quel est le plus grand entre $24\times 10^6$
+    bits et $3$ Mio ? Prouvez-le
+    \begin{solutionordottedlines}[.5in]
+      $24\times10^6 bits < 3Mio$ car $24\times10^6 bits = 3\times10^6 octets = 6Mo$ or $3Mo < 3Mio$ car \\
+      $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+      $1000<1024$ (éventuellement moins de détails)
+    \end{solutionordottedlines}
+    \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
+    96, 212, 2251.
+    \begin{solutionordottedlines}[.75in]
+      0x60, 0xE2, 0x8CB
+    \end{solutionordottedlines}
+    \part[1] Convertissez en C2 sur 8 bits le nombre $-61$.
+    \begin{solutionordottedlines}[.25in]
+      0xC3 ou $1100\,0011$\\
+    \end{solutionordottedlines}
+    \part[1] Convertissez en nombre décimal le nombre C2 sur 8 bits écrit en hexal 0xF0.
+    \begin{solutionordottedlines}[.25in]
+      -16\\
+    \end{solutionordottedlines}
+    \part[1] Faites l'opération suivante:
+    $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+    décimal.
+    \begin{solutionordottedlines}[.25in]
+      $0b1\,1101\,0001=465_{10}$
+    \end{solutionordottedlines}
+    \part[\half] Faites l'opération suivante:
+    $0x1028+0x988$. Donnez le résultat en hexadécimal.
+    \begin{solutionordottedlines}[.25in]
+      $0b1\,1101\,0001=465_{10}$
+    \end{solutionordottedlines}
+    \part[\half] Un signal audio a une fréquence d'échantillonage de
+    8000 Hz. Quelle est la fréquence maximale qui peut être reproduite
+    fidèlement avant quantification ? Justifiez
+    \begin{solutionordottedlines}[.25in]
+      D'après le Théorème d'échantillonnage de Nyquist-Shannon on a
+      $f_{echan}>2*f_{Max}$ donc or ici
+      $f_{Max}<f_{chan}/2=8000Hz/2=4000Hz$
+    \end{solutionordottedlines}
+    \part[1] Un signal audio (mono-voie) à 8000 Hz utilise 1024 niveaux
+    d'intensité par échantillon. Combien de bits sont nécessaires pour
+    chaque échantillon ? (justifiez) En déduire la taille totale d'un
+    fichier qui code une minute de signal.
+    \begin{solutionordottedlines}[.25in]
+      $8000\times 10\times 60=4\,800\,000$ bits ou bien 600 ko.
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Flottants courts} On veut modifier la norme IEEE
+  754. On définit une nouvelle catégorie de nombres flottants sur 12
+  bits:
+  \begin{itemize}
+  \item 1 bit de signe;
+  \item 4 bits pour noter $E$ avec $E=e+7$;
+  \item 7 bits pour la partie fractionnaire $M$ de la valeur $v$.
+  \end{itemize}
+  On a $x=(-1)^s\times v\times 2^e$. On fait les mêmes
+  \textbf{exceptions} que dans la norme IEEE 754: pour
+  $E=\texttt{0b0000}$, on a $x=0$ et pour $E=\texttt{0b1111}$, on a
+  $x=\pm\infty$. NB: $2^{-6}=0,015\,625, 2^{-12}=0,000\,244\,140\,625$.
+  \begin{parts}
+    \part[1] Codez en \emph{flottant court} le nombre 3,5.
+    \begin{solutionordottedlines}[.5in]%
+      $3,5=11,1=1,11\times2$ donc $0100 0110 0000$ soit 0x460.
+    \end{solutionordottedlines}
+    \part[1] Quel est le plus grand nombre non infini que l'on peut
+    représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
+    valeur en décimal.
+    \begin{solutionordottedlines}[.5in]%
+      Codage $011101111111=0x77F$ (1/2), $E=0b1110=14$, $e=7$ et
+      $v=0b1,1111111$. Soit $x=0b1111\,1111=255$ (1/2). Notes partielles
+      si essentiellement bon.
+    \end{solutionordottedlines}
+    \part[1] Soit deux nombres $a$ et $b$, flottants courts, qui ont le
+    même exposant $e$. Quelle est la plus petite différence possible non
+    nulle entre ces deux nombres ?
+    \begin{solutionordottedlines}[.5in]%
+      La différence de $v$ vaut 0.0000001 donc différence totale
+      de $2^e\times2^{-7}$ donc $2^{e-7}$.
+    \end{solutionordottedlines}
+    \part[1] Transformez en décimal les deux nombres \emph{flottants
+      courts} codés par les chaînes de bits suivantes:
+    $\texttt{0b0011\,1010\,0000}$ et
+    $\texttt{0b0110\,0101\,1010}$.
+    \begin{solutionordottedlines}[.5in]%
+      1,25 et 54,5
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Programme étrange}%
+  Considérez le programme suivant:
+
+  \begin{lstlisting}[language=C,caption=Programme]
+    fonction(int a) {
+      int b=0;
+      while (a!=0) {
+        a=a>>1;
+        b=b+(a&1)
+      }
+      return(b);
+    }
+  \end{lstlisting}
+
+  \begin{parts}
+    \part[1] Pourquoi ce programme s'arrête-t-il ? Expliquez-bien.
+    \begin{solutionordottedlines}[.75in]
+      Le décalage à droite n'introduit que des zéros dans le nombre a,
+      donc a finit par être nul (division entière par 2).
+    \end{solutionordottedlines}
+    \part[1] On appelle la fonction avec la valeur 21. Détaillez les
+    valeurs successives de \texttt{a} et \texttt{b} jusqu'à l'arrêt de
+    la fonction.
+
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        21,0 (facultatif)\\10,1
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        5,1\\2,2
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        1,2\\0,3
+      \end{solutionordottedlines}
+    \end{minipage}
+    \part[1] Que calcule cette fonction ?
+    \begin{solutionordottedlines}[.25in]
+      Le nombre de bits à 1 dans le codage binaire de l'entier a.
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}

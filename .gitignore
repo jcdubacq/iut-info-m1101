@@ -642,3 +642,17 @@
 /sprof02.out
 /sprof02.pdf
 # stop automatic section for compile-latex:sys02.tex/sprof02
+# start automatic section for compile-latex:controle20161012.tex
+/.compile-latex/controle20161012
+/controle20161012.aux
+/controle20161012.fls
+/controle20161012.log
+/controle20161012.pdf
+# stop automatic section for compile-latex:controle20161012.tex
+# start automatic section for compile-latex:controle20161012.tex/correction20161012
+/.compile-latex/correction20161012
+/correction20161012.aux
+/correction20161012.fls
+/correction20161012.log
+/correction20161012.pdf
+# stop automatic section for compile-latex:controle20161012.tex/correction20161012
