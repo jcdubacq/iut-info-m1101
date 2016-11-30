@@ -138,7 +138,7 @@
 \subtitle{Les bits}
 \author{Jean-Christophe Dubacq}%
 \institute[IUTV]{IUT de Villetaneuse}%{\includegraphics{img/logo_iut}}
-\date{S1 2015}
+\date{S1 2016}
 
 \usepackage{tikz}%
 \usetikzlibrary{snakes,calc,shapes,arrows,mindmap}%
