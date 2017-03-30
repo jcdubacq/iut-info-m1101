@@ -1,0 +1,155 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20170317
+% compile-latex options:--jobname correction20170317
+\usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 1}
+\date{8/10/2013}
+\begin{document}
+\conditions{ Vous disposez de 60 minutes pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
+\begin{questions}
+  \titledquestion{Codage}
+  \begin{parts}
+    \part[1] Quel est le nombre \textbf{minimal} de bits nécessaire
+    pour coder l'information suivante: un code de bière décomposé en un numéro de brasserie irlandaise (il y en a 4096), une année de production (il n'y a que les 16 dernières années qui comptent), une chaîne de production dans la brasserie (le maximum est de 64 sortes de bière différentes pour une même brasserie) ?
+    \begin{solutionordottedlines}[.25in]
+      
+    \end{solutionordottedlines}
+    \part[\half] Quel est le plus grand entre $48\times 10^6$
+    bits et $6$ Mio ? Prouvez-le
+    \begin{solutionordottedlines}[.5in]
+      $48\times10^6 bits < 6Mio$ car $48\times10^6 bits = 6\times10^6 octets = 6Mo$ or $6Mo < 6Mio$ car \\
+      $1Mo=10^6=(1000)^2$ et $1Mio=2^{20}=(2^10)^2=1024^2$ et
+      $1000<1024$ (éventuellement moins de détails)
+    \end{solutionordottedlines}
+    \part[1\half] Convertissez en hexadécimal les 3 nombres suivants:
+    38, 194, 6000.
+    \begin{solutionordottedlines}[.75in]
+      0x26, 0xC2, 0x1770
+    \end{solutionordottedlines}
+    \part[2] Convertissez en C2 sur 8 bits le nombre $88$ et le nombre $-88$.
+    \begin{solutionordottedlines}[.25in]
+      0xC3 ou $1100\,0011$
+    \end{solutionordottedlines}
+    \part[1] Convertissez en décimal le nombre codé en C2 écrit en hexadécimal sur 12 bits 0xFCC.
+    \begin{solutionordottedlines}[.25in]
+      111111001100 --- 000000110011 --- abs(x+1)=51 --- x=-52.
+    \end{solutionordottedlines}
+    \part[1] Faites l'opération suivante:
+    $0b1101\,1011+0b1111\,0101+1$. Donnez le résultat en binaire puis en
+    décimal.
+    \begin{solutionordottedlines}[.25in]
+      $0b1\,1101\,0001=465_{10}$
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Flottants courts} On veut modifier la norme IEEE
+  754. On définit une nouvelle catégorie de nombres flottants sur 8
+  bits:
+  \begin{itemize}
+  \item 1 bit de signe;
+  \item 3 bits pour noter $E$ avec $E=e+3$;
+  \item 4 bits pour la partie fractionnaire $M$ de la valeur $v$.
+  \end{itemize}
+  On a $x=(-1)^s\times v\times 2^e$. On fait les mêmes
+  \textbf{exceptions} que dans la norme IEEE 754: pour
+  $E=\texttt{0b000}$, on a $x=0$ et pour $E=\texttt{0b111}$, on a
+  $x=\pm\infty$.
+  \begin{parts}
+    \part[1] Codez en \emph{flottant court} le nombre 3,5.
+    \begin{solutionordottedlines}[.5in]%
+      $3,5=11,1=1,11\times2$ donc $0100 0110 0000$ soit 0x460.
+    \end{solutionordottedlines}
+    \part[1] Quel est le plus grand nombre \textbf{non infini} que l'on peut
+    représenter? Donnez son \emph{codage} sous forme hexadécimale, et sa
+    valeur en décimal.
+    \begin{solutionordottedlines}[.5in]%
+      Codage $01101111=0x77F$ (1/2), $E=0b110=6$, $e=3$ et
+      $v=0b1,1111$. Soit $x=0b1111\,1=15,5$ (1/2). Notes partielles
+      si essentiellement bon.
+    \end{solutionordottedlines}
+    \part[1] Soit deux nombres $a$ et $b$, flottants courts, qui ont le
+    même exposant $e$. Quelle est la \textbf{plus petite différence} possible non
+    nulle entre ces deux nombres ?
+    \begin{solutionordottedlines}[.5in]%
+      La différence de $v$ vaut 0.0000001 donc différence totale
+      de $2^e\times2^{-7}$ donc $2^{e-7}$.
+    \end{solutionordottedlines}
+    \part[1] Transformez en décimal les deux nombres \emph{flottants
+      courts} codés par les chaînes de bits suivantes:
+    $\texttt{0b0011\,1100}$ et
+    $\texttt{0b0110\,0100}$.
+    \begin{solutionordottedlines}[.5in]%
+      1,75 et 10,0
+    \end{solutionordottedlines}
+    \part[2] Faites la conversion du nombre 7,25 en \emph{flottant court}. Est-ce qu'on peut convertir 7,125 facilement en \emph{flottant court} ? Pourquoi ?
+    \begin{solutionordottedlines}[1in]%
+    $\texttt{0b0101\,1101}$. On ne peut pas convertir 7,125 exactement.
+    \end{solutionordottedlines}
+  \end{parts}
+
+  \titledquestion{Programme étrange}%
+
+  \begin{lstlisting}[numbers=left,language=C,caption=Programme]
+    fonction(unsigned int a) {
+      unsigned int b=0;
+      while (a!=0) {
+        b=b+(a&1);
+        a=a>>1;
+      }
+      return(b);
+    }
+  \end{lstlisting}
+
+  Les entiers sont sur 32 bits dans cette machine. L'opération
+  \verb|>>n| représente le décalage à droite, qui déplace chaque bit
+  dans celui qui est $n$ colonnes plus à droite (le dernier est perdu, les valeurs non spécifiés sont remplacées par 0).
+
+  \begin{parts}
+    \part[\half] Donnez en binaire le résultat de l'opération \verb|18>>2| (sur 8 bits).
+    \begin{solutionordottedlines}[.25in]
+      Le décalage à droite n'introduit que des zéros dans le nombre a,
+      donc a finit par être nul (division entière par 2).
+    \end{solutionordottedlines}
+    \part[\half] Pourquoi ce programme s'arrête-t-il ? Expliquez-bien.
+    \begin{solutionordottedlines}[.5in]
+      Le décalage à droite n'introduit que des zéros dans le nombre a,
+      donc a finit par être nul (division entière par 2).
+    \end{solutionordottedlines}
+    \part[1] Que fait la ligne 5 si $a$ est impair ? Et si $a$ est pair ? Conclure.
+    \begin{solutionordottedlines}[.75in]
+    \end{solutionordottedlines}
+    \part[1] On appelle la fonction avec la valeur 21. Détaillez les
+    valeurs successives de \texttt{a} et \texttt{b} jusqu'à l'arrêt de
+    la fonction.
+
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        21,0 (facultatif)\\10,1
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        5,1\\2,2
+      \end{solutionordottedlines}
+    \end{minipage}\hfill
+    \begin{minipage}{.3\linewidth}
+      \begin{solutionordottedlines}[1in]
+        1,2\\0,3
+      \end{solutionordottedlines}
+    \end{minipage}
+    \part[1] Que calcule cette fonction ?
+    \begin{solutionordottedlines}[.25in]
+      Le nombre de bits à 1 dans le codage binaire de l'entier a.
+    \end{solutionordottedlines}
+  \end{parts}
+\end{questions}
+\end{document}

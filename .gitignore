@@ -670,3 +670,17 @@
 /correction20161201.log
 /correction20161201.pdf
 # stop automatic section for compile-latex:controle20161201.tex/correction20161201
+# start automatic section for compile-latex:controle20170317.tex
+/.compile-latex/controle20170317
+/controle20170317.aux
+/controle20170317.fls
+/controle20170317.log
+/controle20170317.pdf
+# stop automatic section for compile-latex:controle20170317.tex
+# start automatic section for compile-latex:controle20170317.tex/correction20170317
+/.compile-latex/correction20170317
+/correction20170317.aux
+/correction20170317.fls
+/correction20170317.log
+/correction20170317.pdf
+# stop automatic section for compile-latex:controle20170317.tex/correction20170317
