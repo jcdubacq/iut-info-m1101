@@ -52,7 +52,7 @@ typedef struct bidule {  short int longueur; char type; char* adresse; }
 
   La structure \texttt{a} a été initalisée avec les valeurs \verb|{1023, 45, 0x8000}|, sachant que la chaîne \texttt{c} à l'adresse \texttt{0x00008000} était "A0" (dans le code ASCII en hexadécimal: 0x41 et 0x30).
 
-  Les schémas ci-dessous peuvent être plus grands que nécessaires. Ou pas.
+  Les schémas ci-dessous peuvent être plus grands que nécessaire. Ou pas.
 
   \begin{parts}
     \part[1] Représentez sur le schéma ci-dessous les cases mémoires occupées par la variable \texttt{a} et les cases mémoires occupées par la variable \texttt{b}.
@@ -232,7 +232,7 @@ typedef struct bidule {  short int longueur; char type; char* adresse; }
     \newpage
 
     \part[1] Mettez dans une variable A le nombre de fichiers d'étudiants inscrits en 2016.
-    \begin{solutionordottedlines}[.75in]%
+    \begin{solutionordottedlines}[1in]%
       \begin{lstlisting}[language=bash,caption={bash}]
         #!/bin/bash
         A=$(ls etud/2016*|wc -l) # $A 
@@ -242,7 +242,7 @@ typedef struct bidule {  short int longueur; char type; char* adresse; }
     \part[1] Comptez les étudiants inscrits en 2016 en affichant
     \texttt{Nombre d'étudiants en 2016: 257} (ou autre valeur). S'il n'y
     en pas, affichez \texttt{Aucun étudiant en 2016} (vous pouvez réutiliser la question ci-dessus).
-    \begin{solutionordottedlines}[1.75in]%
+    \begin{solutionordottedlines}[2in]%
       \begin{lstlisting}[language=bash,caption={bash}]
         #!/bin/bash
         A=$(ls etud/2016*|wc -l)
@@ -254,21 +254,8 @@ typedef struct bidule {  short int longueur; char type; char* adresse; }
       \end{lstlisting}
     \end{solutionordottedlines}
 
-    \part[1] Comptez les étudiants inscrits en 2016 en affichant \texttt{Nombre d'étudiants en 2016: 257} (ou autre valeur). S'il n'y en pas, affichez \texttt{Aucun étudiant en 2016}
-    \begin{solutionordottedlines}[1.25in]%
-      \begin{lstlisting}[language=bash,caption={bash}]
-        #!/bin/bash
-        A=$(wc -l etud/2016*)"
-        if [ $A -eq 0 ]; then
-        echo "Aucun étudiant en 2016"
-        else
-        echo "Nombre d'étudiants en 2016: $A" # $A plus haut
-        fi
-      \end{lstlisting}
-    \end{solutionordottedlines}
-
     \part[1] Comptez les fichiers d'apprentis (ligne \texttt{type:apprenti}) en affichant \texttt{Nombre d'apprentis: 257} (ou autre valeur).
-    \begin{solutionordottedlines}[.75in]%
+    \begin{solutionordottedlines}[1in]%
       \begin{lstlisting}[language=bash,caption={bash}]
         #!/bin/bash
         echo "Nombre d'apprentis: $(grep ^type:apprenti$ etud/*|wc -l)"
@@ -289,7 +276,7 @@ typedef struct bidule {  short int longueur; char type; char* adresse; }
     \texttt{titi:tata}. On peut évidemment changer le \texttt{2} et le
     \texttt{;}.
 
-    \begin{solutionordottedlines}[1.5in]%
+    \begin{solutionordottedlines}[2in]%
       \begin{lstlisting}[language=bash,caption={bash}]
         #!/bin/bash
         for i in etud/*; do

@@ -1,0 +1,169 @@
+\documentclass[a4paper]{iutvexam}
+% compile-latex options:--jobname controle20170330
+% compile-latex options:--jobname correction20170330
+\usepackage{textcomp}
+\usepackage{dirtree}
+\usepackage{listings}
+\usepackage{caption}
+\newcommand{\DTd}[1]{\textbf{#1/}}
+\newcommand{\DTfcomment}[1]{\DTcomment{\emph{#1}}}
+
+\title{Contrôle 2}
+\date{30/03/2017}
+\begin{document}
+\conditions{ Vous disposez de 90 minutes pour faire ce contrôle. Aucun
+  document autorisé. Toute tentative de communication avec un voisin ou
+  l'extérieur peut être sanctionnée. Toutes les réponses doivent être
+  faites sur l'énoncé. La taille de la réponse attendue dépend de la
+  taille allouée pour répondre. }
+\lstset{
+  extendedchars=true,
+  literate={è}{{\`e}}1 {é}{{\'e}}1 {î}{{\^\i}}1
+}
+
+
+L'ensemble de ce contrôle tourne autour d'un format de police de caractères\footnote{C'est un format imaginaire}. Une police au format NFP (nouveau format de police) est composé par les structures qui sont détaillées ci-après. Nous allons étudier un certain nombre de détails de ce format.
+
+Tout d'abord, une police est un assemblage de blocs de données qui
+sont d'un des trois types suivants : méta-données, données bitmap pour
+une taille fixée, table de correspondance numéro de caractère vers
+glyphe.
+
+Les fichiers sont construits comme des copies de la mémoire d'une
+machine en mode LE 32bits. L'adresse \texttt{0x0000} correspond au
+début du fichier.
+\begin{questions}
+
+  \titledquestion{Les méta-données}  
+  Un bloc de méta-données permet de stocker un couple
+  \texttt{(cle,valeur)} qui est une propriété du genre
+  \texttt{("style","italic")}. Le format des méta-données est le suivant
+  (syntaxe similaire au C):
+  
+  \begin{lstlisting}[numbers=left,language=C,caption=Programme]
+    struct blocMeta {
+      int longueur; /* longueur en octets du bloc de méta-données */
+      char version; /* La valeur 1 (tout le temps) */
+      char typebloc; /* type de bloc, valeur 0 pour un bloc de méta-données */
+      char l_longueur; /* longueur réelle de la clé (max 16) */
+      char l_valeur; /* longueur réelle de la valeur (max 16) */
+      char cle[16]; /* nom de la propriété */
+      char valeur[16]; /* nom de la valeur */
+    }
+  \end{lstlisting}
+  
+  \begin{parts}
+    \part[1] Il y a une limite au nombre de méta-données que l'on peut inclure dans un fichier : laquelle ? Est-ce que cette limite peut être dépassée de façon réaliste ?
+    \begin{solutionordottedlines}[.25in]
+      126-32=94 caractères. $94^{16}+94^{15}+\dots+94^{0}$ est un nombre très grand.
+    \end{solutionordottedlines}
+    \part[\half] Est-ce qu'il est nécessaire de mettre un caractère nul
+    à la fin du nom de la propriété ? Pourquoi ?
+    \begin{solutionordottedlines}[.25in]
+      Non, puisque la longueur est déjà indiquée dans la structure.
+    \end{solutionordottedlines}
+    \part[2] Est-ce qu'il y a des contraintes d'alignement dans cette
+    structure ? Quelle est la longueur de cette structure ? Faites un
+    schéma de la structure et des places occupées par les valeurs.
+    \begin{solutionordottedlines}[.5in]
+      Non, pas de contrainte. 4 cases, 4 fois une case, 16 cases, 16
+      cases
+    \end{solutionordottedlines}
+    \part[1] Représentez les octets associés au bloc de méta-données qui
+    sert à coder l'information \texttt{("FAMILY","Times New")} (vous
+    noterez les lettres "A", "B", etc. au lieu de \texttt{0x41},
+    \texttt{0x42}, etc.).
+    \begin{solutionordottedlines}[.25in]
+      ...
+    \end{solutionordottedlines}
+  \end{parts}
+  \titledquestion{Les blocs de correspondance}
+
+  Un bloc de correspondance permet de faire le lien entre des numéros et
+  des noms de glyphe (une chaîne d'au plus 32 caractères). On peut
+  mettre plusieurs blocs de correspondances dans une même police pour
+  qu'elle puisse servir avec plusieurs jeux de caractères (qui se
+  recouvrent).
+
+  La structure d'un bloc est la suivante:
+  \begin{lstlisting}[numbers=left,language=C,caption=Programme]
+    struct blocTable {
+      int longueur; /* longueur en octets du bloc de correspondance, y compris tableau et chaîne de caractères */
+      char version; /* La valeur 1 (tout le temps) */
+      char typebloc; /* type de bloc, valeur 1 pour un bloc de correspondances */
+      char* characterset; /* nom du jeu de caractères */
+      char num_glyphes; /* nombre de glyphes existants pour le jeu de caractères */
+      struct glyphe* glyphe; /* table des glyphes */
+    }
+
+    struct glyphe {
+      int glyphe; /* numéro du glyphe dans la table des glyphes */
+      int character; /* numéro du caractère dans le jeu de caractère */
+    }
+  \end{lstlisting}
+
+  Les chaînes de caractères se trouvent derrière le bloc qui s'en sert. Ce sont des chaînes de caractères de type C.
+  \begin{parts}
+    \part[1] Refaites le schéma qui explique les relations entre touches, jeu de caractères, etc.
+    \begin{solutionorbox}[2in]
+      
+    \end{solutionorbox}
+    \part[2] Est-ce qu'il y a des contraintes d'alignement dans la première
+    structure ? Quelle est la longueur de cette structure ? Faites un
+    schéma de la structure et des places occupées par les valeurs.
+    \begin{solutionordottedlines}[.5in]
+      Oui, un trou de deux ou trois octets avant les pointeurs dans la première. 4 cases, 2 fois une case, trou, 4 cases, 1 case, trou de trois octets, 4 cases.
+      cases
+    \end{solutionordottedlines}
+    \part[1] Est-ce qu'il y a des contraintes d'alignement dans la deuxième
+    structure ? Quelle est la longueur de cette structure ? Faites un
+    schéma de la structure et des places occupées par les valeurs.
+    \begin{solutionordottedlines}[.5in]
+      Non, aucune contrainte.
+    \end{solutionordottedlines}
+    \part[4] On va représenter à partir de l'adresse 100 un tel
+    bloc. Comme la police n'est pas finie, il n'y a que deux caractères
+    qui correspondent au jeu de caractères "ASCII". Le premier caractère
+    est le "A" (code 0x41 en ASCII, glyphe numéro 1 dans la table des
+    glyphes), le deuxième est le "B" (code 0x42 en ASCII, glyphe numéro
+    2). Représentez successivement le bloc de correspondance, la chaîne
+    de caractères "ASCII", le tableau de correspondance proprement dit.
+    \begin{solutionorbox}[1in]
+      
+    \end{solutionorbox}
+  \end{parts}
+
+  \titledquestion{Les glyphes}  
+  Un bloc de glyphe permet de stocker un glyphe (qui est un dessin point par point, dit \emph{bitmap}).
+  Une police de caractères comporte donc un bloc de glyphe pour chaque glyphe. Chaque bloc est suivi des données bitmap: un pixel blanc est représenté par un bit à 0, un pixel noir par un bit à 1. Lorsqu'il y a un nombre de pixels qui n'est pas un multiple de 8, on complète par des (faux) pixels \emph{à gauche} pour arriver à un multiple de 8.
+  \begin{lstlisting}[numbers=left,language=C,caption=Programme]
+    struct blocGlyphe {
+      int longueur; /* longueur en octets du bloc de méta-données */
+      char version; /* La valeur 1 (tout le temps) */
+      char typebloc; /* type de bloc, valeur 2 pour un bloc de glyphes */
+      char wd; /* dimension 1 */
+      char ht; /* dimension 2 */
+      int num; /* numéro de glyphe */
+      char* bitmap; /* données */
+    }
+  \end{lstlisting}
+  \begin{parts}
+    \part[\half] Quel est le nom anglais et le nom français des deux dimensions d'un glyphe ?
+    \begin{solutionordottedlines}[.25in]
+    \end{solutionordottedlines}
+    \part[1] Est-ce qu'il y a des contraintes d'alignement dans cette
+    structure ? Quelle est la longueur de cette structure ? Faites un
+    schéma de la structure et des places occupées par les valeurs.
+    \begin{solutionordottedlines}[.5in]
+    \end{solutionordottedlines}
+    \part[2] Voilà les octets d'une structure qui commence à l'adresse 0x200. Faites le dessin qui convient
+\begin{verbatim}
+00000200    18 00 00 00  01 02 06 08  0F 02 00 00  01 00 00 00
+00000210    00 08 08 14  1C 22 22 36
+\end{verbatim}
+    \begin{solutionorbox}[3in]
+      
+    \end{solutionorbox}
+  \end{parts}
+\end{questions}
+\end{document}
